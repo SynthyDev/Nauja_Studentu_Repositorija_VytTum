@@ -25,7 +25,7 @@ int main()
 
 void inputas(vector<Studentas> &grupe)
 {
-    Studentas A; // FIX: declare the student object
+    Studentas A;
 
     for (int ii = 0; ii < 2; ii++)
     {
@@ -54,17 +54,18 @@ void inputas(vector<Studentas> &grupe)
 
         grupe.push_back(A);
 
-        A.paz.clear(); // clear for next student
+        A.paz.clear();
     }
 }
 
 void outputas(const vector<Studentas> &grupe)
 {
         cout << "-------------------------------------------------------------------" << endl;
-            cout << left << setw(15) << "Vardas"
+        cout << left << setw(15) << "Vardas"
          << left << setw(15) << "Pavarde"
          << right << setw(10) << fixed << setprecision(2) << "Rezultatas"
          << endl;
+        cout << "-------------------------------------------------------------------" << endl;
     for (const auto &A : grupe)
     {
         cout << left << setw(15) << A.vardas
@@ -72,4 +73,5 @@ void outputas(const vector<Studentas> &grupe)
              << right << setw(10) << fixed << setprecision(2) << A.rez
              << endl;
     }
+    cout << "-------------------------------------------------------------------" << endl;
 }
