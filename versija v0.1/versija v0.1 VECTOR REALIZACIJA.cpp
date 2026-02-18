@@ -4,6 +4,7 @@
 #include <string>
 #include <cmath>
 #include <algorithm>
+#include <random>
 
 using namespace std;
 
@@ -21,8 +22,30 @@ void outputas(const vector<Studentas> &grupe);
 int main()
 {
     vector<Studentas> grupe;
-    inputas(grupe);
-    outputas(grupe);
+
+    int pasirinkimas = 4;
+    cout << "Kokios norite ivesties? (1 - ranka, 2 - generuoti tik pažymius, " << endl
+    << "3 - generuoti studentų vardus, pavardės ir pažymius, 4 arba kitas simbolis - baigti darbą)" << endl;
+    cin >> pasirinkimas;
+
+    if (pasirinkimas == 1) // ranka
+    {
+        inputas(grupe);
+        outputas(grupe);
+    }
+    else if (pasirinkimas == 2) // generuoti tik pazymius
+    {
+        cout << "no2" << endl;
+    }
+    else if (pasirinkimas == 3) // generuoti vardus, pavardes, ir pazymius
+    {
+        cout << "no3" << endl;
+    }
+    else // baigti darba
+    {
+        cout << "no4" << endl;
+    }
+
     return 0;
 }
 
@@ -75,7 +98,7 @@ void inputas(vector<Studentas> &grupe)
 
         if (A.paz.size() % 2 == 0)
         {
-            A.medrez = (A.paz[floor(A.paz.size()*1.0/2.0 - 1)] + A.paz[ceil(A.paz.size()*1.0/2.0)]) / 2.0;
+            A.medrez = (A.paz[A.paz.size()*1.0/2.0 - 1] + A.paz[A.paz.size()*1.0/2.0]) / 2.0;
         }
         else
         {
