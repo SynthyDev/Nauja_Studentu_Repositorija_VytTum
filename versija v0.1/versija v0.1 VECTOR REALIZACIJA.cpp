@@ -13,7 +13,7 @@ const vector<string> mvardai = {"Vytenis", "Tomas", "Jonas", "Matas", "Simas", "
 const vector<string> fvardai = {"Eglė", "Viktorija", "Vakarė", "Inga", "Ema", "Marija", "Janina"};
 const vector<string> pavardes = {"Mačerausk", "Jankausk", "Kazlausk", "Švilpausk", "Drugėliausk", "Briedausk"};
 const vector<string> mgalunes = {"as", "aitis"};
-const vector<string> fgalunes = {"ienė", "aitė", "ienė", "ytė"};
+const vector<string> fgalunes = {"ienė", "aitė", "ytė"};
 
 struct Studentas {
     string vardas = "A", pavarde = "BB";
@@ -83,6 +83,14 @@ void inputas(vector<Studentas> &grupe)
             cout << "Iveskite pazymi numeris " << i + 1 << ": ";
             cin >> temp;
 
+            if (cin.fail()) // patikra
+            {
+                cin.clear();
+                cin.ignore(10000, '\n');
+                cout << "Bloga ivestis. Bandykite dar karta.\n";
+                continue;
+            }
+
             A.paz.push_back(temp);
             sum += temp;
 
@@ -106,6 +114,14 @@ void inputas(vector<Studentas> &grupe)
 
         cout << "Iveskite egzamino rezultata: ";
         cin >> A.egz;
+
+        if (cin.fail()) // patikra
+        {
+            cin.clear();
+            cin.ignore(10000, '\n');
+            cout << "Bloga ivestis. Bandykite dar karta.\n";
+            continue;
+        }
 
         if (A.paz.size() > 0)
         {
