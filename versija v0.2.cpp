@@ -7,6 +7,7 @@
 #include <random>
 #include <ctime>
 #include <fstream>
+#include <sstream>
 
 using namespace std;
 
@@ -24,8 +25,11 @@ struct Studentas {
     double medrez;
 };
 
+const string skaitymo_failas = "studentai10000.txt";
+const string irasymo_failas = "kursiokai.txt";
+
 void inputas(vector<Studentas> &grupe);
-void failinputas(vector<Studentas> &grupe);
+void failinputas(vector<Studentas> &grupe, string reading);
 void randominputas(vector<Studentas> &grupe, bool ArGeneruotiVardus);
 void outputas(const vector<Studentas> &grupe);
 void failoutputas(const vector<Studentas> &grupe);
@@ -37,8 +41,7 @@ int main()
 {
     srand(time(NULL));
     
-    ofstream irasymas("kursiokai.txt");
-    ofstream skaitymas("studentai10000.txt");
+    ofstream irasymas(irasymo_failas);
 
     vector<Studentas> grupe;
 
@@ -52,7 +55,7 @@ int main()
     {    
         cout << "Ar skaityti duomenis iš failo? (y - iš failo / n - ranka)";
         cin >> skaitymo_pasirinkimas;
-        if (skaitymo_pasirinkimas == "y") failinputas(grupe);
+        if (skaitymo_pasirinkimas == "y") failinputas(grupe, skaitymo_failas);
         else inputas(grupe);
     }
     else if (pasirinkimas == 2)
@@ -81,7 +84,6 @@ int main()
         outputas(grupe);
     }
 
-    skaitymas.close();
     irasymas.close();
 
     return 0;
@@ -306,9 +308,40 @@ void randominputas(vector<Studentas> &grupe, bool ArGeneruotiVardus)
     }
 }
 
-void failinputas(vector<Studentas> &grupe)
+void failinputas(vector<Studentas> &grupe, string reading) // check vector shenanigans, probably need to store in separate vector
 {
-    cout << "file input test" << endl;
+    ifstream file(reading);
+
+    if (!file) {
+        cout << "Nepavyko atidaryti failo\n";
+        return;
+    }
+
+    string line;
+
+    while (getline(file, line))
+    {
+        istringstream iss(line);
+
+        Studentas temp;
+
+        iss >> temp.vardas >> temp.pavarde;
+
+        int pazymys;
+
+        while (iss >> pazymys)
+        {
+            temp.paz.push_back(pazymys);
+        }
+
+        if (!temp.paz.empty())
+        {
+            temp.egz = temp.paz.back();
+            temp.paz.pop_back();
+        }
+
+        grupe.push_back(temp);
+    }
 }
 
 string randomvardas(string lytis)
