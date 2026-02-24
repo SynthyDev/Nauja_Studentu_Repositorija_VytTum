@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <random>
 #include <ctime>
+#include <fstream>
 
 using namespace std;
 
@@ -24,8 +25,10 @@ struct Studentas {
 };
 
 void inputas(vector<Studentas> &grupe);
+void failinputas(vector<Studentas> &grupe);
 void randominputas(vector<Studentas> &grupe, bool ArGeneruotiVardus);
 void outputas(const vector<Studentas> &grupe);
+void failoutputas(const vector<Studentas> &grupe);
 string lytgen();
 string randomvardas(string lytis);
 string randompavarde(string lytis);
@@ -34,32 +37,52 @@ int main()
 {
     srand(time(NULL));
     
+    ofstream irasymas("kursiokai.txt");
+    ofstream skaitymas("studentai10000.txt");
+
     vector<Studentas> grupe;
 
     int pasirinkimas = 4;
-    cout << "Kokios norite ivesties? (1 - ranka, 2 - generuoti tik pažymius, " << endl
+    string isvedimotipas, skaitymo_pasirinkimas;
+    cout << "Kokios norite ivesties? (1 - ranka arba iš failo, 2 - generuoti tik pažymius, " << endl
     << " 3 - generuoti studentų vardus, pavardės ir pažymius, 4 arba kitas simbolis - baigti darbą)" << endl;
     cin >> pasirinkimas;
 
     if (pasirinkimas == 1)
-    {
-        inputas(grupe);
-        outputas(grupe);
+    {    
+        cout << "Ar skaityti duomenis iš failo? (y - iš failo / n - ranka)";
+        cin >> skaitymo_pasirinkimas;
+        if (skaitymo_pasirinkimas == "y") failinputas(grupe);
+        else inputas(grupe);
     }
     else if (pasirinkimas == 2)
     {
         randominputas(grupe, false);
-        outputas(grupe);
     }
     else if (pasirinkimas == 3)
     {
         randominputas(grupe, true);
-        outputas(grupe);
     }
     else
     {
         cout << "darbas baigtas" << endl;
+        return 0;
     }
+
+    cout << "Ar rašyti į failą? (y/n)" << endl;
+    cin >> isvedimotipas;
+
+    if (isvedimotipas == "y")
+    {
+        failoutputas(grupe);
+    }
+    else
+    {
+        outputas(grupe);
+    }
+
+    skaitymas.close();
+    irasymas.close();
 
     return 0;
 }
@@ -164,22 +187,27 @@ void outputas(const vector<Studentas> &grupe)
 {
     cout << "-------------------------------------------------------------------" << endl;
     cout << left << setw(20) << "Vardas"
-         << setw(20) << "Pavarde"
-         << setw(20) << "Rezultatas (Vid.) /"
-         << setw(20) << " Rezultatas (Med.)"
-         << endl;
+        << setw(20) << "Pavarde"
+        << setw(20) << "Rezultatas (Vid.) /"
+        << setw(20) << " Rezultatas (Med.)"
+        << endl;
     cout << "-------------------------------------------------------------------" << endl;
 
     for (const auto &A : grupe)
     {
         cout << left << setw(20) << A.vardas
-             << setw(20) << A.pavarde
-             << right << setw(20) << fixed << setprecision(2) << A.rez
-             << setw(20) << A.medrez
-             << endl;
+            << setw(20) << A.pavarde
+            << right << setw(20) << fixed << setprecision(2) << A.rez
+            << setw(20) << A.medrez
+            << endl;
     }
 
     cout << "-------------------------------------------------------------------" << endl;
+}
+
+void failoutputas(const vector<Studentas> &grupe)
+{
+    cout << "this is a test" << endl;
 }
 
 void randominputas(vector<Studentas> &grupe, bool ArGeneruotiVardus)
@@ -276,6 +304,11 @@ void randominputas(vector<Studentas> &grupe, bool ArGeneruotiVardus)
                 cout << "NETEISINGA IVESTIS, programa veikia toliau" << endl;
         }
     }
+}
+
+void failinputas(vector<Studentas> &grupe)
+{
+    cout << "file input test" << endl;
 }
 
 string randomvardas(string lytis)
