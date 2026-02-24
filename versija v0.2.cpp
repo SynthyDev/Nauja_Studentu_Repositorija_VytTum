@@ -346,21 +346,14 @@ void failinputas(vector<Studentas> &grupe, string reading)
             for (int x : A.paz)
                 sum += x;
 
-            double avg = sum * 1.0 / A.paz.size();
-
             sort(A.paz.begin(), A.paz.end());
 
-            double mediana;
-            int n = A.paz.size();
-
-            if (n % 2 == 0)
-                mediana = (A.paz[n/2 - 1] + A.paz[n/2]) / 2.0;
+            if (A.paz.size() % 2 == 0)
+                A.medrez = (A.paz[A.paz.size()/2 - 1] + A.paz[A.paz.size()/2]) / 2.0;
             else
-                mediana = A.paz[n/2];
+                A.medrez = A.paz[A.paz.size()/2];
 
-            // final results
-            A.rez = 0.4 * avg + 0.6 * A.egz;
-            A.medrez = 0.4 * mediana + 0.6 * A.egz;
+            A.rez = 0.4 * (sum * 1.0 / A.paz.size()) + 0.6 * A.egz;
         }
 
         grupe.push_back(A);
