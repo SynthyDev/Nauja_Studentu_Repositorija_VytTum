@@ -308,7 +308,7 @@ void randominputas(vector<Studentas> &grupe, bool ArGeneruotiVardus)
     }
 }
 
-void failinputas(vector<Studentas> &grupe, string reading) // check vector shenanigans, probably need to store in separate vector
+void failinputas(vector<Studentas> &grupe, string reading)
 {
     ifstream file(reading);
 
@@ -323,24 +323,47 @@ void failinputas(vector<Studentas> &grupe, string reading) // check vector shena
     {
         istringstream iss(line);
 
-        Studentas temp;
+        Studentas A;
 
-        iss >> temp.vardas >> temp.pavarde;
+        iss >> A.vardas >> A.pavarde;
 
         int pazymys;
 
         while (iss >> pazymys)
         {
-            temp.paz.push_back(pazymys);
+            A.paz.push_back(pazymys);
         }
 
-        if (!temp.paz.empty())
+        if (!A.paz.empty())
         {
-            temp.egz = temp.paz.back();
-            temp.paz.pop_back();
+            A.egz = A.paz.back();
+            A.paz.pop_back();
         }
 
-        grupe.push_back(temp);
+        if (!A.paz.empty())
+        {
+            int sum = 0;
+            for (int x : A.paz)
+                sum += x;
+
+            double avg = sum * 1.0 / A.paz.size();
+
+            sort(A.paz.begin(), A.paz.end());
+
+            double mediana;
+            int n = A.paz.size();
+
+            if (n % 2 == 0)
+                mediana = (A.paz[n/2 - 1] + A.paz[n/2]) / 2.0;
+            else
+                mediana = A.paz[n/2];
+
+            // final results
+            A.rez = 0.4 * avg + 0.6 * A.egz;
+            A.medrez = 0.4 * mediana + 0.6 * A.egz;
+        }
+
+        grupe.push_back(A);
     }
 }
 
