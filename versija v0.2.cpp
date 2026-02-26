@@ -8,6 +8,7 @@
 #include <ctime>
 #include <fstream>
 #include <sstream>
+#include <chrono>
 
 using namespace std;
 
@@ -96,7 +97,9 @@ int main()
     << "5 - egzaminas" << endl;
     cin >> rikiavimo_pasirinkimas;
 
-rikiuoti(grupe, rikiavimo_pasirinkimas);
+    auto start = std::chrono::high_resolution_clock::now(); // Paleisti
+
+    rikiuoti(grupe, rikiavimo_pasirinkimas);
 
     if (isvedimotipas == "y")
     {
@@ -106,6 +109,11 @@ rikiuoti(grupe, rikiavimo_pasirinkimas);
     {
         outputas(grupe);
     }
+
+    // is pavyzdzio
+    auto end = chrono::high_resolution_clock::now(); // Stabdyti
+    chrono::duration<double> diff = end-start; // Skirtumas (s)
+    cout << "Programos rikiavimas ir išvedimas užtruko: "<< diff.count() << " s\n";
 
     return 0;
 }
@@ -241,14 +249,14 @@ void failoutputas(const vector<Studentas> &grupe, string writing)
     }
 
     ofstream out(writing);
-    out << "-------------------------------------------------------------------" << endl;
+    out << "------------------------------------------------------------------- \n";
     out << left << setw(20) << "Vardas"
         << setw(20) << "Pavarde"
         << setw(20) << "Rezultatas (Vid.) /"
         << setw(20) << " Rezultatas (Med.)"
         << endl;
-    out << "-------------------------------------------------------------------" << endl;
-    out << buffer.str();
+    out << "------------------------------------------------------------------- \n";
+    out << buffer.rdbuf();
     cout << "Studentu skaicius: " << grupe.size() << endl;
 }
 
