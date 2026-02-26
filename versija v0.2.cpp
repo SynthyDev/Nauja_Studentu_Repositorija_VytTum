@@ -11,11 +11,19 @@
 
 using namespace std;
 
+// 10 PALEIDIMU VIDUTINIS LAIKAS:
+// 1 000 000 eiluciu:
+// (X+X+...) / 10 = 
+// 100 000 eiluciu:
+// (X+X+...) / 10 = 
+// 10 000 eiluciu:
+// (X+X+...) / 10 = 
+
 const vector<string> mvardai = {"Vytenis", "Tomas", "Jonas", "Matas", "Simas", "Mantas", "Arnas"};
-const vector<string> fvardai = {"Eglė", "Viktorija", "Vakarė", "Inga", "Ema", "Marija", "Janina"};
-const vector<string> pavardes = {"Mačerausk", "Jankausk", "Kazlausk", "Švilpausk", "Drugėliausk", "Briedausk"};
+const vector<string> fvardai = {"Egle", "Viktorija", "Vakare", "Inga", "Ema", "Marija", "Janina"};
+const vector<string> pavardes = {"Macerausk", "Jankausk", "Kazlausk", "Svilpausk", "Drugeliausk", "Briedausk"};
 const vector<string> mgalunes = {"as", "aitis"};
-const vector<string> fgalunes = {"ienė", "aitė", "ytė"};
+const vector<string> fgalunes = {"iene", "aite", "yte"};
 
 struct Studentas {
     string vardas = "A", pavarde = "BB";
@@ -25,23 +33,27 @@ struct Studentas {
     double medrez;
 };
 
-const string skaitymo_failas = "studentai10000.txt";
+const string skaitymo_failas = "studentai1000000.txt";
 const string irasymo_failas = "kursiokai.txt";
 
 void inputas(vector<Studentas> &grupe);
 void failinputas(vector<Studentas> &grupe, string reading);
 void randominputas(vector<Studentas> &grupe, bool ArGeneruotiVardus);
 void outputas(const vector<Studentas> &grupe);
-void failoutputas(const vector<Studentas> &grupe);
+void failoutputas(const vector<Studentas> &grupe, string writing);
 string lytgen();
 string randomvardas(string lytis);
 string randompavarde(string lytis);
+void rikiuoti(vector<Studentas> &grupe, int pasirinkimas);
+bool cmpVardas(const Studentas &a, const Studentas &b);
+bool cmpPavarde(const Studentas &a, const Studentas &b);
+bool cmpRez(const Studentas &a, const Studentas &b);
+bool cmpMedrez(const Studentas &a, const Studentas &b);
+bool cmpEgz(const Studentas &a, const Studentas &b);
 
 int main()
 {
     srand(time(NULL));
-    
-    ofstream irasymas(irasymo_failas);
 
     vector<Studentas> grupe;
 
@@ -75,16 +87,25 @@ int main()
     cout << "Ar rašyti į failą? (y/n)" << endl;
     cin >> isvedimotipas;
 
+    int rikiavimo_pasirinkimas;
+    cout << "Pagal ka rikiuoti?" << endl
+    << "1 - vardas" << endl
+    << "2 - pavarde" << endl
+    << "3 - galutinis (vidurkis)" << endl
+    << "4 - galutinis (mediana)" << endl
+    << "5 - egzaminas" << endl;
+    cin >> rikiavimo_pasirinkimas;
+
+rikiuoti(grupe, rikiavimo_pasirinkimas);
+
     if (isvedimotipas == "y")
     {
-        failoutputas(grupe);
+        failoutputas(grupe, irasymo_failas);
     }
     else
     {
         outputas(grupe);
     }
-
-    irasymas.close();
 
     return 0;
 }
@@ -207,9 +228,28 @@ void outputas(const vector<Studentas> &grupe)
     cout << "-------------------------------------------------------------------" << endl;
 }
 
-void failoutputas(const vector<Studentas> &grupe)
+void failoutputas(const vector<Studentas> &grupe, string writing)
 {
-    cout << "this is a test" << endl;
+    ostringstream buffer;
+
+    for (const Studentas& s : grupe)
+    {
+        buffer << left << setw(20) << s.vardas
+               << setw(20) << s.pavarde << fixed << setprecision(2)
+               << setw(20) << s.rez
+               << setw(20) << s.medrez << '\n';
+    }
+
+    ofstream out(writing);
+    out << "-------------------------------------------------------------------" << endl;
+    out << left << setw(20) << "Vardas"
+        << setw(20) << "Pavarde"
+        << setw(20) << "Rezultatas (Vid.) /"
+        << setw(20) << " Rezultatas (Med.)"
+        << endl;
+    out << "-------------------------------------------------------------------" << endl;
+    out << buffer.str();
+    cout << "Studentu skaicius: " << grupe.size() << endl;
 }
 
 void randominputas(vector<Studentas> &grupe, bool ArGeneruotiVardus)
@@ -311,6 +351,7 @@ void randominputas(vector<Studentas> &grupe, bool ArGeneruotiVardus)
 void failinputas(vector<Studentas> &grupe, string reading)
 {
     ifstream file(reading);
+    grupe.reserve(1000000);
 
     if (!file) {
         cout << "Nepavyko atidaryti failo\n";
@@ -318,6 +359,8 @@ void failinputas(vector<Studentas> &grupe, string reading)
     }
 
     string line;
+
+    getline(file, line); // <-- SKIP HEADER LINE
 
     while (getline(file, line))
     {
@@ -388,3 +431,43 @@ string lytgen()
     else
         return "mot";
 }
+
+bool cmpVardas(const Studentas &a, const Studentas &b)
+{
+    return a.vardas < b.vardas;
+}
+
+bool cmpPavarde(const Studentas &a, const Studentas &b)
+{
+    return a.pavarde < b.pavarde;
+}
+
+bool cmpRez(const Studentas &a, const Studentas &b)
+{
+    return a.rez < b.rez;
+}
+
+bool cmpMedrez(const Studentas &a, const Studentas &b)
+{
+    return a.medrez < b.medrez;
+}
+
+bool cmpEgz(const Studentas &a, const Studentas &b)
+{
+    return a.egz < b.egz;
+}
+
+void rikiuoti(vector<Studentas> &grupe, int pasirinkimas)
+{
+    if (pasirinkimas == 1)
+        sort(grupe.begin(), grupe.end(), cmpVardas);
+    else if (pasirinkimas == 2)
+        sort(grupe.begin(), grupe.end(), cmpPavarde);
+    else if (pasirinkimas == 3)
+        sort(grupe.begin(), grupe.end(), cmpRez);
+    else if (pasirinkimas == 4)
+        sort(grupe.begin(), grupe.end(), cmpMedrez);
+    else if (pasirinkimas == 5)
+        sort(grupe.begin(), grupe.end(), cmpEgz);
+}
+
