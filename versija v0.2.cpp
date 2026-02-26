@@ -12,13 +12,13 @@
 
 using namespace std;
 
-// 10 PALEIDIMU VIDUTINIS LAIKAS:
+// 5 PALEIDIMU VIDUTINIS LAIKAS (rikiavimas + output):
 // 1 000 000 eiluciu:
-// (X+X+...) / 10 = 
+// undetermined ~ 120 s iš viso, rodo ~3.5 s
 // 100 000 eiluciu:
-// (X+X+...) / 10 = 
+// (0.36 + 0.36 + 0.35 + 0.36 + 0.35) / 5 = 0.356 s
 // 10 000 eiluciu:
-// (X+X+...) / 10 = 
+// (0.032 + 0.031 + 0.034 + 0.033 + 0.031) / 5 = 0.032
 
 const vector<string> mvardai = {"Vytenis", "Tomas", "Jonas", "Matas", "Simas", "Mantas", "Arnas"};
 const vector<string> fvardai = {"Egle", "Viktorija", "Vakare", "Inga", "Ema", "Marija", "Janina"};
@@ -103,7 +103,9 @@ int main()
 
     if (isvedimotipas == "y")
     {
+        cout << "pradedu rasyt" << endl;
         failoutputas(grupe, irasymo_failas);
+        cout << "Baigiu rasyt" << endl;
     }
     else
     {
@@ -115,6 +117,7 @@ int main()
     chrono::duration<double> diff = end-start; // Skirtumas (s)
     cout << "Programos rikiavimas ir išvedimas užtruko: "<< diff.count() << " s\n";
 
+    cout << "program finished." << endl;
     return 0;
 }
 
@@ -238,25 +241,21 @@ void outputas(const vector<Studentas> &grupe)
 
 void failoutputas(const vector<Studentas> &grupe, string writing)
 {
-    ostringstream buffer;
-
-    for (const Studentas& s : grupe)
-    {
-        buffer << left << setw(20) << s.vardas
-               << setw(20) << s.pavarde << fixed << setprecision(2)
-               << setw(20) << s.rez
-               << setw(20) << s.medrez << '\n';
-    }
-
     ofstream out(writing);
     out << "------------------------------------------------------------------- \n";
     out << left << setw(20) << "Vardas"
         << setw(20) << "Pavarde"
         << setw(20) << "Rezultatas (Vid.) /"
         << setw(20) << " Rezultatas (Med.)"
-        << endl;
+        << "\n";
     out << "------------------------------------------------------------------- \n";
-    out << buffer.rdbuf();
+    for (const Studentas& s : grupe)
+    {
+        out << left << setw(20) << s.vardas
+               << setw(20) << s.pavarde << fixed << setprecision(2)
+               << setw(20) << s.rez
+               << setw(20) << s.medrez << '\n';
+    }
     cout << "Studentu skaicius: " << grupe.size() << endl;
 }
 
@@ -368,7 +367,7 @@ void failinputas(vector<Studentas> &grupe, string reading)
 
     string line;
 
-    getline(file, line); // <-- SKIP HEADER LINE
+    getline(file, line);
 
     while (getline(file, line))
     {
