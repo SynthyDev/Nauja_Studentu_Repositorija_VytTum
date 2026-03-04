@@ -14,7 +14,7 @@ using namespace std;
 
 // 5 PALEIDIMU VIDUTINIS LAIKAS (rikiavimas + output):
 // 1 000 000 eiluciu:
-// undetermined ~ 120 s iš viso, rodo ~3.5 s
+// undetermined ~ 90 s iš viso, rodo ~3.5 s
 // 100 000 eiluciu:
 // (0.36 + 0.36 + 0.35 + 0.36 + 0.35) / 5 = 0.356 s
 // 10 000 eiluciu:
@@ -34,7 +34,8 @@ struct Studentas {
     double medrez;
 };
 
-const string skaitymo_failas = "studentai1000000.txt";
+// system("dir *.txt")
+const string skaitymo_failas = "studentai10000.txt";
 const string irasymo_failas = "kursiokai.txt";
 
 void inputas(vector<Studentas> &grupe);
