@@ -34,6 +34,8 @@ int main()
     << " 3 - generuoti studentų vardus, pavardės ir pažymius, 4 arba kitas simbolis - baigti darbą)" << endl;
     cin >> pasirinkimas;
 
+    auto input_start = chrono::high_resolution_clock::now();
+
     if (pasirinkimas == 1)
     {    
         cout << "Ar skaityti duomenis iš failo? (y - iš failo / n - ranka)";
@@ -54,6 +56,10 @@ int main()
         cout << "darbas baigtas" << endl;
         return 0;
     }
+
+    auto input_end = chrono::high_resolution_clock::now();
+    chrono::duration<double> input_diff = input_end - input_start;
+    cout << "Duomenų nuskaitymas užtruko: " << input_diff.count() << " s \n";
 
     cout << "Ar rašyti į failą? (y/n)" << endl;
     cin >> isvedimotipas;
