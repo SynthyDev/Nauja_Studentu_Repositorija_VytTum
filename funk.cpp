@@ -10,6 +10,7 @@
 #include <sstream>
 #include <chrono>
 #include "studentai.h"
+#include <stdexcept>
 
 using namespace std;
 
