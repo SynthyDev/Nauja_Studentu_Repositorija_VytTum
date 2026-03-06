@@ -1,24 +1,29 @@
-**Kodo paaiškinimas versijai v0.2**
+**Kodo paaiškinimas versijai v0.3**
 
 
 
-KODO PAKEITIMAI IR PAPILDYMAI NUO V0.1:
+KODO PAKEITIMAI IR PAPILDYMAI NUO V0.2:
 
 
-NAUJOS FUNKCIJOS:
 
-failinputas() - Duomenų įvedimas iš failo
+FAILŲ SISTEMA:
 
-failoutputas() - Duomenų optimalus išvedimas į failą naudojant bufferį
+studentai.h (header failas)
 
-rikiuoti() - priskiria rikiavimą pagal naudotojo įvestą pasirinkimą naudojant vieną iš cmpX funkcijų
+funk.cpp (funkcijų failai)
 
-cmpX() - palygina dvi reikšmes pagal parametrą X
+versija\_v03.cpp (pagrindinis c++ failas)
+
+kursiokai.txt (output failas)
+
+studentai10000.txt (input failas)
+
+program.exe (exe programos paleidimo failas)
 
 
-Bendri pakeitimai:
 
-1. Output rikiavimas pagal naudotojo įvestį
-2. Laiko matavimas
-3. Optimalesnis duomenų įvedimas/išvedimas
-4. Įvestis ir išvestis į/iš failo
+
+
+Bendri kodo pakeitimai:
+
+1. Atnaujintas error handling įvesties patikrinimui.
