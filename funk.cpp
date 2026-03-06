@@ -243,15 +243,15 @@ void randominputas(vector<Studentas> &grupe, bool ArGeneruotiVardus)
             grupe.push_back(A);
             A.paz.clear();
 
-            cout << "Ar baigete vesti zmones? (y/n): ";
+            cout << "Ar toliau vesite žmones? (y/n): ";
             cin >> ats;
 
-            if (ats == "y")
+            if (ats == "n")
                 break;
-            else if (ats == "n")
+            else if (ats == "y")
                 cout << "Veskite toliau: ";
             else
-                cout << "NETEISINGA IVESTIS, programa veikia toliau" << endl;
+                cout << "NETEISINGA ĮVESTIS, programa veikia toliau" << endl;
         }
     }
 }
