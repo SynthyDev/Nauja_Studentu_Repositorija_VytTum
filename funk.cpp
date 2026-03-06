@@ -30,13 +30,17 @@ void inputas(vector<Studentas> &grupe)
         {
             int temp;
             cout << "Iveskite pazymi numeris " << i + 1 << ": ";
-            cin >> temp;
-
-            if (cin.fail()) // patikra
+            try
+            {
+                cin >> temp;
+                if (cin.fail())
+                    throw runtime_error("Bloga ivestis.");
+            }
+            catch (exception& e)
             {
                 cin.clear();
                 cin.ignore(10000, '\n');
-                cout << "Bloga ivestis. Bandykite dar karta.\n";
+                cout << e.what() << " Bandykite dar karta.\n";
                 continue;
             }
 
@@ -62,13 +66,18 @@ void inputas(vector<Studentas> &grupe)
         }
 
         cout << "Iveskite egzamino rezultata: ";
-        cin >> A.egz;
+        try
+        {
+            cin >> A.egz;
 
-        if (cin.fail()) // patikra
+            if (cin.fail())
+                throw runtime_error("Bloga įvestis.");
+        }
+        catch (exception& e)
         {
             cin.clear();
             cin.ignore(10000, '\n');
-            cout << "Bloga ivestis. Bandykite dar karta.\n";
+            cout << e.what() << " Bandykite dar kartą.\n";
             continue;
         }
 
