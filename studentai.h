@@ -17,7 +17,6 @@ struct Studentas {
     double medrez;
 };
 
-// system("dir *.txt") ??
 const string skaitymo_failas = "studentai10000.txt";
 const string irasymo_failas = "kursiokai.txt";
 

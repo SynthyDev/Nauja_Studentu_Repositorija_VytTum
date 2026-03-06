@@ -48,13 +48,13 @@ void inputas(vector<Studentas> &grupe)
             A.paz.push_back(temp);
             sum += temp;
 
-            cout << "Ar baigete vesti pažymius? (y/n): ";
+            cout << "Ar toliau vesite pažymius? (y/n): ";
             cin >> ats;
-            if (ats == "y")
+            if (ats == "n")
             {
                 break;
             }
-            else if (ats == "n")
+            else if (ats == "y")
             {
                 cout << "Veskite toliau: ";
             }
@@ -70,7 +70,6 @@ void inputas(vector<Studentas> &grupe)
         try
         {
             cin >> A.egz;
-
             if (cin.fail())
                 throw runtime_error("Bloga įvestis.");
         }
@@ -102,13 +101,13 @@ void inputas(vector<Studentas> &grupe)
         grupe.push_back(A);
         A.paz.clear();
 
-        cout << "Ar baigete vesti mokinius? (y/n): ";
+        cout << "Ar toliau vesite mokinius? (y/n): ";
         cin >> ats;
-        if (ats == "y")
+        if (ats == "n")
         {
             break;
         }
-        else if (ats == "n")
+        else if (ats == "y")
         {
             cout << "Veskite toliau: ";
         }
