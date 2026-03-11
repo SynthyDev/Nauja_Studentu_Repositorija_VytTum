@@ -387,7 +387,13 @@ void failgeneravimas()
     ofstream gen1000000;
     ofstream gen10000000;
 
-    
+
+    cout << "pradedamas failu generavimo laiko skaiciavimas" << endl;
+    auto input_start = chrono::high_resolution_clock::now();
+    //
+    auto input_end = chrono::high_resolution_clock::now();
+    chrono::duration<double> input_diff = input_end - input_start;
+    cout << "Failu sukurimas + uždarymas užtruko: " << input_diff.count() << " s \n";
 
 
 
