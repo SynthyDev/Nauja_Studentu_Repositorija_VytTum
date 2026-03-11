@@ -43,8 +43,6 @@ int main()
     {    
         cout << "Ar skaityti duomenis is failo? (y - is failo / n - ranka)";
         cin >> skaitymo_pasirinkimas;
-        cout << "Koks failo pavadinimas?";
-        cin >> skaitymo_failas;
         if (skaitymo_pasirinkimas == "y") failinputas(grupe, skaitymo_failas);
         else inputas(grupe);
     }
@@ -58,7 +56,7 @@ int main()
     }
     else if (pasirinkimas == 4)
     {
-        genirasymas(grupe, skaitymo_failas);
+        genirasymas(grupe, irasymo_failas_geras, irasymo_failas_blogas);
         return 0;
     }
     else
