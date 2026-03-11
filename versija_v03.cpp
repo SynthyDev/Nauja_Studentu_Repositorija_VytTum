@@ -32,9 +32,9 @@ int main()
     failgeneravimas();
 
     int pasirinkimas = 4;
-    string isvedimotipas, skaitymo_pasirinkimas;
+    string isvedimotipas, skaitymo_pasirinkimas, skaitymo_failas;
     cout << "Kokios norite ivesties? (1 - ranka arba is failo, 2 - generuoti tik pazymius, " << endl
-    << " 3 - generuoti studentu vardus, pavardes ir pazymius, 4 arba kitas simbolis - baigti darba)" << endl;
+    << " 3 - generuoti studentu vardus, pavardes ir pazymius, 4 - skaityti sugeneruotus failus; 5 arba kitas simbolis - baigti darba)" << endl;
     cin >> pasirinkimas;
 
     auto input_start = chrono::high_resolution_clock::now();
@@ -43,6 +43,8 @@ int main()
     {    
         cout << "Ar skaityti duomenis is failo? (y - is failo / n - ranka)";
         cin >> skaitymo_pasirinkimas;
+        cout << "Koks failo pavadinimas?";
+        cin >> skaitymo_failas;
         if (skaitymo_pasirinkimas == "y") failinputas(grupe, skaitymo_failas);
         else inputas(grupe);
     }
@@ -53,6 +55,11 @@ int main()
     else if (pasirinkimas == 3)
     {
         randominputas(grupe, true);
+    }
+    else if (pasirinkimas == 4)
+    {
+        genirasymas(grupe, skaitymo_failas);
+        return 0;
     }
     else
     {

@@ -409,3 +409,8 @@ void failgeneravimas()
     }
 }
 
+void genirasymas(const vector<Studentas> &grupe, string writing)
+{
+
+}
+

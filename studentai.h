@@ -17,7 +17,6 @@ struct Studentas {
     double medrez;
 };
 
-const string skaitymo_failas = "studentai10000.txt";
 const string irasymo_failas = "kursiokai.txt";
 
 void inputas(vector<Studentas> &grupe);
@@ -26,6 +25,7 @@ void randominputas(vector<Studentas> &grupe, bool ArGeneruotiVardus);
 void outputas(const vector<Studentas> &grupe);
 void failoutputas(const vector<Studentas> &grupe, string writing);
 void failgeneravimas();
+void genirasymas(const vector<Studentas> &grupe, string writing);
 string lytgen();
 string randomvardas(string lytis);
 string randompavarde(string lytis);
