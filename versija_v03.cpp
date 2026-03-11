@@ -33,15 +33,15 @@ int main()
 
     int pasirinkimas = 4;
     string isvedimotipas, skaitymo_pasirinkimas;
-    cout << "Kokios norite ivesties? (1 - ranka arba iš failo, 2 - generuoti tik pažymius, " << endl
-    << " 3 - generuoti studentų vardus, pavardės ir pažymius, 4 arba kitas simbolis - baigti darbą)" << endl;
+    cout << "Kokios norite ivesties? (1 - ranka arba is failo, 2 - generuoti tik pazymius, " << endl
+    << " 3 - generuoti studentu vardus, pavardes ir pazymius, 4 arba kitas simbolis - baigti darba)" << endl;
     cin >> pasirinkimas;
 
     auto input_start = chrono::high_resolution_clock::now();
 
     if (pasirinkimas == 1)
     {    
-        cout << "Ar skaityti duomenis iš failo? (y - iš failo / n - ranka)";
+        cout << "Ar skaityti duomenis is failo? (y - is failo / n - ranka)";
         cin >> skaitymo_pasirinkimas;
         if (skaitymo_pasirinkimas == "y") failinputas(grupe, skaitymo_failas);
         else inputas(grupe);
@@ -62,9 +62,9 @@ int main()
 
     auto input_end = chrono::high_resolution_clock::now();
     chrono::duration<double> input_diff = input_end - input_start;
-    cout << "Duomenų nuskaitymas užtruko: " << input_diff.count() << " s \n";
+    cout << "Duomenu nuskaitymas uztruko: " << input_diff.count() << " s \n";
 
-    cout << "Ar rašyti į failą? (y/n)" << endl;
+    cout << "Ar rasyti i faila? (y/n)" << endl;
     cin >> isvedimotipas;
 
     int rikiavimo_pasirinkimas;
@@ -94,7 +94,7 @@ int main()
     // is pavyzdzio
     auto end = chrono::high_resolution_clock::now(); // Stabdyti
     chrono::duration<double> diff = end-start; // Skirtumas (s)
-    cout << "Programos rikiavimas ir išvedimas užtruko: "<< diff.count() << " s\n";
+    cout << "Programos rikiavimas ir isvedimas uztruko: "<< diff.count() << " s\n";
 
     cout << "program finished." << endl;
     return 0;

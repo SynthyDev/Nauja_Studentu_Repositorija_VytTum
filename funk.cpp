@@ -48,7 +48,7 @@ void inputas(vector<Studentas> &grupe)
             A.paz.push_back(temp);
             sum += temp;
 
-            cout << "Ar toliau vesite pažymius? (y/n): ";
+            cout << "Ar toliau vesite pazymius? (y/n): ";
             cin >> ats;
             if (ats == "n")
             {
@@ -71,13 +71,13 @@ void inputas(vector<Studentas> &grupe)
         {
             cin >> A.egz;
             if (cin.fail())
-                throw runtime_error("Bloga įvestis.");
+                throw runtime_error("Bloga ivestis.");
         }
         catch (exception& e)
         {
             cin.clear();
             cin.ignore(10000, '\n');
-            cout << e.what() << " Bandykite dar kartą.\n";
+            cout << e.what() << " Bandykite dar karta.\n";
             continue;
         }
 
@@ -243,7 +243,7 @@ void randominputas(vector<Studentas> &grupe, bool ArGeneruotiVardus)
             grupe.push_back(A);
             A.paz.clear();
 
-            cout << "Ar toliau vesite žmones? (y/n): ";
+            cout << "Ar toliau vesite zmones? (y/n): ";
             cin >> ats;
 
             if (ats == "n")
@@ -251,7 +251,7 @@ void randominputas(vector<Studentas> &grupe, bool ArGeneruotiVardus)
             else if (ats == "y")
                 cout << "Veskite toliau: ";
             else
-                cout << "NETEISINGA ĮVESTIS, programa veikia toliau" << endl;
+                cout << "NETEISINGA IVESTIS, programa veikia toliau" << endl;
         }
     }
 }
@@ -383,7 +383,7 @@ void failgeneravimas()
 {
     for (int it = 0; it < 1000*pow(10, it); it++)
     {
-        cout << "pradedamas 1000 eilučių failo generavimo laiko skaiciavimas" << endl;
+        cout << "pradedamas 1000 eiluciu failo generavimo laiko skaiciavimas" << endl;
         auto input_start = chrono::high_resolution_clock::now();
         
         ofstream gen;
@@ -403,7 +403,7 @@ void failgeneravimas()
 
         auto input_end = chrono::high_resolution_clock::now();
         chrono::duration<double> input_diff = input_end - input_start;
-        cout << "Failu sukurimas + uždarymas užtruko: " << input_diff.count() << " s \n";
+        cout << "Failu sukurimas + uzdarymas uztruko: " << input_diff.count() << " s \n";
     }
 }
 
