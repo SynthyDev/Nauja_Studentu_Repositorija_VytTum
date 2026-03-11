@@ -381,18 +381,19 @@ void rikiuoti(vector<Studentas> &grupe, int pasirinkimas)
 
 void failgeneravimas()
 {
-    for (int it = 0; it < 1000*pow(10, it); it++)
+    int sk = 1000;
+    for (int it = 0; it < 5; it++)
     {
-        cout << "pradedamas 1000 eiluciu failo generavimo laiko skaiciavimas" << endl;
+        cout << "pradedamas " << sk <<" eiluciu failo generavimo laiko skaiciavimas" << endl;
         auto input_start = chrono::high_resolution_clock::now();
         
         ofstream gen;
-        gen.open(("gen" + to_string(1000*pow(10, it)) + ".txt"));
+        gen.open("gen" + to_string(sk) + ".txt");
 
-        for (int genit = 0; genit <= 4; genit++)
+        for (int genit = 1; genit <= sk; genit++)
         {
-            gen << left << setw(20) << "genVardas" + to_string(1000*pow(10, it))
-                << setw(20) << "genPavarde" + to_string(1000*pow(10, it)) << fixed << setprecision(2);
+            gen << left << setw(20) << "genVardas" + to_string(genit)
+                << setw(20) << "genPavarde" + to_string(genit) << fixed << setprecision(2);
             for (int i = 1; i<=16; i++) //15 pazymiu ir 1 egzamino pazymys
             {
                 gen << setw(20) << rand() % 10 + 1;
@@ -400,6 +401,7 @@ void failgeneravimas()
             gen << "\n";
         }
         gen.close();
+        sk *= 10;
 
         auto input_end = chrono::high_resolution_clock::now();
         chrono::duration<double> input_diff = input_end - input_start;
