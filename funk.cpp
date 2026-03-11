@@ -381,30 +381,29 @@ void rikiuoti(vector<Studentas> &grupe, int pasirinkimas)
 
 void failgeneravimas()
 {
-    ofstream gen1000;
-    ofstream gen10000;
-    ofstream gen100000;
-    ofstream gen1000000;
-    ofstream gen10000000;
+    for (int it = 0; it < 1000*pow(10, it); it++)
+    {
+        cout << "pradedamas 1000 eilučių failo generavimo laiko skaiciavimas" << endl;
+        auto input_start = chrono::high_resolution_clock::now();
+        
+        ofstream gen;
+        gen.open(("gen" + to_string(1000*pow(10, it)) + ".txt"));
 
+        for (int genit = 0; genit <= 4; genit++)
+        {
+            gen << left << setw(20) << "genVardas" + to_string(1000*pow(10, it))
+                << setw(20) << "genPavarde" + to_string(1000*pow(10, it)) << fixed << setprecision(2);
+            for (int i = 1; i<=16; i++) //15 pazymiu ir 1 egzamino pazymys
+            {
+                gen << setw(20) << rand() % 10 + 1;
+            }
+            gen << "\n";
+        }
+        gen.close();
 
-    cout << "pradedamas failu generavimo laiko skaiciavimas" << endl;
-    auto input_start = chrono::high_resolution_clock::now();
-    //
-    auto input_end = chrono::high_resolution_clock::now();
-    chrono::duration<double> input_diff = input_end - input_start;
-    cout << "Failu sukurimas + uždarymas užtruko: " << input_diff.count() << " s \n";
-
-
-
-
-
-
-
-
-
-
-
-
+        auto input_end = chrono::high_resolution_clock::now();
+        chrono::duration<double> input_diff = input_end - input_start;
+        cout << "Failu sukurimas + uždarymas užtruko: " << input_diff.count() << " s \n";
+    }
 }
 
