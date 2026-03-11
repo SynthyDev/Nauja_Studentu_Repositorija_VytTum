@@ -379,3 +379,26 @@ void rikiuoti(vector<Studentas> &grupe, int pasirinkimas)
         sort(grupe.begin(), grupe.end(), cmpEgz);
 }
 
+void failgeneravimas()
+{
+    ofstream gen1000;
+    ofstream gen10000;
+    ofstream gen100000;
+    ofstream gen1000000;
+    ofstream gen10000000;
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+}
+

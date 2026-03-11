@@ -25,6 +25,7 @@ void failinputas(vector<Studentas> &grupe, string reading);
 void randominputas(vector<Studentas> &grupe, bool ArGeneruotiVardus);
 void outputas(const vector<Studentas> &grupe);
 void failoutputas(const vector<Studentas> &grupe, string writing);
+void failgeneravimas();
 string lytgen();
 string randomvardas(string lytis);
 string randompavarde(string lytis);

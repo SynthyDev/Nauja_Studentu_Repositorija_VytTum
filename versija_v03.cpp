@@ -29,6 +29,13 @@ int main()
 
     vector<Studentas> grupe;
 
+    cout << "pradedamas failu generavimo laiko skaiciavimas" << endl;
+    auto input_start = chrono::high_resolution_clock::now();
+    failgeneravimas();
+    auto input_end = chrono::high_resolution_clock::now();
+    chrono::duration<double> input_diff = input_end - input_start;
+    cout << "Failu sukurimas + uždarymas užtruko: " << input_diff.count() << " s \n";
+
     int pasirinkimas = 4;
     string isvedimotipas, skaitymo_pasirinkimas;
     cout << "Kokios norite ivesties? (1 - ranka arba iš failo, 2 - generuoti tik pažymius, " << endl
