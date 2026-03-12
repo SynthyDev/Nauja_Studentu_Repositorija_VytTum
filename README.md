@@ -31,5 +31,7 @@ LAIKO MATAVIMAI:
 
 
 
-!\[Laikai](laikai.png)
+!\[Laikai](https://github.com/SynthyDev/Studentai-Vytenis-Tumenas/blob/v0.4/laikai.png)
+
+
 
