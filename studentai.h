@@ -20,7 +20,6 @@ struct Studentas {
 const string irasymo_failas = "kursiokai.txt";
 const string irasymo_failas_geras = "kursiokai_geri.txt";
 const string irasymo_failas_blogas = "kursiokai_blogi.txt";
-const string skaitymo_failas = "studentai10000.txt";
 
 void inputas(vector<Studentas> &grupe);
 void failinputas(vector<Studentas> &grupe, string reading);

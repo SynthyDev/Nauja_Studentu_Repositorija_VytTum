@@ -25,13 +25,5 @@ Instrukcija:
 
 LAIKO MATAVIMAI:
 
-(visas laikas matuojamas neturint jokių .txt failų aplanke, t.y. nuo švarios lentos)
-
 (visas laikas matuojamas darbo su 5 sugeneruotais failais)
-
-
-
-!\[Laikai](https://github.com/SynthyDev/Studentai-Vytenis-Tumenas/blob/v0.4/laikai.png)
-
-
 

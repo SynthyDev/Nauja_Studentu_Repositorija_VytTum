@@ -24,7 +24,10 @@ int main()
 
     grupe.reserve(10000000);
 
-    failgeneravimas();
+    string genpas;
+    cout << "Norite generuoti 5 failus? y/n " << endl;
+    cin >> genpas;
+    if (genpas == "y") failgeneravimas();
 
     int pasirinkimas = 4;
     string isvedimotipas, skaitymo_pasirinkimas, skaitymo_failas;
@@ -48,7 +51,13 @@ int main()
     {    
         cout << "Ar skaityti duomenis is failo? (y - is failo / n - ranka)";
         cin >> skaitymo_pasirinkimas;
-        if (skaitymo_pasirinkimas == "y") failinputas(grupe, skaitymo_failas);
+        if (skaitymo_pasirinkimas == "y")
+        {
+            string skaitymo_failas;
+            cout << "Iveskite failo pavadinima: ";
+            cin >> skaitymo_failas;
+            failinputas(grupe, skaitymo_failas);
+        }
         else inputas(grupe);
     }
     else if (pasirinkimas == 2)
