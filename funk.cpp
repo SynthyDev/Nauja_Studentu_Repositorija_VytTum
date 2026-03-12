@@ -499,6 +499,7 @@ void genirasymas(vector<Studentas> &grupe, vector<Studentas> &protingi, vector<S
         chrono::duration<double> diff = end - start;
 
         cout << "Failo apdorojimas uztruko: " << diff.count() << " s\n";
+        cout << "\n";
 
         grupe.clear();
         protingi.clear();

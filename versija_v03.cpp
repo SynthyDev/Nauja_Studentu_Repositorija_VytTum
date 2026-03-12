@@ -14,15 +14,6 @@
 
 using namespace std;
 
-// 5 PALEIDIMU VIDUTINIS LAIKAS (rikiavimas + output):
-// 1 000 000 eiluciu:
-// undetermined ~ 90 s iš viso, rodo ~3.5 s
-// 100 000 eiluciu:
-// (0.36 + 0.36 + 0.35 + 0.36 + 0.35) / 5 = 0.356 s
-// 10 000 eiluciu:
-// (0.032 + 0.031 + 0.034 + 0.033 + 0.031) / 5 = 0.032
-
-
 int main()
 {
     srand(time(NULL));
