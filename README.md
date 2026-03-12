@@ -32,6 +32,8 @@ LAIKO MATAVIMAI:
 
 
 !\[Laikai](https://github.com/SynthyDev/Studentai-Vytenis-Tumenas/blob/v0.4/laikai.png)
+<img width="1189" height="663" alt="image" src="https://github.com/user-attachments/assets/ffc9a64a-e4d1-434c-8174-5801687b14ea" />
+
 
 
 
