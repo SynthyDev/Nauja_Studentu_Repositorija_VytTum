@@ -29,10 +29,11 @@ LAIKO MATAVIMAI:
 
 (visas laikas matuojamas darbo su 5 sugeneruotais failais)
 
+<img width="1762" height="313" alt="image" src="https://github.com/user-attachments/assets/3f29ec74-f92a-4e3e-868a-7525c60a53e7" />
+<img width="1760" height="235" alt="image" src="https://github.com/user-attachments/assets/b25aef59-e37b-4840-a55c-0f7e22bc68eb" />
+<img width="1765" height="268" alt="image" src="https://github.com/user-attachments/assets/7536d9ee-f2dd-486a-821d-47d20e823b91" />
+<img width="1764" height="268" alt="image" src="https://github.com/user-attachments/assets/e7cfc3d9-b7fa-4f8c-8559-5777a945df52" />
 
-
-!\[Laikai](https://github.com/SynthyDev/Studentai-Vytenis-Tumenas/blob/v0.4/laikai.png)
-<img width="1189" height="663" alt="image" src="https://github.com/user-attachments/assets/ffc9a64a-e4d1-434c-8174-5801687b14ea" />
 
 
 
