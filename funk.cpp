@@ -477,11 +477,22 @@ void genirasymas(vector<Studentas> &grupe, vector<Studentas> &protingi, vector<S
         }
 
         file.close();
-
+        
+        auto start_rikiavimas = chrono::high_resolution_clock::now();
         rikiuoti(grupe, rik_pasirinkimas);
-        skirstyti(grupe, protingi, neprotingi);
+        auto end_rikiavimas = chrono::high_resolution_clock::now();
+        chrono::duration<double> diff_rikiavimas = end_rikiavimas - start_rikiavimas;
+        cout << "Rikiavimas failui " << filename << " uztruko: " << diff_rikiavimas.count() << " s\n";
 
+        auto start_skirstymas = chrono::high_resolution_clock::now();
+        skirstyti(grupe, protingi, neprotingi);
+        auto end_skirstymas = chrono::high_resolution_clock::now();
+        chrono::duration<double> diff_skirstymas = end_skirstymas - start_skirstymas;
+        cout << "Protingu/Neprotingu skirstymas failui " << filename << " uztruko: " << diff_skirstymas.count() << " s\n";
+
+        cout << "Protingu ";
         failoutputas(protingi, "kursiokai_geri_" + to_string(sk) + ".txt");
+        cout << "Neprotingu ";
         failoutputas(neprotingi, "kursiokai_blogi_" + to_string(sk) + ".txt");
 
         auto end = chrono::high_resolution_clock::now();
