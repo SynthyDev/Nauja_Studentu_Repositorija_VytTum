@@ -411,7 +411,8 @@ void failgeneravimas()
     }
 }
 
-void genirasymas(vector<Studentas> &grupe, vector<Studentas> &protingi, vector<Studentas> &neprotingi, string writing_good, string writing_bad)
+void genirasymas(vector<Studentas> &grupe, vector<Studentas> &protingi, vector<Studentas> &neprotingi, 
+    string writing_good, string writing_bad, int rik_pasirinkimas)
 {
     int sk = 1000;
 
@@ -477,6 +478,7 @@ void genirasymas(vector<Studentas> &grupe, vector<Studentas> &protingi, vector<S
 
         file.close();
 
+        rikiuoti(grupe, rik_pasirinkimas);
         skirstyti(grupe, protingi, neprotingi);
 
         failoutputas(protingi, "kursiokai_geri_" + to_string(sk) + ".txt");

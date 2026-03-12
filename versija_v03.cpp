@@ -32,7 +32,7 @@ int main()
     vector<Studentas> neprotingi;
 
     grupe.reserve(10000000);
-    
+
     failgeneravimas();
 
     int pasirinkimas = 4;
@@ -40,6 +40,16 @@ int main()
     cout << "Kokios norite ivesties? (1 - ranka arba is failo, 2 - generuoti tik pazymius, " << endl
     << " 3 - generuoti studentu vardus, pavardes ir pazymius, 4 - skaityti sugeneruotus failus; 5 arba kitas simbolis - baigti darba)" << endl;
     cin >> pasirinkimas;
+
+    int rikiavimo_pasirinkimas;
+    cout << "Pagal ka rikiuoti?" << endl
+    << "1 - vardas" << endl
+    << "2 - pavarde" << endl
+    << "3 - galutinis (vidurkis)" << endl
+    << "4 - galutinis (mediana)" << endl
+    << "5 - egzaminas" << endl;
+    cin >> rikiavimo_pasirinkimas;
+
 
     auto input_start = chrono::high_resolution_clock::now();
 
@@ -60,7 +70,7 @@ int main()
     }
     else if (pasirinkimas == 4)
     {
-        genirasymas(grupe, protingi, neprotingi, irasymo_failas_geras, irasymo_failas_blogas);
+        genirasymas(grupe, protingi, neprotingi, irasymo_failas_geras, irasymo_failas_blogas, rikiavimo_pasirinkimas);
         return 0;
     }
     else
@@ -75,15 +85,6 @@ int main()
 
     cout << "Ar rasyti i faila? (y/n)" << endl;
     cin >> isvedimotipas;
-
-    int rikiavimo_pasirinkimas;
-    cout << "Pagal ka rikiuoti?" << endl
-    << "1 - vardas" << endl
-    << "2 - pavarde" << endl
-    << "3 - galutinis (vidurkis)" << endl
-    << "4 - galutinis (mediana)" << endl
-    << "5 - egzaminas" << endl;
-    cin >> rikiavimo_pasirinkimas;
 
     auto start = std::chrono::high_resolution_clock::now(); // Paleisti
 
