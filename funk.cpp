@@ -389,6 +389,8 @@ void failgeneravimas()
         
         ofstream gen;
         gen.open("gen" + to_string(sk) + ".txt");
+        gen << left << setw(20) << "STUD. VARDAS"
+                << setw(20) << "STUD. PAVARDE" << fixed << setprecision(2) << setw(20) << "STUD PAZYMIAI (PASKUTINIS EGZAMINO) \n";
 
         for (int genit = 1; genit <= sk; genit++)
         {
@@ -409,9 +411,88 @@ void failgeneravimas()
     }
 }
 
-void genirasymas(const vector<Studentas> &grupe, string writing_good, string writing_bad)
+void genirasymas(vector<Studentas> &grupe, vector<Studentas> &protingi, vector<Studentas> &neprotingi, string writing_good, string writing_bad)
 {
+    int sk = 1000;
 
+    for (int it = 0; it < 5; it++)
+    {
+        string filename = "gen" + to_string(sk) + ".txt";
+
+        cout << "Pradedamas failo nuskaitymas: " << filename << endl;
+        auto start = chrono::high_resolution_clock::now();
+
+        ifstream file(filename);
+
+        if (!file)
+        {
+            cout << "Nepavyko atidaryti failo\n";
+            sk *= 10;
+            continue;
+        }
+
+        string line;
+
+        getline(file, line); // praleidziu antraste
+
+        while (getline(file, line))
+        {
+            istringstream iss(line);
+
+            Studentas A;
+
+            iss >> A.vardas >> A.pavarde;
+
+            int paz;
+
+            while (iss >> paz)
+            {
+                A.paz.push_back(paz);
+            }
+
+            if (A.paz.empty())
+                continue;
+
+            A.egz = A.paz.back();
+            A.paz.pop_back();
+
+            int sum = 0;
+
+            for (int x : A.paz)
+                sum += x;
+
+            A.rez = 0.4 * (sum * 1.0 / A.paz.size()) + 0.6 * A.egz;
+
+            sort(A.paz.begin(), A.paz.end());
+
+            int n = A.paz.size();
+
+            if (n % 2 == 0)
+                A.medrez = (A.paz[n/2 - 1] + A.paz[n/2]) / 2.0;
+            else
+                A.medrez = A.paz[n/2];
+
+            grupe.push_back(A);
+        }
+
+        file.close();
+
+        skirstyti(grupe, protingi, neprotingi);
+
+        failoutputas(protingi, "kursiokai_geri_" + to_string(sk) + ".txt");
+        failoutputas(neprotingi, "kursiokai_blogi_" + to_string(sk) + ".txt");
+
+        auto end = chrono::high_resolution_clock::now();
+        chrono::duration<double> diff = end - start;
+
+        cout << "Failo apdorojimas uztruko: " << diff.count() << " s\n";
+
+        grupe.clear();
+        protingi.clear();
+        neprotingi.clear();
+
+        sk *= 10;
+    }
 }
 
 void skirstyti(const vector<Studentas>& grupe, vector<Studentas>& protingi, vector<Studentas>& neprotingi)

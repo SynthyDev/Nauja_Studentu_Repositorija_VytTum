@@ -32,9 +32,7 @@ int main()
     vector<Studentas> neprotingi;
 
     grupe.reserve(10000000);
-    protingi.reserve(10000000);
-    neprotingi.reserve(10000000);
-
+    
     failgeneravimas();
 
     int pasirinkimas = 4;
@@ -62,7 +60,7 @@ int main()
     }
     else if (pasirinkimas == 4)
     {
-        genirasymas(grupe, irasymo_failas_geras, irasymo_failas_blogas);
+        genirasymas(grupe, protingi, neprotingi, irasymo_failas_geras, irasymo_failas_blogas);
         return 0;
     }
     else
