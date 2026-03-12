@@ -28,6 +28,12 @@ int main()
     srand(time(NULL));
 
     vector<Studentas> grupe;
+    vector<Studentas> protingi;
+    vector<Studentas> neprotingi;
+
+    grupe.reserve(10000000);
+    protingi.reserve(10000000);
+    neprotingi.reserve(10000000);
 
     failgeneravimas();
 
@@ -84,11 +90,13 @@ int main()
     auto start = std::chrono::high_resolution_clock::now(); // Paleisti
 
     rikiuoti(grupe, rikiavimo_pasirinkimas);
+    skirstyti(grupe, neprotingi, protingi);
 
     if (isvedimotipas == "y")
     {
         cout << "pradedu rasyt" << endl;
-        failoutputas(grupe, irasymo_failas);
+        failoutputas(protingi, "kursiokai_geri.txt");
+        failoutputas(neprotingi, "kursiokai_blogi.txt");
         cout << "Baigiu rasyt" << endl;
     }
     else

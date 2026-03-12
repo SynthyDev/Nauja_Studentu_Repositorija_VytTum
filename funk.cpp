@@ -411,38 +411,20 @@ void failgeneravimas()
 
 void genirasymas(const vector<Studentas> &grupe, string writing_good, string writing_bad)
 {
-    ofstream out(writing_good);
-    out << "------------------------------------------------------------------- \n";
-    out << left << setw(20) << "Vardas"
-        << setw(20) << "Pavarde"
-        << setw(20) << "Rezultatas (Vid.) /"
-        << setw(20) << " Rezultatas (Med.)"
-        << "\n";
-    out << "------------------------------------------------------------------- \n";
-    for (const Studentas& s : grupe)
-    {
-        out << left << setw(20) << s.vardas
-               << setw(20) << s.pavarde << fixed << setprecision(2)
-               << setw(20) << s.rez
-               << setw(20) << s.medrez << '\n';
-    }
-    cout << "Studentu skaicius: " << grupe.size() << endl;
-    // blogi (<5 galutinis studento)
-    ofstream out(writing_bad);
-    out << "------------------------------------------------------------------- \n";
-    out << left << setw(20) << "Vardas"
-        << setw(20) << "Pavarde"
-        << setw(20) << "Rezultatas (Vid.) /"
-        << setw(20) << " Rezultatas (Med.)"
-        << "\n";
-    out << "------------------------------------------------------------------- \n";
-    for (const Studentas& s : grupe)
-    {
-        out << left << setw(20) << s.vardas
-               << setw(20) << s.pavarde << fixed << setprecision(2)
-               << setw(20) << s.rez
-               << setw(20) << s.medrez << '\n';
-    }
-    cout << "Studentu skaicius: " << grupe.size() << endl;
+
 }
+
+void skirstyti(const vector<Studentas>& grupe, vector<Studentas>& protingi, vector<Studentas>& neprotingi)
+{
+    for (const auto& s : grupe)
+    {
+        if (s.rez >= 5.0)
+            protingi.push_back(s);
+        else
+           neprotingi.push_back(s);
+    }
+}
+
+
+
 

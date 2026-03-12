@@ -38,5 +38,6 @@ bool cmpPavarde(const Studentas &a, const Studentas &b);
 bool cmpRez(const Studentas &a, const Studentas &b);
 bool cmpMedrez(const Studentas &a, const Studentas &b);
 bool cmpEgz(const Studentas &a, const Studentas &b);
+void skirstyti(const vector<Studentas>& grupe, vector<Studentas>& protingi, vector<Studentas>& neprotingi);
 
 #endif
