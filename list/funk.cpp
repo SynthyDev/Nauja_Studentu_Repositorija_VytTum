@@ -1,5 +1,5 @@
 #include <iostream>
-#include <vector>
+#include <list>
 #include <iomanip>
 #include <string>
 #include <cmath>
@@ -14,7 +14,7 @@
 
 using namespace std;
 
-void inputas(vector<Studentas> &grupe)
+void inputas(list<Studentas> &grupe)
 {
     Studentas A;
     
@@ -118,7 +118,7 @@ void inputas(vector<Studentas> &grupe)
     }
 }
 
-void outputas(const vector<Studentas> &grupe)
+void outputas(const list<Studentas> &grupe)
 {
     cout << "-------------------------------------------------------------------" << endl;
     cout << left << setw(20) << "Vardas"
@@ -140,7 +140,7 @@ void outputas(const vector<Studentas> &grupe)
     cout << "-------------------------------------------------------------------" << endl;
 }
 
-void failoutputas(const vector<Studentas> &grupe, string writing)
+void failoutputas(const list<Studentas> &grupe, string writing)
 {
     ofstream out(writing);
     out << "------------------------------------------------------------------- \n";
@@ -160,7 +160,7 @@ void failoutputas(const vector<Studentas> &grupe, string writing)
     cout << "Studentu skaicius: " << grupe.size() << endl;
 }
 
-void randominputas(vector<Studentas> &grupe, bool ArGeneruotiVardus)
+void randominputas(list<Studentas> &grupe, bool ArGeneruotiVardus)
 {
     Studentas A;
     
@@ -256,10 +256,9 @@ void randominputas(vector<Studentas> &grupe, bool ArGeneruotiVardus)
     }
 }
 
-void failinputas(vector<Studentas> &grupe, string reading)
+void failinputas(list<Studentas> &grupe, string reading)
 {
     ifstream file(reading);
-    grupe.reserve(1000000);
 
     if (!file) {
         cout << "Nepavyko atidaryti failo\n";
@@ -365,18 +364,18 @@ bool cmpEgz(const Studentas &a, const Studentas &b)
     return a.egz < b.egz;
 }
 
-void rikiuoti(vector<Studentas> &grupe, int pasirinkimas)
+void rikiuoti(list<Studentas> &grupe, int pasirinkimas)
 {
     if (pasirinkimas == 1)
-        sort(grupe.begin(), grupe.end(), cmpVardas);
+        grupe.sort(cmpVardas);
     else if (pasirinkimas == 2)
-        sort(grupe.begin(), grupe.end(), cmpPavarde);
+        grupe.sort(cmpPavarde);
     else if (pasirinkimas == 3)
-        sort(grupe.begin(), grupe.end(), cmpRez);
+        grupe.sort(cmpRez);
     else if (pasirinkimas == 4)
-        sort(grupe.begin(), grupe.end(), cmpMedrez);
+        grupe.sort(cmpMedrez);
     else if (pasirinkimas == 5)
-        sort(grupe.begin(), grupe.end(), cmpEgz);
+        grupe.sort(cmpEgz);
 }
 
 void failgeneravimas()
@@ -411,7 +410,7 @@ void failgeneravimas()
     }
 }
 
-void genirasymas(vector<Studentas> &grupe, vector<Studentas> &protingi, vector<Studentas> &neprotingi, 
+void genirasymas(list<Studentas> &grupe, list<Studentas> &protingi, list<Studentas> &neprotingi, 
     string writing_good, string writing_bad, int rik_pasirinkimas)
 {
     int sk = 1000;
@@ -517,7 +516,7 @@ void genirasymas(vector<Studentas> &grupe, vector<Studentas> &protingi, vector<S
     }
 }
 
-void skirstyti(const vector<Studentas>& grupe, vector<Studentas>& protingi, vector<Studentas>& neprotingi)
+void skirstyti(const list<Studentas>& grupe, list<Studentas>& protingi, list<Studentas>& neprotingi)
 {
     for (const auto& s : grupe)
     {

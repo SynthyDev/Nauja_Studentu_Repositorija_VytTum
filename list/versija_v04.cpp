@@ -1,5 +1,5 @@
 #include <iostream>
-#include <vector>
+#include <list>
 #include <iomanip>
 #include <string>
 #include <cmath>
@@ -18,11 +18,9 @@ int main()
 {
     srand(time(NULL));
 
-    vector<Studentas> grupe;
-    vector<Studentas> protingi;
-    vector<Studentas> neprotingi;
-
-    grupe.reserve(10000000);
+    list<Studentas> grupe;
+    list<Studentas> protingi;
+    list<Studentas> neprotingi;
 
     string genpas;
     cout << "Norite generuoti 5 failus? y/n " << endl;

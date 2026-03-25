@@ -21,24 +21,24 @@ const string irasymo_failas = "kursiokai.txt";
 const string irasymo_failas_geras = "kursiokai_geri.txt";
 const string irasymo_failas_blogas = "kursiokai_blogi.txt";
 
-void inputas(vector<Studentas> &grupe);
-void failinputas(vector<Studentas> &grupe, string reading);
-void randominputas(vector<Studentas> &grupe, bool ArGeneruotiVardus);
-void outputas(const vector<Studentas> &grupe);
-void failoutputas(const vector<Studentas> &grupe, string writing);
+void inputas(list<Studentas> &grupe);
+void failinputas(list<Studentas> &grupe, string reading);
+void randominputas(list<Studentas> &grupe, bool ArGeneruotiVardus);
+void outputas(const list<Studentas> &grupe);
+void failoutputas(const list<Studentas> &grupe, string writing);
 void failgeneravimas();
-void genirasymas(vector<Studentas> &grupe, vector<Studentas> &protingi, vector<Studentas> &neprotingi,
+void genirasymas(list<Studentas> &grupe, list<Studentas> &protingi, list<Studentas> &neprotingi,
     string writing_good, string writing_bad, int rik_pasirinkimas);
 string lytgen();
 string randomvardas(string lytis);
 string randompavarde(string lytis);
-void rikiuoti(vector<Studentas> &grupe, int pasirinkimas);
+void rikiuoti(list<Studentas> &grupe, int pasirinkimas);
 bool cmpVardas(const Studentas &a, const Studentas &b);
 bool cmpPavarde(const Studentas &a, const Studentas &b);
 bool cmpRez(const Studentas &a, const Studentas &b);
 bool cmpMedrez(const Studentas &a, const Studentas &b);
 bool cmpEgz(const Studentas &a, const Studentas &b);
-void skirstyti(const vector<Studentas>& grupe, vector<Studentas>& protingi, vector<Studentas>& neprotingi);
+void skirstyti(const list<Studentas>& grupe, list<Studentas>& protingi, list<Studentas>& neprotingi);
 void logResults(const string& container, int size,
                 double read_t, double sort_t, double split_t);
                 
