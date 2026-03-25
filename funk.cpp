@@ -421,7 +421,7 @@ void genirasymas(vector<Studentas> &grupe, vector<Studentas> &protingi, vector<S
         string filename = "gen" + to_string(sk) + ".txt";
 
         cout << "Pradedamas failo nuskaitymas: " << filename << endl;
-        auto start = chrono::high_resolution_clock::now();
+        auto start_read = chrono::high_resolution_clock::now();
 
         ifstream file(filename);
 
@@ -495,15 +495,23 @@ void genirasymas(vector<Studentas> &grupe, vector<Studentas> &protingi, vector<S
         cout << "Neprotingu ";
         failoutputas(neprotingi, "kursiokai_blogi_" + to_string(sk) + ".txt");
 
-        auto end = chrono::high_resolution_clock::now();
-        chrono::duration<double> diff = end - start;
+        auto end_read = chrono::high_resolution_clock::now();
+        chrono::duration<double> diff_read = end_read - start_read;
 
-        cout << "Failo apdorojimas uztruko: " << diff.count() << " s\n";
+        cout << "Failo apdorojimas uztruko: " << diff_read.count() << " s\n";
         cout << "\n";
 
         grupe.clear();
         protingi.clear();
         neprotingi.clear();
+
+        logResults(
+            "vector", // keisti pagal versija
+            sk,
+            diff_read.count(),
+            diff_rikiavimas.count(),
+            diff_skirstymas.count()
+        );
 
         sk *= 10;
     }
@@ -519,6 +527,25 @@ void skirstyti(const vector<Studentas>& grupe, vector<Studentas>& protingi, vect
            neprotingi.push_back(s);
     }
 }
+
+
+void logResults(const string& container, int size,
+                double read_t, double sort_t, double split_t)
+{
+    ofstream out("results.csv", ios::app);
+    out << container << ","
+        << size << ","
+        << read_t << ","
+        << sort_t << ","
+        << split_t << "\n";
+}
+
+
+
+
+
+
+
 
 
 

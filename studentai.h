@@ -39,5 +39,7 @@ bool cmpRez(const Studentas &a, const Studentas &b);
 bool cmpMedrez(const Studentas &a, const Studentas &b);
 bool cmpEgz(const Studentas &a, const Studentas &b);
 void skirstyti(const vector<Studentas>& grupe, vector<Studentas>& protingi, vector<Studentas>& neprotingi);
-
+void logResults(const string& container, int size,
+                double read_t, double sort_t, double split_t);
+                
 #endif
