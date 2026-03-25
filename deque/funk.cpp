@@ -1,5 +1,5 @@
 #include <iostream>
-#include <vector>
+#include <deque>
 #include <iomanip>
 #include <string>
 #include <cmath>
@@ -14,7 +14,7 @@
 
 using namespace std;
 
-void inputas(vector<Studentas> &grupe)
+void inputas(deque<Studentas> &grupe)
 {
     Studentas A;
     
@@ -118,7 +118,7 @@ void inputas(vector<Studentas> &grupe)
     }
 }
 
-void outputas(const vector<Studentas> &grupe)
+void outputas(const deque<Studentas> &grupe)
 {
     cout << "-------------------------------------------------------------------" << endl;
     cout << left << setw(20) << "Vardas"
@@ -140,7 +140,7 @@ void outputas(const vector<Studentas> &grupe)
     cout << "-------------------------------------------------------------------" << endl;
 }
 
-void failoutputas(const vector<Studentas> &grupe, string writing)
+void failoutputas(const deque<Studentas> &grupe, string writing)
 {
     ofstream out(writing);
     out << "------------------------------------------------------------------- \n";
@@ -160,7 +160,7 @@ void failoutputas(const vector<Studentas> &grupe, string writing)
     cout << "Studentu skaicius: " << grupe.size() << endl;
 }
 
-void randominputas(vector<Studentas> &grupe, bool ArGeneruotiVardus)
+void randominputas(deque<Studentas> &grupe, bool ArGeneruotiVardus)
 {
     Studentas A;
     
@@ -256,10 +256,9 @@ void randominputas(vector<Studentas> &grupe, bool ArGeneruotiVardus)
     }
 }
 
-void failinputas(vector<Studentas> &grupe, string reading)
+void failinputas(deque<Studentas> &grupe, string reading)
 {
     ifstream file(reading);
-    grupe.reserve(1000000);
 
     if (!file) {
         cout << "Nepavyko atidaryti failo\n";
@@ -365,7 +364,7 @@ bool cmpEgz(const Studentas &a, const Studentas &b)
     return a.egz < b.egz;
 }
 
-void rikiuoti(vector<Studentas> &grupe, int pasirinkimas)
+void rikiuoti(deque<Studentas> &grupe, int pasirinkimas)
 {
     if (pasirinkimas == 1)
         sort(grupe.begin(), grupe.end(), cmpVardas);
@@ -411,7 +410,7 @@ void failgeneravimas()
     }
 }
 
-void genirasymas(vector<Studentas> &grupe, vector<Studentas> &protingi, vector<Studentas> &neprotingi, 
+void genirasymas(deque<Studentas> &grupe, deque<Studentas> &protingi, deque<Studentas> &neprotingi, 
     string writing_good, string writing_bad, int rik_pasirinkimas)
 {
     int sk = 1000;
@@ -506,7 +505,7 @@ void genirasymas(vector<Studentas> &grupe, vector<Studentas> &protingi, vector<S
         neprotingi.clear();
 
         logResults(
-            "vector", // keisti pagal versija
+            "deque", // keisti pagal versija
             sk,
             diff_read.count(),
             diff_rikiavimas.count(),
@@ -517,7 +516,7 @@ void genirasymas(vector<Studentas> &grupe, vector<Studentas> &protingi, vector<S
     }
 }
 
-void skirstyti(const vector<Studentas>& grupe, vector<Studentas>& protingi, vector<Studentas>& neprotingi)
+void skirstyti(const deque<Studentas>& grupe, deque<Studentas>& protingi, deque<Studentas>& neprotingi)
 {
     for (const auto& s : grupe)
     {
