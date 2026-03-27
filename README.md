@@ -25,11 +25,12 @@ VERSIJA V1.0 - GALUTINIS RELEASE
 
 Vector:
 
-<img width="1163" height="783" alt="image" src="https://github.com/user-attachments/assets/9dd7146f-2825-4eb7-b8e4-85ab8c456195" />
+<img width="1112" height="899" alt="image" src="https://github.com/user-attachments/assets/0bf33ccf-926c-4c42-9ad9-278954d9b80f" />
 
 
 Deque:
 
+<img width="1195" height="898" alt="image" src="https://github.com/user-attachments/assets/46d13bd6-df8c-4a82-9320-f21d931107a1" />
 
 
 List:
