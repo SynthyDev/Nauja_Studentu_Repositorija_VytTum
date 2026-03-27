@@ -500,6 +500,10 @@ void genirasymas(deque<Studentas> &grupe, deque<Studentas> &protingi, deque<Stud
         {
             skirstyti2(grupe, neprotingi);
         }
+        else if (strategija == SkirstymoStrategija::TRECIAS)
+        {
+            skirstyti3(grupe, neprotingi);
+        }
         auto end_skirstymas = chrono::high_resolution_clock::now();
         chrono::duration<double> diff_skirstymas = end_skirstymas - start_skirstymas;
         cout << "Protingu/Neprotingu skirstymas failui " << filename << " uztruko: " << diff_skirstymas.count() << " s\n";
@@ -511,7 +515,7 @@ void genirasymas(deque<Studentas> &grupe, deque<Studentas> &protingi, deque<Stud
             cout << "Neprotingu ";
             failoutputas(neprotingi, "kursiokai_blogi_" + to_string(sk) + ".txt");
         }
-        else if (strategija == SkirstymoStrategija::ANTRAS)
+        else if (strategija == SkirstymoStrategija::ANTRAS || strategija == SkirstymoStrategija::TRECIAS)
         {
             cout << "Protingu ";
             failoutputas(grupe, "kursiokai_geri_" + to_string(sk) + ".txt");
@@ -568,7 +572,21 @@ void skirstyti2(deque<Studentas>& grupe, deque<Studentas>& neprotingi)
     grupe.erase(it, grupe.end()); // protingi paliekami
 }
 
+void skirstyti3(deque<Studentas>& grupe, deque<Studentas>& neprotingi)
+{
+    auto it = remove_if(grupe.begin(), grupe.end(),
+        [&](const Studentas& s)
+        {
+            if (s.rez < 5.0)
+            {
+                neprotingi.push_back(s);
+                return true;
+            }
+            return false;
+        });
 
+    grupe.erase(it, grupe.end());
+}
 
 
 

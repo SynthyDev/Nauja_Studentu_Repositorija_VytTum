@@ -12,7 +12,8 @@ const deque<string> fgalunes = {"iene", "aite", "yte"};
 enum class SkirstymoStrategija
 {
     PIRMAS,
-    ANTRAS
+    ANTRAS,
+    TRECIAS
 };
 
 struct Studentas {
@@ -48,4 +49,5 @@ void skirstyti(const deque<Studentas>& grupe, deque<Studentas>& protingi, deque<
 void logResults(const string& container, int size,
                 double read_t, double sort_t, double split_t);
 void skirstyti2(deque<Studentas>& grupe, deque<Studentas>& neprotingi);
+void skirstyti3(deque<Studentas>& grupe, deque<Studentas>& neprotingi);
 #endif

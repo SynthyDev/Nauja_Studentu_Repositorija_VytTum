@@ -68,7 +68,7 @@ int main()
     }
     else if (pasirinkimas == 4)
     {
-        genirasymas(grupe, protingi, neprotingi, irasymo_failas_geras, irasymo_failas_blogas, rikiavimo_pasirinkimas, SkirstymoStrategija::ANTRAS);
+        genirasymas(grupe, protingi, neprotingi, irasymo_failas_geras, irasymo_failas_blogas, rikiavimo_pasirinkimas, SkirstymoStrategija::TRECIAS);
         return 0;
     }
     else
@@ -88,7 +88,8 @@ int main()
 
     rikiuoti(grupe, rikiavimo_pasirinkimas);
     //skirstyti(grupe, protingi, neprotingi);
-    skirstyti2(grupe, neprotingi);
+    //skirstyti2(grupe, neprotingi);
+    skirstyti3(grupe, neprotingi);
 
     if (isvedimotipas == "y")
     {
