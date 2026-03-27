@@ -503,6 +503,10 @@ void genirasymas(vector<Studentas> &grupe, vector<Studentas> &protingi, vector<S
         {
             skirstyti2(grupe, neprotingi);
         }
+        else if (strategija == SkirstymoStrategija::TRECIAS)
+        {
+            skirstyti3(grupe, neprotingi);
+        }
         auto end_skirstymas = chrono::high_resolution_clock::now();
         chrono::duration<double> diff_skirstymas = end_skirstymas - start_skirstymas;
         cout << "Protingu/Neprotingu skirstymas failui " << filename << " uztruko: " << diff_skirstymas.count() << " s\n";
@@ -514,7 +518,7 @@ void genirasymas(vector<Studentas> &grupe, vector<Studentas> &protingi, vector<S
             cout << "Neprotingu ";
             failoutputas(neprotingi, "kursiokai_blogi_" + to_string(sk) + ".txt");
         }
-        else if (strategija == SkirstymoStrategija::ANTRAS)
+        else if (strategija == SkirstymoStrategija::ANTRAS or strategija == SkirstymoStrategija::TRECIAS)
         {
             cout << "Protingu ";
             failoutputas(grupe, "kursiokai_geri_" + to_string(sk) + ".txt");
@@ -522,7 +526,6 @@ void genirasymas(vector<Studentas> &grupe, vector<Studentas> &protingi, vector<S
             failoutputas(neprotingi, "kursiokai_blogi_" + to_string(sk) + ".txt");
         }
 
-        
         cout << "\n";
 
         grupe.clear();
@@ -572,7 +575,21 @@ void skirstyti2(vector<Studentas>& grupe, vector<Studentas>& neprotingi)
     grupe.erase(it, grupe.end()); // protingi paliekami
 }
 
-
+void skirstyti3(vector<Studentas>& grupe, vector<Studentas>& neprotingi)
+{
+    neprotingi.reserve(grupe.size());
+    auto it = remove_if(grupe.begin(), grupe.end(),
+        [&](const Studentas& s)
+        {
+            if (s.rez < 5.0)
+            {
+                neprotingi.push_back(s);
+                return true;
+            }
+            return false;
+        });
+    grupe.erase(it, grupe.end());
+}
 
 
 

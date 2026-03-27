@@ -16,7 +16,8 @@ const vector<string> fgalunes = {"iene", "aite", "yte"};
 enum class SkirstymoStrategija
 {
     PIRMAS,
-    ANTRAS
+    ANTRAS,
+    TRECIAS
 };
 
 struct Studentas {
@@ -52,5 +53,5 @@ void skirstyti(const vector<Studentas>& grupe, vector<Studentas>& protingi, vect
 void logResults(const string& container, int size,
                 double read_t, double sort_t, double split_t);
 void skirstyti2(vector<Studentas>& grupe, vector<Studentas>& neprotingi);
-
+void skirstyti3(vector<Studentas>& grupe, vector<Studentas>& neprotingi);
 #endif

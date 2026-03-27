@@ -90,12 +90,14 @@ int main()
 
     rikiuoti(grupe, rikiavimo_pasirinkimas);
     //skirstyti(grupe, protingi, neprotingi)
-    skirstyti2(grupe, neprotingi);
+    //skirstyti2(grupe, neprotingi);
+    skirstyti3(grupe, neprotingi);
 
     if (isvedimotipas == "y")
     {
         cout << "pradedu rasyt" << endl;
         failoutputas(protingi, "kursiokai_geri.txt");
+        failoutputas(grupe, "kursiokai_geri_grupe.txt");
         failoutputas(neprotingi, "kursiokai_blogi.txt");
         cout << "Baigiu rasyt" << endl;
     }
