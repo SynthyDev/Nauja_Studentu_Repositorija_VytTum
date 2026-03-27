@@ -414,7 +414,7 @@ void failgeneravimas()
 }
 
 void genirasymas(deque<Studentas> &grupe, deque<Studentas> &protingi, deque<Studentas> &neprotingi, 
-    string writing_good, string writing_bad, int rik_pasirinkimas)
+    string writing_good, string writing_bad, int rik_pasirinkimas, SkirstymoStrategija strategija)
 {
     int sk = 1000;
 
@@ -482,6 +482,8 @@ void genirasymas(deque<Studentas> &grupe, deque<Studentas> &protingi, deque<Stud
         
         auto end_read = chrono::high_resolution_clock::now();
         chrono::duration<double> diff_read = end_read - start_read;
+
+        cout << "Failo nuskaitymas uztruko: " << diff_read.count() << " s\n";
         
         auto start_rikiavimas = chrono::high_resolution_clock::now();
         rikiuoti(grupe, rik_pasirinkimas);
@@ -490,17 +492,33 @@ void genirasymas(deque<Studentas> &grupe, deque<Studentas> &protingi, deque<Stud
         cout << "Rikiavimas failui " << filename << " uztruko: " << diff_rikiavimas.count() << " s\n";
 
         auto start_skirstymas = chrono::high_resolution_clock::now();
-        skirstyti(grupe, protingi, neprotingi);
+        if (strategija == SkirstymoStrategija::PIRMAS)
+        {
+            skirstyti(grupe, protingi, neprotingi);
+        }
+        else if (strategija == SkirstymoStrategija::ANTRAS)
+        {
+            skirstyti2(grupe, neprotingi);
+        }
         auto end_skirstymas = chrono::high_resolution_clock::now();
         chrono::duration<double> diff_skirstymas = end_skirstymas - start_skirstymas;
         cout << "Protingu/Neprotingu skirstymas failui " << filename << " uztruko: " << diff_skirstymas.count() << " s\n";
 
-        cout << "Protingu ";
-        failoutputas(protingi, "kursiokai_geri_" + to_string(sk) + ".txt");
-        cout << "Neprotingu ";
-        failoutputas(neprotingi, "kursiokai_blogi_" + to_string(sk) + ".txt");
+        if (strategija == SkirstymoStrategija::PIRMAS)
+        {
+            cout << "Protingu ";
+            failoutputas(protingi, "kursiokai_geri_" + to_string(sk) + ".txt");
+            cout << "Neprotingu ";
+            failoutputas(neprotingi, "kursiokai_blogi_" + to_string(sk) + ".txt");
+        }
+        else if (strategija == SkirstymoStrategija::ANTRAS)
+        {
+            cout << "Protingu ";
+            failoutputas(grupe, "kursiokai_geri_" + to_string(sk) + ".txt");
+            cout << "Neprotingu ";
+            failoutputas(neprotingi, "kursiokai_blogi_" + to_string(sk) + ".txt");
+        }
 
-        cout << "Failo nuskaitymas uztruko: " << diff_read.count() << " s\n";
         cout << "\n";
 
         grupe.clear();
@@ -542,7 +560,13 @@ void logResults(const string& container, int size,
         << split_t << "\n";
 }
 
-
+void skirstyti2(deque<Studentas>& grupe, deque<Studentas>& neprotingi)
+{
+    auto it = partition(grupe.begin(), grupe.end(),
+        [](const Studentas& s) { return s.rez >= 5.0; });
+    neprotingi.assign(it, grupe.end());
+    grupe.erase(it, grupe.end()); // protingi paliekami
+}
 
 
 

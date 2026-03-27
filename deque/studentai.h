@@ -9,6 +9,12 @@ const deque<string> pavardes = {"Macerausk", "Jankausk", "Kazlausk", "Svilpausk"
 const deque<string> mgalunes = {"as", "aitis"};
 const deque<string> fgalunes = {"iene", "aite", "yte"};
 
+enum class SkirstymoStrategija
+{
+    PIRMAS,
+    ANTRAS
+};
+
 struct Studentas {
     string vardas = "A", pavarde = "BB";
     deque<int> paz;
@@ -27,8 +33,8 @@ void randominputas(deque<Studentas> &grupe, bool ArGeneruotiVardus);
 void outputas(const deque<Studentas> &grupe);
 void failoutputas(const deque<Studentas> &grupe, string writing);
 void failgeneravimas();
-void genirasymas(deque<Studentas> &grupe, deque<Studentas> &protingi, deque<Studentas> &neprotingi,
-    string writing_good, string writing_bad, int rik_pasirinkimas);
+void genirasymas(deque<Studentas> &grupe, deque<Studentas> &protingi, deque<Studentas> &neprotingi, 
+    string writing_good, string writing_bad, int rik_pasirinkimas, SkirstymoStrategija strategija);
 string lytgen();
 string randomvardas(string lytis);
 string randompavarde(string lytis);
@@ -41,5 +47,5 @@ bool cmpEgz(const Studentas &a, const Studentas &b);
 void skirstyti(const deque<Studentas>& grupe, deque<Studentas>& protingi, deque<Studentas>& neprotingi);
 void logResults(const string& container, int size,
                 double read_t, double sort_t, double split_t);
-                
+void skirstyti2(deque<Studentas>& grupe, deque<Studentas>& neprotingi);
 #endif

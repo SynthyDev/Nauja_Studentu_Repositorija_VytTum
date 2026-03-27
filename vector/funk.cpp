@@ -507,10 +507,22 @@ void genirasymas(vector<Studentas> &grupe, vector<Studentas> &protingi, vector<S
         chrono::duration<double> diff_skirstymas = end_skirstymas - start_skirstymas;
         cout << "Protingu/Neprotingu skirstymas failui " << filename << " uztruko: " << diff_skirstymas.count() << " s\n";
 
-        cout << "Protingu ";
-        failoutputas(grupe, "kursiokai_geri_" + to_string(sk) + ".txt");
-        cout << "Neprotingu ";
-        failoutputas(neprotingi, "kursiokai_blogi_" + to_string(sk) + ".txt");
+        if (strategija == SkirstymoStrategija::PIRMAS)
+        {
+            cout << "Protingu ";
+            failoutputas(protingi, "kursiokai_geri_" + to_string(sk) + ".txt");
+            cout << "Neprotingu ";
+            failoutputas(neprotingi, "kursiokai_blogi_" + to_string(sk) + ".txt");
+        }
+        else if (strategija == SkirstymoStrategija::ANTRAS)
+        {
+            cout << "Protingu ";
+            failoutputas(grupe, "kursiokai_geri_" + to_string(sk) + ".txt");
+            cout << "Neprotingu ";
+            failoutputas(neprotingi, "kursiokai_blogi_" + to_string(sk) + ".txt");
+        }
+
+        
         cout << "\n";
 
         grupe.clear();
