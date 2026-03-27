@@ -55,13 +55,19 @@ Vector:
 
 Deque:
 
+<img width="984" height="793" alt="image" src="https://github.com/user-attachments/assets/3696926a-9660-44e4-8ef3-8d74ec2fa696" />
 
 
 List:
 
 Listo 2 ir 3 strategijos tapačios (nežinau kaip kitaip padaryti) taigi laikai sutampa su antros strategijos.
 
+---
+Paaiškinimas:
+---
 
+Palyginus su antra strategija, deque padalinimo laikas sumažėjo maždaug 30%, vektoriaus liko daugmaž panašus.
+Vis dėlto aišku, kad trečioji strategija (savaime suprantama) yra geriausias variantas.
 
 
 
