@@ -35,10 +35,14 @@ Deque:
 
 List:
 
+<img width="1186" height="781" alt="image" src="https://github.com/user-attachments/assets/265789c3-b10b-4edf-a391-ec45e12b0257" />
 
 
 Pastebėjimai:
-
+(lyginant su pirmąja strategija)
+Su antrąja strategija, vector realizacijos stundentų skirstymo laikas sumažėjo beveik septynis kartus, o list realizacijoje - apie 4.5 kartus.
+Kaip ne keista, deque realizacijoje skirstymo laikas reikšmingai nepakito, manau, dėl to, kad su deque objektų perkėlimas ir taip užima daug laiko,
+taigi antroji strategija nelabai ką optimizuoja (palyginus su tuo, ką deque ir taip daro).
 
 
 
