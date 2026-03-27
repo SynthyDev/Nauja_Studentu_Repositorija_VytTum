@@ -70,7 +70,7 @@ int main()
     }
     else if (pasirinkimas == 4)
     {
-        genirasymas(grupe, protingi, neprotingi, irasymo_failas_geras, irasymo_failas_blogas, rikiavimo_pasirinkimas);
+        genirasymas(grupe, protingi, neprotingi, irasymo_failas_geras, irasymo_failas_blogas, rikiavimo_pasirinkimas, SkirstymoStrategija::ANTRAS);
         return 0;
     }
     else
@@ -89,7 +89,8 @@ int main()
     auto start = std::chrono::high_resolution_clock::now(); // Paleisti
 
     rikiuoti(grupe, rikiavimo_pasirinkimas);
-    skirstyti(grupe, protingi, neprotingi);
+    //skirstyti(grupe, protingi, neprotingi)
+    skirstyti2(grupe, neprotingi);
 
     if (isvedimotipas == "y")
     {

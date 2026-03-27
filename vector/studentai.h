@@ -1,6 +1,10 @@
 #ifndef STUDENTAI_H
 #define STUDENTAI_H
 
+#include <vector>
+#include <string>
+#include <algorithm>
+
 using namespace std;
 
 const vector<string> mvardai = {"Vytenis", "Tomas", "Jonas", "Matas", "Simas", "Mantas", "Arnas"};
@@ -8,6 +12,12 @@ const vector<string> fvardai = {"Egle", "Viktorija", "Vakare", "Inga", "Ema", "M
 const vector<string> pavardes = {"Macerausk", "Jankausk", "Kazlausk", "Svilpausk", "Drugeliausk", "Briedausk"};
 const vector<string> mgalunes = {"as", "aitis"};
 const vector<string> fgalunes = {"iene", "aite", "yte"};
+
+enum class SkirstymoStrategija
+{
+    PIRMAS,
+    ANTRAS
+};
 
 struct Studentas {
     string vardas = "A", pavarde = "BB";
@@ -28,7 +38,7 @@ void outputas(const vector<Studentas> &grupe);
 void failoutputas(const vector<Studentas> &grupe, string writing);
 void failgeneravimas();
 void genirasymas(vector<Studentas> &grupe, vector<Studentas> &protingi, vector<Studentas> &neprotingi,
-    string writing_good, string writing_bad, int rik_pasirinkimas);
+    string writing_good, string writing_bad, int rik_pasirinkimas, SkirstymoStrategija strategija);
 string lytgen();
 string randomvardas(string lytis);
 string randompavarde(string lytis);
