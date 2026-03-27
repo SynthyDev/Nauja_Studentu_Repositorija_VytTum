@@ -96,6 +96,7 @@ void inputas(deque<Studentas> &grupe)
             {
                 A.medrez = A.paz[n/2];
             }
+            A.medrez = A.medrez*0.4 + A.egz*0.6;
         }
 
         grupe.push_back(A);
@@ -201,6 +202,7 @@ void randominputas(deque<Studentas> &grupe, bool ArGeneruotiVardus)
                     A.medrez = (A.paz[n/2 - 1] + A.paz[n/2]) / 2.0;
                 else
                     A.medrez = A.paz[n/2];
+                A.medrez = A.medrez*0.4 + A.egz*0.6;
             }
 
             grupe.push_back(A);
@@ -238,6 +240,7 @@ void randominputas(deque<Studentas> &grupe, bool ArGeneruotiVardus)
                     A.medrez = (A.paz[n/2 - 1] + A.paz[n/2]) / 2.0;
                 else
                     A.medrez = A.paz[n/2];
+                A.medrez = A.medrez*0.4 + A.egz*0.6;
             }
 
             grupe.push_back(A);
@@ -302,7 +305,7 @@ void failinputas(deque<Studentas> &grupe, string reading)
                 A.medrez = (A.paz[A.paz.size()/2 - 1] + A.paz[A.paz.size()/2]) / 2.0;
             else
                 A.medrez = A.paz[A.paz.size()/2];
-
+            A.medrez = A.medrez*0.4 + A.egz*0.6;
             A.rez = 0.4 * (sum * 1.0 / A.paz.size()) + 0.6 * A.egz;
         }
 
@@ -471,7 +474,7 @@ void genirasymas(deque<Studentas> &grupe, deque<Studentas> &protingi, deque<Stud
                 A.medrez = (A.paz[n/2 - 1] + A.paz[n/2]) / 2.0;
             else
                 A.medrez = A.paz[n/2];
-
+            A.medrez = A.medrez*0.4 + A.egz*0.6;
             grupe.push_back(A);
         }
 

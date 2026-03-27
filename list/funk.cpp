@@ -85,17 +85,23 @@ void inputas(list<Studentas> &grupe)
         {
             A.rez = (sum * 1.0 / A.paz.size()) * 0.4 + A.egz * 0.6;
 
-            sort(A.paz.begin(), A.paz.end());
+            A.paz.sort();
 
             int n = A.paz.size();
+            auto it = A.paz.begin();
+            advance(it, n / 2);
+
             if (n % 2 == 0)
             {
-                A.medrez = (A.paz[n/2 - 1] + A.paz[n/2]) / 2.0;
+                auto it2 = it;
+                advance(it2, -1);
+                A.medrez = (*it + *it2) / 2.0;
             }
             else
             {
-                A.medrez = A.paz[n/2];
+                A.medrez = *it;
             }
+            A.medrez = A.medrez*0.4 + A.egz*0.6;
         }
 
         grupe.push_back(A);
@@ -194,13 +200,22 @@ void randominputas(list<Studentas> &grupe, bool ArGeneruotiVardus)
             {
                 A.rez = (sum * 1.0 / A.paz.size()) * 0.4 + A.egz * 0.6;
 
-                sort(A.paz.begin(), A.paz.end());
+                A.paz.sort();
 
                 int n = A.paz.size();
+                auto it = A.paz.begin();
+                advance(it, n / 2);
                 if (n % 2 == 0)
-                    A.medrez = (A.paz[n/2 - 1] + A.paz[n/2]) / 2.0;
+                {
+                    auto it2 = it;
+                    advance(it2, -1);
+                    A.medrez = (*it + *it2) / 2.0;
+                }
                 else
-                    A.medrez = A.paz[n/2];
+                {
+                    A.medrez = *it;
+                }
+                A.medrez = A.medrez*0.4 + A.egz*0.6;
             }
 
             grupe.push_back(A);
@@ -231,13 +246,23 @@ void randominputas(list<Studentas> &grupe, bool ArGeneruotiVardus)
             {
                 A.rez = (sum * 1.0 / A.paz.size()) * 0.4 + A.egz * 0.6;
 
-                sort(A.paz.begin(), A.paz.end());
+                A.paz.sort();
 
                 int n = A.paz.size();
+                auto it = A.paz.begin();
+                advance(it, n / 2);
+
                 if (n % 2 == 0)
-                    A.medrez = (A.paz[n/2 - 1] + A.paz[n/2]) / 2.0;
+                {
+                    auto it2 = it;
+                    advance(it2, -1);
+                    A.medrez = (*it + *it2) / 2.0;
+                }
                 else
-                    A.medrez = A.paz[n/2];
+                {
+                    A.medrez = *it;
+                }
+                A.medrez = A.medrez*0.4 + A.egz*0.6;
             }
 
             grupe.push_back(A);
@@ -296,13 +321,23 @@ void failinputas(list<Studentas> &grupe, string reading)
             for (int x : A.paz)
                 sum += x;
 
-            sort(A.paz.begin(), A.paz.end());
+            A.paz.sort();
 
-            if (A.paz.size() % 2 == 0)
-                A.medrez = (A.paz[A.paz.size()/2 - 1] + A.paz[A.paz.size()/2]) / 2.0;
+            int n = A.paz.size();
+            auto it = A.paz.begin();
+            advance(it, n / 2);
+
+            if (n % 2 == 0)
+            {
+                auto it2 = it;
+                advance(it2, -1);
+                A.medrez = (*it + *it2) / 2.0;
+            }
             else
-                A.medrez = A.paz[A.paz.size()/2];
-
+            {
+                A.medrez = *it;
+            }
+            A.medrez = A.medrez*0.4 + A.egz*0.6;
             A.rez = 0.4 * (sum * 1.0 / A.paz.size()) + 0.6 * A.egz;
         }
 
@@ -313,22 +348,38 @@ void failinputas(list<Studentas> &grupe, string reading)
 string randomvardas(string lytis)
 {
     if (lytis == "mot")
-        return fvardai[rand() % fvardai.size()];
+    {
+        auto it = fvardai.begin();
+        advance(it, rand() % fvardai.size());
+        return *it;
+    }
     else
-        return mvardai[rand() % mvardai.size()];
+    {
+        auto it = mvardai.begin();
+        advance(it, rand() % mvardai.size());
+        return *it;
+    }
 }
 
 string randompavarde(string lytis)
 {
-    int index = rand() % pavardes.size();
+    auto it = pavardes.begin();
+    advance(it, rand() % pavardes.size());
+
     string galune;
 
-    if (lytis == "mot")
-        galune = fgalunes[rand() % fgalunes.size()];
-    else
-        galune = mgalunes[rand() % mgalunes.size()];
+    if (lytis == "mot") {
+        auto itg = fgalunes.begin();
+        advance(itg, rand() % fgalunes.size());
+        galune = *itg;
+    }
+    else {
+        auto itg = mgalunes.begin();
+        advance(itg, rand() % mgalunes.size());
+        galune = *itg;
+    }
 
-    return pavardes[index] + galune;
+    return *it + galune;
 }
 
 string lytgen()
@@ -463,19 +514,30 @@ void genirasymas(list<Studentas> &grupe, list<Studentas> &protingi, list<Student
 
             A.rez = 0.4 * (sum * 1.0 / A.paz.size()) + 0.6 * A.egz;
 
-            sort(A.paz.begin(), A.paz.end());
+            A.paz.sort();
 
             int n = A.paz.size();
+            auto it = A.paz.begin();
+            advance(it, n / 2);
 
             if (n % 2 == 0)
-                A.medrez = (A.paz[n/2 - 1] + A.paz[n/2]) / 2.0;
+            {
+                auto it2 = it;
+                advance(it2, -1);
+                A.medrez = (*it + *it2) / 2.0;
+            }
             else
-                A.medrez = A.paz[n/2];
-
+            {
+                A.medrez = *it;
+            }
+            A.medrez = A.medrez*0.4 + A.egz*0.6;
             grupe.push_back(A);
         }
 
         file.close();
+
+        auto end_read = chrono::high_resolution_clock::now();
+        chrono::duration<double> diff_read = end_read - start_read;
         
         auto start_rikiavimas = chrono::high_resolution_clock::now();
         rikiuoti(grupe, rik_pasirinkimas);
@@ -494,10 +556,7 @@ void genirasymas(list<Studentas> &grupe, list<Studentas> &protingi, list<Student
         cout << "Neprotingu ";
         failoutputas(neprotingi, "kursiokai_blogi_" + to_string(sk) + ".txt");
 
-        auto end_read = chrono::high_resolution_clock::now();
-        chrono::duration<double> diff_read = end_read - start_read;
-
-        cout << "Failo apdorojimas uztruko: " << diff_read.count() << " s\n";
+        cout << "Failo nuskaitymas uztruko: " << diff_read.count() << " s\n";
         cout << "\n";
 
         grupe.clear();
@@ -505,7 +564,7 @@ void genirasymas(list<Studentas> &grupe, list<Studentas> &protingi, list<Student
         neprotingi.clear();
 
         logResults(
-            "vector", // keisti pagal versija
+            "list", // keisti pagal versija
             sk,
             diff_read.count(),
             diff_rikiavimas.count(),

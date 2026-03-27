@@ -3,15 +3,15 @@
 
 using namespace std;
 
-const vector<string> mvardai = {"Vytenis", "Tomas", "Jonas", "Matas", "Simas", "Mantas", "Arnas"};
-const vector<string> fvardai = {"Egle", "Viktorija", "Vakare", "Inga", "Ema", "Marija", "Janina"};
-const vector<string> pavardes = {"Macerausk", "Jankausk", "Kazlausk", "Svilpausk", "Drugeliausk", "Briedausk"};
-const vector<string> mgalunes = {"as", "aitis"};
-const vector<string> fgalunes = {"iene", "aite", "yte"};
+const list<string> mvardai = {"Vytenis", "Tomas", "Jonas", "Matas", "Simas", "Mantas", "Arnas"};
+const list<string> fvardai = {"Egle", "Viktorija", "Vakare", "Inga", "Ema", "Marija", "Janina"};
+const list<string> pavardes = {"Macerausk", "Jankausk", "Kazlausk", "Svilpausk", "Drugeliausk", "Briedausk"};
+const list<string> mgalunes = {"as", "aitis"};
+const list<string> fgalunes = {"iene", "aite", "yte"};
 
 struct Studentas {
     string vardas = "A", pavarde = "BB";
-    vector<int> paz;
+    list<int> paz;
     int egz;
     double rez;
     double medrez;
