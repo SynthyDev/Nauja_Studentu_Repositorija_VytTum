@@ -20,8 +20,8 @@ Vector:
 ---
 VERSIJA V1.0 - GALUTINIS RELEASE
 ---
-
-2 strategijos laiko matavimai:
+2 STRATEGIJA
+---
 
 Vector:
 
@@ -43,6 +43,26 @@ Pastebėjimai:
 Su antrąja strategija, vector realizacijos stundentų skirstymo laikas sumažėjo beveik septynis kartus, o list realizacijoje - apie 4.5 kartus.
 Kaip ne keista, deque realizacijoje skirstymo laikas reikšmingai nepakito, manau, dėl to, kad su deque objektų perkėlimas ir taip užima daug laiko,
 taigi antroji strategija nelabai ką optimizuoja (palyginus su tuo, ką deque ir taip daro).
+
+---
+3 STRATEGIJA
+---
+
+Vector:
+
+<img width="1190" height="798" alt="image" src="https://github.com/user-attachments/assets/02272b82-0909-47ab-8947-ac4117488ea6" />
+
+
+Deque:
+
+
+
+List:
+
+
+
+
+
 
 
 
