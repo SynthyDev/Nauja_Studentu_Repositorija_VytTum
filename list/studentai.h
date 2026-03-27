@@ -3,6 +3,12 @@
 
 using namespace std;
 
+enum class SkirstymoStrategija
+{
+    PIRMAS,
+    ANTRAS
+};
+
 const list<string> mvardai = {"Vytenis", "Tomas", "Jonas", "Matas", "Simas", "Mantas", "Arnas"};
 const list<string> fvardai = {"Egle", "Viktorija", "Vakare", "Inga", "Ema", "Marija", "Janina"};
 const list<string> pavardes = {"Macerausk", "Jankausk", "Kazlausk", "Svilpausk", "Drugeliausk", "Briedausk"};
@@ -28,7 +34,7 @@ void outputas(const list<Studentas> &grupe);
 void failoutputas(const list<Studentas> &grupe, string writing);
 void failgeneravimas();
 void genirasymas(list<Studentas> &grupe, list<Studentas> &protingi, list<Studentas> &neprotingi,
-    string writing_good, string writing_bad, int rik_pasirinkimas);
+    string writing_good, string writing_bad, int rik_pasirinkimas, SkirstymoStrategija strategija);
 string lytgen();
 string randomvardas(string lytis);
 string randompavarde(string lytis);
@@ -41,5 +47,5 @@ bool cmpEgz(const Studentas &a, const Studentas &b);
 void skirstyti(const list<Studentas>& grupe, list<Studentas>& protingi, list<Studentas>& neprotingi);
 void logResults(const string& container, int size,
                 double read_t, double sort_t, double split_t);
-                
+void skirstyti2(list<Studentas>& grupe, list<Studentas>& neprotingi);
 #endif
