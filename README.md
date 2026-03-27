@@ -1,4 +1,13 @@
-VERSIJA V1.0 - PRADINIS RELEASE
+Kaip naudoti Makefile?
+1. Atidarykite aplanką, kurio programą norite paleist (pvz. vector)
+2. Būtina turėti MinGW64 arba kitą įrankį, kuris palaiko "make" funkciją: https://gnuwin32.sourceforge.net/packages/make.htm
+4. Atidarykite terminalą pasirinktame aplanke.
+5. terminale įrašykite šią užklausą: make
+6. Paspauskite du kartus pele ant "programa.exe" failo ARBA terminale parašykite programa.exe (priklauso nuo OS).
+7. Turėtų iššokti langas, kuriame veiks pasirinkta programa. Joje galite įrašyti parametrus ir pasirinkti programos funkcijas.
+
+---
+***VERSIJA V1.0 - PRADINIS RELEASE***
 ---
 Kompiuterio parametrai testavimo metu:
 RAM: 16GB RAM DDR5-4800
