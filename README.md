@@ -17,5 +17,40 @@ List:
 Vector:
 <img width="1178" height="821" alt="image" src="https://github.com/user-attachments/assets/bfc86d25-ba96-4f30-b756-f849a714b86e" />
 
+---
+VERSIJA V1.0 - GALUTINIS RELEASE
+---
+
+2 strategijos laiko matavimai:
+
+Vector:
+
+<img width="1163" height="783" alt="image" src="https://github.com/user-attachments/assets/9dd7146f-2825-4eb7-b8e4-85ab8c456195" />
+
+
+Deque:
+
+
+
+List:
+
+
+
+Pastebėjimai:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
