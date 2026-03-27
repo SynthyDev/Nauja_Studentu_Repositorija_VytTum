@@ -59,7 +59,7 @@ Deque:
 
 List:
 
-
+Listo 2 ir 3 strategijos tapačios (nežinau kaip kitaip padaryti) taigi laikai sutampa su antros strategijos.
 
 
 
