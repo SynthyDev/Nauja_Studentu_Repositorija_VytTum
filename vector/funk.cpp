@@ -96,6 +96,7 @@ void inputas(vector<Studentas> &grupe)
             {
                 A.medrez = A.paz[n/2];
             }
+            A.medrez = A.medrez * 0.4 + A.egz * 0.6;
         }
 
         grupe.push_back(A);
@@ -201,6 +202,7 @@ void randominputas(vector<Studentas> &grupe, bool ArGeneruotiVardus)
                     A.medrez = (A.paz[n/2 - 1] + A.paz[n/2]) / 2.0;
                 else
                     A.medrez = A.paz[n/2];
+                A.medrez = A.medrez * 0.4 + A.egz * 0.6;
             }
 
             grupe.push_back(A);
@@ -238,6 +240,7 @@ void randominputas(vector<Studentas> &grupe, bool ArGeneruotiVardus)
                     A.medrez = (A.paz[n/2 - 1] + A.paz[n/2]) / 2.0;
                 else
                     A.medrez = A.paz[n/2];
+                A.medrez = A.medrez * 0.4 + A.egz * 0.6;
             }
 
             grupe.push_back(A);
@@ -304,6 +307,7 @@ void failinputas(vector<Studentas> &grupe, string reading)
             else
                 A.medrez = A.paz[A.paz.size()/2];
 
+            A.medrez = A.medrez * 0.4 + A.egz * 0.6;
             A.rez = 0.4 * (sum * 1.0 / A.paz.size()) + 0.6 * A.egz;
         }
 
@@ -472,11 +476,14 @@ void genirasymas(vector<Studentas> &grupe, vector<Studentas> &protingi, vector<S
                 A.medrez = (A.paz[n/2 - 1] + A.paz[n/2]) / 2.0;
             else
                 A.medrez = A.paz[n/2];
-
+            A.medrez = A.medrez * 0.4 + A.egz * 0.6;
             grupe.push_back(A);
         }
 
         file.close();
+
+        auto end_read = chrono::high_resolution_clock::now();
+        chrono::duration<double> diff_read = end_read - start_read;
         
         auto start_rikiavimas = chrono::high_resolution_clock::now();
         rikiuoti(grupe, rik_pasirinkimas);
@@ -495,10 +502,7 @@ void genirasymas(vector<Studentas> &grupe, vector<Studentas> &protingi, vector<S
         cout << "Neprotingu ";
         failoutputas(neprotingi, "kursiokai_blogi_" + to_string(sk) + ".txt");
 
-        auto end_read = chrono::high_resolution_clock::now();
-        chrono::duration<double> diff_read = end_read - start_read;
-
-        cout << "Failo apdorojimas uztruko: " << diff_read.count() << " s\n";
+        cout << "Failo nuskaitymas uztruko: " << diff_read.count() << " s\n";
         cout << "\n";
 
         grupe.clear();
