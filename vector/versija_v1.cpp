@@ -70,7 +70,7 @@ int main()
     }
     else if (pasirinkimas == 4)
     {
-        genirasymas(grupe, protingi, neprotingi, irasymo_failas_geras, irasymo_failas_blogas, rikiavimo_pasirinkimas, SkirstymoStrategija::ANTRAS);
+        genirasymas(grupe, protingi, neprotingi, irasymo_failas_geras, irasymo_failas_blogas, rikiavimo_pasirinkimas, SkirstymoStrategija::TRECIAS);
         return 0;
     }
     else
