@@ -9,7 +9,7 @@
 #include <fstream>
 #include <sstream>
 #include <chrono>
-#include "studentai.h"
+#include "studentai_strat2.h"
 #include <stdexcept>
 
 using namespace std;
@@ -262,7 +262,6 @@ void randominputas(vector<Studentas> &grupe, bool ArGeneruotiVardus)
 void failinputas(vector<Studentas> &grupe, string reading)
 {
     ifstream file(reading);
-    grupe.reserve(1000000);
 
     if (!file) {
         cout << "Nepavyko atidaryti failo\n";
@@ -415,7 +414,7 @@ void failgeneravimas()
     }
 }
 
-void genirasymas(vector<Studentas> &grupe, vector<Studentas> &protingi, vector<Studentas> &neprotingi, 
+void genirasymas(vector<Studentas> &grupe, vector<Studentas> &neprotingi, 
     string writing_good, string writing_bad, int rik_pasirinkimas)
 {
     int sk = 1000;
@@ -506,7 +505,6 @@ void genirasymas(vector<Studentas> &grupe, vector<Studentas> &protingi, vector<S
         cout << "\n";
 
         grupe.clear();
-        protingi.clear();
         neprotingi.clear();
 
         logResults(
@@ -520,18 +518,6 @@ void genirasymas(vector<Studentas> &grupe, vector<Studentas> &protingi, vector<S
         sk *= 10;
     }
 }
-
-void skirstyti(const vector<Studentas>& grupe, vector<Studentas>& protingi, vector<Studentas>& neprotingi)
-{
-    for (const auto& s : grupe)
-    {
-        if (s.rez >= 5.0)
-            protingi.push_back(s);
-        else
-           neprotingi.push_back(s);
-    }
-}
-
 
 void logResults(const string& container, int size,
                 double read_t, double sort_t, double split_t)

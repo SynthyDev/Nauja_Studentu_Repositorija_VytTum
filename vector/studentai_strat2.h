@@ -1,5 +1,5 @@
-#ifndef STUDENTAI_H
-#define STUDENTAI_H
+#ifndef STUDENTAI_STRAT2_H
+#define STUDENTAI_STRAT2_H
 
 using namespace std;
 
@@ -27,7 +27,7 @@ void randominputas(vector<Studentas> &grupe, bool ArGeneruotiVardus);
 void outputas(const vector<Studentas> &grupe);
 void failoutputas(const vector<Studentas> &grupe, string writing);
 void failgeneravimas();
-void genirasymas(vector<Studentas> &grupe, vector<Studentas> &protingi, vector<Studentas> &neprotingi,
+void genirasymas(vector<Studentas> &grupe, vector<Studentas> &neprotingi,
     string writing_good, string writing_bad, int rik_pasirinkimas);
 string lytgen();
 string randomvardas(string lytis);
@@ -38,7 +38,7 @@ bool cmpPavarde(const Studentas &a, const Studentas &b);
 bool cmpRez(const Studentas &a, const Studentas &b);
 bool cmpMedrez(const Studentas &a, const Studentas &b);
 bool cmpEgz(const Studentas &a, const Studentas &b);
-void skirstyti(const vector<Studentas>& grupe, vector<Studentas>& protingi, vector<Studentas>& neprotingi);
+void skirstyti(const vector<Studentas>& grupe, vector<Studentas>& neprotingi);
 void logResults(const string& container, int size,
                 double read_t, double sort_t, double split_t);
 void skirstyti2(vector<Studentas>& grupe, vector<Studentas>& neprotingi);
