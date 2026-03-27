@@ -50,7 +50,7 @@ taigi antroji strategija nelabai ką optimizuoja (palyginus su tuo, ką deque ir
 
 Vector:
 
-<img width="1190" height="798" alt="image" src="https://github.com/user-attachments/assets/02272b82-0909-47ab-8947-ac4117488ea6" />
+<img width="1138" height="820" alt="image" src="https://github.com/user-attachments/assets/105b151e-58ca-49fd-af4b-9701c342a8aa" />
 
 
 Deque:
