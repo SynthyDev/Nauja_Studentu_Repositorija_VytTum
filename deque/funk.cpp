@@ -480,6 +480,9 @@ void genirasymas(deque<Studentas> &grupe, deque<Studentas> &protingi, deque<Stud
 
         file.close();
         
+        auto end_read = chrono::high_resolution_clock::now();
+        chrono::duration<double> diff_read = end_read - start_read;
+        
         auto start_rikiavimas = chrono::high_resolution_clock::now();
         rikiuoti(grupe, rik_pasirinkimas);
         auto end_rikiavimas = chrono::high_resolution_clock::now();
@@ -497,10 +500,7 @@ void genirasymas(deque<Studentas> &grupe, deque<Studentas> &protingi, deque<Stud
         cout << "Neprotingu ";
         failoutputas(neprotingi, "kursiokai_blogi_" + to_string(sk) + ".txt");
 
-        auto end_read = chrono::high_resolution_clock::now();
-        chrono::duration<double> diff_read = end_read - start_read;
-
-        cout << "Failo apdorojimas uztruko: " << diff_read.count() << " s\n";
+        cout << "Failo nuskaitymas uztruko: " << diff_read.count() << " s\n";
         cout << "\n";
 
         grupe.clear();
