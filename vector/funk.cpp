@@ -14,7 +14,6 @@
 
 using namespace std;
 
-// ===== CLASS METHOD =====
 void Studentas::skaiciuoti()
 {
     if (paz.empty()) return;
@@ -35,7 +34,6 @@ void Studentas::skaiciuoti()
     medrez = medrez * 0.4 + egz * 0.6;
 }
 
-// ===== INPUT =====
 void inputas(vector<Studentas> &grupe)
 {
     Studentas A;
@@ -94,7 +92,6 @@ void inputas(vector<Studentas> &grupe)
     }
 }
 
-// ===== OUTPUT =====
 void outputas(const vector<Studentas> &grupe)
 {
     cout << "-------------------------------------------------------------------" << endl;
@@ -117,7 +114,6 @@ void outputas(const vector<Studentas> &grupe)
     cout << "-------------------------------------------------------------------" << endl;
 }
 
-// ===== FILE OUTPUT =====
 void failoutputas(const vector<Studentas> &grupe, string writing)
 {
     ofstream out(writing);
@@ -141,7 +137,6 @@ void failoutputas(const vector<Studentas> &grupe, string writing)
     cout << "Studentu skaicius: " << grupe.size() << endl;
 }
 
-// ===== RANDOM INPUT =====
 void randominputas(vector<Studentas> &grupe, bool ArGeneruotiVardus)
 {
     Studentas A;
@@ -172,7 +167,6 @@ void randominputas(vector<Studentas> &grupe, bool ArGeneruotiVardus)
     }
 }
 
-// ===== FILE INPUT =====
 void failinputas(vector<Studentas> &grupe, string reading)
 {
     ifstream file(reading);
@@ -217,7 +211,6 @@ void failinputas(vector<Studentas> &grupe, string reading)
     }
 }
 
-// ===== RANDOM HELPERS =====
 string randomvardas(string lytis)
 {
     if (lytis == "mot")
@@ -244,7 +237,6 @@ string lytgen()
     return rand() % 2 == 0 ? "vyr" : "mot";
 }
 
-// ===== SORT =====
 bool cmpVardas(const Studentas &a, const Studentas &b)
 {
     return a.getVardas() < b.getVardas();
@@ -284,7 +276,6 @@ void rikiuoti(vector<Studentas> &grupe, int pasirinkimas)
         sort(grupe.begin(), grupe.end(), cmpEgz);
 }
 
-// ===== FILE GENERATION =====
 void failgeneravimas()
 {
     int sk = 1000;
@@ -356,7 +347,6 @@ void skirstyti3(vector<Studentas>& grupe, vector<Studentas>& neprotingi)
     grupe.erase(it, grupe.end());
 }
 
-// ===== GEN + STRATEGY =====
 void genirasymas(vector<Studentas> &grupe, vector<Studentas> &protingi, vector<Studentas> &neprotingi, 
     string writing_good, string writing_bad, int rik_pasirinkimas, SkirstymoStrategija strategija)
 {
@@ -448,7 +438,6 @@ void genirasymas(vector<Studentas> &grupe, vector<Studentas> &protingi, vector<S
     }
 }
 
-// ===== LOG =====
 void logResults(const string& container, int size,
                 double read_t, double sort_t, double split_t)
 {
