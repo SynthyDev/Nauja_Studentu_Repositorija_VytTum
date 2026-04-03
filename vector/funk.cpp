@@ -518,7 +518,7 @@ void genirasymas(vector<Studentas> &grupe, vector<Studentas> &protingi, vector<S
             cout << "Neprotingu ";
             failoutputas(neprotingi, "kursiokai_blogi_" + to_string(sk) + ".txt");
         }
-        else if (strategija == SkirstymoStrategija::ANTRAS or strategija == SkirstymoStrategija::TRECIAS)
+        else if (strategija == SkirstymoStrategija::ANTRAS || strategija == SkirstymoStrategija::TRECIAS)
         {
             cout << "Protingu ";
             failoutputas(grupe, "kursiokai_geri_" + to_string(sk) + ".txt");
@@ -591,7 +591,30 @@ void skirstyti3(vector<Studentas>& grupe, vector<Studentas>& neprotingi)
     grupe.erase(it, grupe.end());
 }
 
+void Studentas::skaiciuoti()
+{
+    if (paz_.empty()) return;
 
+    int sum = 0;
+    for (int x : paz_) sum += x;
+
+    rez_ = 0.4 * (sum * 1.0 / paz_.size()) + 0.6 * egz_;
+
+    vector<int> temp = paz_;
+    sort(temp.begin(), temp.end());
+
+    if (temp.size() % 2 == 0)
+        medrez_ = (temp[temp.size()/2 - 1] + temp[temp.size()/2]) / 2.0;
+    else
+        medrez_ = temp[temp.size()/2];
+
+    medrez_ = medrez_ * 0.4 + egz_ * 0.6;
+}
+
+void Studentas::skaiciuotiGalutini()
+{
+    skaiciuoti();
+}
 
 
 

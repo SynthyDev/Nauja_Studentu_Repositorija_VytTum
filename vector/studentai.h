@@ -20,12 +20,37 @@ enum class SkirstymoStrategija
     TRECIAS
 };
 
-struct Studentas {
-    string vardas = "A", pavarde = "BB";
-    vector<int> paz;
-    int egz;
-    double rez;
-    double medrez;
+class Studentas {
+private:
+    string vardas_ = "A";
+    string pavarde_ = "BB";
+    vector<int> paz_;
+    int egz_ = 0;
+
+    double rez_ = 0.0;
+    double medrez_ = 0.0;
+
+    void skaiciuoti();
+
+public:
+    // konstruktorius
+    Studentas() = default;
+
+    // getteriai
+    string vardas() const { return vardas_; }
+    string pavarde() const { return pavarde_; }
+    double rez() const { return rez_; }
+    double medrez() const { return medrez_; }
+    int egz() const { return egz_; }
+    const vector<int>& paz() const { return paz_; }
+
+    // setteriai
+    void setVardas(const string& v) { vardas_ = v; }
+    void setPavarde(const string& p) { pavarde_ = p; }
+    void addPaz(int p) { paz_.push_back(p); }
+    void setEgz(int e) { egz_ = e; }
+
+    void skaiciuotiGalutini();
 };
 
 const string irasymo_failas = "kursiokai.txt";
