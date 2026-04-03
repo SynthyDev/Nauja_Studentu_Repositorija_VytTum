@@ -12,6 +12,19 @@ Versija v1.1
 Viskas pakeista į Class tipą.
 funkcionalumas tas pats
 
+EFEKTYVUMAS -O1:
+
+<img width="1260" height="497" alt="image" src="https://github.com/user-attachments/assets/d12a70a7-ab53-409f-ad2c-3718acda370a" />
+
+EFEKTYVUMAS -O2:
+
+<img width="1360" height="539" alt="image" src="https://github.com/user-attachments/assets/990eb948-ff5e-4110-829a-e9645bd26d8a" />
+
+EFEKTYVUMAS -O3:
+
+<img width="1358" height="572" alt="image" src="https://github.com/user-attachments/assets/886294ab-ed9d-40ab-b9c9-9c3602d6c5fb" />
+
+
 ---
 ***VERSIJA V1.0 - PRADINIS RELEASE***
 ---
