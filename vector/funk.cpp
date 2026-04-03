@@ -23,7 +23,7 @@ void inputas(vector<Studentas> &grupe)
         int sum = 0;
 
         cout << "Vardas ir pavarde: ";
-        cin >> A.vardas >> A.pavarde;
+        cin >> A.getVardas() >> A.getPavarde();
 
         int i = 0;
         string ats;
@@ -83,20 +83,20 @@ void inputas(vector<Studentas> &grupe)
 
         if (A.paz.size() > 0)
         {
-            A.rez = (sum * 1.0 / A.paz.size()) * 0.4 + A.egz * 0.6;
+            A.skaiciuoti();
 
             sort(A.paz.begin(), A.paz.end());
 
             int n = A.paz.size();
             if (n % 2 == 0)
             {
-                A.medrez = (A.paz[n/2 - 1] + A.paz[n/2]) / 2.0;
+                A.getMedrez() = (A.paz[n/2 - 1] + A.paz[n/2]) / 2.0;
             }
             else
             {
-                A.medrez = A.paz[n/2];
+                A.getMedrez() = A.paz[n/2];
             }
-            A.medrez = A.medrez * 0.4 + A.egz * 0.6;
+            A.getMedrez() = A.getMedrez() * 0.4 + A.egz * 0.6;
         }
 
         grupe.push_back(A);
@@ -131,10 +131,10 @@ void outputas(const vector<Studentas> &grupe)
 
     for (const auto &A : grupe)
     {
-        cout << left << setw(20) << A.vardas
-            << setw(20) << A.pavarde
-            << right << setw(20) << fixed << setprecision(2) << A.rez
-            << setw(20) << A.medrez
+        cout << left << setw(20) << A.getVardas()
+            << setw(20) << A.getPavarde()
+            << right << setw(20) << fixed << setprecision(2) << A.getRez()
+            << setw(20) << A.getMedrez()
             << endl;
     }
 
@@ -153,10 +153,10 @@ void failoutputas(const vector<Studentas> &grupe, string writing)
     out << "------------------------------------------------------------------- \n";
     for (const Studentas& s : grupe)
     {
-        out << left << setw(20) << s.vardas
-               << setw(20) << s.pavarde << fixed << setprecision(2)
-               << setw(20) << s.rez
-               << setw(20) << s.medrez << '\n';
+        out << left << setw(20) << s.getVardas()
+               << setw(20) << s.getPavarde() << fixed << setprecision(2)
+               << setw(20) << s.getRez()
+               << setw(20) << s.getMedrez() << '\n';
     }
     cout << "Studentu skaicius: " << grupe.size() << endl;
 }
@@ -177,8 +177,8 @@ void randominputas(vector<Studentas> &grupe, bool ArGeneruotiVardus)
             int sum = 0;
 
             lytis = lytgen();
-            A.vardas = randomvardas(lytis);
-            A.pavarde = randompavarde(lytis);
+            A.getVardas() = randomvardas(lytis);
+            A.getPavarde() = randompavarde(lytis);
 
             int pazsk = rand() % 100 + 1;
 
@@ -193,16 +193,16 @@ void randominputas(vector<Studentas> &grupe, bool ArGeneruotiVardus)
 
             if (A.paz.size() > 0)
             {
-                A.rez = (sum * 1.0 / A.paz.size()) * 0.4 + A.egz * 0.6;
+                A.skaiciuoti();
 
                 sort(A.paz.begin(), A.paz.end());
 
                 int n = A.paz.size();
                 if (n % 2 == 0)
-                    A.medrez = (A.paz[n/2 - 1] + A.paz[n/2]) / 2.0;
+                    A.getMedrez() = (A.paz[n/2 - 1] + A.paz[n/2]) / 2.0;
                 else
-                    A.medrez = A.paz[n/2];
-                A.medrez = A.medrez * 0.4 + A.egz * 0.6;
+                    A.getMedrez() = A.paz[n/2];
+                A.getMedrez() = A.getMedrez() * 0.4 + A.egz * 0.6;
             }
 
             grupe.push_back(A);
@@ -216,7 +216,7 @@ void randominputas(vector<Studentas> &grupe, bool ArGeneruotiVardus)
             int sum = 0;
 
             cout << "Vardas ir pavarde: ";
-            cin >> A.vardas >> A.pavarde;
+            cin >> A.getVardas() >> A.getPavarde();
 
             int pazsk = rand() % 100 + 1;
 
@@ -231,16 +231,16 @@ void randominputas(vector<Studentas> &grupe, bool ArGeneruotiVardus)
 
             if (A.paz.size() > 0)
             {
-                A.rez = (sum * 1.0 / A.paz.size()) * 0.4 + A.egz * 0.6;
+                A.skaiciuoti();
 
                 sort(A.paz.begin(), A.paz.end());
 
                 int n = A.paz.size();
                 if (n % 2 == 0)
-                    A.medrez = (A.paz[n/2 - 1] + A.paz[n/2]) / 2.0;
+                    A.getMedrez() = (A.paz[n/2 - 1] + A.paz[n/2]) / 2.0;
                 else
-                    A.medrez = A.paz[n/2];
-                A.medrez = A.medrez * 0.4 + A.egz * 0.6;
+                    A.getMedrez() = A.paz[n/2];
+                A.getMedrez() = A.getMedrez() * 0.4 + A.egz * 0.6;
             }
 
             grupe.push_back(A);
@@ -279,7 +279,7 @@ void failinputas(vector<Studentas> &grupe, string reading)
 
         Studentas A;
 
-        iss >> A.vardas >> A.pavarde;
+        iss >> A.getVardas() >> A.getPavarde();
 
         int pazymys;
 
@@ -303,12 +303,11 @@ void failinputas(vector<Studentas> &grupe, string reading)
             sort(A.paz.begin(), A.paz.end());
 
             if (A.paz.size() % 2 == 0)
-                A.medrez = (A.paz[A.paz.size()/2 - 1] + A.paz[A.paz.size()/2]) / 2.0;
+                A.getMedrez() = (A.paz[A.paz.size()/2 - 1] + A.paz[A.paz.size()/2]) / 2.0;
             else
-                A.medrez = A.paz[A.paz.size()/2];
+                A.getMedrez() = A.paz[A.paz.size()/2];
 
-            A.medrez = A.medrez * 0.4 + A.egz * 0.6;
-            A.rez = 0.4 * (sum * 1.0 / A.paz.size()) + 0.6 * A.egz;
+            A.skaiciuoti();
         }
 
         grupe.push_back(A);
@@ -346,27 +345,27 @@ string lytgen()
 
 bool cmpVardas(const Studentas &a, const Studentas &b)
 {
-    return a.vardas < b.vardas;
+    return a.getVardas() < b.getVardas();
 }
 
 bool cmpPavarde(const Studentas &a, const Studentas &b)
 {
-    return a.pavarde < b.pavarde;
+    return a.getPavarde() < b.getPavarde();
 }
 
 bool cmpRez(const Studentas &a, const Studentas &b)
 {
-    return a.rez < b.rez;
+    return a.getRez() < b.getRez();
 }
 
 bool cmpMedrez(const Studentas &a, const Studentas &b)
 {
-    return a.medrez < b.medrez;
+    return a.getMedrez() < b.getMedrez();
 }
 
 bool cmpEgz(const Studentas &a, const Studentas &b)
 {
-    return a.egz < b.egz;
+    return a.getEgz() < b.getEgz();
 }
 
 void rikiuoti(vector<Studentas> &grupe, int pasirinkimas)
@@ -446,7 +445,7 @@ void genirasymas(vector<Studentas> &grupe, vector<Studentas> &protingi, vector<S
 
             Studentas A;
 
-            iss >> A.vardas >> A.pavarde;
+            iss >> A.getVardas() >> A.getPavarde();
 
             int paz;
 
@@ -466,17 +465,17 @@ void genirasymas(vector<Studentas> &grupe, vector<Studentas> &protingi, vector<S
             for (int x : A.paz)
                 sum += x;
 
-            A.rez = 0.4 * (sum * 1.0 / A.paz.size()) + 0.6 * A.egz;
+            A.getRez() = 0.4 * (sum * 1.0 / A.paz.size()) + 0.6 * A.egz;
 
             sort(A.paz.begin(), A.paz.end());
 
             int n = A.paz.size();
 
             if (n % 2 == 0)
-                A.medrez = (A.paz[n/2 - 1] + A.paz[n/2]) / 2.0;
+                A.getMedrez() = (A.paz[n/2 - 1] + A.paz[n/2]) / 2.0;
             else
-                A.medrez = A.paz[n/2];
-            A.medrez = A.medrez * 0.4 + A.egz * 0.6;
+                A.getMedrez() = A.paz[n/2];
+            A.getMedrez() = A.getMedrez() * 0.4 + A.egz * 0.6;
             grupe.push_back(A);
         }
 
@@ -548,7 +547,7 @@ void skirstyti(const vector<Studentas>& grupe, vector<Studentas>& protingi, vect
 {
     for (const auto& s : grupe)
     {
-        if (s.rez >= 5.0)
+        if (s.getRez() >= 5.0)
             protingi.push_back(s);
         else
            neprotingi.push_back(s);
@@ -570,7 +569,7 @@ void logResults(const string& container, int size,
 void skirstyti2(vector<Studentas>& grupe, vector<Studentas>& neprotingi)
 {
     auto it = partition(grupe.begin(), grupe.end(),
-        [](const Studentas& s) { return s.rez >= 5.0; });
+        [](const Studentas& s) { return s.getRez() >= 5.0; });
     neprotingi.assign(it, grupe.end());
     grupe.erase(it, grupe.end()); // protingi paliekami
 }
@@ -581,7 +580,7 @@ void skirstyti3(vector<Studentas>& grupe, vector<Studentas>& neprotingi)
     auto it = remove_if(grupe.begin(), grupe.end(),
         [&](const Studentas& s)
         {
-            if (s.rez < 5.0)
+            if (s.getRez() < 5.0)
             {
                 neprotingi.push_back(s);
                 return true;
