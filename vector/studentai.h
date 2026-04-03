@@ -31,6 +31,14 @@ private:
 public:
     Studentas() = default;
 
+    string& refVardas() { return vardas; }
+    string& refPavarde() { return pavarde; }
+    vector<int>& refPaz() { return paz; }
+    int& refEgz() { return egz; }
+    double& refRez() { return rez; }
+    double& refMedrez() { return medrez; }
+    void clearPaz() { paz.clear(); }
+
     // getteriai
     string getVardas() const { return vardas; }
     string getPavarde() const { return pavarde; }
@@ -39,7 +47,7 @@ public:
     int getEgz() const { return egz; }
     vector<int>& getPaz() { return paz; }
 
-    // setteriai (padariau kad nereiktu perrasyti logikos daugiau nei reikia)
+    // setteriai
     void setVardas(const string& v) { vardas = v; }
     void setPavarde(const string& p) { pavarde = p; }
     void addPaz(int p) { paz.push_back(p); }

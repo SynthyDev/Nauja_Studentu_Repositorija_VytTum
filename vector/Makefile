@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -O2 -std=c++17 -Wall
+CXXFLAGS = -O3 -std=c++17 -Wall
 
 TARGET = programa
 
