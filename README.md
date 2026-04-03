@@ -15,15 +15,17 @@ funkcionalumas tas pats
 EFEKTYVUMAS -O1:
 
 <img width="1260" height="497" alt="image" src="https://github.com/user-attachments/assets/d12a70a7-ab53-409f-ad2c-3718acda370a" />
+<img width="1067" height="49" alt="image" src="https://github.com/user-attachments/assets/b8168ffd-73b9-4b93-a151-f91c5a0836ec" />
 
 EFEKTYVUMAS -O2:
 
 <img width="1360" height="539" alt="image" src="https://github.com/user-attachments/assets/990eb948-ff5e-4110-829a-e9645bd26d8a" />
+<img width="1073" height="54" alt="image" src="https://github.com/user-attachments/assets/357011fd-3872-483e-91af-37e251c278e8" />
 
 EFEKTYVUMAS -O3:
 
 <img width="1358" height="572" alt="image" src="https://github.com/user-attachments/assets/886294ab-ed9d-40ab-b9c9-9c3602d6c5fb" />
-
+<img width="1066" height="55" alt="image" src="https://github.com/user-attachments/assets/172d611c-c865-42a1-a58c-09641d2f941e" />
 
 ---
 ***VERSIJA V1.0 - PRADINIS RELEASE***
