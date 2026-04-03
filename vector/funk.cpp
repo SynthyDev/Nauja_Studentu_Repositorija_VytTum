@@ -14,16 +14,39 @@
 
 using namespace std;
 
+// ===== CLASS METHOD =====
+void Studentas::skaiciuoti()
+{
+    if (paz.empty()) return;
+
+    int sum = 0;
+    for (int x : paz) sum += x;
+
+    rez = 0.4 * (sum * 1.0 / paz.size()) + 0.6 * egz;
+
+    vector<int> temp = paz;
+    sort(temp.begin(), temp.end());
+
+    if (temp.size() % 2 == 0)
+        medrez = (temp[temp.size()/2 - 1] + temp[temp.size()/2]) / 2.0;
+    else
+        medrez = temp[temp.size()/2];
+
+    medrez = medrez * 0.4 + egz * 0.6;
+}
+
+// ===== INPUT =====
 void inputas(vector<Studentas> &grupe)
 {
     Studentas A;
     
     while (true)
     {
-        int sum = 0;
-
         cout << "Vardas ir pavarde: ";
-        cin >> A.getVardas() >> A.getPavarde();
+        string v, p;
+        cin >> v >> p;
+        A.setVardas(v);
+        A.setPavarde(p);
 
         int i = 0;
         string ats;
@@ -45,80 +68,33 @@ void inputas(vector<Studentas> &grupe)
                 continue;
             }
 
-            A.paz.push_back(temp);
-            sum += temp;
+            A.addPaz(temp);
 
             cout << "Ar toliau vesite pazymius? (y/n): ";
             cin >> ats;
-            if (ats == "n")
-            {
-                break;
-            }
-            else if (ats == "y")
-            {
-                cout << "Veskite toliau: ";
-            }
-            else
-            {
-                cout << "NETEISINGA IVESTIS, programa veikia toliau" << endl;
-            }
+            if (ats == "n") break;
+            else if (ats == "y") cout << "Veskite toliau: ";
 
             i++;
         }
 
         cout << "Iveskite egzamino rezultata: ";
-        try
-        {
-            cin >> A.egz;
-            if (cin.fail())
-                throw runtime_error("Bloga ivestis.");
-        }
-        catch (exception& e)
-        {
-            cin.clear();
-            cin.ignore(10000, '\n');
-            cout << e.what() << " Bandykite dar karta.\n";
-            continue;
-        }
+        int egz;
+        cin >> egz;
+        A.setEgz(egz);
 
-        if (A.paz.size() > 0)
-        {
-            A.skaiciuoti();
-
-            sort(A.paz.begin(), A.paz.end());
-
-            int n = A.paz.size();
-            if (n % 2 == 0)
-            {
-                A.getMedrez() = (A.paz[n/2 - 1] + A.paz[n/2]) / 2.0;
-            }
-            else
-            {
-                A.getMedrez() = A.paz[n/2];
-            }
-            A.getMedrez() = A.getMedrez() * 0.4 + A.egz * 0.6;
-        }
+        A.skaiciuoti();
 
         grupe.push_back(A);
-        A.paz.clear();
+        A.getPaz().clear();
 
         cout << "Ar toliau vesite mokinius? (y/n): ";
         cin >> ats;
-        if (ats == "n")
-        {
-            break;
-        }
-        else if (ats == "y")
-        {
-            cout << "Veskite toliau: ";
-        }
-        else
-        {
-            cout << "NETEISINGA IVESTIS, programa veikia toliau" << endl;
-        }
+        if (ats == "n") break;
     }
 }
 
+// ===== OUTPUT =====
 void outputas(const vector<Studentas> &grupe)
 {
     cout << "-------------------------------------------------------------------" << endl;
@@ -141,6 +117,7 @@ void outputas(const vector<Studentas> &grupe)
     cout << "-------------------------------------------------------------------" << endl;
 }
 
+// ===== FILE OUTPUT =====
 void failoutputas(const vector<Studentas> &grupe, string writing)
 {
     ofstream out(writing);
@@ -151,114 +128,51 @@ void failoutputas(const vector<Studentas> &grupe, string writing)
         << setw(20) << " Rezultatas (Med.)"
         << "\n";
     out << "------------------------------------------------------------------- \n";
+
     for (const Studentas& s : grupe)
     {
         out << left << setw(20) << s.getVardas()
-               << setw(20) << s.getPavarde() << fixed << setprecision(2)
-               << setw(20) << s.getRez()
-               << setw(20) << s.getMedrez() << '\n';
+            << setw(20) << s.getPavarde()
+            << fixed << setprecision(2)
+            << setw(20) << s.getRez()
+            << setw(20) << s.getMedrez() << '\n';
     }
+
     cout << "Studentu skaicius: " << grupe.size() << endl;
 }
 
+// ===== RANDOM INPUT =====
 void randominputas(vector<Studentas> &grupe, bool ArGeneruotiVardus)
 {
     Studentas A;
     
     string lytis;
-    string ats;
 
-    if (ArGeneruotiVardus == true)
+    int zmonsk = rand() % 100 + 1;
+
+    for(int iii = 0; iii < zmonsk; iii++)
     {
-        int zmonsk = rand() % 100 + 1;
+        lytis = lytgen();
+        A.setVardas(randomvardas(lytis));
+        A.setPavarde(randompavarde(lytis));
 
-        for(int iii = 0; iii < zmonsk; iii++)
+        int pazsk = rand() % 100 + 1;
+
+        for (int ii = 0; ii < pazsk; ii++)
         {
-            int sum = 0;
-
-            lytis = lytgen();
-            A.getVardas() = randomvardas(lytis);
-            A.getPavarde() = randompavarde(lytis);
-
-            int pazsk = rand() % 100 + 1;
-
-            for (int ii = 0; ii < pazsk; ii++)
-            {
-                int temp = rand() % 10 + 1;
-                A.paz.push_back(temp);
-                sum += temp;
-            }
-
-            A.egz = rand() % 10 + 1;
-
-            if (A.paz.size() > 0)
-            {
-                A.skaiciuoti();
-
-                sort(A.paz.begin(), A.paz.end());
-
-                int n = A.paz.size();
-                if (n % 2 == 0)
-                    A.getMedrez() = (A.paz[n/2 - 1] + A.paz[n/2]) / 2.0;
-                else
-                    A.getMedrez() = A.paz[n/2];
-                A.getMedrez() = A.getMedrez() * 0.4 + A.egz * 0.6;
-            }
-
-            grupe.push_back(A);
-            A.paz.clear();
+            int temp = rand() % 10 + 1;
+            A.addPaz(temp);
         }
-    }
-    else
-    {
-        while (true)
-        {
-            int sum = 0;
 
-            cout << "Vardas ir pavarde: ";
-            cin >> A.getVardas() >> A.getPavarde();
+        A.setEgz(rand() % 10 + 1);
+        A.skaiciuoti();
 
-            int pazsk = rand() % 100 + 1;
-
-            for (int i = 0; i < pazsk; i++)
-            {
-                int temp = rand() % 10 + 1;
-                A.paz.push_back(temp);
-                sum += temp;
-            }
-
-            A.egz = rand() % 10 + 1;
-
-            if (A.paz.size() > 0)
-            {
-                A.skaiciuoti();
-
-                sort(A.paz.begin(), A.paz.end());
-
-                int n = A.paz.size();
-                if (n % 2 == 0)
-                    A.getMedrez() = (A.paz[n/2 - 1] + A.paz[n/2]) / 2.0;
-                else
-                    A.getMedrez() = A.paz[n/2];
-                A.getMedrez() = A.getMedrez() * 0.4 + A.egz * 0.6;
-            }
-
-            grupe.push_back(A);
-            A.paz.clear();
-
-            cout << "Ar toliau vesite zmones? (y/n): ";
-            cin >> ats;
-
-            if (ats == "n")
-                break;
-            else if (ats == "y")
-                cout << "Veskite toliau: ";
-            else
-                cout << "NETEISINGA IVESTIS, programa veikia toliau" << endl;
-        }
+        grupe.push_back(A);
+        A.getPaz().clear();
     }
 }
 
+// ===== FILE INPUT =====
 void failinputas(vector<Studentas> &grupe, string reading)
 {
     ifstream file(reading);
@@ -270,7 +184,6 @@ void failinputas(vector<Studentas> &grupe, string reading)
     }
 
     string line;
-
     getline(file, line);
 
     while (getline(file, line))
@@ -279,41 +192,32 @@ void failinputas(vector<Studentas> &grupe, string reading)
 
         Studentas A;
 
-        iss >> A.getVardas() >> A.getPavarde();
+        string v, p;
+        iss >> v >> p;
+        A.setVardas(v);
+        A.setPavarde(p);
 
         int pazymys;
+        vector<int> temp;
 
         while (iss >> pazymys)
+            temp.push_back(pazymys);
+
+        if (!temp.empty())
         {
-            A.paz.push_back(pazymys);
+            A.setEgz(temp.back());
+            temp.pop_back();
+
+            for (int x : temp)
+                A.addPaz(x);
         }
 
-        if (!A.paz.empty())
-        {
-            A.egz = A.paz.back();
-            A.paz.pop_back();
-        }
-
-        if (!A.paz.empty())
-        {
-            int sum = 0;
-            for (int x : A.paz)
-                sum += x;
-
-            sort(A.paz.begin(), A.paz.end());
-
-            if (A.paz.size() % 2 == 0)
-                A.getMedrez() = (A.paz[A.paz.size()/2 - 1] + A.paz[A.paz.size()/2]) / 2.0;
-            else
-                A.getMedrez() = A.paz[A.paz.size()/2];
-
-            A.skaiciuoti();
-        }
-
+        A.skaiciuoti();
         grupe.push_back(A);
     }
 }
 
+// ===== RANDOM HELPERS =====
 string randomvardas(string lytis)
 {
     if (lytis == "mot")
@@ -337,12 +241,10 @@ string randompavarde(string lytis)
 
 string lytgen()
 {
-    if (rand() % 2 == 0)
-        return "vyr";
-    else
-        return "mot";
+    return rand() % 2 == 0 ? "vyr" : "mot";
 }
 
+// ===== SORT =====
 bool cmpVardas(const Studentas &a, const Studentas &b)
 {
     return a.getVardas() < b.getVardas();
@@ -382,6 +284,7 @@ void rikiuoti(vector<Studentas> &grupe, int pasirinkimas)
         sort(grupe.begin(), grupe.end(), cmpEgz);
 }
 
+// ===== FILE GENERATION =====
 void failgeneravimas()
 {
     int sk = 1000;
@@ -393,18 +296,20 @@ void failgeneravimas()
         ofstream gen;
         gen.open("gen" + to_string(sk) + ".txt");
         gen << left << setw(20) << "STUD. VARDAS"
-                << setw(20) << "STUD. PAVARDE" << fixed << setprecision(2) << setw(20) << "STUD PAZYMIAI (PASKUTINIS EGZAMINO) \n";
+            << setw(20) << "STUD. PAVARDE"
+            << setw(20) << "PAZYMIAI (PASKUTINIS EGZAMINO)\n";
 
         for (int genit = 1; genit <= sk; genit++)
         {
             gen << left << setw(20) << "genVardas" + to_string(genit)
-                << setw(20) << "genPavarde" + to_string(genit) << fixed << setprecision(2);
-            for (int i = 1; i<=16; i++) //15 pazymiu ir 1 egzamino pazymys
-            {
-                gen << setw(20) << rand() % 10 + 1;
-            }
+                << setw(20) << "genPavarde" + to_string(genit);
+
+            for (int i = 1; i <= 16; i++)
+                gen << setw(5) << rand() % 10 + 1;
+
             gen << "\n";
         }
+
         gen.close();
         sk *= 10;
 
@@ -414,6 +319,44 @@ void failgeneravimas()
     }
 }
 
+// ===== SPLIT =====
+void skirstyti(const vector<Studentas>& grupe, vector<Studentas>& protingi, vector<Studentas>& neprotingi)
+{
+    for (const auto& s : grupe)
+    {
+        if (s.getRez() >= 5.0)
+            protingi.push_back(s);
+        else
+            neprotingi.push_back(s);
+    }
+}
+
+void skirstyti2(vector<Studentas>& grupe, vector<Studentas>& neprotingi)
+{
+    auto it = partition(grupe.begin(), grupe.end(),
+        [](const Studentas& s) { return s.getRez() >= 5.0; });
+
+    neprotingi.assign(it, grupe.end());
+    grupe.erase(it, grupe.end());
+}
+
+void skirstyti3(vector<Studentas>& grupe, vector<Studentas>& neprotingi)
+{
+    neprotingi.reserve(grupe.size());
+    auto it = remove_if(grupe.begin(), grupe.end(),
+        [&](const Studentas& s)
+        {
+            if (s.getRez() < 5.0)
+            {
+                neprotingi.push_back(s);
+                return true;
+            }
+            return false;
+        });
+    grupe.erase(it, grupe.end());
+}
+
+// ===== GEN + STRATEGY =====
 void genirasymas(vector<Studentas> &grupe, vector<Studentas> &protingi, vector<Studentas> &neprotingi, 
     string writing_good, string writing_bad, int rik_pasirinkimas, SkirstymoStrategija strategija)
 {
@@ -436,8 +379,7 @@ void genirasymas(vector<Studentas> &grupe, vector<Studentas> &protingi, vector<S
         }
 
         string line;
-
-        getline(file, line); // praleidziu antraste
+        getline(file, line);
 
         while (getline(file, line))
         {
@@ -445,37 +387,26 @@ void genirasymas(vector<Studentas> &grupe, vector<Studentas> &protingi, vector<S
 
             Studentas A;
 
-            iss >> A.getVardas() >> A.getPavarde();
+            string v, p;
+            iss >> v >> p;
+            A.setVardas(v);
+            A.setPavarde(p);
 
             int paz;
+            vector<int> temp;
 
             while (iss >> paz)
-            {
-                A.paz.push_back(paz);
-            }
+                temp.push_back(paz);
 
-            if (A.paz.empty())
-                continue;
+            if (temp.empty()) continue;
 
-            A.egz = A.paz.back();
-            A.paz.pop_back();
+            A.setEgz(temp.back());
+            temp.pop_back();
 
-            int sum = 0;
+            for (int x : temp)
+                A.addPaz(x);
 
-            for (int x : A.paz)
-                sum += x;
-
-            A.getRez() = 0.4 * (sum * 1.0 / A.paz.size()) + 0.6 * A.egz;
-
-            sort(A.paz.begin(), A.paz.end());
-
-            int n = A.paz.size();
-
-            if (n % 2 == 0)
-                A.getMedrez() = (A.paz[n/2 - 1] + A.paz[n/2]) / 2.0;
-            else
-                A.getMedrez() = A.paz[n/2];
-            A.getMedrez() = A.getMedrez() * 0.4 + A.egz * 0.6;
+            A.skaiciuoti();
             grupe.push_back(A);
         }
 
@@ -490,71 +421,34 @@ void genirasymas(vector<Studentas> &grupe, vector<Studentas> &protingi, vector<S
         rikiuoti(grupe, rik_pasirinkimas);
         auto end_rikiavimas = chrono::high_resolution_clock::now();
         chrono::duration<double> diff_rikiavimas = end_rikiavimas - start_rikiavimas;
-        cout << "Rikiavimas failui " << filename << " uztruko: " << diff_rikiavimas.count() << " s\n";
+
+        cout << "Rikiavimas uztruko: " << diff_rikiavimas.count() << " s\n";
 
         auto start_skirstymas = chrono::high_resolution_clock::now();
 
         if (strategija == SkirstymoStrategija::PIRMAS)
-        {
             skirstyti(grupe, protingi, neprotingi);
-        }
         else if (strategija == SkirstymoStrategija::ANTRAS)
-        {
             skirstyti2(grupe, neprotingi);
-        }
-        else if (strategija == SkirstymoStrategija::TRECIAS)
-        {
+        else
             skirstyti3(grupe, neprotingi);
-        }
+
         auto end_skirstymas = chrono::high_resolution_clock::now();
         chrono::duration<double> diff_skirstymas = end_skirstymas - start_skirstymas;
-        cout << "Protingu/Neprotingu skirstymas failui " << filename << " uztruko: " << diff_skirstymas.count() << " s\n";
 
-        if (strategija == SkirstymoStrategija::PIRMAS)
-        {
-            cout << "Protingu ";
-            failoutputas(protingi, "kursiokai_geri_" + to_string(sk) + ".txt");
-            cout << "Neprotingu ";
-            failoutputas(neprotingi, "kursiokai_blogi_" + to_string(sk) + ".txt");
-        }
-        else if (strategija == SkirstymoStrategija::ANTRAS || strategija == SkirstymoStrategija::TRECIAS)
-        {
-            cout << "Protingu ";
-            failoutputas(grupe, "kursiokai_geri_" + to_string(sk) + ".txt");
-            cout << "Neprotingu ";
-            failoutputas(neprotingi, "kursiokai_blogi_" + to_string(sk) + ".txt");
-        }
-
-        cout << "\n";
+        cout << "Skirstymas uztruko: " << diff_skirstymas.count() << " s\n";
 
         grupe.clear();
         protingi.clear();
         neprotingi.clear();
 
-        logResults(
-            "vector", // keisti pagal versija
-            sk,
-            diff_read.count(),
-            diff_rikiavimas.count(),
-            diff_skirstymas.count()
-        );
+        logResults("vector", sk, diff_read.count(), diff_rikiavimas.count(), diff_skirstymas.count());
 
         sk *= 10;
     }
 }
 
-void skirstyti(const vector<Studentas>& grupe, vector<Studentas>& protingi, vector<Studentas>& neprotingi)
-{
-    for (const auto& s : grupe)
-    {
-        if (s.getRez() >= 5.0)
-            protingi.push_back(s);
-        else
-           neprotingi.push_back(s);
-    }
-}
-
-
+// ===== LOG =====
 void logResults(const string& container, int size,
                 double read_t, double sort_t, double split_t)
 {
@@ -565,70 +459,3 @@ void logResults(const string& container, int size,
         << sort_t << ","
         << split_t << "\n";
 }
-
-void skirstyti2(vector<Studentas>& grupe, vector<Studentas>& neprotingi)
-{
-    auto it = partition(grupe.begin(), grupe.end(),
-        [](const Studentas& s) { return s.getRez() >= 5.0; });
-    neprotingi.assign(it, grupe.end());
-    grupe.erase(it, grupe.end()); // protingi paliekami
-}
-
-void skirstyti3(vector<Studentas>& grupe, vector<Studentas>& neprotingi)
-{
-    neprotingi.reserve(grupe.size());
-    auto it = remove_if(grupe.begin(), grupe.end(),
-        [&](const Studentas& s)
-        {
-            if (s.getRez() < 5.0)
-            {
-                neprotingi.push_back(s);
-                return true;
-            }
-            return false;
-        });
-    grupe.erase(it, grupe.end());
-}
-
-void Studentas::skaiciuoti()
-{
-    if (paz_.empty()) return;
-
-    int sum = 0;
-    for (int x : paz_) sum += x;
-
-    rez_ = 0.4 * (sum * 1.0 / paz_.size()) + 0.6 * egz_;
-
-    vector<int> temp = paz_;
-    sort(temp.begin(), temp.end());
-
-    if (temp.size() % 2 == 0)
-        medrez_ = (temp[temp.size()/2 - 1] + temp[temp.size()/2]) / 2.0;
-    else
-        medrez_ = temp[temp.size()/2];
-
-    medrez_ = medrez_ * 0.4 + egz_ * 0.6;
-}
-
-void Studentas::skaiciuoti()
-{
-    if (paz.empty()) return;
-
-    int sum = 0;
-    for (int x : paz) sum += x;
-
-    rez = 0.4 * (sum * 1.0 / paz.size()) + 0.6 * egz;
-
-    vector<int> temp = paz;
-    sort(temp.begin(), temp.end());
-
-    if (temp.size() % 2 == 0)
-        medrez = (temp[temp.size()/2 - 1] + temp[temp.size()/2]) / 2.0;
-    else
-        medrez = temp[temp.size()/2];
-
-    medrez = medrez * 0.4 + egz * 0.6;
-}
-
-
-
