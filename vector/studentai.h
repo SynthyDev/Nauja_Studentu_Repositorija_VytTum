@@ -22,35 +22,30 @@ enum class SkirstymoStrategija
 
 class Studentas {
 private:
-    string vardas_ = "A";
-    string pavarde_ = "BB";
-    vector<int> paz_;
-    int egz_ = 0;
-
-    double rez_ = 0.0;
-    double medrez_ = 0.0;
-
-    void skaiciuoti();
+    string vardas = "A", pavarde = "BB";
+    vector<int> paz;
+    int egz = 0;
+    double rez = 0.0;
+    double medrez = 0.0;
 
 public:
-    // konstruktorius
     Studentas() = default;
 
     // getteriai
-    string vardas() const { return vardas_; }
-    string pavarde() const { return pavarde_; }
-    double rez() const { return rez_; }
-    double medrez() const { return medrez_; }
-    int egz() const { return egz_; }
-    const vector<int>& paz() const { return paz_; }
+    string getVardas() const { return vardas; }
+    string getPavarde() const { return pavarde; }
+    double getRez() const { return rez; }
+    double getMedrez() const { return medrez; }
+    int getEgz() const { return egz; }
+    vector<int>& getPaz() { return paz; }
 
-    // setteriai
-    void setVardas(const string& v) { vardas_ = v; }
-    void setPavarde(const string& p) { pavarde_ = p; }
-    void addPaz(int p) { paz_.push_back(p); }
-    void setEgz(int e) { egz_ = e; }
+    // setteriai (padariau kad nereiktu perrasyti logikos daugiau nei reikia)
+    void setVardas(const string& v) { vardas = v; }
+    void setPavarde(const string& p) { pavarde = p; }
+    void addPaz(int p) { paz.push_back(p); }
+    void setEgz(int e) { egz = e; }
 
-    void skaiciuotiGalutini();
+    void skaiciuoti();
 };
 
 const string irasymo_failas = "kursiokai.txt";
@@ -79,4 +74,5 @@ void logResults(const string& container, int size,
                 double read_t, double sort_t, double split_t);
 void skirstyti2(vector<Studentas>& grupe, vector<Studentas>& neprotingi);
 void skirstyti3(vector<Studentas>& grupe, vector<Studentas>& neprotingi);
+
 #endif

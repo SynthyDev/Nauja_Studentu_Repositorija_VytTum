@@ -611,12 +611,25 @@ void Studentas::skaiciuoti()
     medrez_ = medrez_ * 0.4 + egz_ * 0.6;
 }
 
-void Studentas::skaiciuotiGalutini()
+void Studentas::skaiciuoti()
 {
-    skaiciuoti();
+    if (paz.empty()) return;
+
+    int sum = 0;
+    for (int x : paz) sum += x;
+
+    rez = 0.4 * (sum * 1.0 / paz.size()) + 0.6 * egz;
+
+    vector<int> temp = paz;
+    sort(temp.begin(), temp.end());
+
+    if (temp.size() % 2 == 0)
+        medrez = (temp[temp.size()/2 - 1] + temp[temp.size()/2]) / 2.0;
+    else
+        medrez = temp[temp.size()/2];
+
+    medrez = medrez * 0.4 + egz * 0.6;
 }
-
-
 
 
 
