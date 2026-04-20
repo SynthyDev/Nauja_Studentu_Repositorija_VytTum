@@ -7,7 +7,15 @@ Kaip naudoti Makefile?
 7. Turėtų iššokti langas, kuriame veiks pasirinkta programa. Joje galite įrašyti parametrus ir pasirinkti programos funkcijas.
 
 ---
+VERSIJOS V1.2 DALYKAI
+---
+<img width="1298" height="257" alt="image" src="https://github.com/user-attachments/assets/c40a0247-d535-4a96-b6e0-c8a7c17f469a" />
+(penkiu taisykliu testavimas)
 
+
+
+
+---
 Versija v1.1
 Viskas pakeista į Class tipą.
 funkcionalumas tas pats
