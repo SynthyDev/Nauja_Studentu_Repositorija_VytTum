@@ -137,4 +137,8 @@ void logResults(const string& container, int size,
 void skirstyti2(vector<Studentas>& grupe, vector<Studentas>& neprotingi);
 void skirstyti3(vector<Studentas>& grupe, vector<Studentas>& neprotingi);
 
+ostream& operator<<(ostream& os, const Studentas& s);
+istream& operator>>(istream& is, Studentas& s);
+
+
 #endif
