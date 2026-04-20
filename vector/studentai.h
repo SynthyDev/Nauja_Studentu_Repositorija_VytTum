@@ -31,6 +31,60 @@ private:
 public:
     Studentas() = default;
 
+// Rule of Five
+~Studentas() = default;
+
+Studentas(const Studentas& other)
+    : vardas(other.vardas),
+      pavarde(other.pavarde),
+      paz(other.paz),
+      egz(other.egz),
+      rez(other.rez),
+      medrez(other.medrez)
+{}
+
+Studentas& operator=(const Studentas& other) {
+    if (this != &other) {
+        vardas = other.vardas;
+        pavarde = other.pavarde;
+        paz = other.paz;
+        egz = other.egz;
+        rez = other.rez;
+        medrez = other.medrez;
+    }
+    return *this;
+}
+
+Studentas(Studentas&& other) noexcept
+    : vardas(std::move(other.vardas)),
+      pavarde(std::move(other.pavarde)),
+      paz(std::move(other.paz)),
+      egz(other.egz),
+      rez(other.rez),
+      medrez(other.medrez)
+{
+    other.egz = 0;
+    other.rez = 0;
+    other.medrez = 0;
+}
+
+Studentas& operator=(Studentas&& other) noexcept {
+    if (this != &other) {
+        vardas = std::move(other.vardas);
+        pavarde = std::move(other.pavarde);
+        paz = std::move(other.paz);
+        egz = other.egz;
+        rez = other.rez;
+        medrez = other.medrez;
+
+        other.egz = 0;
+        other.rez = 0;
+        other.medrez = 0;
+    }
+    return *this;
+}
+
+
     string& refVardas() { return vardas; }
     string& refPavarde() { return pavarde; }
     vector<int>& refPaz() { return paz; }
