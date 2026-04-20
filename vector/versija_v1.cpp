@@ -29,6 +29,35 @@ int main()
     cin >> genpas;
     if (genpas == "y") failgeneravimas();
 
+    cout << "--- Rule of Five dalykai ---" << endl;
+
+    Studentas a;
+    a.setVardas("Jonas");
+    a.setPavarde("Jonaitis");
+    a.addPaz(10);
+    a.addPaz(9);
+    a.setEgz(8);
+    a.skaiciuoti();
+
+    cout << "Original: " << a << endl;
+
+    Studentas b = a;          // copy constructor
+    cout << "Copy ctor: " << b << endl;
+
+    Studentas c;
+    c = a;                    // copy assignment
+    cout << "Copy assign: " << c << endl;
+
+    Studentas d = move(a);  // move constructor
+    cout <<"Move ctor: " << d << endl;
+
+    Studentas e;
+    e = move(b);         // move assignment
+    cout << "Move assign: " << e << endl;
+
+    cout << "=== End of Test ===" << endl << endl;
+
+
     int pasirinkimas = 4;
     string isvedimotipas, skaitymo_pasirinkimas, skaitymo_failas;
     cout << "Kokios norite ivesties? (1 - ranka arba is failo, 2 - generuoti tik pazymius, " << endl
