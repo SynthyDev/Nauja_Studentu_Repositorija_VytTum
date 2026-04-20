@@ -12,8 +12,29 @@ VERSIJOS V1.2 DALYKAI
 <img width="1298" height="257" alt="image" src="https://github.com/user-attachments/assets/c40a0247-d535-4a96-b6e0-c8a7c17f469a" />
 (penkiu taisykliu testavimas)
 
+Kaip veikia 5 taisyklės:
+Destruktorius
+Kopijavimo konstruktorius
+Kopijavimo priskyrimo operatorius
+Perkėlimo konstruktorius
+Perkėlimo priskyrimo operatorius
+(visi buvo pridėti prie klasės funkcionalumo)
 
+Operatorių persidengimas:
+operator<< leidžia rašyti išvedimą kaip <<
+pvz
+cout << Studentas;
+(rodomas vardas, pavardė, galutinis pažymių vidurkis su ir be medianos)
 
+operator>> leidžia rašyti įvedimą kaip >>
+pvz
+cin >> Studentas;
+
+Nuskaito:
+vardą ir pavardę
+visus pažymius iki eilutės pabaigos
+Paskutinį pažymį traktuoja kaip egzaminą
+Perskaičiuoja vidurkį ir medianą
 
 ---
 Versija v1.1
