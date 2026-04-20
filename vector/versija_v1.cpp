@@ -39,21 +39,21 @@ int main()
     a.setEgz(8);
     a.skaiciuoti();
 
-    cout << "Original: " << a << endl;
+    cout << setw(20) << "Original: " << a << endl;
 
     Studentas b = a;          // copy constructor
-    cout << "Copy ctor: " << b << endl;
+    cout << setw(20) << "Copy ctor: " << b << endl;
 
     Studentas c;
     c = a;                    // copy assignment
-    cout << "Copy assign: " << c << endl;
+    cout << setw(20) << "Copy assign: " << c << endl;
 
     Studentas d = move(a);  // move constructor
-    cout <<"Move ctor: " << d << endl;
+    cout <<setw(20) << "Move ctor: " << d << endl;
 
     Studentas e;
     e = move(b);         // move assignment
-    cout << "Move assign: " << e << endl;
+    cout << setw(20) << "Move assign: " << e << endl;
 
     cout << "=== End of Test ===" << endl << endl;
 
