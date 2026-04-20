@@ -587,3 +587,35 @@ void skirstyti3(vector<Studentas>& grupe, vector<Studentas>& neprotingi)
 
     grupe.erase(it, grupe.end());
 }
+
+ostream& operator<<(ostream& os, const Studentas& s)
+{
+    os << left << setw(20) << s.getVardas()
+       << setw(20) << s.getPavarde()
+       << setw(10) << fixed << setprecision(2) << s.getRez()
+       << setw(10) << s.getMedrez();
+    return os;
+}
+
+istream& operator>>(istream& is, Studentas& s)
+{
+    s.refPaz().clear();
+
+    is >> s.refVardas() >> s.refPavarde();
+
+    int paz;
+    while (is >> paz) {
+        s.refPaz().push_back(paz);
+    }
+
+    if (!s.refPaz().empty()) {
+        s.refEgz() = s.refPaz().back();
+        s.refPaz().pop_back();
+        s.skaiciuoti();
+    }
+
+    return is;
+}
+
+
+
