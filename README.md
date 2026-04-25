@@ -7,6 +7,27 @@ Kaip naudoti Makefile?
 7. Turėtų iššokti langas, kuriame veiks pasirinkta programa. Joje galite įrašyti parametrus ir pasirinkti programos funkcijas.
 
 ---
+VERSIJOS V1.5 DALYKAI
+---
+Rule of Five vis dar veikia:
+<img width="1242" height="232" alt="image" src="https://github.com/user-attachments/assets/b42ca5ab-68fb-4ab4-a947-f5c4526d4f49" />
+<img width="712" height="776" alt="image" src="https://github.com/user-attachments/assets/878ede86-ea6f-4ad8-83d7-e01ac2a86c47" />
+*Patikrinimas, ar visas kitas funkcionalumas veikia efektyviai, kaip ir anksčiau:*
+<img width="1114" height="902" alt="image" src="https://github.com/user-attachments/assets/5b904816-dd44-4b07-a072-a8f9402bff6e" />
+reikšmės sutampa su praeitu testavimu.
+---
+Kaip veikia Zmogus ir Studentai klasės?
+
+Zmogus klasė yra abstrakti, kitaip sakant, bandant ją sukurti metama klaida.
+<img width="1159" height="227" alt="image" src="https://github.com/user-attachments/assets/23af233d-3765-42b0-ab4f-d360807eb243" />
+<img width="1483" height="466" alt="image" src="https://github.com/user-attachments/assets/2707eaac-93fd-4034-afe1-133f9cc0ae06" />
+
+Kūrimas veikia tik su Studentai klase, kuri nėra abstrakti (tuo pasirūpinta šioje eilutėje):
+<img width="917" height="122" alt="image" src="https://github.com/user-attachments/assets/cc3b8da1-725f-4259-8acd-ba8bb7f0148e" />
+
+Visa kita yra tas pats. Iš esmės Zmogaus klasė tiesiog turi vardo ir pavardės parametrus/funkcijas.
+
+---
 VERSIJOS V1.2 DALYKAI
 ---
 <img width="1298" height="257" alt="image" src="https://github.com/user-attachments/assets/c40a0247-d535-4a96-b6e0-c8a7c17f469a" />
