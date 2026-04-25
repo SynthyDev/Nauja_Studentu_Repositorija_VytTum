@@ -20,7 +20,26 @@ enum class SkirstymoStrategija
     TRECIAS
 };
 
-class Studentas {
+class Zmogus {
+protected:
+    string vardas;
+    string pavarde;
+
+public:
+    virtual ~Zmogus() = default;
+
+    // Pure virtual function makes class abstract
+    virtual void info() const = 0;
+
+    // Common getters/setters
+    string getVardas() const { return vardas; }
+    string getPavarde() const { return pavarde; }
+    void setVardas(const string& v) { vardas = v; }
+    void setPavarde(const string& p) { pavarde = p; }
+};
+
+
+class Studentas : public Zmogus {
 private:
     string vardas = "A", pavarde = "BB";
     vector<int> paz;
