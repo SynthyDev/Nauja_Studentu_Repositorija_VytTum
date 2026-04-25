@@ -29,6 +29,10 @@ int main()
     cin >> genpas;
     if (genpas == "y") failgeneravimas();
 
+    cout << "--- Zmogus kurimo testavimas ---" << endl;
+
+    // Zmogus z;
+
     cout << "--- Rule of Five dalykai ---" << endl;
 
     Studentas a;
