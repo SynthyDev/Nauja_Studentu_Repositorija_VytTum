@@ -28,10 +28,10 @@ protected:
 public:
     virtual ~Zmogus() = default;
 
-    // Pure virtual function makes class abstract
-    virtual void info() const = 0;
+    virtual void info() const = 0; // kad veiktu abstrakciai
 
-    // Common getters/setters
+    string& refVardas() { return vardas; }
+    string& refPavarde() { return pavarde; }
     string getVardas() const { return vardas; }
     string getPavarde() const { return pavarde; }
     void setVardas(const string& v) { vardas = v; }
@@ -41,7 +41,6 @@ public:
 
 class Studentas : public Zmogus {
 private:
-    string vardas = "A", pavarde = "BB";
     vector<int> paz;
     int egz = 0;
     double rez = 0.0;
@@ -54,8 +53,7 @@ public:
 ~Studentas() = default;
 
 Studentas(const Studentas& other)
-    : vardas(other.vardas),
-      pavarde(other.pavarde),
+    : Zmogus(other),
       paz(other.paz),
       egz(other.egz),
       rez(other.rez),
@@ -64,8 +62,7 @@ Studentas(const Studentas& other)
 
 Studentas& operator=(const Studentas& other) {
     if (this != &other) {
-        vardas = other.vardas;
-        pavarde = other.pavarde;
+        Zmogus::operator=(other);
         paz = other.paz;
         egz = other.egz;
         rez = other.rez;
@@ -75,8 +72,7 @@ Studentas& operator=(const Studentas& other) {
 }
 
 Studentas(Studentas&& other) noexcept
-    : vardas(std::move(other.vardas)),
-      pavarde(std::move(other.pavarde)),
+    : Zmogus(std::move(other)),
       paz(std::move(other.paz)),
       egz(other.egz),
       rez(other.rez),
@@ -89,8 +85,7 @@ Studentas(Studentas&& other) noexcept
 
 Studentas& operator=(Studentas&& other) noexcept {
     if (this != &other) {
-        vardas = std::move(other.vardas);
-        pavarde = std::move(other.pavarde);
+        Zmogus::operator=(std::move(other));
         paz = std::move(other.paz);
         egz = other.egz;
         rez = other.rez;
@@ -103,28 +98,24 @@ Studentas& operator=(Studentas&& other) noexcept {
     return *this;
 }
 
+    void info() const override { // kad veiktu ne abstrakciai?
+        cout << "Studentas: " << vardas << " " << pavarde << endl;
+    }
 
-    string& refVardas() { return vardas; }
-    string& refPavarde() { return pavarde; }
     vector<int>& refPaz() { return paz; }
     int& refEgz() { return egz; }
     double& refRez() { return rez; }
     double& refMedrez() { return medrez; }
     void clearPaz() { paz.clear(); }
-
-    // getteriai
-    string getVardas() const { return vardas; }
-    string getPavarde() const { return pavarde; }
     double getRez() const { return rez; }
     double getMedrez() const { return medrez; }
     int getEgz() const { return egz; }
+
     vector<int>& getPaz() { return paz; }
 
-    // setteriai
-    void setVardas(const string& v) { vardas = v; }
-    void setPavarde(const string& p) { pavarde = p; }
     void addPaz(int p) { paz.push_back(p); }
     void setEgz(int e) { egz = e; }
+
 
     void skaiciuoti();
 };
