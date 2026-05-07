@@ -16,6 +16,7 @@ using namespace std;
 
 void Studentas::skaiciuoti()
 {
+    //! Compute final average and median-based results
     if (paz.empty()) return;
 
     int sum = 0;
@@ -36,6 +37,7 @@ void Studentas::skaiciuoti()
 
 void inputas(vector<Studentas> &grupe)
 {
+    //! Manual student input
     Studentas A;
 
     while (true)
@@ -49,6 +51,7 @@ void inputas(vector<Studentas> &grupe)
         string ats;
         while (true)
         {
+            //! Read homework grades with validation
             int temp;
             cout << "Iveskite pazymi numeris " << i + 1 << ": ";
             try
@@ -71,11 +74,11 @@ void inputas(vector<Studentas> &grupe)
             cout << "Ar toliau vesite pazymius? (y/n): ";
             cin >> ats;
             if (ats == "n") break;
-            else if (ats == "y") cout << "Veskite toliau: ";
 
             i++;
         }
 
+        //! Read exam grade
         cout << "Iveskite egzamino rezultata: ";
         try
         {
@@ -91,6 +94,7 @@ void inputas(vector<Studentas> &grupe)
             continue;
         }
 
+        //! Compute results
         if (!A.refPaz().empty())
         {
             A.refRez() = (sum * 1.0 / A.refPaz().size()) * 0.4 + A.refEgz() * 0.6;
@@ -117,6 +121,7 @@ void inputas(vector<Studentas> &grupe)
 
 void outputas(const vector<Studentas> &grupe)
 {
+    //! Print students to console
     cout << "-------------------------------------------------------------------" << endl;
     cout << left << setw(20) << "Vardas"
          << setw(20) << "Pavarde"
@@ -137,6 +142,7 @@ void outputas(const vector<Studentas> &grupe)
 
 void failoutputas(const vector<Studentas> &grupe, string writing)
 {
+    //! Write students to file
     ofstream out(writing);
     out << "------------------------------------------------------------------- \n";
     out << left << setw(20) << "Vardas"
@@ -161,23 +167,24 @@ void failoutputas(const vector<Studentas> &grupe, string writing)
 
 void randominputas(vector<Studentas> &grupe, bool ArGeneruotiVardus)
 {
+    //! Random student generation (names optional)
     Studentas A;
     string lytis;
     string ats;
 
     if (ArGeneruotiVardus)
     {
-        int zmonsk = rand() % 100 + 1;
+        int zmonsk = rand() % 100 + 1; //! Random number of students
 
         for(int iii = 0; iii < zmonsk; iii++)
         {
             int sum = 0;
 
-            lytis = lytgen();
+            lytis = lytgen(); //! Random gender
             A.refVardas() = randomvardas(lytis);
             A.refPavarde() = randompavarde(lytis);
 
-            int pazsk = rand() % 100 + 1;
+            int pazsk = rand() % 100 + 1; //! Random number of grades
 
             for (int ii = 0; ii < pazsk; ii++)
             {
@@ -209,6 +216,7 @@ void randominputas(vector<Studentas> &grupe, bool ArGeneruotiVardus)
     }
     else
     {
+        //! Random grades only, manual names
         while (true)
         {
             int sum = 0;
@@ -254,6 +262,7 @@ void randominputas(vector<Studentas> &grupe, bool ArGeneruotiVardus)
 
 void failinputas(vector<Studentas> &grupe, string reading)
 {
+    //! Read students from file
     ifstream file(reading);
     grupe.reserve(1000000);
 
@@ -264,7 +273,7 @@ void failinputas(vector<Studentas> &grupe, string reading)
     }
 
     string line;
-    getline(file, line);
+    getline(file, line); //! Skip header
 
     while (getline(file, line))
     {
@@ -308,9 +317,9 @@ void failinputas(vector<Studentas> &grupe, string reading)
     }
 }
 
-
 string randomvardas(string lytis)
 {
+    //! Random first name based on gender
     if (lytis == "mot")
         return fvardai[rand() % fvardai.size()];
     else
@@ -319,6 +328,7 @@ string randomvardas(string lytis)
 
 string randompavarde(string lytis)
 {
+    //! Random surname with gendered ending
     int index = rand() % pavardes.size();
     string galune;
 
@@ -332,38 +342,43 @@ string randompavarde(string lytis)
 
 string lytgen()
 {
+    //! Random gender generator
     return rand() % 2 == 0 ? "vyr" : "mot";
 }
 
-
 bool cmpVardas(const Studentas &a, const Studentas &b)
 {
+    //! Compare by first name
     return a.getVardas() < b.getVardas();
 }
 
 bool cmpPavarde(const Studentas &a, const Studentas &b)
 {
+    //! Compare by last name
     return a.getPavarde() < b.getPavarde();
 }
 
 bool cmpRez(const Studentas &a, const Studentas &b)
 {
+    //! Compare by final average
     return a.getRez() < b.getRez();
 }
 
 bool cmpMedrez(const Studentas &a, const Studentas &b)
 {
+    //! Compare by final median
     return a.getMedrez() < b.getMedrez();
 }
 
 bool cmpEgz(const Studentas &a, const Studentas &b)
 {
+    //! Compare by exam grade
     return a.getEgz() < b.getEgz();
 }
 
-
 void rikiuoti(vector<Studentas> &grupe, int pasirinkimas)
 {
+    //! Sort students based on chosen criterion
     if (pasirinkimas == 1)
         sort(grupe.begin(), grupe.end(), cmpVardas);
     else if (pasirinkimas == 2)
@@ -371,14 +386,12 @@ void rikiuoti(vector<Studentas> &grupe, int pasirinkimas)
     else if (pasirinkimas == 3)
         sort(grupe.begin(), grupe.end(), cmpRez);
     else if (pasirinkimas == 4)
-        sort(grupe.begin(), grupe.end(), cmpMedrez);
-    else if (pasirinkimas == 5)
         sort(grupe.begin(), grupe.end(), cmpEgz);
 }
 
-
 void failgeneravimas()
 {
+    //! Generate 5 test files with increasing sizes
     int sk = 1000;
     for (int it = 0; it < 5; it++)
     {
@@ -410,10 +423,10 @@ void failgeneravimas()
     }
 }
 
-
 void genirasymas(vector<Studentas> &grupe, vector<Studentas> &protingi, vector<Studentas> &neprotingi, 
     string writing_good, string writing_bad, int rik_pasirinkimas, SkirstymoStrategija strategija)
 {
+    //! Read generated files, sort, split, write, and log timings
     int sk = 1000;
 
     for (int it = 0; it < 5; it++)
@@ -535,9 +548,9 @@ void genirasymas(vector<Studentas> &grupe, vector<Studentas> &protingi, vector<S
     }
 }
 
-
 void skirstyti(const vector<Studentas>& grupe, vector<Studentas>& protingi, vector<Studentas>& neprotingi)
 {
+    //! Simple split: copy into two vectors based on result
     for (const auto& s : grupe)
     {
         if (s.getRez() >= 5.0)
@@ -547,10 +560,10 @@ void skirstyti(const vector<Studentas>& grupe, vector<Studentas>& protingi, vect
     }
 }
 
-
 void logResults(const string& container, int size,
                 double read_t, double sort_t, double split_t)
 {
+    //! Append timing results to CSV
     ofstream out("results.csv", ios::app);
     out << container << ","
         << size << ","
@@ -559,9 +572,9 @@ void logResults(const string& container, int size,
         << split_t << "\n";
 }
 
-
 void skirstyti2(vector<Studentas>& grupe, vector<Studentas>& neprotingi)
 {
+    //! Split using std::partition (bad at end)
     auto it = partition(grupe.begin(), grupe.end(),
         [](const Studentas& s) { return s.getRez() >= 5.0; });
 
@@ -569,9 +582,9 @@ void skirstyti2(vector<Studentas>& grupe, vector<Studentas>& neprotingi)
     grupe.erase(it, grupe.end());
 }
 
-
 void skirstyti3(vector<Studentas>& grupe, vector<Studentas>& neprotingi)
 {
+    //! Split using std::remove_if and push bad into separate vector
     neprotingi.reserve(grupe.size());
 
     auto it = remove_if(grupe.begin(), grupe.end(),
@@ -590,6 +603,7 @@ void skirstyti3(vector<Studentas>& grupe, vector<Studentas>& neprotingi)
 
 ostream& operator<<(ostream& os, const Studentas& s)
 {
+    //! Stream output for Studentas (formatted)
     os << left << setw(20) << s.getVardas()
        << setw(20) << s.getPavarde()
        << setw(10) << fixed << setprecision(2) << s.getRez()
@@ -599,6 +613,7 @@ ostream& operator<<(ostream& os, const Studentas& s)
 
 istream& operator>>(istream& is, Studentas& s)
 {
+    //! Stream input for Studentas: name + grades (last is exam)
     s.refPaz().clear();
 
     is >> s.refVardas() >> s.refPavarde();
@@ -616,6 +631,3 @@ istream& operator>>(istream& is, Studentas& s)
 
     return is;
 }
-
-
-

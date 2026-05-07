@@ -3,7 +3,7 @@ CXXFLAGS = -O3 -std=c++17 -Wall
 
 TARGET = programa
 
-SRC = versija_v1.cpp funk.cpp
+SRC = versija_v2.0.cpp funk.cpp
 
 all: $(TARGET)
 

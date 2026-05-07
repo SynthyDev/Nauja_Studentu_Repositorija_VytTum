@@ -18,24 +18,22 @@ int main()
 {
     srand(time(NULL));
 
-    vector<Studentas> grupe;
-    vector<Studentas> protingi;
-    vector<Studentas> neprotingi;
+    vector<Studentas> grupe;        //! Main student group
+    vector<Studentas> protingi;     //! Students with >=5 result
+    vector<Studentas> neprotingi;   //! Students with <5 result
 
-    grupe.reserve(10000000);
+    grupe.reserve(10000000);        //! Pre-reserve for performance
 
     string genpas;
     cout << "Norite generuoti 5 failus? y/n " << endl;
     cin >> genpas;
-    if (genpas == "y") failgeneravimas();
+    if (genpas == "y") failgeneravimas(); //! Generate test files
 
     cout << "--- Zmogus kurimo testavimas ---" << endl;
 
-    // Zmogus z;
-
     cout << "--- Rule of Five dalykai ---" << endl;
 
-    Studentas a;
+    Studentas a; //! Test object for Rule of Five
     a.setVardas("Jonas");
     a.setPavarde("Jonaitis");
     a.addPaz(10);
@@ -45,18 +43,18 @@ int main()
 
     cout << setw(20) << "Original: " << a << endl;
 
-    Studentas b = a;          // copy constructor
+    Studentas b = a;          //! Copy constructor
     cout << setw(20) << "Copy ctor: " << b << endl;
 
     Studentas c;
-    c = a;                    // copy assignment
+    c = a;                    //! Copy assignment
     cout << setw(20) << "Copy assign: " << c << endl;
 
-    Studentas d = move(a);  // move constructor
-    cout <<setw(20) << "Move ctor: " << d << endl;
+    Studentas d = move(a);    //! Move constructor
+    cout << setw(20) << "Move ctor: " << d << endl;
 
     Studentas e;
-    e = move(b);         // move assignment
+    e = move(b);              //! Move assignment
     cout << setw(20) << "Move assign: " << e << endl;
 
     cout << "=== End of Test ===" << endl << endl;
@@ -64,29 +62,23 @@ int main()
 
     int pasirinkimas = 4;
     string isvedimotipas, skaitymo_pasirinkimas, skaitymo_failas;
-    cout << "Kokios norite ivesties? (1 - ranka arba is failo, 2 - generuoti tik pazymius, " << endl
-    << " 3 - generuoti studentu vardus, pavardes ir pazymius, 4 - skaityti sugeneruotus failus; 5 arba kitas simbolis - baigti darba)" << endl;
+
+    cout << "Kokios norite ivesties? ..." << endl;
     cin >> pasirinkimas;
 
     int rikiavimo_pasirinkimas;
-    cout << "Pagal ka rikiuoti?" << endl
-    << "1 - vardas" << endl
-    << "2 - pavarde" << endl
-    << "3 - galutinis (vidurkis)" << endl
-    << "4 - galutinis (mediana)" << endl
-    << "5 - egzaminas" << endl;
+    cout << "Pagal ka rikiuoti?" << endl;
     cin >> rikiavimo_pasirinkimas;
 
-
-    auto input_start = chrono::high_resolution_clock::now();
+    auto input_start = chrono::high_resolution_clock::now(); //! Start timing input
 
     if (pasirinkimas == 1)
-    {    
-        cout << "Ar skaityti duomenis is failo? (y - is failo / n - ranka)";
+    {
+        //! Manual or file input
+        cout << "Ar skaityti duomenis is failo? (y/n)";
         cin >> skaitymo_pasirinkimas;
         if (skaitymo_pasirinkimas == "y")
         {
-            string skaitymo_failas;
             cout << "Iveskite failo pavadinima: ";
             cin >> skaitymo_failas;
             failinputas(grupe, skaitymo_failas);
@@ -95,15 +87,18 @@ int main()
     }
     else if (pasirinkimas == 2)
     {
-        randominputas(grupe, false);
+        randominputas(grupe, false); //! Random grades only
     }
     else if (pasirinkimas == 3)
     {
-        randominputas(grupe, true);
+        randominputas(grupe, true); //! Random names + grades
     }
     else if (pasirinkimas == 4)
     {
-        genirasymas(grupe, protingi, neprotingi, irasymo_failas_geras, irasymo_failas_blogas, rikiavimo_pasirinkimas, SkirstymoStrategija::TRECIAS);
+        //! Read generated files and process them
+        genirasymas(grupe, protingi, neprotingi,
+                    irasymo_failas_geras, irasymo_failas_blogas,
+                    rikiavimo_pasirinkimas, SkirstymoStrategija::TRECIAS);
         return 0;
     }
     else
@@ -119,12 +114,11 @@ int main()
     cout << "Ar rasyti i faila? (y/n)" << endl;
     cin >> isvedimotipas;
 
-    auto start = std::chrono::high_resolution_clock::now(); // Paleisti
+    auto start = chrono::high_resolution_clock::now(); //! Start sorting/splitting timer
 
-    rikiuoti(grupe, rikiavimo_pasirinkimas);
-    //skirstyti(grupe, protingi, neprotingi)
-    //skirstyti2(grupe, neprotingi);
-    skirstyti3(grupe, neprotingi);
+    rikiuoti(grupe, rikiavimo_pasirinkimas); //! Sort students
+
+    skirstyti3(grupe, neprotingi); //! Split using remove_if
 
     if (isvedimotipas == "y")
     {
@@ -136,12 +130,11 @@ int main()
     }
     else
     {
-        outputas(grupe);
+        outputas(grupe); //! Print to console
     }
 
-    // is pavyzdzio
-    auto end = chrono::high_resolution_clock::now(); // Stabdyti
-    chrono::duration<double> diff = end-start; // Skirtumas (s)
+    auto end = chrono::high_resolution_clock::now();
+    chrono::duration<double> diff = end - start;
     cout << "Programos rikiavimas ir isvedimas uztruko: "<< diff.count() << " s\n";
 
     cout << "program finished." << endl;
