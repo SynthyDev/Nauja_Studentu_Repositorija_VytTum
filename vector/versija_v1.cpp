@@ -43,21 +43,44 @@ int main()
     a.setEgz(8);
     a.skaiciuoti();
 
-    cout << setw(20) << "Original: " << a << endl;
+    cout << setw(20) << "Originalus elementas a: " << a << endl;
 
-    Studentas b = a;          // copy constructor
-    cout << setw(20) << "Copy ctor: " << b << endl;
+    Studentas b(a);          // copy constructor
+    cout << setw(20) << "Copy ctor (b konstruojamas su a kopija): " << b << endl;
+    a.addPaz(1);
+    a.skaiciuoti();
+    cout << setw(20) << "a pakeiciamas: " << a << endl;
+    cout << setw(20) << "b lieka toks pat: " << b << endl;
 
     Studentas c;
     c = a;                    // copy assignment
-    cout << setw(20) << "Copy assign: " << c << endl;
+    cout << setw(20) << "Copy assign (c jau egzistuoja ir kopijuoja a): " << c << endl;
+    a.addPaz(1);
+    c.addPaz(10);
+    cout << setw(20) << "a ir c su pazymiu pakeitimais:" << endl;
+    a.skaiciuoti();
+    c.skaiciuoti();
+    cout << setw(20) << "pradinis (a): " << a << endl;
+    cout << setw(20) << "kopija (c): " << c << endl;
 
-    Studentas d = move(a);  // move constructor
-    cout <<setw(20) << "Move ctor: " << d << endl;
+    Studentas d(move(a));  // move constructor
+    cout << setw(20) << "Move ctor (d inicializuojamas move'inant a): " << d << endl;
+    cout << setw(20) << "objektas a, is kurio paimta info (a turi buti tuscias): " << endl;
+    cout << a << endl;
 
     Studentas e;
     e = move(b);         // move assignment
-    cout << setw(20) << "Move assign: " << e << endl;
+    cout << setw(20) << "Move assign (e egzistuoja, b -> e): " << e << endl;
+    b.addPaz(1);
+    b.skaiciuoti();
+    cout << setw(20) << "objektas b pakeiciamas" << endl;
+    cout << setw(20) << "objektas b, is kurio paimta info: " << endl;
+    cout << b << endl;
+
+    cout << setw(20) << "elementas e lygus elementui e ir yra move'inamas (e -> e): " << endl;
+    e = e; // cia tas edge case kur move'ina i ta pati dalyka
+    e = move(e);
+    cout << e << endl;
 
     cout << "=== End of Test ===" << endl << endl;
 

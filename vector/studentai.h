@@ -26,7 +26,10 @@ protected:
     string pavarde;
 
 public:
-    virtual ~Zmogus() = default;
+    Zmogus(const string& v = "A", const string& p = "BB")
+    : vardas(v), pavarde(p)
+    {}
+    virtual ~Zmogus() {}
 
     virtual void info() const = 0; // kad veiktu abstrakciai
 
@@ -47,10 +50,29 @@ private:
     double medrez = 0.0;
 
 public:
-    Studentas() = default;
+    Studentas(const string& v = "A",
+          const string& p = "BB",
+          const vector<int>& paz_ = {},
+          int egz_ = 0)
+    : Zmogus(),          // zmogaus konstruktorius
+      paz(paz_),
+      egz(egz_),
+      rez(0.0),
+      medrez(0.0)
+{
+    vardas = v;
+    pavarde = p;
+
+    if (!paz.empty())
+        skaiciuoti();
+}
+
+~Studentas()
+{
+    paz.clear();
+}
 
 // Rule of Five
-~Studentas() = default;
 
 Studentas(const Studentas& other)
     : Zmogus(other),
