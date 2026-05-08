@@ -22,12 +22,12 @@ int main()
     vector<Studentas> protingi;
     vector<Studentas> neprotingi;
 
-    grupe.reserve(10000000); //! Reserve large capacity for performance
+    grupe.reserve(10000000);
 
     string genpas;
     cout << "Norite generuoti 5 failus? y/n " << endl;
     cin >> genpas;
-    if (genpas == "y") failgeneravimas(); //! Generate 5 test files
+    if (genpas == "y") failgeneravimas();
 
     cout << "--- Zmogus kurimo testavimas ---" << endl;
 
@@ -35,7 +35,7 @@ int main()
 
     cout << "--- Rule of Five dalykai ---" << endl;
 
-    Studentas a; //! Test object for Rule of Five
+    Studentas a;
     a.setVardas("Jonas");
     a.setPavarde("Jonaitis");
     a.addPaz(10);
@@ -43,21 +43,44 @@ int main()
     a.setEgz(8);
     a.skaiciuoti();
 
-    cout << setw(20) << "Original: " << a << endl;
+    cout << setw(20) << "Originalus elementas a: " << a << endl;
 
-    Studentas b = a;          // copy constructor
-    cout << setw(20) << "Copy ctor: " << b << endl;
+    Studentas b(a);          // copy constructor
+    cout << setw(20) << "Copy ctor (b konstruojamas su a kopija): " << b << endl;
+    a.addPaz(1);
+    a.skaiciuoti();
+    cout << setw(20) << "a pakeiciamas: " << a << endl;
+    cout << setw(20) << "b lieka toks pat: " << b << endl;
 
     Studentas c;
     c = a;                    // copy assignment
-    cout << setw(20) << "Copy assign: " << c << endl;
+    cout << setw(20) << "Copy assign (c jau egzistuoja ir kopijuoja a): " << c << endl;
+    a.addPaz(1);
+    c.addPaz(10);
+    cout << setw(20) << "a ir c su pazymiu pakeitimais:" << endl;
+    a.skaiciuoti();
+    c.skaiciuoti();
+    cout << setw(20) << "pradinis (a): " << a << endl;
+    cout << setw(20) << "kopija (c): " << c << endl;
 
-    Studentas d = move(a);  // move constructor
-    cout <<setw(20) << "Move ctor: " << d << endl;
+    Studentas d(move(a));  // move constructor
+    cout << setw(20) << "Move ctor (d inicializuojamas move'inant a): " << d << endl;
+    cout << setw(20) << "objektas a, is kurio paimta info (a turi buti tuscias): " << endl;
+    cout << a << endl;
 
     Studentas e;
     e = move(b);         // move assignment
-    cout << setw(20) << "Move assign: " << e << endl;
+    cout << setw(20) << "Move assign (e egzistuoja, b -> e): " << e << endl;
+    b.addPaz(1);
+    b.skaiciuoti();
+    cout << setw(20) << "objektas b pakeiciamas" << endl;
+    cout << setw(20) << "objektas b, is kurio paimta info: " << endl;
+    cout << b << endl;
+
+    cout << setw(20) << "elementas e lygus elementui e ir yra move'inamas (e -> e): " << endl;
+    e = e; // cia tas edge case kur move'ina i ta pati dalyka
+    e = move(e);
+    cout << e << endl;
 
     cout << "=== End of Test ===" << endl << endl;
 
@@ -78,7 +101,7 @@ int main()
     cin >> rikiavimo_pasirinkimas;
 
 
-    auto input_start = chrono::high_resolution_clock::now(); //! Start timing input
+    auto input_start = chrono::high_resolution_clock::now();
 
     if (pasirinkimas == 1)
     {    
@@ -89,21 +112,20 @@ int main()
             string skaitymo_failas;
             cout << "Iveskite failo pavadinima: ";
             cin >> skaitymo_failas;
-            failinputas(grupe, skaitymo_failas); //! Read from user-specified file
+            failinputas(grupe, skaitymo_failas);
         }
-        else inputas(grupe); //! Manual input
+        else inputas(grupe);
     }
     else if (pasirinkimas == 2)
     {
-        randominputas(grupe, false); //! Random grades only
+        randominputas(grupe, false);
     }
     else if (pasirinkimas == 3)
     {
-        randominputas(grupe, true); //! Random names and grades
+        randominputas(grupe, true);
     }
     else if (pasirinkimas == 4)
     {
-        //! Process pre-generated files with chosen strategy
         genirasymas(grupe, protingi, neprotingi, irasymo_failas_geras, irasymo_failas_blogas, rikiavimo_pasirinkimas, SkirstymoStrategija::TRECIAS);
         return 0;
     }
@@ -125,7 +147,7 @@ int main()
     rikiuoti(grupe, rikiavimo_pasirinkimas);
     //skirstyti(grupe, protingi, neprotingi)
     //skirstyti2(grupe, neprotingi);
-    skirstyti3(grupe, neprotingi); //! Split into good/bad using remove_if strategy
+    skirstyti3(grupe, neprotingi);
 
     if (isvedimotipas == "y")
     {

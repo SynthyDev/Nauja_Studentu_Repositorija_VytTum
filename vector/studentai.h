@@ -13,12 +13,11 @@ const vector<string> pavardes = {"Macerausk", "Jankausk", "Kazlausk", "Svilpausk
 const vector<string> mgalunes = {"as", "aitis"};
 const vector<string> fgalunes = {"iene", "aite", "yte"};
 
-//! Strategiejos skirstyti studentus i gera ir bloga grupes
 enum class SkirstymoStrategija
 {
-    PIRMAS,   //! Simple push_back into two vectors
-    ANTRAS,   //! Using std::partition
-    TRECIAS   //! Using std::remove_if
+    PIRMAS,
+    ANTRAS,
+    TRECIAS
 };
 
 class Zmogus {
@@ -27,128 +26,151 @@ protected:
     string pavarde;
 
 public:
-    virtual ~Zmogus() = default;
+    Zmogus(const string& v = "A", const string& p = "BB")
+    : vardas(v), pavarde(p)
+    {}
+    virtual ~Zmogus() {}
 
-    virtual void info() const = 0;
+    virtual void info() const = 0; // kad veiktu abstrakciai
 
-    string& refVardas() { return vardas; } //! Reference to first name
-    string& refPavarde() { return pavarde; } //! Reference to last name
-    string getVardas() const { return vardas; } //! Get first name
-    string getPavarde() const { return pavarde; } //! Get last name
-    void setVardas(const string& v) { vardas = v; } //! Set first name
-    void setPavarde(const string& p) { pavarde = p; } //! Set last name
+    string& refVardas() { return vardas; }
+    string& refPavarde() { return pavarde; }
+    string getVardas() const { return vardas; }
+    string getPavarde() const { return pavarde; }
+    void setVardas(const string& v) { vardas = v; }
+    void setPavarde(const string& p) { pavarde = p; }
 };
 
 
 class Studentas : public Zmogus {
 private:
-    vector<int> paz;   //! Homework grades
-    int egz = 0;       //! Exam grade
-    double rez = 0.0;  //! Final average result
-    double medrez = 0.0; //! Final median result
+    vector<int> paz;
+    int egz = 0;
+    double rez = 0.0;
+    double medrez = 0.0;
 
 public:
-    Studentas() = default;
+    Studentas(const string& v = "A",
+          const string& p = "BB",
+          const vector<int>& paz_ = {},
+          int egz_ = 0)
+    : Zmogus(),          // zmogaus konstruktorius
+      paz(paz_),
+      egz(egz_),
+      rez(0.0),
+      medrez(0.0)
+{
+    vardas = v;
+    pavarde = p;
 
-    // Rule of Five
-    ~Studentas() = default; //! Destructor
+    if (!paz.empty())
+        skaiciuoti();
+}
 
-    Studentas(const Studentas& other)
-        : Zmogus(other),
-          paz(other.paz),
-          egz(other.egz),
-          rez(other.rez),
-          medrez(other.medrez)
-    {} //! Copy constructor
+~Studentas()
+{
+    paz.clear();
+}
 
-    Studentas& operator=(const Studentas& other) {
-        if (this != &other) {
-            Zmogus::operator=(other);
-            paz = other.paz;
-            egz = other.egz;
-            rez = other.rez;
-            medrez = other.medrez;
-        }
-        return *this;
-    } //! Copy assignment
+// Rule of Five
 
-    Studentas(Studentas&& other) noexcept
-        : Zmogus(std::move(other)),
-          paz(std::move(other.paz)),
-          egz(other.egz),
-          rez(other.rez),
-          medrez(other.medrez)
-    {
+Studentas(const Studentas& other)
+    : Zmogus(other),
+      paz(other.paz),
+      egz(other.egz),
+      rez(other.rez),
+      medrez(other.medrez)
+{}
+
+Studentas& operator=(const Studentas& other) {
+    if (this != &other) {
+        Zmogus::operator=(other);
+        paz = other.paz;
+        egz = other.egz;
+        rez = other.rez;
+        medrez = other.medrez;
+    }
+    return *this;
+}
+
+Studentas(Studentas&& other) noexcept
+    : Zmogus(std::move(other)),
+      paz(std::move(other.paz)),
+      egz(other.egz),
+      rez(other.rez),
+      medrez(other.medrez)
+{
+    other.egz = 0;
+    other.rez = 0;
+    other.medrez = 0;
+}
+
+Studentas& operator=(Studentas&& other) noexcept {
+    if (this != &other) {
+        Zmogus::operator=(std::move(other));
+        paz = std::move(other.paz);
+        egz = other.egz;
+        rez = other.rez;
+        medrez = other.medrez;
+
         other.egz = 0;
         other.rez = 0;
         other.medrez = 0;
-    } //! Move constructor
+    }
+    return *this;
+}
 
-    Studentas& operator=(Studentas&& other) noexcept {
-        if (this != &other) {
-            Zmogus::operator=(std::move(other));
-            paz = std::move(other.paz);
-            egz = other.egz;
-            rez = other.rez;
-            medrez = other.medrez;
-
-            other.egz = 0;
-            other.rez = 0;
-            other.medrez = 0;
-        }
-        return *this;
-    } //! Move assignment
-
-    void info() const override { //! kad veiktu ne abstrakciai
+    void info() const override { // kad veiktu ne abstrakciai?
         cout << "Studentas: " << vardas << " " << pavarde << endl;
-    } //! Print student info
+    }
 
-    vector<int>& refPaz() { return paz; } //! Reference to grade vector
-    int& refEgz() { return egz; } //! Reference to exam grade
-    double& refRez() { return rez; } //! Reference to final average
-    double& refMedrez() { return medrez; } //! Reference to final median
-    void clearPaz() { paz.clear(); } //! Clear homework grades
-    double getRez() const { return rez; } //! Get final average
-    double getMedrez() const { return medrez; } //! Get final median
-    int getEgz() const { return egz; } //! Get exam grade
+    vector<int>& refPaz() { return paz; }
+    int& refEgz() { return egz; }
+    double& refRez() { return rez; }
+    double& refMedrez() { return medrez; }
+    void clearPaz() { paz.clear(); }
+    double getRez() const { return rez; }
+    double getMedrez() const { return medrez; }
+    int getEgz() const { return egz; }
 
-    vector<int>& getPaz() { return paz; } //! Get grade vector
+    vector<int>& getPaz() { return paz; }
 
-    void addPaz(int p) { paz.push_back(p); } //! Add homework grade
-    void setEgz(int e) { egz = e; } //! Set exam grade
+    void addPaz(int p) { paz.push_back(p); }
+    void setEgz(int e) { egz = e; }
 
-    void skaiciuoti(); //! Compute final results
+
+    void skaiciuoti();
 };
 
-//! Default output filenames
 const string irasymo_failas = "kursiokai.txt";
 const string irasymo_failas_geras = "kursiokai_geri.txt";
 const string irasymo_failas_blogas = "kursiokai_blogi.txt";
 
-void inputas(vector<Studentas> &grupe); //! Manual input
-void failinputas(vector<Studentas> &grupe, string reading); //! Read from file
-void randominputas(vector<Studentas> &grupe, bool ArGeneruotiVardus); //! Random generation
-void outputas(const vector<Studentas> &grupe); //! Print to console
-void failoutputas(const vector<Studentas> &grupe, string writing); //! Print to file
-void failgeneravimas(); //! Generate test files
+void inputas(vector<Studentas> &grupe);
+void failinputas(vector<Studentas> &grupe, string reading);
+void randominputas(vector<Studentas> &grupe, bool ArGeneruotiVardus);
+void outputas(const vector<Studentas> &grupe);
+void failoutputas(const vector<Studentas> &grupe, string writing);
+void failgeneravimas();
 void genirasymas(vector<Studentas> &grupe, vector<Studentas> &protingi, vector<Studentas> &neprotingi,
-    string writing_good, string writing_bad, int rik_pasirinkimas, SkirstymoStrategija strategija); //! Process generated files
-string lytgen(); //! Random gender
-string randomvardas(string lytis); //! Random first name
-string randompavarde(string lytis); //! Random surname
-void rikiuoti(vector<Studentas> &grupe, int pasirinkimas); //! Sort students
-bool cmpVardas(const Studentas &a, const Studentas &b); //! Compare by first name
-bool cmpPavarde(const Studentas &a, const Studentas &b); //! Compare by last name
-bool cmpRez(const Studentas &a, const Studentas &b); //! Compare by final average
-bool cmpMedrez(const Studentas &a, const Studentas &b); //! Compare by final median
-bool cmpEgz(const Studentas &a, const Studentas &b); //! Compare by exam
-void skirstyti(const vector<Studentas>& grupe, vector<Studentas>& protingi, vector<Studentas>& neprotingi); //! Split method 1
+    string writing_good, string writing_bad, int rik_pasirinkimas, SkirstymoStrategija strategija);
+string lytgen();
+string randomvardas(string lytis);
+string randompavarde(string lytis);
+void rikiuoti(vector<Studentas> &grupe, int pasirinkimas);
+bool cmpVardas(const Studentas &a, const Studentas &b);
+bool cmpPavarde(const Studentas &a, const Studentas &b);
+bool cmpRez(const Studentas &a, const Studentas &b);
+bool cmpMedrez(const Studentas &a, const Studentas &b);
+bool cmpEgz(const Studentas &a, const Studentas &b);
+void skirstyti(const vector<Studentas>& grupe, vector<Studentas>& protingi, vector<Studentas>& neprotingi);
 void logResults(const string& container, int size,
-                double read_t, double sort_t, double split_t); //! Log timings
-void skirstyti2(vector<Studentas>& grupe, vector<Studentas>& neprotingi); //! Split using partition
-void skirstyti3(vector<Studentas>& grupe, vector<Studentas>& neprotingi); //! Split using remove_if
+                double read_t, double sort_t, double split_t);
+void skirstyti2(vector<Studentas>& grupe, vector<Studentas>& neprotingi);
+void skirstyti3(vector<Studentas>& grupe, vector<Studentas>& neprotingi);
 
-ostream& operator<<(ostream& os, const Studentas& s); //! Output operator
-istream& operator>>(istream& is, Studentas& s); //! Input operator
+ostream& operator<<(ostream& os, const Studentas& s);
+istream& operator>>(istream& is, Studentas& s);
+
 
 #endif
