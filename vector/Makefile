@@ -1,14 +1,11 @@
-CXX = g++
-CXXFLAGS = -O3 -std=c++17 -Wall
-
-TARGET = programa
-
-SRC = versija_v2.0.cpp funk.cpp
-
-all: $(TARGET)
-
-$(TARGET): $(SRC)
-	$(CXX) $(CXXFLAGS) -o $(TARGET) $(SRC)
-
-clean:
-	del /f /q $(TARGET).exe 2>nul || rm -f $(TARGET)
+programa:
+	g++ versija_v2.0.cpp funk.cpp -o programa
+cleanexe:
+	del /Q programa.exe
+	del /Q testing.exe
+cleantxt:
+	del /Q *.txt
+Test:
+	g++ testing.cpp funk.cpp -o testai
+Runtest:
+	./testai
