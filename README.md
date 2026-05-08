@@ -10,8 +10,8 @@ Kaip naudoti Makefile?
 VERSIJOS V1.5 DALYKAI
 ---
 Rule of Five vis dar veikia:
-<img width="1242" height="232" alt="image" src="https://github.com/user-attachments/assets/b42ca5ab-68fb-4ab4-a947-f5c4526d4f49" />
-<img width="712" height="776" alt="image" src="https://github.com/user-attachments/assets/878ede86-ea6f-4ad8-83d7-e01ac2a86c47" />
+<img width="1480" height="558" alt="image" src="https://github.com/user-attachments/assets/6ec5f79b-85bd-4f6c-bf16-e1bd91428e37" />
+<img width="1247" height="1128" alt="image" src="https://github.com/user-attachments/assets/c98864c4-d0ca-40c6-a3b3-2d1e9363f1e4" />
 *Patikrinimas, ar visas kitas funkcionalumas veikia efektyviai, kaip ir anksčiau:*
 <img width="1114" height="902" alt="image" src="https://github.com/user-attachments/assets/5b904816-dd44-4b07-a072-a8f9402bff6e" />
 reikšmės sutampa su praeitu testavimu.
