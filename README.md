@@ -9,7 +9,7 @@ Kaip naudoti Makefile?
 ---
 VERSIJOS V1.2 DALYKAI
 ---
-<img width="1298" height="257" alt="image" src="https://github.com/user-attachments/assets/c40a0247-d535-4a96-b6e0-c8a7c17f469a" />
+<img width="1646" height="631" alt="image" src="https://github.com/user-attachments/assets/a425c0b4-42f4-48e5-b722-619488d2dee0" />
 (penkiu taisykliu testavimas)
 
 Kaip veikia 5 taisyklės:
