@@ -7,18 +7,13 @@
 
 using namespace std;
 
-//! Male first names for random generation
 const vector<string> mvardai = {"Vytenis", "Tomas", "Jonas", "Matas", "Simas", "Mantas", "Arnas"};
-//! Female first names for random generation
 const vector<string> fvardai = {"Egle", "Viktorija", "Vakare", "Inga", "Ema", "Marija", "Janina"};
-//! Base surname stems
 const vector<string> pavardes = {"Macerausk", "Jankausk", "Kazlausk", "Svilpausk", "Drugeliausk", "Briedausk"};
-//! Male surname endings
 const vector<string> mgalunes = {"as", "aitis"};
-//! Female surname endings
 const vector<string> fgalunes = {"iene", "aite", "yte"};
 
-//! Strategies for splitting students into groups
+//! Strategiejos skirstyti studentus i gera ir bloga grupes
 enum class SkirstymoStrategija
 {
     PIRMAS,   //! Simple push_back into two vectors
@@ -28,13 +23,13 @@ enum class SkirstymoStrategija
 
 class Zmogus {
 protected:
-    string vardas;  //! First name
-    string pavarde; //! Last name
+    string vardas;
+    string pavarde;
 
 public:
     virtual ~Zmogus() = default;
 
-    virtual void info() const = 0; //! Abstract info printer
+    virtual void info() const = 0;
 
     string& refVardas() { return vardas; } //! Reference to first name
     string& refPavarde() { return pavarde; } //! Reference to last name
@@ -104,7 +99,7 @@ public:
         return *this;
     } //! Move assignment
 
-    void info() const override { // kad veiktu ne abstrakciai?
+    void info() const override { //! kad veiktu ne abstrakciai
         cout << "Studentas: " << vardas << " " << pavarde << endl;
     } //! Print student info
 

@@ -7,10 +7,10 @@ Default Window=main
 Default topic=index.html
 Index file=index.hhk
 Language=0x409 English (United States)
-Title=Studentai
+Title=My Project
 
 [WINDOWS]
-main="Studentai","index.hhc","index.hhk","index.html","index.html",,,,,0x23520,,0x10387e,,,,,,,,0
+main="My Project","index.hhc","index.hhk","index.html","index.html",,,,,0x23520,,0x10387e,,,,,,,,0
 
 [FILES]
 annotated.html
@@ -23,19 +23,11 @@ doxygen_crawl.html
 files.html
 functions.html
 functions_func.html
-functions_vars.html
-funk_8cpp.html
 funk_8cpp_source.html
-globals.html
-globals_enum.html
-globals_func.html
-globals_vars.html
 hierarchy.html
 index.html
-studentai_8h.html
 studentai_8h_source.html
-versija__v1_8cpp.html
-versija__v1_8cpp_source.html
+versija__v2_80_8cpp_source.html
 class_studentas.png
 class_zmogus.png
 doxygen.svg

@@ -1,0 +1,154 @@
+\doxysection{versija\+\_\+v2.0.cpp}
+\hypertarget{versija__v2_80_8cpp_source}{}\label{versija__v2_80_8cpp_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <iomanip>}}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <random>}}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <ctime>}}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00009}00009\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00010}00010\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00011}00011\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00012}00012\ \textcolor{preprocessor}{\#include\ "{}studentai.h"{}}}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00013}00013\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00015}00015\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00017}00017\ \textcolor{keywordtype}{int}\ main()}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00018}00018\ \{}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00019}00019\ \ \ \ \ srand(time(NULL));}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00021}00021\ \ \ \ \ vector<Studentas>\ grupe;}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00022}00022\ \ \ \ \ vector<Studentas>\ protingi;}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00023}00023\ \ \ \ \ vector<Studentas>\ neprotingi;}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00025}00025\ \ \ \ \ grupe.reserve(10000000);\ }
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00027}00027\ \ \ \ \ \textcolor{keywordtype}{string}\ genpas;}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00028}00028\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Norite\ generuoti\ 5\ failus?\ y/n\ "{}}\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00029}00029\ \ \ \ \ cin\ >>\ genpas;}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00030}00030\ \ \ \ \ \textcolor{keywordflow}{if}\ (genpas\ ==\ \textcolor{stringliteral}{"{}y"{}})\ failgeneravimas();\ }
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00032}00032\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}-\/-\/-\/\ Zmogus\ kurimo\ testavimas\ -\/-\/-\/"{}}\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00034}00034\ \ \ \ \ \textcolor{comment}{//\ Zmogus\ z;}}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00036}00036\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}-\/-\/-\/\ Rule\ of\ Five\ dalykai\ -\/-\/-\/"{}}\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00038}00038\ \ \ \ \ \doxymbox{\hyperlink{class_studentas}{Studentas}}\ a;\ }
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00039}00039\ \ \ \ \ a.\doxymbox{\hyperlink{class_zmogus_a2158d2752cd52e970ac4c809446e9d8b}{setVardas}}(\textcolor{stringliteral}{"{}Jonas"{}});}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00040}00040\ \ \ \ \ a.\doxymbox{\hyperlink{class_zmogus_ac34eb9eb78f1c75080df7230ca61f2d2}{setPavarde}}(\textcolor{stringliteral}{"{}Jonaitis"{}});}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00041}00041\ \ \ \ \ a.\doxymbox{\hyperlink{class_studentas_ac200db852e766aa9b092d1ec22b5bac1}{addPaz}}(10);}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00042}00042\ \ \ \ \ a.\doxymbox{\hyperlink{class_studentas_ac200db852e766aa9b092d1ec22b5bac1}{addPaz}}(9);}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00043}00043\ \ \ \ \ a.\doxymbox{\hyperlink{class_studentas_af7a2740c86cee79b07ea47b3eb819280}{setEgz}}(8);}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00044}00044\ \ \ \ \ a.\doxymbox{\hyperlink{class_studentas_a1d9b91645defd01ce16984c07b42543a}{skaiciuoti}}();}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00046}00046\ \ \ \ \ cout\ <<\ setw(20)\ <<\ \textcolor{stringliteral}{"{}Original:\ "{}}\ <<\ a\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00048}00048\ \ \ \ \ \doxymbox{\hyperlink{class_studentas}{Studentas}}\ b\ =\ a;\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ copy\ constructor}}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00049}00049\ \ \ \ \ cout\ <<\ setw(20)\ <<\ \textcolor{stringliteral}{"{}Copy\ ctor:\ "{}}\ <<\ b\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00051}00051\ \ \ \ \ \doxymbox{\hyperlink{class_studentas}{Studentas}}\ c;}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00052}00052\ \ \ \ \ c\ =\ a;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ copy\ assignment}}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00053}00053\ \ \ \ \ cout\ <<\ setw(20)\ <<\ \textcolor{stringliteral}{"{}Copy\ assign:\ "{}}\ <<\ c\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00055}00055\ \ \ \ \ \doxymbox{\hyperlink{class_studentas}{Studentas}}\ d\ =\ move(a);\ \ \textcolor{comment}{//\ move\ constructor}}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00056}00056\ \ \ \ \ cout\ <<setw(20)\ <<\ \textcolor{stringliteral}{"{}Move\ ctor:\ "{}}\ <<\ d\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00058}00058\ \ \ \ \ \doxymbox{\hyperlink{class_studentas}{Studentas}}\ e;}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00059}00059\ \ \ \ \ e\ =\ move(b);\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ move\ assignment}}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00060}00060\ \ \ \ \ cout\ <<\ setw(20)\ <<\ \textcolor{stringliteral}{"{}Move\ assign:\ "{}}\ <<\ e\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00062}00062\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}===\ End\ of\ Test\ ==="{}}\ <<\ endl\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00065}00065\ \ \ \ \ \textcolor{keywordtype}{int}\ pasirinkimas\ =\ 4;}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00066}00066\ \ \ \ \ \textcolor{keywordtype}{string}\ isvedimotipas,\ skaitymo\_pasirinkimas,\ skaitymo\_failas;}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00067}00067\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Kokios\ norite\ ivesties?\ (1\ -\/\ ranka\ arba\ is\ failo,\ 2\ -\/\ generuoti\ tik\ pazymius,\ "{}}\ <<\ endl}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00068}00068\ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\ 3\ -\/\ generuoti\ studentu\ vardus,\ pavardes\ ir\ pazymius,\ 4\ -\/\ skaityti\ sugeneruotus\ failus;\ 5\ arba\ kitas\ simbolis\ -\/\ baigti\ darba)"{}}\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00069}00069\ \ \ \ \ cin\ >>\ pasirinkimas;}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00071}00071\ \ \ \ \ \textcolor{keywordtype}{int}\ rikiavimo\_pasirinkimas;}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00072}00072\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Pagal\ ka\ rikiuoti?"{}}\ <<\ endl}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00073}00073\ \ \ \ \ <<\ \textcolor{stringliteral}{"{}1\ -\/\ vardas"{}}\ <<\ endl}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00074}00074\ \ \ \ \ <<\ \textcolor{stringliteral}{"{}2\ -\/\ pavarde"{}}\ <<\ endl}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00075}00075\ \ \ \ \ <<\ \textcolor{stringliteral}{"{}3\ -\/\ galutinis\ (vidurkis)"{}}\ <<\ endl}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00076}00076\ \ \ \ \ <<\ \textcolor{stringliteral}{"{}4\ -\/\ galutinis\ (mediana)"{}}\ <<\ endl}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00077}00077\ \ \ \ \ <<\ \textcolor{stringliteral}{"{}5\ -\/\ egzaminas"{}}\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00078}00078\ \ \ \ \ cin\ >>\ rikiavimo\_pasirinkimas;}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00081}00081\ \ \ \ \ \textcolor{keyword}{auto}\ input\_start\ =\ chrono::high\_resolution\_clock::now();\ }
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00083}00083\ \ \ \ \ \textcolor{keywordflow}{if}\ (pasirinkimas\ ==\ 1)}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00084}00084\ \ \ \ \ \{\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00085}00085\ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Ar\ skaityti\ duomenis\ is\ failo?\ (y\ -\/\ is\ failo\ /\ n\ -\/\ ranka)"{}};}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00086}00086\ \ \ \ \ \ \ \ \ cin\ >>\ skaitymo\_pasirinkimas;}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00087}00087\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (skaitymo\_pasirinkimas\ ==\ \textcolor{stringliteral}{"{}y"{}})}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00088}00088\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ skaitymo\_failas;}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Iveskite\ failo\ pavadinima:\ "{}};}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ cin\ >>\ skaitymo\_failas;}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ failinputas(grupe,\ skaitymo\_failas);\ }
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00093}00093\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00094}00094\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ inputas(grupe);\ }
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00095}00095\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00096}00096\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (pasirinkimas\ ==\ 2)}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00097}00097\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00098}00098\ \ \ \ \ \ \ \ \ randominputas(grupe,\ \textcolor{keyword}{false});\ }
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00099}00099\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00100}00100\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (pasirinkimas\ ==\ 3)}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00101}00101\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00102}00102\ \ \ \ \ \ \ \ \ randominputas(grupe,\ \textcolor{keyword}{true});\ }
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00103}00103\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00104}00104\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (pasirinkimas\ ==\ 4)}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00105}00105\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00107}00107\ \ \ \ \ \ \ \ \ genirasymas(grupe,\ protingi,\ neprotingi,\ irasymo\_failas\_geras,\ irasymo\_failas\_blogas,\ rikiavimo\_pasirinkimas,\ SkirstymoStrategija::TRECIAS);}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00108}00108\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00109}00109\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00110}00110\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00111}00111\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00112}00112\ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}darbas\ baigtas"{}}\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00113}00113\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00114}00114\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00116}00116\ \ \ \ \ \textcolor{keyword}{auto}\ input\_end\ =\ chrono::high\_resolution\_clock::now();}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00117}00117\ \ \ \ \ chrono::duration<double>\ input\_diff\ =\ input\_end\ -\/\ input\_start;}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00118}00118\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Duomenu\ nuskaitymas\ uztruko:\ "{}}\ <<\ input\_diff.count()\ <<\ \textcolor{stringliteral}{"{}\ s\ \(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00120}00120\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Ar\ rasyti\ i\ faila?\ (y/n)"{}}\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00121}00121\ \ \ \ \ cin\ >>\ isvedimotipas;}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00123}00123\ \ \ \ \ \textcolor{keyword}{auto}\ start\ =\ std::chrono::high\_resolution\_clock::now();\ \textcolor{comment}{//\ Paleisti}}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00125}00125\ \ \ \ \ rikiuoti(grupe,\ rikiavimo\_pasirinkimas);}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00126}00126\ \ \ \ \ \textcolor{comment}{//skirstyti(grupe,\ protingi,\ neprotingi)}}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00127}00127\ \ \ \ \ \textcolor{comment}{//skirstyti2(grupe,\ neprotingi);}}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00128}00128\ \ \ \ \ skirstyti3(grupe,\ neprotingi);\ }
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00129}00129\ }
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00130}00130\ \ \ \ \ \textcolor{keywordflow}{if}\ (isvedimotipas\ ==\ \textcolor{stringliteral}{"{}y"{}})}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00131}00131\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00132}00132\ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}pradedu\ rasyt"{}}\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00133}00133\ \ \ \ \ \ \ \ \ failoutputas(protingi,\ \textcolor{stringliteral}{"{}kursiokai\_geri.txt"{}});}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00134}00134\ \ \ \ \ \ \ \ \ failoutputas(grupe,\ \textcolor{stringliteral}{"{}kursiokai\_geri\_grupe.txt"{}});}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00135}00135\ \ \ \ \ \ \ \ \ failoutputas(neprotingi,\ \textcolor{stringliteral}{"{}kursiokai\_blogi.txt"{}});}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00136}00136\ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Baigiu\ rasyt"{}}\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00137}00137\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00138}00138\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00139}00139\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00140}00140\ \ \ \ \ \ \ \ \ outputas(grupe);}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00141}00141\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00142}00142\ }
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00143}00143\ \ \ \ \ \textcolor{comment}{//\ is\ pavyzdzio}}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00144}00144\ \ \ \ \ \textcolor{keyword}{auto}\ end\ =\ chrono::high\_resolution\_clock::now();\ \textcolor{comment}{//\ Stabdyti}}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00145}00145\ \ \ \ \ chrono::duration<double>\ diff\ =\ end-\/start;\ \textcolor{comment}{//\ Skirtumas\ (s)}}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00146}00146\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Programos\ rikiavimas\ ir\ isvedimas\ uztruko:\ "{}}<<\ diff.count()\ <<\ \textcolor{stringliteral}{"{}\ s\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00147}00147\ }
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00148}00148\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}program\ finished."{}}\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00149}00149\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{versija__v2_80_8cpp_source_l00150}00150\ \}}
+
+\end{DoxyCode}
