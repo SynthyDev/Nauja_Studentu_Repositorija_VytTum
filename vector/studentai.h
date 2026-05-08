@@ -1,6 +1,7 @@
 #ifndef STUDENTAI_H
 #define STUDENTAI_H
 
+#include <iostream>
 #include <vector>
 #include <string>
 #include <algorithm>
@@ -39,6 +40,10 @@ public:
     string getPavarde() const { return pavarde; }
     void setVardas(const string& v) { vardas = v; }
     void setPavarde(const string& p) { pavarde = p; }
+    Zmogus(const Zmogus&) = default;
+    Zmogus& operator=(const Zmogus&) = default;
+    Zmogus(Zmogus&&) noexcept = default;
+    Zmogus& operator=(Zmogus&&) noexcept = default;
 };
 
 

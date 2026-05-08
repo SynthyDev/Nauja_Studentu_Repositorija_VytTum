@@ -29,6 +29,8 @@ int main()
     cin >> genpas;
     if (genpas == "y") failgeneravimas();
 
+
+    /*
     cout << "--- Zmogus kurimo testavimas ---" << endl;
 
     // Zmogus z;
@@ -83,7 +85,7 @@ int main()
     cout << e << endl;
 
     cout << "=== End of Test ===" << endl << endl;
-
+    */
 
     int pasirinkimas = 4;
     string isvedimotipas, skaitymo_pasirinkimas, skaitymo_failas;
