@@ -540,7 +540,7 @@ void genirasymas(vector<Studentas> &grupe, vector<Studentas> &protingi, vector<S
 }
 
 
-void skirstyti(const vector<Studentas>& grupe, vector<Studentas>& protingi, vector<Studentas>& neprotingi) //! 
+void skirstyti(const vector<Studentas>& grupe, vector<Studentas>& protingi, vector<Studentas>& neprotingi) //! studentų skirstymas į grupes pagal rezultatus
 {
     for (const auto& s : grupe)
     {
@@ -564,7 +564,7 @@ void logResults(const string& container, int size,
 }
 
 
-void skirstyti2(vector<Studentas>& grupe, vector<Studentas>& neprotingi)
+void skirstyti2(vector<Studentas>& grupe, vector<Studentas>& neprotingi) //! studentų skirstymas antra taktika
 {
     auto it = partition(grupe.begin(), grupe.end(),
         [](const Studentas& s) { return s.getRez() >= 5.0; });
@@ -574,7 +574,7 @@ void skirstyti2(vector<Studentas>& grupe, vector<Studentas>& neprotingi)
 }
 
 
-void skirstyti3(vector<Studentas>& grupe, vector<Studentas>& neprotingi)
+void skirstyti3(vector<Studentas>& grupe, vector<Studentas>& neprotingi) //! studentų skirstymas trečia taktika
 {
     neprotingi.reserve(grupe.size());
 
@@ -592,7 +592,7 @@ void skirstyti3(vector<Studentas>& grupe, vector<Studentas>& neprotingi)
     grupe.erase(it, grupe.end());
 }
 
-ostream& operator<<(ostream& os, const Studentas& s)
+ostream& operator<<(ostream& os, const Studentas& s) //! output operatorius klasei
 {
     os << left << setw(20) << s.getVardas()
        << setw(20) << s.getPavarde()
@@ -601,7 +601,7 @@ ostream& operator<<(ostream& os, const Studentas& s)
     return os;
 }
 
-istream& operator>>(istream& is, Studentas& s)
+istream& operator>>(istream& is, Studentas& s) //! input operatorius klasei
 {
     s.refPaz().clear();
 

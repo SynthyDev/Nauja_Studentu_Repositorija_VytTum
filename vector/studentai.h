@@ -14,24 +14,27 @@ const vector<string> pavardes = {"Macerausk", "Jankausk", "Kazlausk", "Svilpausk
 const vector<string> mgalunes = {"as", "aitis"};
 const vector<string> fgalunes = {"iene", "aite", "yte"};
 
-enum class SkirstymoStrategija
+enum class SkirstymoStrategija //! Strategijos studentų skirstymui
 {
     PIRMAS,
     ANTRAS,
     TRECIAS
 };
-
+ //! Bazinė abstrakti klasė Zmogus
 class Zmogus {
 protected:
     string vardas;
     string pavarde;
 
 public:
+    //! Bazinis konstruktorius
     Zmogus(const string& v = "A", const string& p = "BB")
     : vardas(v), pavarde(p)
     {}
+    //! Virtualus destruktorius
     virtual ~Zmogus() {}
 
+    //! Abstrakti informacijos funkcija
     virtual void info() const = 0; // kad veiktu abstrakciai
 
     string& refVardas() { return vardas; }
@@ -40,13 +43,15 @@ public:
     string getPavarde() const { return pavarde; }
     void setVardas(const string& v) { vardas = v; }
     void setPavarde(const string& p) { pavarde = p; }
+
+    //! Rule of Zero (default) copy/move
     Zmogus(const Zmogus&) = default;
     Zmogus& operator=(const Zmogus&) = default;
     Zmogus(Zmogus&&) noexcept = default;
     Zmogus& operator=(Zmogus&&) noexcept = default;
 };
 
-
+//! Studentas klasė, paveldi iš Zmogus
 class Studentas : public Zmogus {
 private:
     vector<int> paz;
@@ -55,6 +60,7 @@ private:
     double medrez = 0.0;
 
 public:
+    //! Konstruktorius su pažymiais ir egzaminu
     Studentas(const string& v = "A",
           const string& p = "BB",
           const vector<int>& paz_ = {},
@@ -79,7 +85,7 @@ public:
 
 // Rule of Five
 
-Studentas(const Studentas& other)
+Studentas(const Studentas& other) //! Kopijavimo konstruktorius
     : Zmogus(other),
       paz(other.paz),
       egz(other.egz),
@@ -87,7 +93,8 @@ Studentas(const Studentas& other)
       medrez(other.medrez)
 {}
 
-Studentas& operator=(const Studentas& other) {
+//! Kopijavimo operatorius
+Studentas& operator=(const Studentas& other) { 
     if (this != &other) {
         Zmogus::operator=(other);
         paz = other.paz;
@@ -98,6 +105,7 @@ Studentas& operator=(const Studentas& other) {
     return *this;
 }
 
+//! move konstruktorius
 Studentas(Studentas&& other) noexcept
     : Zmogus(std::move(other)),
       paz(std::move(other.paz)),
@@ -110,6 +118,7 @@ Studentas(Studentas&& other) noexcept
     other.medrez = 0;
 }
 
+//! move operatorius
 Studentas& operator=(Studentas&& other) noexcept {
     if (this != &other) {
         Zmogus::operator=(std::move(other));
@@ -144,7 +153,7 @@ Studentas& operator=(Studentas&& other) noexcept {
     void setEgz(int e) { egz = e; }
 
 
-    void skaiciuoti();
+    void skaiciuoti(); //! rezultatu skaiciavimas
 };
 
 const string irasymo_failas = "kursiokai.txt";
