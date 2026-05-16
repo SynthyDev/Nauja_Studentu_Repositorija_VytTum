@@ -138,7 +138,7 @@ Studentas& operator=(Studentas&& other) noexcept {
     double getMedrez() const { return medrez; }
     int getEgz() const { return egz; }
 
-    vector<int>& getPaz() { return paz; }
+    const vector<int>& getPaz() const { return paz; }
 
     void addPaz(int p) { paz.push_back(p); }
     void setEgz(int e) { egz = e; }
