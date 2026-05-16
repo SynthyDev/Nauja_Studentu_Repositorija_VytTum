@@ -29,44 +29,6 @@ int main()
     cin >> genpas;
     if (genpas == "y") failgeneravimas();
 
-
-    /*
-    cout << "--- Zmogus kurimo testavimas ---" << endl;
-
-    // Zmogus z;
-
-    cout << "--- Rule of Five dalykai ---" << endl;
-
-    Studentas a;
-    a.setVardas("Jonas");
-    a.setPavarde("Jonaitis");
-    a.addPaz(10);
-    a.addPaz(9);
-    a.setEgz(8);
-    a.skaiciuoti();
-
-    Studentas d(move(a));  // move constructor
-    cout << setw(20) << "Move ctor (d inicializuojamas move'inant a): " << d << endl;
-    cout << setw(20) << "objektas a, is kurio paimta info (a turi buti tuscias): " << endl;
-    cout << a << endl;
-
-    Studentas e;
-    e = move(b);         // move assignment
-    cout << setw(20) << "Move assign (e egzistuoja, b -> e): " << e << endl;
-    b.addPaz(1);
-    b.skaiciuoti();
-    cout << setw(20) << "objektas b pakeiciamas" << endl;
-    cout << setw(20) << "objektas b, is kurio paimta info: " << endl;
-    cout << b << endl;
-
-    cout << setw(20) << "elementas e lygus elementui e ir yra move'inamas (e -> e): " << endl;
-    e = e; // cia tas edge case kur move'ina i ta pati dalyka
-    e = move(e);
-    cout << e << endl;
-
-    cout << "=== End of Test ===" << endl << endl;
-    */
-
     int pasirinkimas = 4;
     string isvedimotipas, skaitymo_pasirinkimas, skaitymo_failas;
     cout << "Kokios norite ivesties? (1 - ranka arba is failo, 2 - generuoti tik pazymius, " << endl

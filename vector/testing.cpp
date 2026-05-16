@@ -160,6 +160,3 @@ TEST_CASE("Studentas input operator >>") {
     REQUIRE(s.getPaz() == std::vector<int>{10, 9});
     REQUIRE(s.getEgz() == 8);
 }
-
-// output and input operators !!!
-// 
