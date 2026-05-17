@@ -2,6 +2,11 @@
 \hypertarget{class_zmogus}{}\label{class_zmogus}\index{Zmogus@{Zmogus}}
 
 
+Bazinė abstrakti klasė \doxylink{class_zmogus}{Zmogus}.  
+
+
+
+
 {\ttfamily \+\#include $<$studentai.\+h$>$}
 
 Inheritance diagram for Zmogus:\+\begin{figure}[H]
@@ -14,11 +19,11 @@ Inheritance diagram for Zmogus:\+\begin{figure}[H]
 \begin{DoxyCompactItemize}
 \item 
 \doxymbox{\hyperlink{class_zmogus_a91f4a0495d2eafc7c4eeecd64f3aaf3a}{Zmogus}} (const string \&v="{}A"{}, const string \&p="{}BB"{})
-\item 
+\begin{DoxyCompactList}\small\item\em Bazinis konstruktorius. \end{DoxyCompactList}\item 
 virtual \doxymbox{\hyperlink{class_zmogus_ac5615bf607a8f2f1b303ffa04328d24d}{\texorpdfstring{$\sim$}{\string~}\+Zmogus}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Virtualus destruktorius. \end{DoxyCompactList}\item 
 virtual void \doxymbox{\hyperlink{class_zmogus_a9c1be5dbdc6d42c022039321ec2b210c}{info}} () const =0
-\item 
+\begin{DoxyCompactList}\small\item\em Abstrakti informacijos funkcija. \end{DoxyCompactList}\item 
 string \& \doxymbox{\hyperlink{class_zmogus_ad79e538615c8f6b4548b24f16ac0e325}{ref\+Vardas}} ()
 \item 
 string \& \doxymbox{\hyperlink{class_zmogus_addc67122707badf3db1a6767e51def67}{ref\+Pavarde}} ()
@@ -30,6 +35,14 @@ string \doxymbox{\hyperlink{class_zmogus_a11ee9ac120fbb7d6a4e1f4da3a602b63}{get\
 void \doxymbox{\hyperlink{class_zmogus_a2158d2752cd52e970ac4c809446e9d8b}{set\+Vardas}} (const string \&v)
 \item 
 void \doxymbox{\hyperlink{class_zmogus_ac34eb9eb78f1c75080df7230ca61f2d2}{set\+Pavarde}} (const string \&p)
+\item 
+\doxymbox{\hyperlink{class_zmogus_a8711190a21750f2610caf64256f3265a}{Zmogus}} (const \doxymbox{\hyperlink{class_zmogus}{Zmogus}} \&)=default
+\begin{DoxyCompactList}\small\item\em Rule of Zero (default) copy/\+move. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_zmogus}{Zmogus}} \& \doxymbox{\hyperlink{class_zmogus_ad536d2094bc65dd238b5c538a56c9bfc}{operator=}} (const \doxymbox{\hyperlink{class_zmogus}{Zmogus}} \&)=default
+\item 
+\doxymbox{\hyperlink{class_zmogus_a40e65dea8650770a0f3a5696917786bf}{Zmogus}} (\doxymbox{\hyperlink{class_zmogus}{Zmogus}} \&\&) noexcept=default
+\item 
+\doxymbox{\hyperlink{class_zmogus}{Zmogus}} \& \doxymbox{\hyperlink{class_zmogus_a216f46488076bec9d495ceec5bfc97fd}{operator=}} (\doxymbox{\hyperlink{class_zmogus}{Zmogus}} \&\&) noexcept=default
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
@@ -41,9 +54,9 @@ string \doxymbox{\hyperlink{class_zmogus_a00799e1396c82e4f6dffa0edec1f24e5}{pava
 
 
 \doxysubsection{Detailed Description}
+Bazinė abstrakti klasė \doxylink{class_zmogus}{Zmogus}. 
 
-
-Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00023}{23}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
+Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00024}{24}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
 
 
 
@@ -52,13 +65,17 @@ Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00023}{23}} of file
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{class_zmogus_a91f4a0495d2eafc7c4eeecd64f3aaf3a}\index{Zmogus@{Zmogus}!Zmogus@{Zmogus}}
 \index{Zmogus@{Zmogus}!Zmogus@{Zmogus}}
-\doxysubsubsection{\texorpdfstring{Zmogus()}{Zmogus()}}
+\doxysubsubsection{\texorpdfstring{Zmogus()}{Zmogus()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
 {\footnotesize\ttfamily \label{class_zmogus_a91f4a0495d2eafc7c4eeecd64f3aaf3a} 
 Zmogus::\+\+Zmogus (\begin{DoxyParamCaption}\item[{const string \&}]{v}{ = {\ttfamily "{}A"{}}, }\item[{const string \&}]{p}{ = {\ttfamily "{}BB"{}}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00029}{29}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
+Bazinis konstruktorius. 
+
+
+
+Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00031}{31}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
 
 \Hypertarget{class_zmogus_ac5615bf607a8f2f1b303ffa04328d24d}\index{Zmogus@{Zmogus}!````~Zmogus@{\texorpdfstring{$\sim$}{\string~}Zmogus}}
 \index{````~Zmogus@{\texorpdfstring{$\sim$}{\string~}Zmogus}!Zmogus@{Zmogus}}
@@ -68,7 +85,27 @@ virtual Zmogus::\+\texorpdfstring{$\sim$}{\string~}\+Zmogus (\begin{DoxyParamCap
 
 
 
-Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00032}{32}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
+Virtualus destruktorius. 
+
+
+
+Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00035}{35}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
+
+\Hypertarget{class_zmogus_a8711190a21750f2610caf64256f3265a}\index{Zmogus@{Zmogus}!Zmogus@{Zmogus}}
+\index{Zmogus@{Zmogus}!Zmogus@{Zmogus}}
+\doxysubsubsection{\texorpdfstring{Zmogus()}{Zmogus()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_zmogus_a8711190a21750f2610caf64256f3265a} 
+Zmogus::\+\+Zmogus (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_zmogus}{Zmogus}} \&}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+Rule of Zero (default) copy/\+move. 
+
+\Hypertarget{class_zmogus_a40e65dea8650770a0f3a5696917786bf}\index{Zmogus@{Zmogus}!Zmogus@{Zmogus}}
+\index{Zmogus@{Zmogus}!Zmogus@{Zmogus}}
+\doxysubsubsection{\texorpdfstring{Zmogus()}{Zmogus()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_zmogus_a40e65dea8650770a0f3a5696917786bf} 
+Zmogus::\+\+Zmogus (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_zmogus}{Zmogus}} \&\&}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}, {\ttfamily [noexcept]}}
 
 
 
@@ -83,7 +120,7 @@ string Zmogus::\+get\+Pavarde (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption
 
 
 
-Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00039}{39}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
+Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00043}{43}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
 
 \Hypertarget{class_zmogus_aaea44664c236e2fadf022f3821862499}\index{Zmogus@{Zmogus}!getVardas@{getVardas}}
 \index{getVardas@{getVardas}!Zmogus@{Zmogus}}
@@ -93,7 +130,7 @@ string Zmogus::\+get\+Vardas (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}
 
 
 
-Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00038}{38}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
+Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00042}{42}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
 
 \Hypertarget{class_zmogus_a9c1be5dbdc6d42c022039321ec2b210c}\index{Zmogus@{Zmogus}!info@{info}}
 \index{info@{info}!Zmogus@{Zmogus}}
@@ -103,7 +140,23 @@ virtual void Zmogus::\+info (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})
 
 
 
+Abstrakti informacijos funkcija. 
+
+
+
 Implemented in \doxymbox{\hyperlink{class_studentas_afd2ce5774c97b01b2fe40fd47567e653}{Studentas}}.
+
+\Hypertarget{class_zmogus_ad536d2094bc65dd238b5c538a56c9bfc}\index{Zmogus@{Zmogus}!operator=@{operator=}}
+\index{operator=@{operator=}!Zmogus@{Zmogus}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_zmogus_ad536d2094bc65dd238b5c538a56c9bfc} 
+\doxymbox{\hyperlink{class_zmogus}{Zmogus}} \& Zmogus::\+operator= (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_zmogus}{Zmogus}} \&}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\Hypertarget{class_zmogus_a216f46488076bec9d495ceec5bfc97fd}\index{Zmogus@{Zmogus}!operator=@{operator=}}
+\index{operator=@{operator=}!Zmogus@{Zmogus}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_zmogus_a216f46488076bec9d495ceec5bfc97fd} 
+\doxymbox{\hyperlink{class_zmogus}{Zmogus}} \& Zmogus::\+operator= (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_zmogus}{Zmogus}} \&\&}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}, {\ttfamily [noexcept]}}
 
 \Hypertarget{class_zmogus_addc67122707badf3db1a6767e51def67}\index{Zmogus@{Zmogus}!refPavarde@{refPavarde}}
 \index{refPavarde@{refPavarde}!Zmogus@{Zmogus}}
@@ -113,7 +166,7 @@ string \& Zmogus::\+ref\+Pavarde (\begin{DoxyParamCaption}{}{}\end{DoxyParamCapt
 
 
 
-Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00037}{37}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
+Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00041}{41}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
 
 \Hypertarget{class_zmogus_ad79e538615c8f6b4548b24f16ac0e325}\index{Zmogus@{Zmogus}!refVardas@{refVardas}}
 \index{refVardas@{refVardas}!Zmogus@{Zmogus}}
@@ -123,7 +176,7 @@ string \& Zmogus::\+ref\+Vardas (\begin{DoxyParamCaption}{}{}\end{DoxyParamCapti
 
 
 
-Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00036}{36}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
+Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00040}{40}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
 
 \Hypertarget{class_zmogus_ac34eb9eb78f1c75080df7230ca61f2d2}\index{Zmogus@{Zmogus}!setPavarde@{setPavarde}}
 \index{setPavarde@{setPavarde}!Zmogus@{Zmogus}}
@@ -133,7 +186,7 @@ void Zmogus::\+set\+Pavarde (\begin{DoxyParamCaption}\item[{const string \&}]{p}
 
 
 
-Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00041}{41}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
+Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00045}{45}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
 
 \Hypertarget{class_zmogus_a2158d2752cd52e970ac4c809446e9d8b}\index{Zmogus@{Zmogus}!setVardas@{setVardas}}
 \index{setVardas@{setVardas}!Zmogus@{Zmogus}}
@@ -143,7 +196,7 @@ void Zmogus::\+set\+Vardas (\begin{DoxyParamCaption}\item[{const string \&}]{v}{
 
 
 
-Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00040}{40}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
+Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00044}{44}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
 
 
 
@@ -158,7 +211,7 @@ string Zmogus::\+pavarde\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
-Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00026}{26}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
+Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00027}{27}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
 
 \Hypertarget{class_zmogus_a56da52b45c537a31d2c1fc3a53a73c65}\index{Zmogus@{Zmogus}!vardas@{vardas}}
 \index{vardas@{vardas}!Zmogus@{Zmogus}}
@@ -168,7 +221,7 @@ string Zmogus::\+vardas\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
-Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00025}{25}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
+Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00026}{26}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
 
 
 
