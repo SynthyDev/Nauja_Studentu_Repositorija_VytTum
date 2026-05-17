@@ -47,17 +47,13 @@ private:
     }
 
     pointer allocate(size_type n) {
-        if (n == 0) {
-            return nullptr;
-        }
+        if (n == 0) return nullptr;
         check_allocation_size(n);
         return allocator_traits::allocate(alloc_, n);
     }
 
     void deallocate(pointer p, size_type n) noexcept {
-        if (p) {
-            allocator_traits::deallocate(alloc_, p, n);
-        }
+        if (p) allocator_traits::deallocate(alloc_, p, n);
     }
 
     void destroy_range(pointer first, pointer last) noexcept {
@@ -92,7 +88,6 @@ private:
         pointer current = new_data;
 
         try {
-            // Move/copy old elements.
             for (size_type i = 0; i < size_; ++i, ++current) {
                 allocator_traits::construct(
                     alloc_, std::addressof(*current),
@@ -100,7 +95,6 @@ private:
                 );
             }
 
-            // Construct the new element at the end.
             allocator_traits::construct(
                 alloc_, std::addressof(*current),
                 std::forward<Args>(args)...
@@ -121,9 +115,7 @@ private:
     }
 
     void reallocate(size_type new_capacity) {
-        if (new_capacity == capacity_) {
-            return;
-        }
+        if (new_capacity == capacity_) return;
 
         pointer new_data = allocate(new_capacity);
         pointer current = new_data;
@@ -149,14 +141,10 @@ private:
     }
 
     size_type growth_capacity() const {
-        if (capacity_ == 0) {
-            return 1;
-        }
+        if (capacity_ == 0) return 1;
 
         size_type max = allocator_traits::max_size(alloc_);
-        if (capacity_ > max / 2) {
-            return max;
-        }
+        if (capacity_ > max / 2) return max;
 
         return capacity_ * 2;
     }
@@ -174,9 +162,7 @@ public:
 
     explicit Vector(size_type count, const allocator_type& alloc = allocator_type())
         : alloc_(alloc), data_(nullptr), size_(0), capacity_(0) {
-        if (count == 0) {
-            return;
-        }
+        if (count == 0) return;
 
         data_ = allocate(count);
         capacity_ = count;
@@ -199,9 +185,7 @@ public:
     Vector(size_type count, const T& value,
            const allocator_type& alloc = allocator_type())
         : alloc_(alloc), data_(nullptr), size_(0), capacity_(0) {
-        if (count == 0) {
-            return;
-        }
+        if (count == 0) return;
 
         data_ = allocate(count);
         capacity_ = count;
@@ -226,9 +210,7 @@ public:
     Vector(std::initializer_list<T> init,
            const allocator_type& alloc = allocator_type())
         : alloc_(alloc), data_(nullptr), size_(0), capacity_(0) {
-        if (init.size() == 0) {
-            return;
-        }
+        if (init.size() == 0) return;
 
         data_ = allocate(init.size());
         capacity_ = init.size();
@@ -258,9 +240,7 @@ public:
           data_(nullptr),
           size_(0),
           capacity_(0) {
-        if (other.size_ == 0) {
-            return;
-        }
+        if (other.size_ == 0) return;
 
         data_ = allocate(other.size_);
         capacity_ = other.size_;
@@ -297,9 +277,7 @@ public:
     // ------------------------------------------------------------
 
     Vector& operator=(const Vector& other) {
-        if (this == &other) {
-            return *this;
-        }
+        if (this == &other) return *this;
 
         Vector temp(other);
         swap(temp);
@@ -309,9 +287,7 @@ public:
     Vector& operator=(Vector&& other) noexcept(
         allocator_traits::propagate_on_container_move_assignment::value ||
         allocator_traits::is_always_equal::value) {
-        if (this == &other) {
-            return *this;
-        }
+        if (this == &other) return *this;
 
         clear();
         deallocate(data_, capacity_);
@@ -344,51 +320,27 @@ public:
     // Element access
     // ------------------------------------------------------------
 
-    reference operator[](size_type pos) noexcept {
-        return data_[pos];
-    }
-
-    const_reference operator[](size_type pos) const noexcept {
-        return data_[pos];
-    }
+    reference operator[](size_type pos) noexcept { return data_[pos]; }
+    const_reference operator[](size_type pos) const noexcept { return data_[pos]; }
 
     reference at(size_type pos) {
-        if (pos >= size_) {
-            throw std::out_of_range("Vector::at");
-        }
+        if (pos >= size_) throw std::out_of_range("Vector::at");
         return data_[pos];
     }
 
     const_reference at(size_type pos) const {
-        if (pos >= size_) {
-            throw std::out_of_range("Vector::at");
-        }
+        if (pos >= size_) throw std::out_of_range("Vector::at");
         return data_[pos];
     }
 
-    reference front() {
-        return at(0);
-    }
+    reference front() { return at(0); }
+    const_reference front() const { return at(0); }
 
-    const_reference front() const {
-        return at(0);
-    }
+    reference back() { return at(size_ - 1); }
+    const_reference back() const { return at(size_ - 1); }
 
-    reference back() {
-        return at(size_ - 1);
-    }
-
-    const_reference back() const {
-        return at(size_ - 1);
-    }
-
-    pointer data() noexcept {
-        return data_;
-    }
-
-    const_pointer data() const noexcept {
-        return data_;
-    }
+    pointer data() noexcept { return data_; }
+    const_pointer data() const noexcept { return data_; }
 
     // ------------------------------------------------------------
     // Iterators
@@ -403,29 +355,28 @@ public:
     const_iterator cend() const noexcept { return data_ + size_; }
 
     // ------------------------------------------------------------
+    // Reverse iterators
+    // ------------------------------------------------------------
+
+    reverse_iterator rbegin() noexcept { return reverse_iterator(end()); }
+    const_reverse_iterator rbegin() const noexcept { return const_reverse_iterator(end()); }
+    const_reverse_iterator crbegin() const noexcept { return const_reverse_iterator(cend()); }
+
+    reverse_iterator rend() noexcept { return reverse_iterator(begin()); }
+    const_reverse_iterator rend() const noexcept { return const_reverse_iterator(begin()); }
+    const_reverse_iterator crend() const noexcept { return const_reverse_iterator(cbegin()); }
+
+    // ------------------------------------------------------------
     // Capacity
     // ------------------------------------------------------------
 
-    [[nodiscard]] bool empty() const noexcept {
-        return size_ == 0;
-    }
-
-    size_type size() const noexcept {
-        return size_;
-    }
-
-    size_type capacity() const noexcept {
-        return capacity_;
-    }
-
-    size_type max_size() const noexcept {
-        return allocator_traits::max_size(alloc_);
-    }
+    [[nodiscard]] bool empty() const noexcept { return size_ == 0; }
+    size_type size() const noexcept { return size_; }
+    size_type capacity() const noexcept { return capacity_; }
+    size_type max_size() const noexcept { return allocator_traits::max_size(alloc_); }
 
     void reserve(size_type new_capacity) {
-        if (new_capacity > capacity_) {
-            reallocate(new_capacity);
-        }
+        if (new_capacity > capacity_) reallocate(new_capacity);
     }
 
     void shrink_to_fit() {
@@ -468,74 +419,49 @@ public:
         return back();
     }
 
-    void push_back(const T& value) {
-        emplace_back(value);
-    }
-
-    void push_back(T&& value) {
-        emplace_back(std::move(value));
-    }
+    void push_back(const T& value) { emplace_back(value); }
+    void push_back(T&& value) { emplace_back(std::move(value)); }
 
     void pop_back() {
-        if (size_ == 0) {
-            return;
-        }
-
+        if (size_ == 0) return;
         --size_;
         allocator_traits::destroy(alloc_, std::addressof(data_[size_]));
     }
 
     void resize(size_type count) {
         if (count < size_) {
-            while (size_ > count) {
-                pop_back();
-            }
+            while (size_ > count) pop_back();
             return;
         }
 
         if (count > size_) {
             reserve(count);
-            while (size_ < count) {
-                emplace_back();
-            }
+            while (size_ < count) emplace_back();
         }
     }
 
     void resize(size_type count, const T& value) {
         if (count < size_) {
-            while (size_ > count) {
-                pop_back();
-            }
+            while (size_ > count) pop_back();
             return;
         }
 
         if (count > size_) {
             reserve(count);
-            while (size_ < count) {
-                emplace_back(value);
-            }
+            while (size_ < count) emplace_back(value);
         }
     }
 
-    // Strong exception-safe, but O(n) and uses temporary storage.
     iterator insert(const_iterator pos, const T& value) {
         size_type index = static_cast<size_type>(pos - data_);
-        if (index > size_) {
-            throw std::out_of_range("Vector::insert");
-        }
+        if (index > size_) throw std::out_of_range("Vector::insert");
 
         Vector temp;
         temp.reserve(size_ + 1);
 
-        for (size_type i = 0; i < index; ++i) {
-            temp.push_back(data_[i]);
-        }
-
+        for (size_type i = 0; i < index; ++i) temp.push_back(data_[i]);
         temp.push_back(value);
-
-        for (size_type i = index; i < size_; ++i) {
-            temp.push_back(data_[i]);
-        }
+        for (size_type i = index; i < size_; ++i) temp.push_back(data_[i]);
 
         swap(temp);
         return data_ + index;
@@ -543,44 +469,28 @@ public:
 
     iterator insert(const_iterator pos, T&& value) {
         size_type index = static_cast<size_type>(pos - data_);
-        if (index > size_) {
-            throw std::out_of_range("Vector::insert");
-        }
+        if (index > size_) throw std::out_of_range("Vector::insert");
 
         Vector temp;
         temp.reserve(size_ + 1);
 
-        for (size_type i = 0; i < index; ++i) {
-            temp.push_back(data_[i]);
-        }
-
+        for (size_type i = 0; i < index; ++i) temp.push_back(data_[i]);
         temp.push_back(std::move(value));
-
-        for (size_type i = index; i < size_; ++i) {
-            temp.push_back(data_[i]);
-        }
+        for (size_type i = index; i < size_; ++i) temp.push_back(data_[i]);
 
         swap(temp);
         return data_ + index;
     }
 
-    // Strong exception-safe, but O(n) and uses temporary storage.
     iterator erase(const_iterator pos) {
         size_type index = static_cast<size_type>(pos - data_);
-        if (index >= size_) {
-            throw std::out_of_range("Vector::erase");
-        }
+        if (index >= size_) throw std::out_of_range("Vector::erase");
 
         Vector temp;
         temp.reserve(size_ - 1);
 
-        for (size_type i = 0; i < index; ++i) {
-            temp.push_back(data_[i]);
-        }
-
-        for (size_type i = index + 1; i < size_; ++i) {
-            temp.push_back(data_[i]);
-        }
+        for (size_type i = 0; i < index; ++i) temp.push_back(data_[i]);
+        for (size_type i = index + 1; i < size_; ++i) temp.push_back(data_[i]);
 
         swap(temp);
         return data_ + index;
@@ -603,16 +513,9 @@ public:
 template <typename T, typename Alloc>
 bool operator==(const Vector<T, Alloc>& a,
                 const Vector<T, Alloc>& b) {
-    if (a.size() != b.size()) {
-        return false;
-    }
-
-    for (std::size_t i = 0; i < a.size(); ++i) {
-        if (!(a[i] == b[i])) {
-            return false;
-        }
-    }
-
+    if (a.size() != b.size()) return false;
+    for (std::size_t i = 0; i < a.size(); ++i)
+        if (!(a[i] == b[i])) return false;
     return true;
 }
 
@@ -626,188 +529,6 @@ template <typename T, typename Alloc>
 void swap(Vector<T, Alloc>& a,
           Vector<T, Alloc>& b) noexcept(noexcept(a.swap(b))) {
     a.swap(b);
-}
-
-void assign(size_type count, const T& value) {
-    Vector temp;
-    temp.reserve(count);
-    for (size_type i = 0; i < count; ++i) {
-        temp.push_back(value);
-    }
-    swap(temp);
-}
-
-template <typename InputIt>
-void assign(InputIt first, InputIt last) {
-    Vector temp;
-    for (; first != last; ++first) {
-        temp.push_back(*first);
-    }
-    swap(temp);
-}
-
-void assign(std::initializer_list<T> ilist) {
-    assign(ilist.begin(), ilist.end());
-}
-
-// ------------------------------------------------------------
-// emplace()
-// ------------------------------------------------------------
-
-template <typename... Args>
-iterator emplace(const_iterator pos, Args&&... args) {
-    size_type index = static_cast<size_type>(pos - data_);
-    if (index > size_) {
-        throw std::out_of_range("Vector::emplace");
-    }
-
-    Vector temp;
-    temp.reserve(size_ + 1);
-
-    for (size_type i = 0; i < index; ++i) {
-        temp.push_back(data_[i]);
-    }
-
-    temp.emplace_back(std::forward<Args>(args)...);
-
-    for (size_type i = index; i < size_; ++i) {
-        temp.push_back(data_[i]);
-    }
-
-    swap(temp);
-    return data_ + index;
-}
-
-// ------------------------------------------------------------
-// insert(count, value)
-// ------------------------------------------------------------
-
-iterator insert(const_iterator pos, size_type count, const T& value) {
-    size_type index = static_cast<size_type>(pos - data_);
-    if (index > size_) {
-        throw std::out_of_range("Vector::insert");
-    }
-
-    Vector temp;
-    temp.reserve(size_ + count);
-
-    for (size_type i = 0; i < index; ++i) {
-        temp.push_back(data_[i]);
-    }
-
-    for (size_type i = 0; i < count; ++i) {
-        temp.push_back(value);
-    }
-
-    for (size_type i = index; i < size_; ++i) {
-        temp.push_back(data_[i]);
-    }
-
-    swap(temp);
-    return data_ + index;
-}
-
-// ------------------------------------------------------------
-// insert(range)
-// ------------------------------------------------------------
-
-template <typename InputIt>
-iterator insert(const_iterator pos, InputIt first, InputIt last) {
-    size_type index = static_cast<size_type>(pos - data_);
-    if (index > size_) {
-        throw std::out_of_range("Vector::insert");
-    }
-
-    Vector temp;
-
-    for (size_type i = 0; i < index; ++i) {
-        temp.push_back(data_[i]);
-    }
-
-    for (; first != last; ++first) {
-        temp.push_back(*first);
-    }
-
-    for (size_type i = index; i < size_; ++i) {
-        temp.push_back(data_[i]);
-    }
-
-    swap(temp);
-    return data_ + index;
-}
-
-iterator insert(const_iterator pos, std::initializer_list<T> ilist) {
-    return insert(pos, ilist.begin(), ilist.end());
-}
-
-// ------------------------------------------------------------
-// erase(first, last)
-// ------------------------------------------------------------
-
-iterator erase(const_iterator first, const_iterator last) {
-    size_type start = static_cast<size_type>(first - data_);
-    size_type finish = static_cast<size_type>(last - data_);
-
-    if (start > finish || finish > size_) {
-        throw std::out_of_range("Vector::erase");
-    }
-
-    Vector temp;
-    temp.reserve(size_ - (finish - start));
-
-    for (size_type i = 0; i < start; ++i) {
-        temp.push_back(data_[i]);
-    }
-
-    for (size_type i = finish; i < size_; ++i) {
-        temp.push_back(data_[i]);
-    }
-
-    swap(temp);
-    return data_ + start;
-}
-
-// ------------------------------------------------------------
-// cbegin()/cend()
-// ------------------------------------------------------------
-
-const_iterator cbegin() const noexcept {
-    return data_;
-}
-
-const_iterator cend() const noexcept {
-    return data_ + size_;
-}
-
-// ------------------------------------------------------------
-// Reverse iterators
-// ------------------------------------------------------------
-
-using reverse_iterator = std::reverse_iterator<iterator>;
-using const_reverse_iterator = std::reverse_iterator<const_iterator>;
-
-reverse_iterator rbegin() noexcept {
-    return reverse_iterator(end());
-}
-
-const_reverse_iterator rbegin() const noexcept {
-    return const_reverse_iterator(end());
-}
-
-const_reverse_iterator crbegin() const noexcept {
-    return const_reverse_iterator(cend());
-}
-
-reverse_iterator rend() noexcept {
-    return reverse_iterator(begin());
-}
-
-const_reverse_iterator rend() const noexcept {
-    return const_reverse_iterator(begin());
-}
-
-const_reverse_iterator crend() const noexcept {
-    return const_reverse_iterator(cbegin());
 }
 
 template <typename T, typename Alloc>
