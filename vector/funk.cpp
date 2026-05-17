@@ -11,6 +11,7 @@
 #include <chrono>
 #include "studentai.h"
 #include <stdexcept>
+#include "Vector.h"
 
 using namespace std;
 
