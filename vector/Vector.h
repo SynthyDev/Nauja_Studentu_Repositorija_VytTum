@@ -7,6 +7,7 @@
 #include <stdexcept>
 #include <type_traits>
 #include <utility>
+#include <iterator>
 
 template <typename T, typename Allocator = std::allocator<T>>
 class Vector {
@@ -22,6 +23,8 @@ public:
     using const_pointer          = typename allocator_traits::const_pointer;
     using iterator               = pointer;
     using const_iterator         = const_pointer;
+    using reverse_iterator       = std::reverse_iterator<iterator>;
+    using const_reverse_iterator = std::reverse_iterator<const_iterator>;
 
 private:
     allocator_type alloc_;
