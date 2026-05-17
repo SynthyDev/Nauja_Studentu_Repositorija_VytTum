@@ -1,6 +1,7 @@
 #ifndef STUDENTAI_H
 #define STUDENTAI_H
 
+#pragma once
 #include <iostream>
 #include <vector>
 #include <string>
@@ -8,6 +9,9 @@
 #include "Vector.h"
 
 using namespace std;
+
+template <typename T>
+using vector = Vector<T>;
 
 const vector<string> mvardai = {"Vytenis", "Tomas", "Jonas", "Matas", "Simas", "Mantas", "Arnas"};
 const vector<string> fvardai = {"Egle", "Viktorija", "Vakare", "Inga", "Ema", "Marija", "Janina"};

@@ -624,3 +624,212 @@ void swap(Vector<T, Alloc>& a,
           Vector<T, Alloc>& b) noexcept(noexcept(a.swap(b))) {
     a.swap(b);
 }
+
+void assign(size_type count, const T& value) {
+    Vector temp;
+    temp.reserve(count);
+    for (size_type i = 0; i < count; ++i) {
+        temp.push_back(value);
+    }
+    swap(temp);
+}
+
+template <typename InputIt>
+void assign(InputIt first, InputIt last) {
+    Vector temp;
+    for (; first != last; ++first) {
+        temp.push_back(*first);
+    }
+    swap(temp);
+}
+
+void assign(std::initializer_list<T> ilist) {
+    assign(ilist.begin(), ilist.end());
+}
+
+// ------------------------------------------------------------
+// emplace()
+// ------------------------------------------------------------
+
+template <typename... Args>
+iterator emplace(const_iterator pos, Args&&... args) {
+    size_type index = static_cast<size_type>(pos - data_);
+    if (index > size_) {
+        throw std::out_of_range("Vector::emplace");
+    }
+
+    Vector temp;
+    temp.reserve(size_ + 1);
+
+    for (size_type i = 0; i < index; ++i) {
+        temp.push_back(data_[i]);
+    }
+
+    temp.emplace_back(std::forward<Args>(args)...);
+
+    for (size_type i = index; i < size_; ++i) {
+        temp.push_back(data_[i]);
+    }
+
+    swap(temp);
+    return data_ + index;
+}
+
+// ------------------------------------------------------------
+// insert(count, value)
+// ------------------------------------------------------------
+
+iterator insert(const_iterator pos, size_type count, const T& value) {
+    size_type index = static_cast<size_type>(pos - data_);
+    if (index > size_) {
+        throw std::out_of_range("Vector::insert");
+    }
+
+    Vector temp;
+    temp.reserve(size_ + count);
+
+    for (size_type i = 0; i < index; ++i) {
+        temp.push_back(data_[i]);
+    }
+
+    for (size_type i = 0; i < count; ++i) {
+        temp.push_back(value);
+    }
+
+    for (size_type i = index; i < size_; ++i) {
+        temp.push_back(data_[i]);
+    }
+
+    swap(temp);
+    return data_ + index;
+}
+
+// ------------------------------------------------------------
+// insert(range)
+// ------------------------------------------------------------
+
+template <typename InputIt>
+iterator insert(const_iterator pos, InputIt first, InputIt last) {
+    size_type index = static_cast<size_type>(pos - data_);
+    if (index > size_) {
+        throw std::out_of_range("Vector::insert");
+    }
+
+    Vector temp;
+
+    for (size_type i = 0; i < index; ++i) {
+        temp.push_back(data_[i]);
+    }
+
+    for (; first != last; ++first) {
+        temp.push_back(*first);
+    }
+
+    for (size_type i = index; i < size_; ++i) {
+        temp.push_back(data_[i]);
+    }
+
+    swap(temp);
+    return data_ + index;
+}
+
+iterator insert(const_iterator pos, std::initializer_list<T> ilist) {
+    return insert(pos, ilist.begin(), ilist.end());
+}
+
+// ------------------------------------------------------------
+// erase(first, last)
+// ------------------------------------------------------------
+
+iterator erase(const_iterator first, const_iterator last) {
+    size_type start = static_cast<size_type>(first - data_);
+    size_type finish = static_cast<size_type>(last - data_);
+
+    if (start > finish || finish > size_) {
+        throw std::out_of_range("Vector::erase");
+    }
+
+    Vector temp;
+    temp.reserve(size_ - (finish - start));
+
+    for (size_type i = 0; i < start; ++i) {
+        temp.push_back(data_[i]);
+    }
+
+    for (size_type i = finish; i < size_; ++i) {
+        temp.push_back(data_[i]);
+    }
+
+    swap(temp);
+    return data_ + start;
+}
+
+// ------------------------------------------------------------
+// cbegin()/cend()
+// ------------------------------------------------------------
+
+const_iterator cbegin() const noexcept {
+    return data_;
+}
+
+const_iterator cend() const noexcept {
+    return data_ + size_;
+}
+
+// ------------------------------------------------------------
+// Reverse iterators
+// ------------------------------------------------------------
+
+using reverse_iterator = std::reverse_iterator<iterator>;
+using const_reverse_iterator = std::reverse_iterator<const_iterator>;
+
+reverse_iterator rbegin() noexcept {
+    return reverse_iterator(end());
+}
+
+const_reverse_iterator rbegin() const noexcept {
+    return const_reverse_iterator(end());
+}
+
+const_reverse_iterator crbegin() const noexcept {
+    return const_reverse_iterator(cend());
+}
+
+reverse_iterator rend() noexcept {
+    return reverse_iterator(begin());
+}
+
+const_reverse_iterator rend() const noexcept {
+    return const_reverse_iterator(begin());
+}
+
+const_reverse_iterator crend() const noexcept {
+    return const_reverse_iterator(cbegin());
+}
+
+template <typename T, typename Alloc>
+bool operator<(const Vector<T, Alloc>& a,
+               const Vector<T, Alloc>& b) {
+    return std::lexicographical_compare(
+        a.begin(), a.end(),
+        b.begin(), b.end()
+    );
+}
+
+template <typename T, typename Alloc>
+bool operator>(const Vector<T, Alloc>& a,
+               const Vector<T, Alloc>& b) {
+    return b < a;
+}
+
+template <typename T, typename Alloc>
+bool operator<=(const Vector<T, Alloc>& a,
+                const Vector<T, Alloc>& b) {
+    return !(b < a);
+}
+
+template <typename T, typename Alloc>
+bool operator>=(const Vector<T, Alloc>& a,
+                const Vector<T, Alloc>& b) {
+    return !(a < b);
+}
