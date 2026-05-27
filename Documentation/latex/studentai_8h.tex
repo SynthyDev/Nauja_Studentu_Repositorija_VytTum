@@ -1,9 +1,9 @@
 \doxysection{studentai.\+h File Reference}
 \hypertarget{studentai_8h}{}\label{studentai_8h}\index{studentai.h@{studentai.h}}
 {\ttfamily \+\#include $<$iostream$>$}\newline
-{\ttfamily \+\#include $<$vector$>$}\newline
 {\ttfamily \+\#include $<$string$>$}\newline
 {\ttfamily \+\#include $<$algorithm$>$}\newline
+{\ttfamily \+\#include "{}Vector2.\+h"{}}\newline
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
@@ -11,6 +11,16 @@ class \doxymbox{\hyperlink{class_zmogus}{Zmogus}}
 \begin{DoxyCompactList}\small\item\em Bazinė abstrakti klasė \doxylink{class_zmogus}{Zmogus}. \end{DoxyCompactList}\item 
 class \doxymbox{\hyperlink{class_studentas}{Studentas}}
 \begin{DoxyCompactList}\small\item\em \doxylink{class_studentas}{Studentas} klasė, paveldi iš \doxylink{class_zmogus}{Zmogus}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \doxymbox{\hyperlink{namespacemy}{my}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T$>$ }\\using \doxymbox{\hyperlink{namespacemy_a30b8f06d4645a48a2e59cc711dfde1c9}{my::\+\+Vector}} = ::\+\+Vector$<$T$>$
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
@@ -22,28 +32,28 @@ enum class \doxymbox{\hyperlink{studentai_8h_affdf706008cc8ce58b7dd8c2b2aeeb14}{
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \doxymbox{\hyperlink{studentai_8h_a48aa126d7143c8a4b2649d498199c3c7}{inputas}} (vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&grupe)
-\begin{DoxyCompactList}\small\item\em rankinė studentų įvestis \end{DoxyCompactList}\item 
-void \doxymbox{\hyperlink{studentai_8h_a10d7df7637fb31990a2193116a0089ed}{failinputas}} (vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&grupe, string reading)
-\begin{DoxyCompactList}\small\item\em studentų nuskaitymas iš failo \end{DoxyCompactList}\item 
-void \doxymbox{\hyperlink{studentai_8h_af6cbfb393404e5756a9a5f3e00af0fa4}{randominputas}} (vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&grupe, bool Ar\+Generuoti\+Vardus)
-\begin{DoxyCompactList}\small\item\em atsitiktinių studentų generavimas \end{DoxyCompactList}\item 
-void \doxymbox{\hyperlink{studentai_8h_aa9ba3c0b2859ab9b4dd9d65fa479d9c1}{outputas}} (const vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&grupe)
-\begin{DoxyCompactList}\small\item\em atspausdina studentus į console \end{DoxyCompactList}\item 
-void \doxymbox{\hyperlink{studentai_8h_a1e5b5b8c736f59beb422c5da325b644a}{failoutputas}} (const vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&grupe, string writing)
-\begin{DoxyCompactList}\small\item\em studentų spausdinimas į failą (be rikiavimo) \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{studentai_8h_ab6d6c55152556ad6a8519e19389e25bc}{inputas}} (\doxymbox{\hyperlink{class_vector}{Vector}}$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&grupe)
+\item 
+void \doxymbox{\hyperlink{studentai_8h_acfefbcec8e50efb4ed5a475f6e3c9364}{failinputas}} (\doxymbox{\hyperlink{class_vector}{Vector}}$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&grupe, string reading)
+\item 
+void \doxymbox{\hyperlink{studentai_8h_aa29e1563b18d169c994fda72e4d3330d}{randominputas}} (\doxymbox{\hyperlink{class_vector}{Vector}}$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&grupe, bool Ar\+Generuoti\+Vardus)
+\item 
+void \doxymbox{\hyperlink{studentai_8h_a7a7c2dd3bbe7dbd6b8f18db51f9575c3}{outputas}} (const \doxymbox{\hyperlink{class_vector}{Vector}}$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&grupe)
+\item 
+void \doxymbox{\hyperlink{studentai_8h_a61480f6a8ad393c73808467b3346ad31}{failoutputas}} (const \doxymbox{\hyperlink{class_vector}{Vector}}$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&grupe, string writing)
+\item 
 void \doxymbox{\hyperlink{studentai_8h_a3ae0e8adc069fc06e1969d696c93c762}{failgeneravimas}} ()
 \begin{DoxyCompactList}\small\item\em generuoja 5 failus su atsitiktiniais studentais \end{DoxyCompactList}\item 
-void \doxymbox{\hyperlink{studentai_8h_a22a9ffca1f3ee438d7476e7b31a551ed}{genirasymas}} (vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&grupe, vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&protingi, vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&neprotingi, string writing\+\_\+good, string writing\+\_\+bad, int rik\+\_\+pasirinkimas, \doxymbox{\hyperlink{studentai_8h_affdf706008cc8ce58b7dd8c2b2aeeb14}{Skirstymo\+Strategija}} strategija)
-\begin{DoxyCompactList}\small\item\em skaito gen failus iš failgeneravimas funkcijos, rikiuoja ir paskirsto į naujus failus \end{DoxyCompactList}\item 
-string \doxymbox{\hyperlink{studentai_8h_a299d0124fd297db2eea36bae5bc27efc}{lytgen}} ()
+void \doxymbox{\hyperlink{studentai_8h_a7b6394ab0358fa7778187eed225ac2f0}{genirasymas}} (\doxymbox{\hyperlink{class_vector}{Vector}}$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&grupe, \doxymbox{\hyperlink{class_vector}{Vector}}$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&protingi, \doxymbox{\hyperlink{class_vector}{Vector}}$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&neprotingi, string writing\+\_\+good, string writing\+\_\+bad, int rik\+\_\+pasirinkimas, \doxymbox{\hyperlink{studentai_8h_affdf706008cc8ce58b7dd8c2b2aeeb14}{Skirstymo\+Strategija}} strategija)
+\item 
+std::\+string \doxymbox{\hyperlink{studentai_8h_a06e45081de48827345e98ba896d2a78b}{lytgen}} ()
 \begin{DoxyCompactList}\small\item\em random lyties generavimas \end{DoxyCompactList}\item 
 string \doxymbox{\hyperlink{studentai_8h_a958f3c96893d598a5f5da1495b944dd5}{randomvardas}} (string lytis)
 \begin{DoxyCompactList}\small\item\em random vardo generavimas iš listo \end{DoxyCompactList}\item 
 string \doxymbox{\hyperlink{studentai_8h_a9bacdcf942f742bfd454d86fa0dd8ebf}{randompavarde}} (string lytis)
 \begin{DoxyCompactList}\small\item\em random pavardės generavimas iš listo \end{DoxyCompactList}\item 
-void \doxymbox{\hyperlink{studentai_8h_ac0049f942c9d13a457b735888255bc6c}{rikiuoti}} (vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&grupe, int pasirinkimas)
-\begin{DoxyCompactList}\small\item\em studentų rikiavimas pagal cmp funkcijas \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{studentai_8h_ae67236e6e28a49d93a240efc025757f1}{rikiuoti}} (\doxymbox{\hyperlink{class_vector}{Vector}}$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&grupe, int pasirinkimas)
+\item 
 bool \doxymbox{\hyperlink{studentai_8h_aafebaaaba93ba2763c760fd7c26f0fbf}{cmp\+Vardas}} (const \doxymbox{\hyperlink{class_studentas}{Studentas}} \&a, const \doxymbox{\hyperlink{class_studentas}{Studentas}} \&b)
 \begin{DoxyCompactList}\small\item\em vardo palyginimas \end{DoxyCompactList}\item 
 bool \doxymbox{\hyperlink{studentai_8h_a7515b13b935fba59352cfa89ef160691}{cmp\+Pavarde}} (const \doxymbox{\hyperlink{class_studentas}{Studentas}} \&a, const \doxymbox{\hyperlink{class_studentas}{Studentas}} \&b)
@@ -54,14 +64,18 @@ bool \doxymbox{\hyperlink{studentai_8h_ab92c1f3f3003abb3d5f101dd552888bc}{cmp\+M
 \begin{DoxyCompactList}\small\item\em medianos rezultatų palyginimas \end{DoxyCompactList}\item 
 bool \doxymbox{\hyperlink{studentai_8h_a580da71704af2caf0beea17afe401cc3}{cmp\+Egz}} (const \doxymbox{\hyperlink{class_studentas}{Studentas}} \&a, const \doxymbox{\hyperlink{class_studentas}{Studentas}} \&b)
 \begin{DoxyCompactList}\small\item\em egzamino rezultatų palyginimas \end{DoxyCompactList}\item 
-void \doxymbox{\hyperlink{studentai_8h_a845f5723161d98954b03cbc529e1fc28}{skirstyti}} (const vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&grupe, vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&protingi, vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&neprotingi)
-\begin{DoxyCompactList}\small\item\em studentų skirstymas į grupes pagal rezultatus \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{studentai_8h_a1dc948c335576c85a2d3a2d89a05ccf2}{skirstyti}} (const \doxymbox{\hyperlink{class_vector}{Vector}}$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&grupe, \doxymbox{\hyperlink{class_vector}{Vector}}$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&protingi, \doxymbox{\hyperlink{class_vector}{Vector}}$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&neprotingi)
+\item 
 void \doxymbox{\hyperlink{studentai_8h_ae0c1c04d3491a65de9b3652bf7f197e9}{log\+Results}} (const string \&container, int size, double read\+\_\+t, double sort\+\_\+t, double split\+\_\+t)
 \item 
-void \doxymbox{\hyperlink{studentai_8h_ac358cc5c4967063d9fe2c90467087126}{skirstyti2}} (vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&grupe, vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&neprotingi)
-\begin{DoxyCompactList}\small\item\em studentų skirstymas antra taktika \end{DoxyCompactList}\item 
-void \doxymbox{\hyperlink{studentai_8h_a9380c90a75b659b1423e1d75389b2ba8}{skirstyti3}} (vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&grupe, vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&neprotingi)
-\begin{DoxyCompactList}\small\item\em studentų skirstymas trečia taktika \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{studentai_8h_afe44ebfea1fd15998ab97eb8e91743a9}{skirstyti2}} (\doxymbox{\hyperlink{class_vector}{Vector}}$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&grupe, \doxymbox{\hyperlink{class_vector}{Vector}}$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&neprotingi)
+\item 
+void \doxymbox{\hyperlink{studentai_8h_ad1c11d8b238b622e8e825ed85bb40863}{skirstyti3}} (\doxymbox{\hyperlink{class_vector}{Vector}}$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&grupe, \doxymbox{\hyperlink{class_vector}{Vector}}$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&neprotingi)
+\item 
+void \doxymbox{\hyperlink{studentai_8h_ab9ce59e5169f89735621eb26e8169e11}{uzdmat}} (int vektordydis)
+\begin{DoxyCompactList}\small\item\em matuoja, kiek laiko uztrunka uzpildyti std::\+vector ir \doxylink{class_vector}{Vector} \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{studentai_8h_aa45ec5bbd12743c349c936975937a84d}{matuoti\+\_\+perskirstymus}} (int kiekis)
+\begin{DoxyCompactList}\small\item\em Matuoja perskirstymus std::\+vector ir \doxylink{class_vector}{Vector}. \end{DoxyCompactList}\item 
 ostream \& \doxymbox{\hyperlink{studentai_8h_aa1b71bec62728d9606e1d7cc3e5787bf}{operator$<$$<$}} (ostream \&os, const \doxymbox{\hyperlink{class_studentas}{Studentas}} \&s)
 \begin{DoxyCompactList}\small\item\em output operatorius klasei \end{DoxyCompactList}\item 
 istream \& \doxymbox{\hyperlink{studentai_8h_adc51fc3cf314a8f8ec6b514156a65ae1}{operator$>$$>$}} (istream \&is, \doxymbox{\hyperlink{class_studentas}{Studentas}} \&s)
@@ -69,15 +83,15 @@ istream \& \doxymbox{\hyperlink{studentai_8h_adc51fc3cf314a8f8ec6b514156a65ae1}{
 \doxysubsubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-const vector$<$ string $>$ \doxymbox{\hyperlink{studentai_8h_a7739c7ec9a4ea94d52657fe4a695583a}{mvardai}} = \{"{}Vytenis"{}, "{}Tomas"{}, "{}Jonas"{}, "{}Matas"{}, "{}Simas"{}, "{}Mantas"{}, "{}Arnas"{}\}
+const \doxymbox{\hyperlink{class_vector}{Vector}}$<$ string $>$ \doxymbox{\hyperlink{studentai_8h_a12f10348ca211f55435da09c42043526}{mvardai}} = \{"{}Vytenis"{}, "{}Tomas"{}, "{}Jonas"{}, "{}Matas"{}, "{}Simas"{}, "{}Mantas"{}, "{}Arnas"{}\}
 \item 
-const vector$<$ string $>$ \doxymbox{\hyperlink{studentai_8h_a0d73b890e7c792a0b39d6f8dea8398a0}{fvardai}} = \{"{}Egle"{}, "{}Viktorija"{}, "{}Vakare"{}, "{}Inga"{}, "{}Ema"{}, "{}Marija"{}, "{}Janina"{}\}
+const \doxymbox{\hyperlink{class_vector}{Vector}}$<$ string $>$ \doxymbox{\hyperlink{studentai_8h_a5082b67e68f630d51de6f3c30e75cbe5}{fvardai}} = \{"{}Egle"{}, "{}Viktorija"{}, "{}Vakare"{}, "{}Inga"{}, "{}Ema"{}, "{}Marija"{}, "{}Janina"{}\}
 \item 
-const vector$<$ string $>$ \doxymbox{\hyperlink{studentai_8h_aef6ad09a0021b2b8f62acd4138ca8305}{pavardes}} = \{"{}Macerausk"{}, "{}Jankausk"{}, "{}Kazlausk"{}, "{}Svilpausk"{}, "{}Drugeliausk"{}, "{}Briedausk"{}\}
+const \doxymbox{\hyperlink{class_vector}{Vector}}$<$ string $>$ \doxymbox{\hyperlink{studentai_8h_adab8226edadf6db324c0397283d3bbd7}{pavardes}} = \{"{}Macerausk"{}, "{}Jankausk"{}, "{}Kazlausk"{}, "{}Svilpausk"{}, "{}Drugeliausk"{}, "{}Briedausk"{}\}
 \item 
-const vector$<$ string $>$ \doxymbox{\hyperlink{studentai_8h_a6fe62f776d7eb7e831e60bd3c272cc2c}{mgalunes}} = \{"{}as"{}, "{}aitis"{}\}
+const \doxymbox{\hyperlink{class_vector}{Vector}}$<$ string $>$ \doxymbox{\hyperlink{studentai_8h_a2910a29c222a3b9a0318f4e8d7ae7608}{mgalunes}} = \{"{}as"{}, "{}aitis"{}\}
 \item 
-const vector$<$ string $>$ \doxymbox{\hyperlink{studentai_8h_a78b06790aa199f767e27106808554540}{fgalunes}} = \{"{}iene"{}, "{}aite"{}, "{}yte"{}\}
+const \doxymbox{\hyperlink{class_vector}{Vector}}$<$ string $>$ \doxymbox{\hyperlink{studentai_8h_a144888c2b759865446a0fccf2690b4aa}{fgalunes}} = \{"{}iene"{}, "{}aite"{}, "{}yte"{}\}
 \item 
 const string \doxymbox{\hyperlink{studentai_8h_ae12c17f8c0b55247e050fc300ae4dd1d}{irasymo\+\_\+failas}} = "{}kursiokai.\+txt"{}
 \item 
@@ -122,7 +136,7 @@ TRECIAS&\\
 \end{DoxyEnumFields}
 
 
-Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00017}{17}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
+Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00025}{25}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
 
 
 
@@ -141,7 +155,7 @@ egzamino rezultatų palyginimas
 
 
 
-Definition at line \doxymbox{\hyperlink{funk_8cpp_source_l00363}{363}} of file \doxymbox{\hyperlink{funk_8cpp_source}{funk.\+cpp}}.
+Definition at line \doxymbox{\hyperlink{funk_8cpp_source_l00364}{364}} of file \doxymbox{\hyperlink{funk_8cpp_source}{funk.\+cpp}}.
 
 \Hypertarget{studentai_8h_ab92c1f3f3003abb3d5f101dd552888bc}\index{studentai.h@{studentai.h}!cmpMedrez@{cmpMedrez}}
 \index{cmpMedrez@{cmpMedrez}!studentai.h@{studentai.h}}
@@ -155,7 +169,7 @@ medianos rezultatų palyginimas
 
 
 
-Definition at line \doxymbox{\hyperlink{funk_8cpp_source_l00358}{358}} of file \doxymbox{\hyperlink{funk_8cpp_source}{funk.\+cpp}}.
+Definition at line \doxymbox{\hyperlink{funk_8cpp_source_l00359}{359}} of file \doxymbox{\hyperlink{funk_8cpp_source}{funk.\+cpp}}.
 
 \Hypertarget{studentai_8h_a7515b13b935fba59352cfa89ef160691}\index{studentai.h@{studentai.h}!cmpPavarde@{cmpPavarde}}
 \index{cmpPavarde@{cmpPavarde}!studentai.h@{studentai.h}}
@@ -169,7 +183,7 @@ pavardės palyginimas
 
 
 
-Definition at line \doxymbox{\hyperlink{funk_8cpp_source_l00348}{348}} of file \doxymbox{\hyperlink{funk_8cpp_source}{funk.\+cpp}}.
+Definition at line \doxymbox{\hyperlink{funk_8cpp_source_l00349}{349}} of file \doxymbox{\hyperlink{funk_8cpp_source}{funk.\+cpp}}.
 
 \Hypertarget{studentai_8h_a4c9e8dfb0fa9ad70069cae33237fce76}\index{studentai.h@{studentai.h}!cmpRez@{cmpRez}}
 \index{cmpRez@{cmpRez}!studentai.h@{studentai.h}}
@@ -183,7 +197,7 @@ rezultatų palyginimas
 
 
 
-Definition at line \doxymbox{\hyperlink{funk_8cpp_source_l00353}{353}} of file \doxymbox{\hyperlink{funk_8cpp_source}{funk.\+cpp}}.
+Definition at line \doxymbox{\hyperlink{funk_8cpp_source_l00354}{354}} of file \doxymbox{\hyperlink{funk_8cpp_source}{funk.\+cpp}}.
 
 \Hypertarget{studentai_8h_aafebaaaba93ba2763c760fd7c26f0fbf}\index{studentai.h@{studentai.h}!cmpVardas@{cmpVardas}}
 \index{cmpVardas@{cmpVardas}!studentai.h@{studentai.h}}
@@ -197,7 +211,7 @@ vardo palyginimas
 
 
 
-Definition at line \doxymbox{\hyperlink{funk_8cpp_source_l00343}{343}} of file \doxymbox{\hyperlink{funk_8cpp_source}{funk.\+cpp}}.
+Definition at line \doxymbox{\hyperlink{funk_8cpp_source_l00344}{344}} of file \doxymbox{\hyperlink{funk_8cpp_source}{funk.\+cpp}}.
 
 \Hypertarget{studentai_8h_a3ae0e8adc069fc06e1969d696c93c762}\index{studentai.h@{studentai.h}!failgeneravimas@{failgeneravimas}}
 \index{failgeneravimas@{failgeneravimas}!studentai.h@{studentai.h}}
@@ -211,63 +225,31 @@ generuoja 5 failus su atsitiktiniais studentais
 
 
 
-Definition at line \doxymbox{\hyperlink{funk_8cpp_source_l00384}{384}} of file \doxymbox{\hyperlink{funk_8cpp_source}{funk.\+cpp}}.
+Definition at line \doxymbox{\hyperlink{funk_8cpp_source_l00385}{385}} of file \doxymbox{\hyperlink{funk_8cpp_source}{funk.\+cpp}}.
 
-\Hypertarget{studentai_8h_a10d7df7637fb31990a2193116a0089ed}\index{studentai.h@{studentai.h}!failinputas@{failinputas}}
+\Hypertarget{studentai_8h_acfefbcec8e50efb4ed5a475f6e3c9364}\index{studentai.h@{studentai.h}!failinputas@{failinputas}}
 \index{failinputas@{failinputas}!studentai.h@{studentai.h}}
 \doxysubsubsection{\texorpdfstring{failinputas()}{failinputas()}}
-{\footnotesize\ttfamily \label{studentai_8h_a10d7df7637fb31990a2193116a0089ed} 
-void failinputas (\begin{DoxyParamCaption}\item[{vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{grupe}{, }\item[{string}]{reading}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{studentai_8h_acfefbcec8e50efb4ed5a475f6e3c9364} 
+void failinputas (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_vector}{Vector}}$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{grupe}{, }\item[{string}]{reading}{}\end{DoxyParamCaption})}
 
-
-
-studentų nuskaitymas iš failo 
-
-
-
-Definition at line \doxymbox{\hyperlink{funk_8cpp_source_l00259}{259}} of file \doxymbox{\hyperlink{funk_8cpp_source}{funk.\+cpp}}.
-
-\Hypertarget{studentai_8h_a1e5b5b8c736f59beb422c5da325b644a}\index{studentai.h@{studentai.h}!failoutputas@{failoutputas}}
+\Hypertarget{studentai_8h_a61480f6a8ad393c73808467b3346ad31}\index{studentai.h@{studentai.h}!failoutputas@{failoutputas}}
 \index{failoutputas@{failoutputas}!studentai.h@{studentai.h}}
 \doxysubsubsection{\texorpdfstring{failoutputas()}{failoutputas()}}
-{\footnotesize\ttfamily \label{studentai_8h_a1e5b5b8c736f59beb422c5da325b644a} 
-void failoutputas (\begin{DoxyParamCaption}\item[{const vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{grupe}{, }\item[{string}]{writing}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{studentai_8h_a61480f6a8ad393c73808467b3346ad31} 
+void failoutputas (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_vector}{Vector}}$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{grupe}{, }\item[{string}]{writing}{}\end{DoxyParamCaption})}
 
-
-
-studentų spausdinimas į failą (be rikiavimo) 
-
-Write students to file
-
-Definition at line \doxymbox{\hyperlink{funk_8cpp_source_l00141}{141}} of file \doxymbox{\hyperlink{funk_8cpp_source}{funk.\+cpp}}.
-
-\Hypertarget{studentai_8h_a22a9ffca1f3ee438d7476e7b31a551ed}\index{studentai.h@{studentai.h}!genirasymas@{genirasymas}}
+\Hypertarget{studentai_8h_a7b6394ab0358fa7778187eed225ac2f0}\index{studentai.h@{studentai.h}!genirasymas@{genirasymas}}
 \index{genirasymas@{genirasymas}!studentai.h@{studentai.h}}
 \doxysubsubsection{\texorpdfstring{genirasymas()}{genirasymas()}}
-{\footnotesize\ttfamily \label{studentai_8h_a22a9ffca1f3ee438d7476e7b31a551ed} 
-void genirasymas (\begin{DoxyParamCaption}\item[{vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{grupe}{, }\item[{vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{protingi}{, }\item[{vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{neprotingi}{, }\item[{string}]{writing\+\_\+good}{, }\item[{string}]{writing\+\_\+bad}{, }\item[{int}]{rik\+\_\+pasirinkimas}{, }\item[{\doxymbox{\hyperlink{studentai_8h_affdf706008cc8ce58b7dd8c2b2aeeb14}{Skirstymo\+Strategija}}}]{strategija}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{studentai_8h_a7b6394ab0358fa7778187eed225ac2f0} 
+void genirasymas (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_vector}{Vector}}$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{grupe}{, }\item[{\doxymbox{\hyperlink{class_vector}{Vector}}$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{protingi}{, }\item[{\doxymbox{\hyperlink{class_vector}{Vector}}$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{neprotingi}{, }\item[{string}]{writing\+\_\+good}{, }\item[{string}]{writing\+\_\+bad}{, }\item[{int}]{rik\+\_\+pasirinkimas}{, }\item[{\doxymbox{\hyperlink{studentai_8h_affdf706008cc8ce58b7dd8c2b2aeeb14}{Skirstymo\+Strategija}}}]{strategija}{}\end{DoxyParamCaption})}
 
-
-
-skaito gen failus iš failgeneravimas funkcijos, rikiuoja ir paskirsto į naujus failus 
-
-
-
-Definition at line \doxymbox{\hyperlink{funk_8cpp_source_l00418}{418}} of file \doxymbox{\hyperlink{funk_8cpp_source}{funk.\+cpp}}.
-
-\Hypertarget{studentai_8h_a48aa126d7143c8a4b2649d498199c3c7}\index{studentai.h@{studentai.h}!inputas@{inputas}}
+\Hypertarget{studentai_8h_ab6d6c55152556ad6a8519e19389e25bc}\index{studentai.h@{studentai.h}!inputas@{inputas}}
 \index{inputas@{inputas}!studentai.h@{studentai.h}}
 \doxysubsubsection{\texorpdfstring{inputas()}{inputas()}}
-{\footnotesize\ttfamily \label{studentai_8h_a48aa126d7143c8a4b2649d498199c3c7} 
-void inputas (\begin{DoxyParamCaption}\item[{vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{grupe}{}\end{DoxyParamCaption})}
-
-
-
-rankinė studentų įvestis 
-
-
-
-Definition at line \doxymbox{\hyperlink{funk_8cpp_source_l00038}{38}} of file \doxymbox{\hyperlink{funk_8cpp_source}{funk.\+cpp}}.
+{\footnotesize\ttfamily \label{studentai_8h_ab6d6c55152556ad6a8519e19389e25bc} 
+void inputas (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_vector}{Vector}}$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{grupe}{}\end{DoxyParamCaption})}
 
 \Hypertarget{studentai_8h_ae0c1c04d3491a65de9b3652bf7f197e9}\index{studentai.h@{studentai.h}!logResults@{logResults}}
 \index{logResults@{logResults}!studentai.h@{studentai.h}}
@@ -277,13 +259,13 @@ void log\+Results (\begin{DoxyParamCaption}\item[{const string \&}]{container}{,
 
 
 
-Definition at line \doxymbox{\hyperlink{funk_8cpp_source_l00555}{555}} of file \doxymbox{\hyperlink{funk_8cpp_source}{funk.\+cpp}}.
+Definition at line \doxymbox{\hyperlink{funk_8cpp_source_l00559}{559}} of file \doxymbox{\hyperlink{funk_8cpp_source}{funk.\+cpp}}.
 
-\Hypertarget{studentai_8h_a299d0124fd297db2eea36bae5bc27efc}\index{studentai.h@{studentai.h}!lytgen@{lytgen}}
+\Hypertarget{studentai_8h_a06e45081de48827345e98ba896d2a78b}\index{studentai.h@{studentai.h}!lytgen@{lytgen}}
 \index{lytgen@{lytgen}!studentai.h@{studentai.h}}
 \doxysubsubsection{\texorpdfstring{lytgen()}{lytgen()}}
-{\footnotesize\ttfamily \label{studentai_8h_a299d0124fd297db2eea36bae5bc27efc} 
-string lytgen (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{studentai_8h_a06e45081de48827345e98ba896d2a78b} 
+std::\+string lytgen (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
 
 
@@ -291,7 +273,21 @@ random lyties generavimas
 
 
 
-Definition at line \doxymbox{\hyperlink{funk_8cpp_source_l00337}{337}} of file \doxymbox{\hyperlink{funk_8cpp_source}{funk.\+cpp}}.
+Definition at line \doxymbox{\hyperlink{funk_8cpp_source_l00338}{338}} of file \doxymbox{\hyperlink{funk_8cpp_source}{funk.\+cpp}}.
+
+\Hypertarget{studentai_8h_aa45ec5bbd12743c349c936975937a84d}\index{studentai.h@{studentai.h}!matuoti\_perskirstymus@{matuoti\_perskirstymus}}
+\index{matuoti\_perskirstymus@{matuoti\_perskirstymus}!studentai.h@{studentai.h}}
+\doxysubsubsection{\texorpdfstring{matuoti\_perskirstymus()}{matuoti\_perskirstymus()}}
+{\footnotesize\ttfamily \label{studentai_8h_aa45ec5bbd12743c349c936975937a84d} 
+void matuoti\+\_\+perskirstymus (\begin{DoxyParamCaption}\item[{int}]{kiekis}{}\end{DoxyParamCaption})}
+
+
+
+Matuoja perskirstymus std::\+vector ir \doxylink{class_vector}{Vector}. 
+
+
+
+Definition at line \doxymbox{\hyperlink{funk_8cpp_source_l00658}{658}} of file \doxymbox{\hyperlink{funk_8cpp_source}{funk.\+cpp}}.
 
 \Hypertarget{studentai_8h_aa1b71bec62728d9606e1d7cc3e5787bf}\index{studentai.h@{studentai.h}!operator$<$$<$@{operator$<$$<$}}
 \index{operator$<$$<$@{operator$<$$<$}!studentai.h@{studentai.h}}
@@ -305,7 +301,7 @@ output operatorius klasei
 
 
 
-Definition at line \doxymbox{\hyperlink{funk_8cpp_source_l00595}{595}} of file \doxymbox{\hyperlink{funk_8cpp_source}{funk.\+cpp}}.
+Definition at line \doxymbox{\hyperlink{funk_8cpp_source_l00602}{602}} of file \doxymbox{\hyperlink{funk_8cpp_source}{funk.\+cpp}}.
 
 \Hypertarget{studentai_8h_adc51fc3cf314a8f8ec6b514156a65ae1}\index{studentai.h@{studentai.h}!operator$>$$>$@{operator$>$$>$}}
 \index{operator$>$$>$@{operator$>$$>$}!studentai.h@{studentai.h}}
@@ -319,35 +315,19 @@ input operatorius klasei
 
 
 
-Definition at line \doxymbox{\hyperlink{funk_8cpp_source_l00604}{604}} of file \doxymbox{\hyperlink{funk_8cpp_source}{funk.\+cpp}}.
+Definition at line \doxymbox{\hyperlink{funk_8cpp_source_l00611}{611}} of file \doxymbox{\hyperlink{funk_8cpp_source}{funk.\+cpp}}.
 
-\Hypertarget{studentai_8h_aa9ba3c0b2859ab9b4dd9d65fa479d9c1}\index{studentai.h@{studentai.h}!outputas@{outputas}}
+\Hypertarget{studentai_8h_a7a7c2dd3bbe7dbd6b8f18db51f9575c3}\index{studentai.h@{studentai.h}!outputas@{outputas}}
 \index{outputas@{outputas}!studentai.h@{studentai.h}}
 \doxysubsubsection{\texorpdfstring{outputas()}{outputas()}}
-{\footnotesize\ttfamily \label{studentai_8h_aa9ba3c0b2859ab9b4dd9d65fa479d9c1} 
-void outputas (\begin{DoxyParamCaption}\item[{const vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{grupe}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{studentai_8h_a7a7c2dd3bbe7dbd6b8f18db51f9575c3} 
+void outputas (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_vector}{Vector}}$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{grupe}{}\end{DoxyParamCaption})}
 
-
-
-atspausdina studentus į console 
-
-Print students to console
-
-Definition at line \doxymbox{\hyperlink{funk_8cpp_source_l00120}{120}} of file \doxymbox{\hyperlink{funk_8cpp_source}{funk.\+cpp}}.
-
-\Hypertarget{studentai_8h_af6cbfb393404e5756a9a5f3e00af0fa4}\index{studentai.h@{studentai.h}!randominputas@{randominputas}}
+\Hypertarget{studentai_8h_aa29e1563b18d169c994fda72e4d3330d}\index{studentai.h@{studentai.h}!randominputas@{randominputas}}
 \index{randominputas@{randominputas}!studentai.h@{studentai.h}}
 \doxysubsubsection{\texorpdfstring{randominputas()}{randominputas()}}
-{\footnotesize\ttfamily \label{studentai_8h_af6cbfb393404e5756a9a5f3e00af0fa4} 
-void randominputas (\begin{DoxyParamCaption}\item[{vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{grupe}{, }\item[{bool}]{Ar\+Generuoti\+Vardus}{}\end{DoxyParamCaption})}
-
-
-
-atsitiktinių studentų generavimas 
-
-
-
-Definition at line \doxymbox{\hyperlink{funk_8cpp_source_l00166}{166}} of file \doxymbox{\hyperlink{funk_8cpp_source}{funk.\+cpp}}.
+{\footnotesize\ttfamily \label{studentai_8h_aa29e1563b18d169c994fda72e4d3330d} 
+void randominputas (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_vector}{Vector}}$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{grupe}{, }\item[{bool}]{Ar\+Generuoti\+Vardus}{}\end{DoxyParamCaption})}
 
 \Hypertarget{studentai_8h_a9bacdcf942f742bfd454d86fa0dd8ebf}\index{studentai.h@{studentai.h}!randompavarde@{randompavarde}}
 \index{randompavarde@{randompavarde}!studentai.h@{studentai.h}}
@@ -361,7 +341,7 @@ random pavardės generavimas iš listo
 
 
 
-Definition at line \doxymbox{\hyperlink{funk_8cpp_source_l00324}{324}} of file \doxymbox{\hyperlink{funk_8cpp_source}{funk.\+cpp}}.
+Definition at line \doxymbox{\hyperlink{funk_8cpp_source_l00325}{325}} of file \doxymbox{\hyperlink{funk_8cpp_source}{funk.\+cpp}}.
 
 \Hypertarget{studentai_8h_a958f3c96893d598a5f5da1495b944dd5}\index{studentai.h@{studentai.h}!randomvardas@{randomvardas}}
 \index{randomvardas@{randomvardas}!studentai.h@{studentai.h}}
@@ -375,88 +355,70 @@ random vardo generavimas iš listo
 
 
 
-Definition at line \doxymbox{\hyperlink{funk_8cpp_source_l00316}{316}} of file \doxymbox{\hyperlink{funk_8cpp_source}{funk.\+cpp}}.
+Definition at line \doxymbox{\hyperlink{funk_8cpp_source_l00317}{317}} of file \doxymbox{\hyperlink{funk_8cpp_source}{funk.\+cpp}}.
 
-\Hypertarget{studentai_8h_ac0049f942c9d13a457b735888255bc6c}\index{studentai.h@{studentai.h}!rikiuoti@{rikiuoti}}
+\Hypertarget{studentai_8h_ae67236e6e28a49d93a240efc025757f1}\index{studentai.h@{studentai.h}!rikiuoti@{rikiuoti}}
 \index{rikiuoti@{rikiuoti}!studentai.h@{studentai.h}}
 \doxysubsubsection{\texorpdfstring{rikiuoti()}{rikiuoti()}}
-{\footnotesize\ttfamily \label{studentai_8h_ac0049f942c9d13a457b735888255bc6c} 
-void rikiuoti (\begin{DoxyParamCaption}\item[{vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{grupe}{, }\item[{int}]{pasirinkimas}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{studentai_8h_ae67236e6e28a49d93a240efc025757f1} 
+void rikiuoti (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_vector}{Vector}}$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{grupe}{, }\item[{int}]{pasirinkimas}{}\end{DoxyParamCaption})}
 
-
-
-studentų rikiavimas pagal cmp funkcijas 
-
-
-
-Definition at line \doxymbox{\hyperlink{funk_8cpp_source_l00369}{369}} of file \doxymbox{\hyperlink{funk_8cpp_source}{funk.\+cpp}}.
-
-\Hypertarget{studentai_8h_a845f5723161d98954b03cbc529e1fc28}\index{studentai.h@{studentai.h}!skirstyti@{skirstyti}}
+\Hypertarget{studentai_8h_a1dc948c335576c85a2d3a2d89a05ccf2}\index{studentai.h@{studentai.h}!skirstyti@{skirstyti}}
 \index{skirstyti@{skirstyti}!studentai.h@{studentai.h}}
 \doxysubsubsection{\texorpdfstring{skirstyti()}{skirstyti()}}
-{\footnotesize\ttfamily \label{studentai_8h_a845f5723161d98954b03cbc529e1fc28} 
-void skirstyti (\begin{DoxyParamCaption}\item[{const vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{grupe}{, }\item[{vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{protingi}{, }\item[{vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{neprotingi}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{studentai_8h_a1dc948c335576c85a2d3a2d89a05ccf2} 
+void skirstyti (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_vector}{Vector}}$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{grupe}{, }\item[{\doxymbox{\hyperlink{class_vector}{Vector}}$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{protingi}{, }\item[{\doxymbox{\hyperlink{class_vector}{Vector}}$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{neprotingi}{}\end{DoxyParamCaption})}
 
-
-
-studentų skirstymas į grupes pagal rezultatus 
-
-
-
-Definition at line \doxymbox{\hyperlink{funk_8cpp_source_l00543}{543}} of file \doxymbox{\hyperlink{funk_8cpp_source}{funk.\+cpp}}.
-
-\Hypertarget{studentai_8h_ac358cc5c4967063d9fe2c90467087126}\index{studentai.h@{studentai.h}!skirstyti2@{skirstyti2}}
+\Hypertarget{studentai_8h_afe44ebfea1fd15998ab97eb8e91743a9}\index{studentai.h@{studentai.h}!skirstyti2@{skirstyti2}}
 \index{skirstyti2@{skirstyti2}!studentai.h@{studentai.h}}
 \doxysubsubsection{\texorpdfstring{skirstyti2()}{skirstyti2()}}
-{\footnotesize\ttfamily \label{studentai_8h_ac358cc5c4967063d9fe2c90467087126} 
-void skirstyti2 (\begin{DoxyParamCaption}\item[{vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{grupe}{, }\item[{vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{neprotingi}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{studentai_8h_afe44ebfea1fd15998ab97eb8e91743a9} 
+void skirstyti2 (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_vector}{Vector}}$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{grupe}{, }\item[{\doxymbox{\hyperlink{class_vector}{Vector}}$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{neprotingi}{}\end{DoxyParamCaption})}
 
-
-
-studentų skirstymas antra taktika 
-
-
-
-Definition at line \doxymbox{\hyperlink{funk_8cpp_source_l00567}{567}} of file \doxymbox{\hyperlink{funk_8cpp_source}{funk.\+cpp}}.
-
-\Hypertarget{studentai_8h_a9380c90a75b659b1423e1d75389b2ba8}\index{studentai.h@{studentai.h}!skirstyti3@{skirstyti3}}
+\Hypertarget{studentai_8h_ad1c11d8b238b622e8e825ed85bb40863}\index{studentai.h@{studentai.h}!skirstyti3@{skirstyti3}}
 \index{skirstyti3@{skirstyti3}!studentai.h@{studentai.h}}
 \doxysubsubsection{\texorpdfstring{skirstyti3()}{skirstyti3()}}
-{\footnotesize\ttfamily \label{studentai_8h_a9380c90a75b659b1423e1d75389b2ba8} 
-void skirstyti3 (\begin{DoxyParamCaption}\item[{vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{grupe}{, }\item[{vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{neprotingi}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{studentai_8h_ad1c11d8b238b622e8e825ed85bb40863} 
+void skirstyti3 (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_vector}{Vector}}$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{grupe}{, }\item[{\doxymbox{\hyperlink{class_vector}{Vector}}$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{neprotingi}{}\end{DoxyParamCaption})}
+
+\Hypertarget{studentai_8h_ab9ce59e5169f89735621eb26e8169e11}\index{studentai.h@{studentai.h}!uzdmat@{uzdmat}}
+\index{uzdmat@{uzdmat}!studentai.h@{studentai.h}}
+\doxysubsubsection{\texorpdfstring{uzdmat()}{uzdmat()}}
+{\footnotesize\ttfamily \label{studentai_8h_ab9ce59e5169f89735621eb26e8169e11} 
+void uzdmat (\begin{DoxyParamCaption}\item[{int}]{vektordydis}{}\end{DoxyParamCaption})}
 
 
 
-studentų skirstymas trečia taktika 
+matuoja, kiek laiko uztrunka uzpildyti std::\+vector ir \doxylink{class_vector}{Vector} 
 
 
 
-Definition at line \doxymbox{\hyperlink{funk_8cpp_source_l00577}{577}} of file \doxymbox{\hyperlink{funk_8cpp_source}{funk.\+cpp}}.
+Definition at line \doxymbox{\hyperlink{funk_8cpp_source_l00631}{631}} of file \doxymbox{\hyperlink{funk_8cpp_source}{funk.\+cpp}}.
 
 
 
 \label{studentai_8h_doc-var-members}
 \Hypertarget{studentai_8h_doc-var-members}
 \doxysubsection{Variable Documentation}
-\Hypertarget{studentai_8h_a78b06790aa199f767e27106808554540}\index{studentai.h@{studentai.h}!fgalunes@{fgalunes}}
+\Hypertarget{studentai_8h_a144888c2b759865446a0fccf2690b4aa}\index{studentai.h@{studentai.h}!fgalunes@{fgalunes}}
 \index{fgalunes@{fgalunes}!studentai.h@{studentai.h}}
 \doxysubsubsection{\texorpdfstring{fgalunes}{fgalunes}}
-{\footnotesize\ttfamily \label{studentai_8h_a78b06790aa199f767e27106808554540} 
-const vector$<$string$>$ fgalunes = \{"{}iene"{}, "{}aite"{}, "{}yte"{}\}}
+{\footnotesize\ttfamily \label{studentai_8h_a144888c2b759865446a0fccf2690b4aa} 
+const \doxymbox{\hyperlink{class_vector}{Vector}}$<$string$>$ fgalunes = \{"{}iene"{}, "{}aite"{}, "{}yte"{}\}}
 
 
 
-Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00015}{15}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
+Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00023}{23}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
 
-\Hypertarget{studentai_8h_a0d73b890e7c792a0b39d6f8dea8398a0}\index{studentai.h@{studentai.h}!fvardai@{fvardai}}
+\Hypertarget{studentai_8h_a5082b67e68f630d51de6f3c30e75cbe5}\index{studentai.h@{studentai.h}!fvardai@{fvardai}}
 \index{fvardai@{fvardai}!studentai.h@{studentai.h}}
 \doxysubsubsection{\texorpdfstring{fvardai}{fvardai}}
-{\footnotesize\ttfamily \label{studentai_8h_a0d73b890e7c792a0b39d6f8dea8398a0} 
-const vector$<$string$>$ fvardai = \{"{}Egle"{}, "{}Viktorija"{}, "{}Vakare"{}, "{}Inga"{}, "{}Ema"{}, "{}Marija"{}, "{}Janina"{}\}}
+{\footnotesize\ttfamily \label{studentai_8h_a5082b67e68f630d51de6f3c30e75cbe5} 
+const \doxymbox{\hyperlink{class_vector}{Vector}}$<$string$>$ fvardai = \{"{}Egle"{}, "{}Viktorija"{}, "{}Vakare"{}, "{}Inga"{}, "{}Ema"{}, "{}Marija"{}, "{}Janina"{}\}}
 
 
 
-Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00012}{12}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
+Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00020}{20}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
 
 \Hypertarget{studentai_8h_ae12c17f8c0b55247e050fc300ae4dd1d}\index{studentai.h@{studentai.h}!irasymo\_failas@{irasymo\_failas}}
 \index{irasymo\_failas@{irasymo\_failas}!studentai.h@{studentai.h}}
@@ -466,7 +428,7 @@ const string irasymo\+\_\+failas = "{}kursiokai.\+txt"{}}
 
 
 
-Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00159}{159}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
+Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00164}{164}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
 
 \Hypertarget{studentai_8h_aa3859680906292c55befe96750826b51}\index{studentai.h@{studentai.h}!irasymo\_failas\_blogas@{irasymo\_failas\_blogas}}
 \index{irasymo\_failas\_blogas@{irasymo\_failas\_blogas}!studentai.h@{studentai.h}}
@@ -476,7 +438,7 @@ const string irasymo\+\_\+failas\+\_\+blogas = "{}kursiokai\+\_\+blogi.\+txt"{}}
 
 
 
-Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00161}{161}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
+Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00166}{166}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
 
 \Hypertarget{studentai_8h_abb897a694840420093fd54653b08c985}\index{studentai.h@{studentai.h}!irasymo\_failas\_geras@{irasymo\_failas\_geras}}
 \index{irasymo\_failas\_geras@{irasymo\_failas\_geras}!studentai.h@{studentai.h}}
@@ -486,35 +448,35 @@ const string irasymo\+\_\+failas\+\_\+geras = "{}kursiokai\+\_\+geri.\+txt"{}}
 
 
 
-Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00160}{160}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
+Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00165}{165}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
 
-\Hypertarget{studentai_8h_a6fe62f776d7eb7e831e60bd3c272cc2c}\index{studentai.h@{studentai.h}!mgalunes@{mgalunes}}
+\Hypertarget{studentai_8h_a2910a29c222a3b9a0318f4e8d7ae7608}\index{studentai.h@{studentai.h}!mgalunes@{mgalunes}}
 \index{mgalunes@{mgalunes}!studentai.h@{studentai.h}}
 \doxysubsubsection{\texorpdfstring{mgalunes}{mgalunes}}
-{\footnotesize\ttfamily \label{studentai_8h_a6fe62f776d7eb7e831e60bd3c272cc2c} 
-const vector$<$string$>$ mgalunes = \{"{}as"{}, "{}aitis"{}\}}
+{\footnotesize\ttfamily \label{studentai_8h_a2910a29c222a3b9a0318f4e8d7ae7608} 
+const \doxymbox{\hyperlink{class_vector}{Vector}}$<$string$>$ mgalunes = \{"{}as"{}, "{}aitis"{}\}}
 
 
 
-Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00014}{14}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
+Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00022}{22}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
 
-\Hypertarget{studentai_8h_a7739c7ec9a4ea94d52657fe4a695583a}\index{studentai.h@{studentai.h}!mvardai@{mvardai}}
+\Hypertarget{studentai_8h_a12f10348ca211f55435da09c42043526}\index{studentai.h@{studentai.h}!mvardai@{mvardai}}
 \index{mvardai@{mvardai}!studentai.h@{studentai.h}}
 \doxysubsubsection{\texorpdfstring{mvardai}{mvardai}}
-{\footnotesize\ttfamily \label{studentai_8h_a7739c7ec9a4ea94d52657fe4a695583a} 
-const vector$<$string$>$ mvardai = \{"{}Vytenis"{}, "{}Tomas"{}, "{}Jonas"{}, "{}Matas"{}, "{}Simas"{}, "{}Mantas"{}, "{}Arnas"{}\}}
+{\footnotesize\ttfamily \label{studentai_8h_a12f10348ca211f55435da09c42043526} 
+const \doxymbox{\hyperlink{class_vector}{Vector}}$<$string$>$ mvardai = \{"{}Vytenis"{}, "{}Tomas"{}, "{}Jonas"{}, "{}Matas"{}, "{}Simas"{}, "{}Mantas"{}, "{}Arnas"{}\}}
 
 
 
-Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00011}{11}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
+Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00019}{19}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
 
-\Hypertarget{studentai_8h_aef6ad09a0021b2b8f62acd4138ca8305}\index{studentai.h@{studentai.h}!pavardes@{pavardes}}
+\Hypertarget{studentai_8h_adab8226edadf6db324c0397283d3bbd7}\index{studentai.h@{studentai.h}!pavardes@{pavardes}}
 \index{pavardes@{pavardes}!studentai.h@{studentai.h}}
 \doxysubsubsection{\texorpdfstring{pavardes}{pavardes}}
-{\footnotesize\ttfamily \label{studentai_8h_aef6ad09a0021b2b8f62acd4138ca8305} 
-const vector$<$string$>$ pavardes = \{"{}Macerausk"{}, "{}Jankausk"{}, "{}Kazlausk"{}, "{}Svilpausk"{}, "{}Drugeliausk"{}, "{}Briedausk"{}\}}
+{\footnotesize\ttfamily \label{studentai_8h_adab8226edadf6db324c0397283d3bbd7} 
+const \doxymbox{\hyperlink{class_vector}{Vector}}$<$string$>$ pavardes = \{"{}Macerausk"{}, "{}Jankausk"{}, "{}Kazlausk"{}, "{}Svilpausk"{}, "{}Drugeliausk"{}, "{}Briedausk"{}\}}
 
 
 
-Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00013}{13}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
+Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00021}{21}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
 

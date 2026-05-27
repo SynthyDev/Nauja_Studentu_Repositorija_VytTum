@@ -1,0 +1,494 @@
+\doxysection{testing.\+cpp File Reference}
+\hypertarget{testing_8cpp}{}\label{testing_8cpp}\index{testing.cpp@{testing.cpp}}
+{\ttfamily \+\#include "{}catch.\+hpp"{}}\newline
+{\ttfamily \+\#include "{}studentai.\+h"{}}\newline
+{\ttfamily \+\#include $<$type\+\_\+traits$>$}\newline
+{\ttfamily \+\#include $<$vector$>$}\newline
+{\ttfamily \+\#include $<$iostream$>$}\newline
+{\ttfamily \+\#include $<$string$>$}\newline
+{\ttfamily \+\#include $<$algorithm$>$}\newline
+{\ttfamily \+\#include "{}Vector2.\+h"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{testing_8cpp_a656eb5868e824d59f489f910db438420}{CATCH\+\_\+\+CONFIG\+\_\+\+MAIN}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{testing_8cpp_a0257cd431fb265ffb00832b00a872ae5}{TEST\+\_\+\+CASE}} ("{}Studentu klases testas"{})
+\item 
+\doxymbox{\hyperlink{testing_8cpp_afc7b7bb136e86373625a766497aa1e67}{TEST\+\_\+\+CASE}} ("{}Zmogus yra abstract"{})
+\item 
+\doxymbox{\hyperlink{testing_8cpp_a7baf90902f5eb06eab83a64a3906546f}{TEST\+\_\+\+CASE}} ("{}Ar studentas yra abstract?"{})
+\item 
+\doxymbox{\hyperlink{class_studentas}{Studentas}} \doxymbox{\hyperlink{testing_8cpp_a77da5d53f874e075491c16f06112dd8f}{make\+Student}} ()
+\item 
+\doxymbox{\hyperlink{testing_8cpp_a83ee3f1d1953368dd71fb75e8c55219f}{TEST\+\_\+\+CASE}} ("{}Studentas copy konstruktorius"{})
+\item 
+\doxymbox{\hyperlink{testing_8cpp_aa71f35fa5a81777b1e67a6a4a888775f}{TEST\+\_\+\+CASE}} ("{}Studentas copy assignment"{})
+\item 
+\doxymbox{\hyperlink{testing_8cpp_a233834346ac5474c79aafa327014f6b4}{TEST\+\_\+\+CASE}} ("{}Studentas move konostruktorius"{})
+\item 
+\doxymbox{\hyperlink{testing_8cpp_a373502ecc9168deee9abcba39e4a1b03}{TEST\+\_\+\+CASE}} ("{}Studentas move assignment"{})
+\item 
+\doxymbox{\hyperlink{testing_8cpp_a4f13d94c55f384489ab9ada498df109f}{TEST\+\_\+\+CASE}} ("{}Studentas move a -\/$>$ a"{})
+\item 
+\doxymbox{\hyperlink{testing_8cpp_a1d4d237d156e56f06b08f8f1b3c82927}{TEST\+\_\+\+CASE}} ("{}Studentas output operator $>$$>$"{})
+\item 
+\doxymbox{\hyperlink{testing_8cpp_ab5a450e25eb9007766fae9ded4a83532}{TEST\+\_\+\+CASE}} ("{}Studentas input operator $>$$>$"{})
+\item 
+\doxymbox{\hyperlink{testing_8cpp_a6c952a1ed2ec8e623d01e99d1d320024}{TEST\+\_\+\+CASE}} ("{}Vector default constructor"{})
+\item 
+\doxymbox{\hyperlink{testing_8cpp_a2ec7713e6a790e7f23dc4f346d889d89}{TEST\+\_\+\+CASE}} ("{}Vector initializer\+\_\+list constructor"{})
+\item 
+\doxymbox{\hyperlink{testing_8cpp_aa55ceff6f20bfeb5d8bf1844260750fc}{TEST\+\_\+\+CASE}} ("{}Vector fill constructor"{})
+\item 
+\doxymbox{\hyperlink{testing_8cpp_acf69b529b3c8f8a8e6fac3ce69457f23}{TEST\+\_\+\+CASE}} ("{}Vector copy constructor"{})
+\item 
+\doxymbox{\hyperlink{testing_8cpp_a8efb0212125c88fb9bd00d3ef20b0752}{TEST\+\_\+\+CASE}} ("{}Vector copy assignment"{})
+\item 
+\doxymbox{\hyperlink{testing_8cpp_ae0c49e3bd4330c70aa067a7240c80f52}{TEST\+\_\+\+CASE}} ("{}Vector move constructor"{})
+\item 
+\doxymbox{\hyperlink{testing_8cpp_aebae09011e2f98366423cae2323cfba6}{TEST\+\_\+\+CASE}} ("{}Vector move assignment"{})
+\item 
+\doxymbox{\hyperlink{testing_8cpp_a09728af10886d78a9d8a9f04d0eae966}{TEST\+\_\+\+CASE}} ("{}Vector push\+\_\+back and pop\+\_\+back"{})
+\item 
+\doxymbox{\hyperlink{testing_8cpp_a346bde3e721081a6e4682f95d0576492}{TEST\+\_\+\+CASE}} ("{}Vector reserve increases capacity but not size"{})
+\item 
+\doxymbox{\hyperlink{testing_8cpp_ae23f1212f8427025a089ecff5c209b9f}{TEST\+\_\+\+CASE}} ("{}Vector resize larger"{})
+\item 
+\doxymbox{\hyperlink{testing_8cpp_a2fdd42eee855e04de1b79c409a38a8f6}{TEST\+\_\+\+CASE}} ("{}Vector resize smaller"{})
+\item 
+\doxymbox{\hyperlink{testing_8cpp_aae7b2177aaaffb1f4621e17dd9239b89}{TEST\+\_\+\+CASE}} ("{}Vector at() throws on out of range"{})
+\item 
+\doxymbox{\hyperlink{testing_8cpp_ad9fd2b9d74240d54206dcb68748cdd1c}{TEST\+\_\+\+CASE}} ("{}Vector front() and back()"{})
+\item 
+\doxymbox{\hyperlink{testing_8cpp_a10dc61ecb79b33c81f786524dd10c6d7}{TEST\+\_\+\+CASE}} ("{}Vector iterators work"{})
+\item 
+\doxymbox{\hyperlink{testing_8cpp_ac781dca9ced8bcad4d724d1a3fd2ae63}{TEST\+\_\+\+CASE}} ("{}Vector reverse iterators"{})
+\item 
+\doxymbox{\hyperlink{testing_8cpp_ac1c7cd07a6599bfbad56f80bebd18316}{TEST\+\_\+\+CASE}} ("{}Vector insert at middle"{})
+\item 
+\doxymbox{\hyperlink{testing_8cpp_a3647faf4fd5419933df205a0171b1068}{TEST\+\_\+\+CASE}} ("{}Vector erase single element"{})
+\item 
+\doxymbox{\hyperlink{testing_8cpp_a2d482aeac098824bc5c87f7b240c7ec3}{TEST\+\_\+\+CASE}} ("{}Vector erase range"{})
+\item 
+\doxymbox{\hyperlink{testing_8cpp_a35a53cdf01811f907a3b932d589b3649}{TEST\+\_\+\+CASE}} ("{}Vector comparison operators"{})
+\item 
+\doxymbox{\hyperlink{testing_8cpp_a1088878df78ae9ead337f3d1696efc61}{TEST\+\_\+\+CASE}} ("{}Vector swap"{})
+\item 
+\doxymbox{\hyperlink{testing_8cpp_aa22b22b0b46194f99d9df5a5f7e93e09}{TEST\+\_\+\+CASE}} ("{}Vector clear"{})
+\item 
+\doxymbox{\hyperlink{testing_8cpp_aa27b9839ebf7024c0bbc9ee62b48c483}{TEST\+\_\+\+CASE}} ("{}Vector shrink\+\_\+to\+\_\+fit reduces capacity to size"{})
+\item 
+\doxymbox{\hyperlink{testing_8cpp_a3c74132f3167f6fabca011c346065827}{TEST\+\_\+\+CASE}} ("{}Vector data() returns pointer to underlying array"{})
+\item 
+\doxymbox{\hyperlink{testing_8cpp_a99345e500537415de139cb91ec2589d6}{TEST\+\_\+\+CASE}} ("{}Vector cbegin() and cend() iterate correctly"{})
+\item 
+\doxymbox{\hyperlink{testing_8cpp_a5bfb154e3912ff42a7cfe64c8653770f}{TEST\+\_\+\+CASE}} ("{}Vector const reverse iterators work"{})
+\item 
+\doxymbox{\hyperlink{testing_8cpp_a4370edfd10b3e081c454019225d33d64}{TEST\+\_\+\+CASE}} ("{}Vector emplace\+\_\+back constructs in-\/place"{})
+\item 
+\doxymbox{\hyperlink{testing_8cpp_af5445554c9065c4b92aa1c5f232ee438}{TEST\+\_\+\+CASE}} ("{}Vector max\+\_\+size is large enough"{})
+\end{DoxyCompactItemize}
+
+
+\label{testing_8cpp_doc-define-members}
+\Hypertarget{testing_8cpp_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{testing_8cpp_a656eb5868e824d59f489f910db438420}\index{testing.cpp@{testing.cpp}!CATCH\_CONFIG\_MAIN@{CATCH\_CONFIG\_MAIN}}
+\index{CATCH\_CONFIG\_MAIN@{CATCH\_CONFIG\_MAIN}!testing.cpp@{testing.cpp}}
+\doxysubsubsection{\texorpdfstring{CATCH\_CONFIG\_MAIN}{CATCH\_CONFIG\_MAIN}}
+{\footnotesize\ttfamily \label{testing_8cpp_a656eb5868e824d59f489f910db438420} 
+\+\#define CATCH\+\_\+\+CONFIG\+\_\+\+MAIN}
+
+
+
+Definition at line \doxymbox{\hyperlink{testing_8cpp_source_l00001}{1}} of file \doxymbox{\hyperlink{testing_8cpp_source}{testing.\+cpp}}.
+
+
+
+\label{testing_8cpp_doc-func-members}
+\Hypertarget{testing_8cpp_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{testing_8cpp_a77da5d53f874e075491c16f06112dd8f}\index{testing.cpp@{testing.cpp}!makeStudent@{makeStudent}}
+\index{makeStudent@{makeStudent}!testing.cpp@{testing.cpp}}
+\doxysubsubsection{\texorpdfstring{makeStudent()}{makeStudent()}}
+{\footnotesize\ttfamily \label{testing_8cpp_a77da5d53f874e075491c16f06112dd8f} 
+\doxymbox{\hyperlink{class_studentas}{Studentas}} make\+Student (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{testing_8cpp_source_l00037}{37}} of file \doxymbox{\hyperlink{testing_8cpp_source}{testing.\+cpp}}.
+
+\Hypertarget{testing_8cpp_a7baf90902f5eb06eab83a64a3906546f}\index{testing.cpp@{testing.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testing.cpp@{testing.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [1/37]}}
+{\footnotesize\ttfamily \label{testing_8cpp_a7baf90902f5eb06eab83a64a3906546f} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Ar studentas yra abstract?"{}}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{testing_8cpp_source_l00033}{33}} of file \doxymbox{\hyperlink{testing_8cpp_source}{testing.\+cpp}}.
+
+\Hypertarget{testing_8cpp_aa71f35fa5a81777b1e67a6a4a888775f}\index{testing.cpp@{testing.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testing.cpp@{testing.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [2/37]}}
+{\footnotesize\ttfamily \label{testing_8cpp_aa71f35fa5a81777b1e67a6a4a888775f} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Studentas copy assignment"{}}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{testing_8cpp_source_l00060}{60}} of file \doxymbox{\hyperlink{testing_8cpp_source}{testing.\+cpp}}.
+
+\Hypertarget{testing_8cpp_a83ee3f1d1953368dd71fb75e8c55219f}\index{testing.cpp@{testing.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testing.cpp@{testing.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [3/37]}}
+{\footnotesize\ttfamily \label{testing_8cpp_a83ee3f1d1953368dd71fb75e8c55219f} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Studentas copy konstruktorius"{}}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{testing_8cpp_source_l00048}{48}} of file \doxymbox{\hyperlink{testing_8cpp_source}{testing.\+cpp}}.
+
+\Hypertarget{testing_8cpp_ab5a450e25eb9007766fae9ded4a83532}\index{testing.cpp@{testing.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testing.cpp@{testing.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [4/37]}}
+{\footnotesize\ttfamily \label{testing_8cpp_ab5a450e25eb9007766fae9ded4a83532} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Studentas input operator $>$$>$"{}}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{testing_8cpp_source_l00153}{153}} of file \doxymbox{\hyperlink{testing_8cpp_source}{testing.\+cpp}}.
+
+\Hypertarget{testing_8cpp_a4f13d94c55f384489ab9ada498df109f}\index{testing.cpp@{testing.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testing.cpp@{testing.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [5/37]}}
+{\footnotesize\ttfamily \label{testing_8cpp_a4f13d94c55f384489ab9ada498df109f} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Studentas move a -\/$>$ a"{}}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{testing_8cpp_source_l00126}{126}} of file \doxymbox{\hyperlink{testing_8cpp_source}{testing.\+cpp}}.
+
+\Hypertarget{testing_8cpp_a373502ecc9168deee9abcba39e4a1b03}\index{testing.cpp@{testing.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testing.cpp@{testing.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [6/37]}}
+{\footnotesize\ttfamily \label{testing_8cpp_a373502ecc9168deee9abcba39e4a1b03} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Studentas move assignment"{}}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{testing_8cpp_source_l00101}{101}} of file \doxymbox{\hyperlink{testing_8cpp_source}{testing.\+cpp}}.
+
+\Hypertarget{testing_8cpp_a233834346ac5474c79aafa327014f6b4}\index{testing.cpp@{testing.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testing.cpp@{testing.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [7/37]}}
+{\footnotesize\ttfamily \label{testing_8cpp_a233834346ac5474c79aafa327014f6b4} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Studentas move konostruktorius"{}}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{testing_8cpp_source_l00081}{81}} of file \doxymbox{\hyperlink{testing_8cpp_source}{testing.\+cpp}}.
+
+\Hypertarget{testing_8cpp_a1d4d237d156e56f06b08f8f1b3c82927}\index{testing.cpp@{testing.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testing.cpp@{testing.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [8/37]}}
+{\footnotesize\ttfamily \label{testing_8cpp_a1d4d237d156e56f06b08f8f1b3c82927} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Studentas output operator $>$$>$"{}}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{testing_8cpp_source_l00140}{140}} of file \doxymbox{\hyperlink{testing_8cpp_source}{testing.\+cpp}}.
+
+\Hypertarget{testing_8cpp_a0257cd431fb265ffb00832b00a872ae5}\index{testing.cpp@{testing.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testing.cpp@{testing.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [9/37]}}
+{\footnotesize\ttfamily \label{testing_8cpp_a0257cd431fb265ffb00832b00a872ae5} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Studentu klases testas"{}}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{testing_8cpp_source_l00011}{11}} of file \doxymbox{\hyperlink{testing_8cpp_source}{testing.\+cpp}}.
+
+\Hypertarget{testing_8cpp_aae7b2177aaaffb1f4621e17dd9239b89}\index{testing.cpp@{testing.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testing.cpp@{testing.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [10/37]}}
+{\footnotesize\ttfamily \label{testing_8cpp_aae7b2177aaaffb1f4621e17dd9239b89} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Vector at() throws on out of range"{}}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{testing_8cpp_source_l00269}{269}} of file \doxymbox{\hyperlink{testing_8cpp_source}{testing.\+cpp}}.
+
+\Hypertarget{testing_8cpp_a99345e500537415de139cb91ec2589d6}\index{testing.cpp@{testing.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testing.cpp@{testing.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [11/37]}}
+{\footnotesize\ttfamily \label{testing_8cpp_a99345e500537415de139cb91ec2589d6} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Vector cbegin() and cend() iterate correctly"{}}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{testing_8cpp_source_l00370}{370}} of file \doxymbox{\hyperlink{testing_8cpp_source}{testing.\+cpp}}.
+
+\Hypertarget{testing_8cpp_aa22b22b0b46194f99d9df5a5f7e93e09}\index{testing.cpp@{testing.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testing.cpp@{testing.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [12/37]}}
+{\footnotesize\ttfamily \label{testing_8cpp_aa22b22b0b46194f99d9df5a5f7e93e09} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Vector clear"{}}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{testing_8cpp_source_l00343}{343}} of file \doxymbox{\hyperlink{testing_8cpp_source}{testing.\+cpp}}.
+
+\Hypertarget{testing_8cpp_a35a53cdf01811f907a3b932d589b3649}\index{testing.cpp@{testing.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testing.cpp@{testing.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [13/37]}}
+{\footnotesize\ttfamily \label{testing_8cpp_a35a53cdf01811f907a3b932d589b3649} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Vector comparison operators"{}}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{testing_8cpp_source_l00320}{320}} of file \doxymbox{\hyperlink{testing_8cpp_source}{testing.\+cpp}}.
+
+\Hypertarget{testing_8cpp_a5bfb154e3912ff42a7cfe64c8653770f}\index{testing.cpp@{testing.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testing.cpp@{testing.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [14/37]}}
+{\footnotesize\ttfamily \label{testing_8cpp_a5bfb154e3912ff42a7cfe64c8653770f} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Vector const reverse iterators work"{}}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{testing_8cpp_source_l00380}{380}} of file \doxymbox{\hyperlink{testing_8cpp_source}{testing.\+cpp}}.
+
+\Hypertarget{testing_8cpp_a8efb0212125c88fb9bd00d3ef20b0752}\index{testing.cpp@{testing.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testing.cpp@{testing.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [15/37]}}
+{\footnotesize\ttfamily \label{testing_8cpp_a8efb0212125c88fb9bd00d3ef20b0752} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Vector copy assignment"{}}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{testing_8cpp_source_l00197}{197}} of file \doxymbox{\hyperlink{testing_8cpp_source}{testing.\+cpp}}.
+
+\Hypertarget{testing_8cpp_acf69b529b3c8f8a8e6fac3ce69457f23}\index{testing.cpp@{testing.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testing.cpp@{testing.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [16/37]}}
+{\footnotesize\ttfamily \label{testing_8cpp_acf69b529b3c8f8a8e6fac3ce69457f23} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Vector copy constructor"{}}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{testing_8cpp_source_l00186}{186}} of file \doxymbox{\hyperlink{testing_8cpp_source}{testing.\+cpp}}.
+
+\Hypertarget{testing_8cpp_a3c74132f3167f6fabca011c346065827}\index{testing.cpp@{testing.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testing.cpp@{testing.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [17/37]}}
+{\footnotesize\ttfamily \label{testing_8cpp_a3c74132f3167f6fabca011c346065827} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Vector data() returns pointer to underlying array"{}}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{testing_8cpp_source_l00360}{360}} of file \doxymbox{\hyperlink{testing_8cpp_source}{testing.\+cpp}}.
+
+\Hypertarget{testing_8cpp_a6c952a1ed2ec8e623d01e99d1d320024}\index{testing.cpp@{testing.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testing.cpp@{testing.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [18/37]}}
+{\footnotesize\ttfamily \label{testing_8cpp_a6c952a1ed2ec8e623d01e99d1d320024} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Vector default constructor"{}}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{testing_8cpp_source_l00165}{165}} of file \doxymbox{\hyperlink{testing_8cpp_source}{testing.\+cpp}}.
+
+\Hypertarget{testing_8cpp_a4370edfd10b3e081c454019225d33d64}\index{testing.cpp@{testing.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testing.cpp@{testing.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [19/37]}}
+{\footnotesize\ttfamily \label{testing_8cpp_a4370edfd10b3e081c454019225d33d64} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Vector emplace\+\_\+back constructs in-\/place"{}}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{testing_8cpp_source_l00389}{389}} of file \doxymbox{\hyperlink{testing_8cpp_source}{testing.\+cpp}}.
+
+\Hypertarget{testing_8cpp_a2d482aeac098824bc5c87f7b240c7ec3}\index{testing.cpp@{testing.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testing.cpp@{testing.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [20/37]}}
+{\footnotesize\ttfamily \label{testing_8cpp_a2d482aeac098824bc5c87f7b240c7ec3} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Vector erase range"{}}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{testing_8cpp_source_l00311}{311}} of file \doxymbox{\hyperlink{testing_8cpp_source}{testing.\+cpp}}.
+
+\Hypertarget{testing_8cpp_a3647faf4fd5419933df205a0171b1068}\index{testing.cpp@{testing.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testing.cpp@{testing.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [21/37]}}
+{\footnotesize\ttfamily \label{testing_8cpp_a3647faf4fd5419933df205a0171b1068} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Vector erase single element"{}}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{testing_8cpp_source_l00303}{303}} of file \doxymbox{\hyperlink{testing_8cpp_source}{testing.\+cpp}}.
+
+\Hypertarget{testing_8cpp_aa55ceff6f20bfeb5d8bf1844260750fc}\index{testing.cpp@{testing.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testing.cpp@{testing.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [22/37]}}
+{\footnotesize\ttfamily \label{testing_8cpp_aa55ceff6f20bfeb5d8bf1844260750fc} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Vector fill constructor"{}}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{testing_8cpp_source_l00180}{180}} of file \doxymbox{\hyperlink{testing_8cpp_source}{testing.\+cpp}}.
+
+\Hypertarget{testing_8cpp_ad9fd2b9d74240d54206dcb68748cdd1c}\index{testing.cpp@{testing.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testing.cpp@{testing.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [23/37]}}
+{\footnotesize\ttfamily \label{testing_8cpp_ad9fd2b9d74240d54206dcb68748cdd1c} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Vector front() and back()"{}}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{testing_8cpp_source_l00274}{274}} of file \doxymbox{\hyperlink{testing_8cpp_source}{testing.\+cpp}}.
+
+\Hypertarget{testing_8cpp_a2ec7713e6a790e7f23dc4f346d889d89}\index{testing.cpp@{testing.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testing.cpp@{testing.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [24/37]}}
+{\footnotesize\ttfamily \label{testing_8cpp_a2ec7713e6a790e7f23dc4f346d889d89} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Vector initializer\+\_\+list constructor"{}}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{testing_8cpp_source_l00172}{172}} of file \doxymbox{\hyperlink{testing_8cpp_source}{testing.\+cpp}}.
+
+\Hypertarget{testing_8cpp_ac1c7cd07a6599bfbad56f80bebd18316}\index{testing.cpp@{testing.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testing.cpp@{testing.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [25/37]}}
+{\footnotesize\ttfamily \label{testing_8cpp_ac1c7cd07a6599bfbad56f80bebd18316} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Vector insert at middle"{}}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{testing_8cpp_source_l00295}{295}} of file \doxymbox{\hyperlink{testing_8cpp_source}{testing.\+cpp}}.
+
+\Hypertarget{testing_8cpp_a10dc61ecb79b33c81f786524dd10c6d7}\index{testing.cpp@{testing.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testing.cpp@{testing.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [26/37]}}
+{\footnotesize\ttfamily \label{testing_8cpp_a10dc61ecb79b33c81f786524dd10c6d7} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Vector iterators work"{}}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{testing_8cpp_source_l00280}{280}} of file \doxymbox{\hyperlink{testing_8cpp_source}{testing.\+cpp}}.
+
+\Hypertarget{testing_8cpp_af5445554c9065c4b92aa1c5f232ee438}\index{testing.cpp@{testing.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testing.cpp@{testing.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [27/37]}}
+{\footnotesize\ttfamily \label{testing_8cpp_af5445554c9065c4b92aa1c5f232ee438} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Vector max\+\_\+size is large enough"{}}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{testing_8cpp_source_l00403}{403}} of file \doxymbox{\hyperlink{testing_8cpp_source}{testing.\+cpp}}.
+
+\Hypertarget{testing_8cpp_aebae09011e2f98366423cae2323cfba6}\index{testing.cpp@{testing.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testing.cpp@{testing.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [28/37]}}
+{\footnotesize\ttfamily \label{testing_8cpp_aebae09011e2f98366423cae2323cfba6} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Vector move assignment"{}}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{testing_8cpp_source_l00219}{219}} of file \doxymbox{\hyperlink{testing_8cpp_source}{testing.\+cpp}}.
+
+\Hypertarget{testing_8cpp_ae0c49e3bd4330c70aa067a7240c80f52}\index{testing.cpp@{testing.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testing.cpp@{testing.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [29/37]}}
+{\footnotesize\ttfamily \label{testing_8cpp_ae0c49e3bd4330c70aa067a7240c80f52} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Vector move constructor"{}}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{testing_8cpp_source_l00209}{209}} of file \doxymbox{\hyperlink{testing_8cpp_source}{testing.\+cpp}}.
+
+\Hypertarget{testing_8cpp_a09728af10886d78a9d8a9f04d0eae966}\index{testing.cpp@{testing.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testing.cpp@{testing.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [30/37]}}
+{\footnotesize\ttfamily \label{testing_8cpp_a09728af10886d78a9d8a9f04d0eae966} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Vector push\+\_\+back and pop\+\_\+back"{}}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{testing_8cpp_source_l00230}{230}} of file \doxymbox{\hyperlink{testing_8cpp_source}{testing.\+cpp}}.
+
+\Hypertarget{testing_8cpp_a346bde3e721081a6e4682f95d0576492}\index{testing.cpp@{testing.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testing.cpp@{testing.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [31/37]}}
+{\footnotesize\ttfamily \label{testing_8cpp_a346bde3e721081a6e4682f95d0576492} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Vector reserve increases capacity but not size"{}}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{testing_8cpp_source_l00244}{244}} of file \doxymbox{\hyperlink{testing_8cpp_source}{testing.\+cpp}}.
+
+\Hypertarget{testing_8cpp_ae23f1212f8427025a089ecff5c209b9f}\index{testing.cpp@{testing.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testing.cpp@{testing.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [32/37]}}
+{\footnotesize\ttfamily \label{testing_8cpp_ae23f1212f8427025a089ecff5c209b9f} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Vector resize larger"{}}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{testing_8cpp_source_l00251}{251}} of file \doxymbox{\hyperlink{testing_8cpp_source}{testing.\+cpp}}.
+
+\Hypertarget{testing_8cpp_a2fdd42eee855e04de1b79c409a38a8f6}\index{testing.cpp@{testing.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testing.cpp@{testing.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [33/37]}}
+{\footnotesize\ttfamily \label{testing_8cpp_a2fdd42eee855e04de1b79c409a38a8f6} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Vector resize smaller"{}}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{testing_8cpp_source_l00260}{260}} of file \doxymbox{\hyperlink{testing_8cpp_source}{testing.\+cpp}}.
+
+\Hypertarget{testing_8cpp_ac781dca9ced8bcad4d724d1a3fd2ae63}\index{testing.cpp@{testing.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testing.cpp@{testing.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [34/37]}}
+{\footnotesize\ttfamily \label{testing_8cpp_ac781dca9ced8bcad4d724d1a3fd2ae63} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Vector reverse iterators"{}}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{testing_8cpp_source_l00289}{289}} of file \doxymbox{\hyperlink{testing_8cpp_source}{testing.\+cpp}}.
+
+\Hypertarget{testing_8cpp_aa27b9839ebf7024c0bbc9ee62b48c483}\index{testing.cpp@{testing.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testing.cpp@{testing.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [35/37]}}
+{\footnotesize\ttfamily \label{testing_8cpp_aa27b9839ebf7024c0bbc9ee62b48c483} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Vector shrink\+\_\+to\+\_\+fit reduces capacity to size"{}}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{testing_8cpp_source_l00351}{351}} of file \doxymbox{\hyperlink{testing_8cpp_source}{testing.\+cpp}}.
+
+\Hypertarget{testing_8cpp_a1088878df78ae9ead337f3d1696efc61}\index{testing.cpp@{testing.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testing.cpp@{testing.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [36/37]}}
+{\footnotesize\ttfamily \label{testing_8cpp_a1088878df78ae9ead337f3d1696efc61} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Vector swap"{}}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{testing_8cpp_source_l00331}{331}} of file \doxymbox{\hyperlink{testing_8cpp_source}{testing.\+cpp}}.
+
+\Hypertarget{testing_8cpp_afc7b7bb136e86373625a766497aa1e67}\index{testing.cpp@{testing.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testing.cpp@{testing.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [37/37]}}
+{\footnotesize\ttfamily \label{testing_8cpp_afc7b7bb136e86373625a766497aa1e67} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Zmogus yra abstract"{}}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{testing_8cpp_source_l00029}{29}} of file \doxymbox{\hyperlink{testing_8cpp_source}{testing.\+cpp}}.
+

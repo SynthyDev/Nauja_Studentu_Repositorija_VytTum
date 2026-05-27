@@ -18,9 +18,9 @@ Inheritance diagram for Studentas:\+\begin{figure}[H]
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\doxymbox{\hyperlink{class_studentas_ac680297cd7b05091025ae8ad256e84a6}{Studentas}} (const string \&v="{}A"{}, const string \&p="{}BB"{}, const vector$<$ int $>$ \&paz\+\_\+=\{\}, int egz\+\_\+=0)
+\doxymbox{\hyperlink{class_studentas_a5abc1541de5c1d33cccdada87a442a7a}{Studentas}} (const string \&v="{}A"{}, const string \&p="{}BB"{}, const \doxymbox{\hyperlink{class_vector}{Vector}}$<$ int $>$ \&paz\+\_\+=\{\}, int egz\+\_\+=0)
 \begin{DoxyCompactList}\small\item\em Konstruktorius su pažymiais ir egzaminu. \end{DoxyCompactList}\item 
-\doxymbox{\hyperlink{class_studentas_a63e449e0f51a0b14340d02ee71b4be23}{\texorpdfstring{$\sim$}{\string~}\+Studentas}} ()
+\doxymbox{\hyperlink{class_studentas_a91fbebba5c6999f73767467607a6afbc}{\texorpdfstring{$\sim$}{\string~}\+Studentas}} ()=default
 \item 
 \doxymbox{\hyperlink{class_studentas_aef0484fe46cf05746f8ffc0d083fcf3e}{Studentas}} (const \doxymbox{\hyperlink{class_studentas}{Studentas}} \&other)
 \begin{DoxyCompactList}\small\item\em Kopijavimo konstruktorius. \end{DoxyCompactList}\item 
@@ -32,7 +32,7 @@ Inheritance diagram for Studentas:\+\begin{figure}[H]
 \begin{DoxyCompactList}\small\item\em move operatorius \end{DoxyCompactList}\item 
 void \doxymbox{\hyperlink{class_studentas_afd2ce5774c97b01b2fe40fd47567e653}{info}} () const override
 \begin{DoxyCompactList}\small\item\em Abstrakti informacijos funkcija. \end{DoxyCompactList}\item 
-vector$<$ int $>$ \& \doxymbox{\hyperlink{class_studentas_a93bbcf85d330764a44ad1c443f3b8149}{ref\+Paz}} ()
+\doxymbox{\hyperlink{class_vector}{Vector}}$<$ int $>$ \& \doxymbox{\hyperlink{class_studentas_ae886479d10bb121ec86d0ee6a19d6ae9}{ref\+Paz}} ()
 \item 
 int \& \doxymbox{\hyperlink{class_studentas_aeb9de2dfc3d29dd94df51a2e26c49119}{ref\+Egz}} ()
 \item 
@@ -48,7 +48,7 @@ double \doxymbox{\hyperlink{class_studentas_a1cad93046c531f04d1f59c7646e9d94b}{g
 \item 
 int \doxymbox{\hyperlink{class_studentas_a2f9dcb2fef2e6b3dbc1581779a90a68a}{get\+Egz}} () const
 \item 
-const vector$<$ int $>$ \& \doxymbox{\hyperlink{class_studentas_a2d27c0ff35539d019c46490eb74bb6b8}{get\+Paz}} () const
+const \doxymbox{\hyperlink{class_vector}{Vector}}$<$ int $>$ \& \doxymbox{\hyperlink{class_studentas_af214c4e3771d399b2dab009c2881ff9e}{get\+Paz}} () const
 \item 
 void \doxymbox{\hyperlink{class_studentas_ac200db852e766aa9b092d1ec22b5bac1}{add\+Paz}} (int p)
 \item 
@@ -96,18 +96,18 @@ string \doxymbox{\hyperlink{class_zmogus_a00799e1396c82e4f6dffa0edec1f24e5}{pava
 \doxysubsection{Detailed Description}
 \doxylink{class_studentas}{Studentas} klasė, paveldi iš \doxylink{class_zmogus}{Zmogus}. 
 
-Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00055}{55}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
+Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00063}{63}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
 
 
 
 \label{class_studentas_doc-constructors}
 \Hypertarget{class_studentas_doc-constructors}
 \doxysubsection{Constructor \& Destructor Documentation}
-\Hypertarget{class_studentas_ac680297cd7b05091025ae8ad256e84a6}\index{Studentas@{Studentas}!Studentas@{Studentas}}
+\Hypertarget{class_studentas_a5abc1541de5c1d33cccdada87a442a7a}\index{Studentas@{Studentas}!Studentas@{Studentas}}
 \index{Studentas@{Studentas}!Studentas@{Studentas}}
 \doxysubsubsection{\texorpdfstring{Studentas()}{Studentas()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
-{\footnotesize\ttfamily \label{class_studentas_ac680297cd7b05091025ae8ad256e84a6} 
-Studentas::\+\+Studentas (\begin{DoxyParamCaption}\item[{const string \&}]{v}{ = {\ttfamily "{}A"{}}, }\item[{const string \&}]{p}{ = {\ttfamily "{}BB"{}}, }\item[{const vector$<$ int $>$ \&}]{paz\+\_\+}{ = {\ttfamily \{\}}, }\item[{int}]{egz\+\_\+}{ = {\ttfamily 0}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily \label{class_studentas_a5abc1541de5c1d33cccdada87a442a7a} 
+Studentas::\+\+Studentas (\begin{DoxyParamCaption}\item[{const string \&}]{v}{ = {\ttfamily "{}A"{}}, }\item[{const string \&}]{p}{ = {\ttfamily "{}BB"{}}, }\item[{const \doxymbox{\hyperlink{class_vector}{Vector}}$<$ int $>$ \&}]{paz\+\_\+}{ = {\ttfamily \{\}}, }\item[{int}]{egz\+\_\+}{ = {\ttfamily 0}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -115,17 +115,13 @@ Konstruktorius su pažymiais ir egzaminu.
 
 
 
-Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00064}{64}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
+Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00072}{72}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
 
-\Hypertarget{class_studentas_a63e449e0f51a0b14340d02ee71b4be23}\index{Studentas@{Studentas}!````~Studentas@{\texorpdfstring{$\sim$}{\string~}Studentas}}
+\Hypertarget{class_studentas_a91fbebba5c6999f73767467607a6afbc}\index{Studentas@{Studentas}!````~Studentas@{\texorpdfstring{$\sim$}{\string~}Studentas}}
 \index{````~Studentas@{\texorpdfstring{$\sim$}{\string~}Studentas}!Studentas@{Studentas}}
 \doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Studentas()}{\string~Studentas()}}
-{\footnotesize\ttfamily \label{class_studentas_a63e449e0f51a0b14340d02ee71b4be23} 
-Studentas::\+\texorpdfstring{$\sim$}{\string~}\+Studentas (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-
-
-Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00081}{81}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
+{\footnotesize\ttfamily \label{class_studentas_a91fbebba5c6999f73767467607a6afbc} 
+Studentas::\+\texorpdfstring{$\sim$}{\string~}\+Studentas (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
 
 \Hypertarget{class_studentas_aef0484fe46cf05746f8ffc0d083fcf3e}\index{Studentas@{Studentas}!Studentas@{Studentas}}
 \index{Studentas@{Studentas}!Studentas@{Studentas}}
@@ -139,7 +135,7 @@ Kopijavimo konstruktorius.
 
 
 
-Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00088}{88}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
+Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00093}{93}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
 
 \Hypertarget{class_studentas_a732b15e3745fa8e35ff0002cfc4b73b5}\index{Studentas@{Studentas}!Studentas@{Studentas}}
 \index{Studentas@{Studentas}!Studentas@{Studentas}}
@@ -153,7 +149,7 @@ move konstruktorius
 
 
 
-Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00109}{109}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
+Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00114}{114}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
 
 
 
@@ -168,7 +164,7 @@ void Studentas::\+add\+Paz (\begin{DoxyParamCaption}\item[{int}]{p}{}\end{DoxyPa
 
 
 
-Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00152}{152}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
+Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00157}{157}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
 
 \Hypertarget{class_studentas_ae98b59414bf0e1f15ecd75c9ee747a8d}\index{Studentas@{Studentas}!clearPaz@{clearPaz}}
 \index{clearPaz@{clearPaz}!Studentas@{Studentas}}
@@ -178,7 +174,7 @@ void Studentas::\+clear\+Paz (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}
 
 
 
-Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00145}{145}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
+Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00150}{150}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
 
 \Hypertarget{class_studentas_a2f9dcb2fef2e6b3dbc1581779a90a68a}\index{Studentas@{Studentas}!getEgz@{getEgz}}
 \index{getEgz@{getEgz}!Studentas@{Studentas}}
@@ -188,7 +184,7 @@ int Studentas::\+get\+Egz (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) c
 
 
 
-Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00148}{148}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
+Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00153}{153}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
 
 \Hypertarget{class_studentas_a1cad93046c531f04d1f59c7646e9d94b}\index{Studentas@{Studentas}!getMedrez@{getMedrez}}
 \index{getMedrez@{getMedrez}!Studentas@{Studentas}}
@@ -198,17 +194,17 @@ double Studentas::\+get\+Medrez (\begin{DoxyParamCaption}{}{}\end{DoxyParamCapti
 
 
 
-Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00147}{147}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
+Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00152}{152}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
 
-\Hypertarget{class_studentas_a2d27c0ff35539d019c46490eb74bb6b8}\index{Studentas@{Studentas}!getPaz@{getPaz}}
+\Hypertarget{class_studentas_af214c4e3771d399b2dab009c2881ff9e}\index{Studentas@{Studentas}!getPaz@{getPaz}}
 \index{getPaz@{getPaz}!Studentas@{Studentas}}
 \doxysubsubsection{\texorpdfstring{getPaz()}{getPaz()}}
-{\footnotesize\ttfamily \label{class_studentas_a2d27c0ff35539d019c46490eb74bb6b8} 
-const vector$<$ int $>$ \& Studentas::\+get\+Paz (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily \label{class_studentas_af214c4e3771d399b2dab009c2881ff9e} 
+const \doxymbox{\hyperlink{class_vector}{Vector}}$<$ int $>$ \& Studentas::\+get\+Paz (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00150}{150}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
+Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00155}{155}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
 
 \Hypertarget{class_studentas_a96a5c56d0b94ab196e7f1e30275e9737}\index{Studentas@{Studentas}!getRez@{getRez}}
 \index{getRez@{getRez}!Studentas@{Studentas}}
@@ -218,7 +214,7 @@ double Studentas::\+get\+Rez (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}
 
 
 
-Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00146}{146}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
+Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00151}{151}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
 
 \Hypertarget{class_studentas_afd2ce5774c97b01b2fe40fd47567e653}\index{Studentas@{Studentas}!info@{info}}
 \index{info@{info}!Studentas@{Studentas}}
@@ -236,7 +232,7 @@ Implements \doxymbox{\hyperlink{class_zmogus_a9c1be5dbdc6d42c022039321ec2b210c}{
 
 
 
-Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00137}{137}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
+Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00142}{142}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
 
 \Hypertarget{class_studentas_a25bcc531503d3bc490dab4a656e3b8e9}\index{Studentas@{Studentas}!operator=@{operator=}}
 \index{operator=@{operator=}!Studentas@{Studentas}}
@@ -250,7 +246,7 @@ Kopijavimo operatorius.
 
 
 
-Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00097}{97}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
+Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00102}{102}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
 
 \Hypertarget{class_studentas_a6379482d741209e9a2d902023676fb45}\index{Studentas@{Studentas}!operator=@{operator=}}
 \index{operator=@{operator=}!Studentas@{Studentas}}
@@ -264,7 +260,7 @@ move operatorius
 
 
 
-Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00122}{122}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
+Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00127}{127}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
 
 \Hypertarget{class_studentas_aeb9de2dfc3d29dd94df51a2e26c49119}\index{Studentas@{Studentas}!refEgz@{refEgz}}
 \index{refEgz@{refEgz}!Studentas@{Studentas}}
@@ -274,7 +270,7 @@ int \& Studentas::\+ref\+Egz (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}
 
 
 
-Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00142}{142}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
+Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00147}{147}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
 
 \Hypertarget{class_studentas_a1eb36ec8015f87e403a27567c2a0e6bd}\index{Studentas@{Studentas}!refMedrez@{refMedrez}}
 \index{refMedrez@{refMedrez}!Studentas@{Studentas}}
@@ -284,17 +280,17 @@ double \& Studentas::\+ref\+Medrez (\begin{DoxyParamCaption}{}{}\end{DoxyParamCa
 
 
 
-Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00144}{144}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
+Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00149}{149}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
 
-\Hypertarget{class_studentas_a93bbcf85d330764a44ad1c443f3b8149}\index{Studentas@{Studentas}!refPaz@{refPaz}}
+\Hypertarget{class_studentas_ae886479d10bb121ec86d0ee6a19d6ae9}\index{Studentas@{Studentas}!refPaz@{refPaz}}
 \index{refPaz@{refPaz}!Studentas@{Studentas}}
 \doxysubsubsection{\texorpdfstring{refPaz()}{refPaz()}}
-{\footnotesize\ttfamily \label{class_studentas_a93bbcf85d330764a44ad1c443f3b8149} 
-vector$<$ int $>$ \& Studentas::\+ref\+Paz (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily \label{class_studentas_ae886479d10bb121ec86d0ee6a19d6ae9} 
+\doxymbox{\hyperlink{class_vector}{Vector}}$<$ int $>$ \& Studentas::\+ref\+Paz (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00141}{141}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
+Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00146}{146}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
 
 \Hypertarget{class_studentas_acadf4d2fddfdc7b5b68b12df9b7b1801}\index{Studentas@{Studentas}!refRez@{refRez}}
 \index{refRez@{refRez}!Studentas@{Studentas}}
@@ -304,7 +300,7 @@ double \& Studentas::\+ref\+Rez (\begin{DoxyParamCaption}{}{}\end{DoxyParamCapti
 
 
 
-Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00143}{143}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
+Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00148}{148}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
 
 \Hypertarget{class_studentas_af7a2740c86cee79b07ea47b3eb819280}\index{Studentas@{Studentas}!setEgz@{setEgz}}
 \index{setEgz@{setEgz}!Studentas@{Studentas}}
@@ -314,7 +310,7 @@ void Studentas::\+set\+Egz (\begin{DoxyParamCaption}\item[{int}]{e}{}\end{DoxyPa
 
 
 
-Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00153}{153}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
+Definition at line \doxymbox{\hyperlink{studentai_8h_source_l00158}{158}} of file \doxymbox{\hyperlink{studentai_8h_source}{studentai.\+h}}.
 
 \Hypertarget{class_studentas_a1d9b91645defd01ce16984c07b42543a}\index{Studentas@{Studentas}!skaiciuoti@{skaiciuoti}}
 \index{skaiciuoti@{skaiciuoti}!Studentas@{Studentas}}
@@ -328,7 +324,7 @@ apskaičiuoja galutinius medianinius ir vidurkinius studento rezultatus
 
 Compute final average and median-\/based results
 
-Definition at line \doxymbox{\hyperlink{funk_8cpp_source_l00017}{17}} of file \doxymbox{\hyperlink{funk_8cpp_source}{funk.\+cpp}}.
+Definition at line \doxymbox{\hyperlink{funk_8cpp_source_l00018}{18}} of file \doxymbox{\hyperlink{funk_8cpp_source}{funk.\+cpp}}.
 
 
 
