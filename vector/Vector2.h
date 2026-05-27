@@ -7,6 +7,7 @@
 #include <iterator>
 #include <utility>
 #include <limits>
+#include <string>
 
 template<typename T, typename Allocator = std::allocator<T>>
 class Vector

@@ -1,5 +1,5 @@
 programa:
-	g++ versija_v2.0.cpp funk.cpp -o programa
+	g++ versija_v3.0.cpp funk.cpp -o programa
 cleanexe:
 	del /Q programa.exe
 	del /Q testing.exe

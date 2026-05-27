@@ -25,6 +25,12 @@ int main()
 
     grupe.reserve(10000000);
 
+    //! std::vector ir Vector matavimai
+    for (int i = 4; i <= 8; i++)
+    {
+        uzdmat(pow(10, i));
+    }
+
     string genpas;
     cout << "Norite generuoti 5 failus? y/n " << endl;
     cin >> genpas;

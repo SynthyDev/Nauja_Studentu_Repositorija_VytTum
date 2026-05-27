@@ -8,7 +8,8 @@
 #include <algorithm>
 #include "Vector2.h"
 
-//using namespace std;
+using namespace std;
+
 
 namespace my {
     template <typename T>
@@ -186,6 +187,8 @@ void logResults(const string& container, int size,
                 double read_t, double sort_t, double split_t);
 void skirstyti2(Vector<Studentas>& grupe, Vector<Studentas>& neprotingi);
 void skirstyti3(Vector<Studentas>& grupe, Vector<Studentas>& neprotingi);
+
+void uzdmat(int vektordydis);
 
 ostream& operator<<(ostream& os, const Studentas& s);
 istream& operator>>(istream& is, Studentas& s);

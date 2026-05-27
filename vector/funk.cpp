@@ -1,5 +1,5 @@
 #include <iostream>
-//#include <my::Vector>
+#include <vector>
 #include <iomanip>
 #include <string>
 #include <cmath>
@@ -575,7 +575,7 @@ void skirstyti2(my::Vector<Studentas>& grupe, my::Vector<Studentas>& neprotingi)
 
     grupe.erase(it, grupe.end());
 }
-}
+
 
 
 void skirstyti3(my::Vector<Studentas>& grupe, my::Vector<Studentas>& neprotingi) //! studentų skirstymas trečia taktika
@@ -623,4 +623,31 @@ istream& operator>>(istream& is, Studentas& s) //! input operatorius klasei
     }
 
     return is;
+}
+
+void uzdmat(int vektordydis)
+{
+    cout << "matuojamas laikas vectoriaus dydziui: " << vektordydis << endl;
+
+    // std::vector laiko matavimas
+    auto start = chrono::high_resolution_clock::now();
+    std::vector<int> v1;
+    v1.reserve(vektordydis);
+    for (int i = 1; i <= vektordydis; ++i) v1.push_back(i);
+    auto end = chrono::high_resolution_clock::now();
+    chrono::duration<double> diff = end - start;
+    cout << "std::vector push_back laikas: " << diff.count() << " s\n";
+
+    // custom Vector laiko matavimas
+    auto start2 = chrono::high_resolution_clock::now();
+    Vector<int> v2;
+    v2.reserve(vektordydis);
+    for (int i = 1; i <= vektordydis; ++i) v2.push_back(i);
+    auto end2 = chrono::high_resolution_clock::now();
+    chrono::duration<double> diff2 = end2 - start2;
+    cout << "custom Vector push_back laikas: " << diff2.count() << " s\n";
+
+    // CSV outputas
+    ofstream out("results_matavimai.csv", ios::app);
+    out << vektordydis << "," << diff.count() << "," << diff2.count() << "\n";
 }
