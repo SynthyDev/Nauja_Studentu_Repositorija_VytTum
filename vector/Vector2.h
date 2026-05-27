@@ -465,15 +465,23 @@ public:
     }
 
     iterator erase(iterator pos)
-{
-    size_type index = pos - begin();
+    {
+        size_type index = pos - begin();
 
-    for (size_type i = index; i < _size - 1; ++i)
-        _data[i] = std::move(_data[i + 1]);
+        // shift elements left with destroy+construct to keep destructors correct
+        for (size_type i = index; i < _size - 1; ++i)
+        {
+            std::allocator_traits<Allocator>::destroy(_alloc, _data + i);
+            std::allocator_traits<Allocator>::construct(
+                _alloc,
+                _data + i,
+                std::move(_data[i + 1])
+            );
+        }
 
-    pop_back();
-    return begin() + index;
-}
+        pop_back(); // destroys last element and decrements _size
+        return begin() + index;
+    }
     void swap(Vector& other) noexcept
     {
         std::swap(_alloc, other._alloc);
@@ -530,15 +538,28 @@ public:
         return !(*this < other);
     }
 
-    iterator erase(iterator first, iterator last)
+iterator erase(iterator first, iterator last)
 {
-    size_type count = last - first;
-    for (iterator it = first; it != end() - count; ++it)
-        *it = std::move(*(it + count));
+    if (first == last) return first;
 
+    size_type index = first - begin();
+    size_type count = last - first;
+
+    // shift tail left
+    for (size_type i = index; i + count < _size; ++i)
+    {
+        std::allocator_traits<Allocator>::destroy(_alloc, _data + i);
+        std::allocator_traits<Allocator>::construct(
+            _alloc,
+            _data + i,
+            std::move(_data[i + count])
+        );
+    }
+
+    // destroy trailing elements
     for (size_type i = 0; i < count; ++i)
         pop_back();
 
-    return first;
-}
+    return begin() + index;
+    }
 };

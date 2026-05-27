@@ -85,10 +85,7 @@ public:
         skaiciuoti();
 }
 
-~Studentas()
-{
-    paz.clear();
-}
+~Studentas() = default;
 
 // Rule of Five
 
@@ -175,7 +172,7 @@ void failoutputas(const Vector<Studentas> &grupe, string writing);
 void failgeneravimas();
 void genirasymas(Vector<Studentas> &grupe, Vector<Studentas> &protingi, Vector<Studentas> &neprotingi,
     string writing_good, string writing_bad, int rik_pasirinkimas, SkirstymoStrategija strategija);
-string lytgen();
+std::string lytgen();
 string randomvardas(string lytis);
 string randompavarde(string lytis);
 void rikiuoti(Vector<Studentas> &grupe, int pasirinkimas);

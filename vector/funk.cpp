@@ -565,13 +565,16 @@ void logResults(const string& container, int size,
 }
 
 
-void skirstyti2(my::Vector<Studentas>& grupe, my::Vector<Studentas>& neprotingi) //! studentų skirstymas antra taktika
+void skirstyti2(my::Vector<Studentas>& grupe, my::Vector<Studentas>& neprotingi)
 {
     auto it = partition(grupe.begin(), grupe.end(),
         [](const Studentas& s) { return s.getRez() >= 5.0; });
 
-    for (auto iter = it; iter != grupe.end(); ++iter) neprotingi.push_back(*iter);
+    for (auto iter = it; iter != grupe.end(); ++iter)
+        neprotingi.push_back(*iter);
+
     grupe.erase(it, grupe.end());
+}
 }
 
 
