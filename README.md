@@ -29,6 +29,13 @@ Taigi mano versija lėtesnė, bet nedaug. Iš esmės su mažais skaičiais laika
 Programos veikimo (failų nuskaitymo) patikrinimas:
 <img width="532" height="390" alt="image" src="https://github.com/user-attachments/assets/b7d99e2d-0ef9-4c55-8d26-23b3cd5d8515" />
 
+
+TESTAVIMAS
+
+ta pati sistema, kaip ir su v2.0
+
+<img width="1654" height="167" alt="image" src="https://github.com/user-attachments/assets/68e9ed91-46a4-4677-8a2a-707c58d077be" />
+
 ---
 VERSIJA V2.0
 ---
