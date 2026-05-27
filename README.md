@@ -5,6 +5,14 @@ Kaip naudoti Makefile?
 5. terminale įrašykite šią užklausą: make
 6. Paspauskite du kartus pele ant "programa.exe" failo ARBA terminale parašykite programa.exe (priklauso nuo OS).
 7. Turėtų iššokti langas, kuriame veiks pasirinkta programa. Joje galite įrašyti parametrus ir pasirinkti programos funkcijas.
+---
+DOKUMENTACIJA:
+
+Dokumentacija padaryta naudojant Doxygen (latex ir html generavimui) bei Overleaf (PDF failo generavimui)
+
+<img width="1107" height="227" alt="image" src="https://github.com/user-attachments/assets/e22784b5-0e5a-447a-9a1c-2032deaa4dd0" />
+
+Dokumentacijos PDF failas "Documentation" aplanke.
 
 ---
 VERSIJA V3.0
@@ -15,7 +23,11 @@ Greičių testavimas ir lyginimas std::vector prieš Vector pildant tuščius ve
 
 <img width="948" height="673" alt="image" src="https://github.com/user-attachments/assets/58810fd8-2644-4564-b860-2aa1c0f72bf0" />
 <img width="451" height="194" alt="image" src="https://github.com/user-attachments/assets/5636d41a-020a-4ced-8175-412c115dac1e" />
+
 Taigi mano versija lėtesnė, bet nedaug. Iš esmės su mažais skaičiais laikas panašus. Aišku, kad mano implementacija nėra pilna ar taip optimizuota, kaip gali būti. Vis dėlto rezultatas tenkinantis, pakankamai panašus, netgi su dideliais skaičiais.
+
+Programos veikimo (failų nuskaitymo) patikrinimas:
+<img width="532" height="390" alt="image" src="https://github.com/user-attachments/assets/b7d99e2d-0ef9-4c55-8d26-23b3cd5d8515" />
 
 ---
 VERSIJA V2.0
@@ -29,16 +41,6 @@ Unit testų pavyzdžiai Klasėms ir Rule of 5 dalykams:
 <img width="1464" height="152" alt="image" src="https://github.com/user-attachments/assets/396d341b-c36c-4bef-84af-b4c2e2a357c0" />
 
 <img width="719" height="934" alt="image" src="https://github.com/user-attachments/assets/0d69bca4-b311-4f51-9112-e11e84799b1e" />
-
-
----
-DOKUMENTACIJA:
-
-Dokumentacija padaryta naudojant Doxygen (latex ir html generavimui) bei Overleaf (PDF failo generavimui)
-
-<img width="1107" height="227" alt="image" src="https://github.com/user-attachments/assets/e22784b5-0e5a-447a-9a1c-2032deaa4dd0" />
-
-Dokumentacijos PDF failas "Documentation" aplanke.
 
 ---
 VERSIJOS V1.2 DALYKAI
