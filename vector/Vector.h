@@ -82,6 +82,32 @@ private:
         return new_data;
     }
 
+    void reallocate(size_type new_capacity) {
+        if (new_capacity == capacity_) return;
+
+        pointer new_data = allocate(new_capacity);
+        pointer current = new_data;
+
+        try {
+            for (size_type i = 0; i < size_; ++i, ++current) {
+                allocator_traits::construct(
+                    alloc_, std::addressof(*current),
+                    std::move_if_noexcept(data_[i])
+                );
+            }
+        } catch (...) {
+            destroy_range(new_data, current);
+            deallocate(new_data, new_capacity);
+            throw;
+        }
+
+        destroy_range(data_, data_ + size_);
+        deallocate(data_, capacity_);
+
+        data_ = new_data;
+        capacity_ = new_capacity;
+    }
+
     template <typename... Args>
     void reallocate_and_emplace(size_type new_capacity, Args&&... args) {
         pointer new_data = allocate(new_capacity);
@@ -114,40 +140,24 @@ private:
         ++size_;
     }
 
-    void reallocate(size_type new_capacity) {
-        if (new_capacity == capacity_) return;
-
-        pointer new_data = allocate(new_capacity);
-        pointer current = new_data;
-
-        try {
-            for (size_type i = 0; i < size_; ++i, ++current) {
-                allocator_traits::construct(
-                    alloc_, std::addressof(*current),
-                    std::move_if_noexcept(data_[i])
-                );
-            }
-        } catch (...) {
-            destroy_range(new_data, current);
-            deallocate(new_data, new_capacity);
-            throw;
+    size_type growth_capacity(size_type min_needed = 0) const {
+        if (capacity_ == 0) {
+            return std::max<size_type>(1, min_needed);
         }
 
-        destroy_range(data_, data_ + size_);
-        deallocate(data_, capacity_);
-
-        data_ = new_data;
-        capacity_ = new_capacity;
-    }
-
-    size_type growth_capacity() const {
-        if (capacity_ == 0) return 1;
-
         size_type max = allocator_traits::max_size(alloc_);
-        if (capacity_ > max / 2) return max;
-
-        return capacity_ * 2;
+        size_type new_cap = capacity_ * 2;
+        if (new_cap < capacity_ || new_cap > max) {
+            new_cap = max;
+        }
+        if (new_cap < min_needed) {
+            new_cap = min_needed;
+        }
+        return new_cap;
     }
+
+    template <typename InputIt>
+    using IsNotIntegral = std::enable_if_t<!std::is_integral_v<InputIt>, int>;
 
 public:
     // ------------------------------------------------------------
@@ -205,6 +215,17 @@ public:
             capacity_ = 0;
             throw;
         }
+    }
+
+    template <typename InputIt, IsNotIntegral<InputIt> = 0>
+    Vector(InputIt first, InputIt last,
+           const allocator_type& alloc = allocator_type())
+        : alloc_(alloc), data_(nullptr), size_(0), capacity_(0) {
+        if (first == last) return;
+        size_type new_size = 0;
+        data_ = allocate_and_copy(first, last, new_size);
+        size_ = new_size;
+        capacity_ = new_size;
     }
 
     Vector(std::initializer_list<T> init,
@@ -279,8 +300,35 @@ public:
     Vector& operator=(const Vector& other) {
         if (this == &other) return *this;
 
-        Vector temp(other);
-        swap(temp);
+        if constexpr (allocator_traits::propagate_on_container_copy_assignment::value) {
+            if (alloc_ != other.alloc_) {
+                clear();
+                deallocate(data_, capacity_);
+                data_ = nullptr;
+                size_ = 0;
+                capacity_ = 0;
+            }
+            alloc_ = other.alloc_;
+        }
+
+        if (other.size_ > capacity_) {
+            Vector temp(other);
+            swap(temp);
+            return *this;
+        }
+
+        size_type i = 0;
+        for (; i < size_ && i < other.size_; ++i) {
+            data_[i] = other.data_[i];
+        }
+        if (i < other.size_) {
+            for (; i < other.size_; ++i) {
+                allocator_traits::construct(alloc_, std::addressof(data_[i]), other.data_[i]);
+            }
+        } else {
+            destroy_range(data_ + other.size_, data_ + size_);
+        }
+        size_ = other.size_;
         return *this;
     }
 
@@ -289,21 +337,63 @@ public:
         allocator_traits::is_always_equal::value) {
         if (this == &other) return *this;
 
-        clear();
-        deallocate(data_, capacity_);
-
         if constexpr (allocator_traits::propagate_on_container_move_assignment::value) {
+            clear();
+            deallocate(data_, capacity_);
+
             alloc_ = std::move(other.alloc_);
+            data_ = other.data_;
+            size_ = other.size_;
+            capacity_ = other.capacity_;
+
+            other.data_ = nullptr;
+            other.size_ = 0;
+            other.capacity_ = 0;
+        } else {
+            if (alloc_ == other.alloc_) {
+                clear();
+                deallocate(data_, capacity_);
+
+                data_ = other.data_;
+                size_ = other.size_;
+                capacity_ = other.capacity_;
+
+                other.data_ = nullptr;
+                other.size_ = 0;
+                other.capacity_ = 0;
+            } else {
+                // Different non-propagating allocators: move elements
+                if (other.size_ > capacity_) {
+                    clear();
+                    deallocate(data_, capacity_);
+                    data_ = allocate(other.size_);
+                    capacity_ = other.size_;
+                }
+
+                size_type i = 0;
+                for (; i < size_ && i < other.size_; ++i) {
+                    data_[i] = std::move(other.data_[i]);
+                }
+                if (i < other.size_) {
+                    for (; i < other.size_; ++i) {
+                        allocator_traits::construct(
+                            alloc_, std::addressof(data_[i]),
+                            std::move(other.data_[i])
+                        );
+                    }
+                } else {
+                    destroy_range(data_ + other.size_, data_ + size_);
+                }
+                size_ = other.size_;
+                other.clear();
+            }
         }
 
-        data_ = other.data_;
-        size_ = other.size_;
-        capacity_ = other.capacity_;
+        return *this;
+    }
 
-        other.data_ = nullptr;
-        other.size_ = 0;
-        other.capacity_ = 0;
-
+    Vector& operator=(std::initializer_list<T> ilist) {
+        assign(ilist.begin(), ilist.end());
         return *this;
     }
 
@@ -333,11 +423,23 @@ public:
         return data_[pos];
     }
 
-    reference front() { return at(0); }
-    const_reference front() const { return at(0); }
+    reference front() {
+        if (empty()) throw std::out_of_range("front()");
+        return data_[0];
+    }
+    const_reference front() const {
+        if (empty()) throw std::out_of_range("front()");
+        return data_[0];
+    }
 
-    reference back() { return at(size_ - 1); }
-    const_reference back() const { return at(size_ - 1); }
+    reference back() {
+        if (empty()) throw std::out_of_range("back()");
+        return data_[size_ - 1];
+    }
+    const_reference back() const {
+        if (empty()) throw std::out_of_range("back()");
+        return data_[size_ - 1];
+    }
 
     pointer data() noexcept { return data_; }
     const_pointer data() const noexcept { return data_; }
@@ -405,7 +507,7 @@ public:
     reference emplace_back(Args&&... args) {
         if (size_ == capacity_) {
             reallocate_and_emplace(
-                growth_capacity(),
+                growth_capacity(size_ + 1),
                 std::forward<Args>(args)...
             );
             return back();
@@ -452,54 +554,268 @@ public:
         }
     }
 
+    void assign(size_type count, const T& value) {
+        clear();
+        if (count > capacity_) {
+            deallocate(data_, capacity_);
+            data_ = allocate(count);
+            capacity_ = count;
+        }
+        pointer current = data_;
+        for (size_type i = 0; i < count; ++i, ++current) {
+            allocator_traits::construct(alloc_, std::addressof(*current), value);
+        }
+        size_ = count;
+    }
+
+    template <typename InputIt, IsNotIntegral<InputIt> = 0>
+    void assign(InputIt first, InputIt last) {
+        clear();
+        size_type new_size = static_cast<size_type>(std::distance(first, last));
+        if (new_size > capacity_) {
+            deallocate(data_, capacity_);
+            data_ = allocate(new_size);
+            capacity_ = new_size;
+        }
+        pointer current = data_;
+        for (; first != last; ++first, ++current) {
+            allocator_traits::construct(alloc_, std::addressof(*current), *first);
+        }
+        size_ = new_size;
+    }
+
+    void assign(std::initializer_list<T> ilist) {
+        assign(ilist.begin(), ilist.end());
+    }
+
     iterator insert(const_iterator pos, const T& value) {
-        size_type index = static_cast<size_type>(pos - data_);
-        if (index > size_) throw std::out_of_range("Vector::insert");
-
-        Vector temp;
-        temp.reserve(size_ + 1);
-
-        for (size_type i = 0; i < index; ++i) temp.push_back(data_[i]);
-        temp.push_back(value);
-        for (size_type i = index; i < size_; ++i) temp.push_back(data_[i]);
-
-        swap(temp);
-        return data_ + index;
+        return emplace(pos, value);
     }
 
     iterator insert(const_iterator pos, T&& value) {
+        return emplace(pos, std::move(value));
+    }
+
+    iterator insert(const_iterator pos, size_type count, const T& value) {
         size_type index = static_cast<size_type>(pos - data_);
         if (index > size_) throw std::out_of_range("Vector::insert");
 
-        Vector temp;
-        temp.reserve(size_ + 1);
+        if (count == 0) return data_ + index;
 
-        for (size_type i = 0; i < index; ++i) temp.push_back(data_[i]);
-        temp.push_back(std::move(value));
-        for (size_type i = index; i < size_; ++i) temp.push_back(data_[i]);
+        if (size_ + count > capacity_) {
+            size_type new_cap = growth_capacity(size_ + count);
+            pointer new_data = allocate(new_cap);
+            pointer dest = new_data;
 
-        swap(temp);
-        return data_ + index;
+            pointer src = data_;
+            for (size_type i = 0; i < index; ++i, ++src, ++dest) {
+                allocator_traits::construct(alloc_, std::addressof(*dest), std::move_if_noexcept(*src));
+            }
+
+            for (size_type i = 0; i < count; ++i, ++dest) {
+                allocator_traits::construct(alloc_, std::addressof(*dest), value);
+            }
+
+            for (size_type i = index; i < size_; ++i, ++src, ++dest) {
+                allocator_traits::construct(alloc_, std::addressof(*dest), std::move_if_noexcept(*src));
+            }
+
+            destroy_range(data_, data_ + size_);
+            deallocate(data_, capacity_);
+
+            data_ = new_data;
+            capacity_ = new_cap;
+            size_ += count;
+            return data_ + index;
+        } else {
+            // Enough capacity: shift tail and fill
+            pointer pos_ptr = data_ + index;
+            pointer old_end = data_ + size_;
+            pointer new_end = data_ + size_ + count;
+
+            if (count <= static_cast<size_type>(old_end - pos_ptr)) {
+                // Move tail part into uninitialized space
+                for (pointer p = old_end - 1; p >= pos_ptr; --p) {
+                    allocator_traits::construct(alloc_, std::addressof(*(p + count)), std::move_if_noexcept(*p));
+                    allocator_traits::destroy(alloc_, std::addressof(*p));
+                    if (p == pos_ptr) break;
+                }
+                for (size_type i = 0; i < count; ++i) {
+                    allocator_traits::construct(alloc_, std::addressof(pos_ptr[i]), value);
+                }
+            } else {
+                size_type tail = static_cast<size_type>(old_end - pos_ptr);
+                pointer p = old_end;
+                // Move tail into new positions
+                for (size_type i = 0; i < tail; ++i, --p) {
+                    allocator_traits::construct(alloc_, std::addressof(*(p + count - 1)), std::move_if_noexcept(*(p - 1)));
+                    allocator_traits::destroy(alloc_, std::addressof(*(p - 1)));
+                }
+                // Fill all gap with value
+                for (size_type i = 0; i < count; ++i) {
+                    allocator_traits::construct(alloc_, std::addressof(pos_ptr[i]), value);
+                }
+            }
+
+            size_ += count;
+            return data_ + index;
+        }
+    }
+
+    template <typename InputIt, IsNotIntegral<InputIt> = 0>
+    iterator insert(const_iterator pos, InputIt first, InputIt last) {
+        size_type index = static_cast<size_type>(pos - data_);
+        if (index > size_) throw std::out_of_range("Vector::insert");
+
+        if (first == last) return data_ + index;
+
+        size_type count = static_cast<size_type>(std::distance(first, last));
+
+        if (size_ + count > capacity_) {
+            size_type new_cap = growth_capacity(size_ + count);
+            pointer new_data = allocate(new_cap);
+            pointer dest = new_data;
+
+            pointer src = data_;
+            for (size_type i = 0; i < index; ++i, ++src, ++dest) {
+                allocator_traits::construct(alloc_, std::addressof(*dest), std::move_if_noexcept(*src));
+            }
+
+            for (; first != last; ++first, ++dest) {
+                allocator_traits::construct(alloc_, std::addressof(*dest), *first);
+            }
+
+            for (size_type i = index; i < size_; ++i, ++src, ++dest) {
+                allocator_traits::construct(alloc_, std::addressof(*dest), std::move_if_noexcept(*src));
+            }
+
+            destroy_range(data_, data_ + size_);
+            deallocate(data_, capacity_);
+
+            data_ = new_data;
+            capacity_ = new_cap;
+            size_ += count;
+            return data_ + index;
+        } else {
+            pointer pos_ptr = data_ + index;
+            pointer old_end = data_ + size_;
+            pointer new_end = data_ + size_ + count;
+
+            // Move tail into new positions
+            for (pointer p = old_end - 1; p >= pos_ptr; --p) {
+                allocator_traits::construct(alloc_, std::addressof(*(p + count)), std::move_if_noexcept(*p));
+                allocator_traits::destroy(alloc_, std::addressof(*p));
+                if (p == pos_ptr) break;
+            }
+
+            pointer dest = pos_ptr;
+            for (; first != last; ++first, ++dest) {
+                allocator_traits::construct(alloc_, std::addressof(*dest), *first);
+            }
+
+            size_ += count;
+            return data_ + index;
+        }
+    }
+
+    iterator insert(const_iterator pos, std::initializer_list<T> ilist) {
+        return insert(pos, ilist.begin(), ilist.end());
+    }
+
+    template <typename... Args>
+    iterator emplace(const_iterator pos, Args&&... args) {
+        size_type index = static_cast<size_type>(pos - data_);
+        if (index > size_) throw std::out_of_range("Vector::emplace");
+
+        if (index == size_) {
+            emplace_back(std::forward<Args>(args)...);
+            return data_ + size_ - 1;
+        }
+
+        if (size_ == capacity_) {
+            size_type new_cap = growth_capacity(size_ + 1);
+            pointer new_data = allocate(new_cap);
+            pointer dest = new_data;
+
+            pointer src = data_;
+            for (size_type i = 0; i < index; ++i, ++src, ++dest) {
+                allocator_traits::construct(alloc_, std::addressof(*dest), std::move_if_noexcept(*src));
+            }
+
+            allocator_traits::construct(alloc_, std::addressof(*dest), std::forward<Args>(args)...);
+            pointer inserted = dest;
+            ++dest;
+
+            for (size_type i = index; i < size_; ++i, ++src, ++dest) {
+                allocator_traits::construct(alloc_, std::addressof(*dest), std::move_if_noexcept(*src));
+            }
+
+            destroy_range(data_, data_ + size_);
+            deallocate(data_, capacity_);
+
+            data_ = new_data;
+            capacity_ = new_cap;
+            ++size_;
+            return inserted;
+        } else {
+            pointer pos_ptr = data_ + index;
+            allocator_traits::construct(alloc_, std::addressof(data_[size_]), std::move_if_noexcept(data_[size_ - 1]));
+            for (size_type i = size_ - 1; i > index; --i) {
+                data_[i] = std::move_if_noexcept(data_[i - 1]);
+            }
+            data_[index].~T();
+            allocator_traits::construct(alloc_, std::addressof(*pos_ptr), std::forward<Args>(args)...);
+            ++size_;
+            return pos_ptr;
+        }
     }
 
     iterator erase(const_iterator pos) {
         size_type index = static_cast<size_type>(pos - data_);
         if (index >= size_) throw std::out_of_range("Vector::erase");
 
-        Vector temp;
-        temp.reserve(size_ - 1);
-
-        for (size_type i = 0; i < index; ++i) temp.push_back(data_[i]);
-        for (size_type i = index + 1; i < size_; ++i) temp.push_back(data_[i]);
-
-        swap(temp);
+        pointer pos_ptr = data_ + index;
+        allocator_traits::destroy(alloc_, std::addressof(*pos_ptr));
+        for (size_type i = index; i + 1 < size_; ++i) {
+            allocator_traits::construct(alloc_, std::addressof(data_[i]), std::move_if_noexcept(data_[i + 1]));
+            allocator_traits::destroy(alloc_, std::addressof(data_[i + 1]));
+        }
+        --size_;
         return data_ + index;
+    }
+
+    iterator erase(const_iterator first, const_iterator last) {
+        size_type index_first = static_cast<size_type>(first - data_);
+        size_type index_last  = static_cast<size_type>(last - data_);
+        if (index_first > index_last || index_last > size_) {
+            throw std::out_of_range("Vector::erase range");
+        }
+
+        if (index_first == index_last) return data_ + index_first;
+
+        size_type count = index_last - index_first;
+        pointer dest = data_ + index_first;
+        pointer src  = data_ + index_last;
+
+        for (size_type i = 0; i < count; ++i) {
+            allocator_traits::destroy(alloc_, std::addressof(dest[i]));
+        }
+
+        for (; src != data_ + size_; ++dest, ++src) {
+            allocator_traits::construct(alloc_, std::addressof(*dest), std::move_if_noexcept(*src));
+            allocator_traits::destroy(alloc_, std::addressof(*src));
+        }
+
+        size_ -= count;
+        return data_ + index_first;
     }
 
     void swap(Vector& other) noexcept(
         std::is_nothrow_swappable_v<allocator_type>) {
         using std::swap;
-        swap(alloc_, other.alloc_);
+        if constexpr (allocator_traits::propagate_on_container_swap::value) {
+            swap(alloc_, other.alloc_);
+        }
         swap(data_, other.data_);
         swap(size_, other.size_);
         swap(capacity_, other.capacity_);
@@ -523,12 +839,6 @@ template <typename T, typename Alloc>
 bool operator!=(const Vector<T, Alloc>& a,
                 const Vector<T, Alloc>& b) {
     return !(a == b);
-}
-
-template <typename T, typename Alloc>
-void swap(Vector<T, Alloc>& a,
-          Vector<T, Alloc>& b) noexcept(noexcept(a.swap(b))) {
-    a.swap(b);
 }
 
 template <typename T, typename Alloc>
@@ -556,4 +866,10 @@ template <typename T, typename Alloc>
 bool operator>=(const Vector<T, Alloc>& a,
                 const Vector<T, Alloc>& b) {
     return !(a < b);
+}
+
+template <typename T, typename Alloc>
+void swap(Vector<T, Alloc>& a,
+          Vector<T, Alloc>& b) noexcept(noexcept(a.swap(b))) {
+    a.swap(b);
 }

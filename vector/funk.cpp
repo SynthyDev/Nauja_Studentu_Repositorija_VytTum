@@ -1,5 +1,5 @@
 #include <iostream>
-#include <vector>
+//#include <my::vector>
 #include <iomanip>
 #include <string>
 #include <cmath>
@@ -11,7 +11,7 @@
 #include <chrono>
 #include "studentai.h"
 #include <stdexcept>
-#include "Vector.h"
+#include "vector.h"
 
 using namespace std;
 
@@ -25,7 +25,7 @@ void Studentas::skaiciuoti() //! apskaičiuoja galutinius medianinius ir vidurki
 
     rez = 0.4 * (sum * 1.0 / paz.size()) + 0.6 * egz;
 
-    vector<int> temp = paz;
+    my::vector<int> temp = paz;
     sort(temp.begin(), temp.end());
 
     if (temp.size() % 2 == 0)
@@ -36,7 +36,7 @@ void Studentas::skaiciuoti() //! apskaičiuoja galutinius medianinius ir vidurki
     medrez = medrez * 0.4 + egz * 0.6;
 }
 
-void inputas(vector<Studentas> &grupe) //! rankinė studentų įvestis
+void inputas(my::vector<Studentas> &grupe) //! rankinė studentų įvestis
 {
     Studentas A;
 
@@ -118,7 +118,7 @@ void inputas(vector<Studentas> &grupe) //! rankinė studentų įvestis
     }
 }
 
-void outputas(const vector<Studentas> &grupe) //! atspausdina studentus į console
+void outputas(const my::vector<Studentas> &grupe) //! atspausdina studentus į console
 {
     //! Print students to console
     cout << "-------------------------------------------------------------------" << endl;
@@ -139,7 +139,7 @@ void outputas(const vector<Studentas> &grupe) //! atspausdina studentus į conso
     }
 }
 
-void failoutputas(const vector<Studentas> &grupe, string writing) //! studentų spausdinimas į failą (be rikiavimo)
+void failoutputas(const my::vector<Studentas> &grupe, string writing) //! studentų spausdinimas į failą (be rikiavimo)
 {
     //! Write students to file
     ofstream out(writing);
@@ -164,7 +164,7 @@ void failoutputas(const vector<Studentas> &grupe, string writing) //! studentų 
     cout << "Studentu skaicius: " << grupe.size() << endl;
 }
 
-void randominputas(vector<Studentas> &grupe, bool ArGeneruotiVardus) //! atsitiktinių studentų generavimas
+void randominputas(my::vector<Studentas> &grupe, bool ArGeneruotiVardus) //! atsitiktinių studentų generavimas
 {
     Studentas A;
     string lytis;
@@ -257,7 +257,7 @@ void randominputas(vector<Studentas> &grupe, bool ArGeneruotiVardus) //! atsitik
     }
 }
 
-void failinputas(vector<Studentas> &grupe, string reading) //! studentų nuskaitymas iš failo
+void failinputas(my::vector<Studentas> &grupe, string reading) //! studentų nuskaitymas iš failo
 {
     ifstream file(reading);
     grupe.reserve(1000000);
@@ -367,7 +367,7 @@ bool cmpEgz(const Studentas &a, const Studentas &b) //! egzamino rezultatų paly
 }
 
 
-void rikiuoti(vector<Studentas> &grupe, int pasirinkimas) //! studentų rikiavimas pagal cmp funkcijas
+void rikiuoti(my::vector<Studentas> &grupe, int pasirinkimas) //! studentų rikiavimas pagal cmp funkcijas
 {
     if (pasirinkimas == 1)
         sort(grupe.begin(), grupe.end(), cmpVardas);
@@ -416,7 +416,7 @@ void failgeneravimas() //! generuoja 5 failus su atsitiktiniais studentais
 }
 
 
-void genirasymas(vector<Studentas> &grupe, vector<Studentas> &protingi, vector<Studentas> &neprotingi, 
+void genirasymas(my::vector<Studentas> &grupe, my::vector<Studentas> &protingi, my::vector<Studentas> &neprotingi, 
     string writing_good, string writing_bad, int rik_pasirinkimas, SkirstymoStrategija strategija) //! skaito gen failus iš failgeneravimas funkcijos, rikiuoja ir paskirsto į naujus failus
 {
     int sk = 1000;
@@ -529,7 +529,7 @@ void genirasymas(vector<Studentas> &grupe, vector<Studentas> &protingi, vector<S
         neprotingi.clear();
 
         logResults(
-            "vector",
+            "my::vector",
             sk,
             diff_read.count(),
             diff_rikiavimas.count(),
@@ -541,7 +541,7 @@ void genirasymas(vector<Studentas> &grupe, vector<Studentas> &protingi, vector<S
 }
 
 
-void skirstyti(const vector<Studentas>& grupe, vector<Studentas>& protingi, vector<Studentas>& neprotingi) //! studentų skirstymas į grupes pagal rezultatus
+void skirstyti(const my::vector<Studentas>& grupe, my::vector<Studentas>& protingi, my::vector<Studentas>& neprotingi) //! studentų skirstymas į grupes pagal rezultatus
 {
     for (const auto& s : grupe)
     {
@@ -565,7 +565,7 @@ void logResults(const string& container, int size,
 }
 
 
-void skirstyti2(vector<Studentas>& grupe, vector<Studentas>& neprotingi) //! studentų skirstymas antra taktika
+void skirstyti2(my::vector<Studentas>& grupe, my::vector<Studentas>& neprotingi) //! studentų skirstymas antra taktika
 {
     auto it = partition(grupe.begin(), grupe.end(),
         [](const Studentas& s) { return s.getRez() >= 5.0; });
@@ -575,7 +575,7 @@ void skirstyti2(vector<Studentas>& grupe, vector<Studentas>& neprotingi) //! stu
 }
 
 
-void skirstyti3(vector<Studentas>& grupe, vector<Studentas>& neprotingi) //! studentų skirstymas trečia taktika
+void skirstyti3(my::vector<Studentas>& grupe, my::vector<Studentas>& neprotingi) //! studentų skirstymas trečia taktika
 {
     neprotingi.reserve(grupe.size());
 

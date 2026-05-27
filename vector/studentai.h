@@ -3,15 +3,17 @@
 
 #pragma once
 #include <iostream>
-#include <vector>
+//#include <vector>
 #include <string>
 #include <algorithm>
 #include "Vector.h"
 
-using namespace std;
+//using namespace std;
 
-template <typename T>
-using vector = Vector<T>;
+namespace my {
+    template <typename T>
+    using vector = Vector<T>;
+}
 
 const vector<string> mvardai = {"Vytenis", "Tomas", "Jonas", "Matas", "Simas", "Mantas", "Arnas"};
 const vector<string> fvardai = {"Egle", "Viktorija", "Vakare", "Inga", "Ema", "Marija", "Janina"};
