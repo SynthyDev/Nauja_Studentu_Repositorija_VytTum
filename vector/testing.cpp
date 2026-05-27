@@ -347,3 +347,61 @@ TEST_CASE("Vector clear") {
     REQUIRE(v.size() == 0);
     REQUIRE(v.capacity() >= 3); // capacity stays
 }
+
+TEST_CASE("Vector shrink_to_fit reduces capacity to size") {
+    Vector<int> v{1, 2, 3};
+    v.reserve(100);
+    REQUIRE(v.capacity() >= 100);
+
+    v.shrink_to_fit();
+    REQUIRE(v.capacity() == v.size());
+}
+
+TEST_CASE("Vector data() returns pointer to underlying array") {
+    Vector<int> v{10, 20, 30};
+    int* ptr = v.data();
+
+    REQUIRE(ptr != nullptr);
+    REQUIRE(ptr[0] == 10);
+    REQUIRE(ptr[1] == 20);
+    REQUIRE(ptr[2] == 30);
+}
+
+TEST_CASE("Vector cbegin() and cend() iterate correctly") {
+    Vector<int> v{1, 2, 3};
+    int sum = 0;
+
+    for (auto it = v.cbegin(); it != v.cend(); ++it)
+        sum += *it;
+
+    REQUIRE(sum == 6);
+}
+
+TEST_CASE("Vector const reverse iterators work") {
+    const Vector<int> v{1, 2, 3};
+
+    auto it = v.rbegin();
+    REQUIRE(*it == 3);
+    ++it;
+    REQUIRE(*it == 2);
+}
+
+TEST_CASE("Vector emplace_back constructs in-place") {
+    struct TestObj {
+        int x, y;
+        TestObj(int a, int b) : x(a), y(b) {}
+    };
+
+    Vector<TestObj> v;
+    v.emplace_back(5, 7);
+
+    REQUIRE(v.size() == 1);
+    REQUIRE(v[0].x == 5);
+    REQUIRE(v[0].y == 7);
+}
+
+TEST_CASE("Vector max_size is large enough") {
+    Vector<int> v;
+    REQUIRE(v.max_size() > 1000000); // sanity check
+}
+
