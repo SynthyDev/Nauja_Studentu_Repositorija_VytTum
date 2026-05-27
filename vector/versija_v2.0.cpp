@@ -1,5 +1,5 @@
 #include <iostream>
-//#include <vector>
+//#include <Vector>
 #include <iomanip>
 #include <string>
 #include <cmath>
@@ -11,7 +11,7 @@
 #include <chrono>
 #include "studentai.h"
 #include <stdexcept>
-#include "Vector.h"
+#include "Vector2.h"
 
 using namespace std;
 
@@ -19,9 +19,9 @@ int main()
 {
     srand(time(NULL));
 
-    vector<Studentas> grupe;
-    vector<Studentas> protingi;
-    vector<Studentas> neprotingi;
+    Vector<Studentas> grupe;
+    Vector<Studentas> protingi;
+    Vector<Studentas> neprotingi;
 
     grupe.reserve(10000000);
 

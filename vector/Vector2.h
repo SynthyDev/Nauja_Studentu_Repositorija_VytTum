@@ -465,18 +465,15 @@ public:
     }
 
     iterator erase(iterator pos)
-    {
-        if (pos == end())
-            return pos;
+{
+    size_type index = pos - begin();
 
-        for (iterator it = pos; it != end() - 1; ++it)
-            *it = std::move(*(it + 1));
+    for (size_type i = index; i < _size - 1; ++i)
+        _data[i] = std::move(_data[i + 1]);
 
-        pop_back();
-
-        return pos;
-    }
-
+    pop_back();
+    return begin() + index;
+}
     void swap(Vector& other) noexcept
     {
         std::swap(_alloc, other._alloc);
@@ -532,4 +529,16 @@ public:
     {
         return !(*this < other);
     }
+
+    iterator erase(iterator first, iterator last)
+{
+    size_type count = last - first;
+    for (iterator it = first; it != end() - count; ++it)
+        *it = std::move(*(it + count));
+
+    for (size_type i = 0; i < count; ++i)
+        pop_back();
+
+    return first;
+}
 };
