@@ -11,9 +11,11 @@ VERSIJA V3.0
 ---
 Pridėta Vector implementacija vietoj std::vector (faile Vector2.h)
 
-Greičių testavimas ir lyginimas std::vector prieš Vector pildant tuščius vektorius įvairiais dydžiais.
-<img width="1199" height="834" alt="image" src="https://github.com/user-attachments/assets/cf0c2a1a-aafa-4941-916d-18ef30ee8a82" />
+Greičių testavimas ir lyginimas std::vector prieš Vector pildant tuščius vektorius įvairiais dydžiais:
 
+<img width="948" height="673" alt="image" src="https://github.com/user-attachments/assets/58810fd8-2644-4564-b860-2aa1c0f72bf0" />
+<img width="451" height="194" alt="image" src="https://github.com/user-attachments/assets/5636d41a-020a-4ced-8175-412c115dac1e" />
+Taigi mano versija lėtesnė, bet nedaug. Iš esmės su mažais skaičiais laikas panašus. Aišku, kad mano implementacija nėra pilna ar taip optimizuota, kaip gali būti. Vis dėlto rezultatas tenkinantis, pakankamai panašus, netgi su dideliais skaičiais.
 
 ---
 VERSIJA V2.0
