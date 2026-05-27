@@ -6,6 +6,7 @@
 #include <iostream>
 #include <string>
 #include <algorithm>
+#include "Vector2.h"
 
 TEST_CASE("Studentu klases testas") {
     Studentas A;
@@ -19,7 +20,7 @@ TEST_CASE("Studentu klases testas") {
 
     REQUIRE(A.getVardas() == "Zygimantas");
     REQUIRE(A.getPavarde() == "Rauba");
-    REQUIRE(A.getPaz() == std::vector<int>{10});
+    REQUIRE(A.getPaz() == my::Vector<int>{10});
     REQUIRE(A.getEgz() == 6);
     REQUIRE(A.getRez() == 7.60);
     REQUIRE(A.getMedrez() == 7.60);
@@ -50,7 +51,7 @@ TEST_CASE("Studentas copy konstruktorius") {
 
     REQUIRE(b.getVardas() == "Jonas");
     REQUIRE(b.getPavarde() == "Jonaitis");
-    REQUIRE(b.getPaz() == std::vector<int>{10, 9});
+    REQUIRE(b.getPaz() == my::Vector<int>{10, 9});
     REQUIRE(b.getEgz() == 8);
     REQUIRE(b.getRez() == 8.60);
     REQUIRE(b.getMedrez() == 8.60);
@@ -63,7 +64,7 @@ TEST_CASE("Studentas copy assignment") {
 
     REQUIRE(b.getVardas() == "Jonas");
     REQUIRE(b.getPavarde() == "Jonaitis");
-    REQUIRE(b.getPaz() == std::vector<int>{10, 9});
+    REQUIRE(b.getPaz() == my::Vector<int>{10, 9});
     REQUIRE(b.getEgz() == 8);
     REQUIRE(b.getRez() == 8.60);
     REQUIRE(b.getMedrez() == 8.60);
@@ -83,7 +84,7 @@ TEST_CASE("Studentas move konostruktorius") {
 
     REQUIRE(b.getVardas() == "Jonas");
     REQUIRE(b.getPavarde() == "Jonaitis");
-    REQUIRE(b.getPaz() == std::vector<int>{10, 9});
+    REQUIRE(b.getPaz() == my::Vector<int>{10, 9});
     REQUIRE(b.getEgz() == 8);
     REQUIRE(b.getRez() == 8.60);
     REQUIRE(b.getMedrez() == 8.60);
@@ -105,7 +106,7 @@ TEST_CASE("Studentas move assignment") {
 
     REQUIRE(b.getVardas() == "Jonas");
     REQUIRE(b.getPavarde() == "Jonaitis");
-    REQUIRE(b.getPaz() == std::vector<int>{10, 9});
+    REQUIRE(b.getPaz() == my::Vector<int>{10, 9});
     REQUIRE(b.getEgz() == 8);
     REQUIRE(b.getRez() == 8.60);
     REQUIRE(b.getMedrez() == 8.60);
@@ -128,7 +129,7 @@ TEST_CASE("Studentas move a -> a") {
 
     REQUIRE(a.getVardas() == "Jonas");
     REQUIRE(a.getPavarde() == "Jonaitis");
-    REQUIRE(a.getPaz() == std::vector<int>{10, 9});
+    REQUIRE(a.getPaz() == my::Vector<int>{10, 9});
     REQUIRE(a.getEgz() == 8);
     REQUIRE(a.getRez() == 8.60);
     REQUIRE(a.getMedrez() == 8.60);
@@ -157,6 +158,6 @@ TEST_CASE("Studentas input operator >>") {
 
     REQUIRE(s.getVardas() == "Jonas");
     REQUIRE(s.getPavarde() == "Jonaitis");
-    REQUIRE(s.getPaz() == std::vector<int>{10, 9});
+    REQUIRE(s.getPaz() == my::Vector<int>{10, 9});
     REQUIRE(s.getEgz() == 8);
 }

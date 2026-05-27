@@ -25,6 +25,7 @@ int main()
 
     grupe.reserve(10000000);
 
+    /*
     cout << "VECTOR PILDYMU MATAVIMAS (2): " << endl << endl << endl;
     //! std::vector ir Vector matavimai
     for (int i = 4; i <= 8; i++)
@@ -38,6 +39,7 @@ int main()
     cout << "Norite generuoti 5 failus? y/n " << endl;
     cin >> genpas;
     if (genpas == "y") failgeneravimas();
+    */
 
     int pasirinkimas = 4;
     string isvedimotipas, skaitymo_pasirinkimas, skaitymo_failas;

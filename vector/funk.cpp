@@ -420,6 +420,9 @@ void genirasymas(my::Vector<Studentas> &grupe, my::Vector<Studentas> &protingi, 
     string writing_good, string writing_bad, int rik_pasirinkimas, SkirstymoStrategija strategija) //! skaito gen failus iš failgeneravimas funkcijos, rikiuoja ir paskirsto į naujus failus
 {
     int sk = 1000;
+    grupe.reserve(10000000);
+    protingi.reserve(10000000);
+    neprotingi.reserve(10000000);
 
     for (int it = 0; it < 5; it++)
     {
