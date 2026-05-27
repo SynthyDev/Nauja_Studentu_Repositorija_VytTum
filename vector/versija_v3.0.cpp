@@ -25,11 +25,14 @@ int main()
 
     grupe.reserve(10000000);
 
+    cout << "VECTOR PILDYMU MATAVIMAS (2): " << endl << endl << endl;
     //! std::vector ir Vector matavimai
     for (int i = 4; i <= 8; i++)
     {
         uzdmat(pow(10, i));
     }
+    cout << "PERSKIRSTYMU MATAVIMAS (3): " << endl << endl << endl;
+    matuoti_perskirstymus(100000000);
 
     string genpas;
     cout << "Norite generuoti 5 failus? y/n " << endl;

@@ -625,7 +625,7 @@ istream& operator>>(istream& is, Studentas& s) //! input operatorius klasei
     return is;
 }
 
-void uzdmat(int vektordydis)
+void uzdmat(int vektordydis) //! matuoja, kiek laiko uztrunka uzpildyti std::vector ir Vector
 {
     cout << "matuojamas laikas vectoriaus dydziui: " << vektordydis << endl;
 
@@ -650,4 +650,47 @@ void uzdmat(int vektordydis)
     // CSV outputas
     ofstream out("results_matavimai.csv", ios::app);
     out << vektordydis << "," << diff.count() << "," << diff2.count() << "\n";
+}
+
+void matuoti_perskirstymus(int kiekis) //! Matuoja perskirstymus std::vector ir Vector
+{
+    cout << "\nMatuojami perskirstymai dydziui: " << kiekis << endl;
+
+    // --- std::vector ---
+    {
+        std::vector<int> v;
+        int realloc_count = 0;
+        size_t last_capacity = v.capacity();
+
+        for (int i = 0; i < kiekis; i++)
+        {
+            v.push_back(i);
+            if (v.capacity() != last_capacity)
+            {
+                realloc_count++;
+                last_capacity = v.capacity();
+            }
+        }
+
+        cout << "std::vector perskirstymu skaicius: " << realloc_count << endl;
+    }
+
+    // --- custom Vector ---
+    {
+        Vector<int> v;
+        int realloc_count = 0;
+        size_t last_capacity = v.capacity();
+
+        for (int i = 0; i < kiekis; i++)
+        {
+            v.push_back(i);
+            if (v.capacity() != last_capacity)
+            {
+                realloc_count++;
+                last_capacity = v.capacity();
+            }
+        }
+
+        cout << "Custom Vector perskirstymu skaicius: " << realloc_count << endl;
+    }
 }

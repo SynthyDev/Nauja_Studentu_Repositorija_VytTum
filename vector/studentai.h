@@ -189,6 +189,7 @@ void skirstyti2(Vector<Studentas>& grupe, Vector<Studentas>& neprotingi);
 void skirstyti3(Vector<Studentas>& grupe, Vector<Studentas>& neprotingi);
 
 void uzdmat(int vektordydis);
+void matuoti_perskirstymus(int kiekis);
 
 ostream& operator<<(ostream& os, const Studentas& s);
 istream& operator>>(istream& is, Studentas& s);
