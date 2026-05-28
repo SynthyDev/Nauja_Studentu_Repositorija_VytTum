@@ -123,6 +123,9 @@ int main()
     chrono::duration<double> diff = end-start; // Skirtumas (s)
     cout << "Programos rikiavimas ir isvedimas uztruko: "<< diff.count() << " s\n";
 
-    cout << "program finished." << endl;
+    cout << "Program finished. Press Enter to exit.";
+    cin.ignore();
+    cin.get();
+	
     return 0;
 }
