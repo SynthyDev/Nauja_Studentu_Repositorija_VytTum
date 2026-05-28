@@ -1,3 +1,10 @@
+KAIP ATSISIŲSTI PROGRAMĄ?
+1. Atisiųskite setup.exe failą ir paleiskite.
+2. Ant jūsų Desktop turėtų atsirasti studentai.exe failas.
+3. Jūsų aplanke C:\Program Files\VU\Vardenis-Pavardenis turėtų atsirasti programos failai.
+4. Paleiskite studentas.exe. Jei norite, kad programa sugebėtų įrašyti failus į jūsų sistemą, turėsite duoti adimistratoriaus teisių leidimą.
+
+---
 Kaip naudoti Makefile?
 1. Atidarykite aplanką, kurio programą norite paleist (pvz. vector)
 2. Būtina turėti MinGW64 arba kitą įrankį, kuris palaiko "make" funkciją: https://gnuwin32.sourceforge.net/packages/make.htm
